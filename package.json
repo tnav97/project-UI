@@ -5,6 +5,7 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "dev2": "ng build --configuration=dev --output-hashing=all",
     "dev": "ng build --configuration=dev --output-hashing=all && docker build --build-arg projectName=flexcub-app -t vasanthdev/flexcub:flexcub-app-1 . && docker push vasanthdev/flexcub:flexcub-app-1",
     "qa": "ng build --configuration=qa --output-hashing=all && docker build --build-arg projectName=flexcub-app -t vasanthdev/flexcub:flexcub-app-qa-1 . && docker push vasanthdev/flexcub:flexcub-app-qa-1",
     "prod": "ng build --configuration=production --output-hashing=all && docker build --build-arg projectName=flexcub-app -t vasanthdev/flexcub-prod:flexcub-prod . && docker push vasanthdev/flexcub-prod:flexcub-prod",
