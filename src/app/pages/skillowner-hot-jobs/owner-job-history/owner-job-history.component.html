@@ -1,0 +1,96 @@
+<div class="row">
+  <div class="col-md-12 job-list">
+    <div class="card job-list-wrapper">
+      <div class="card-header job-list-header d-flex justify-content-between align-items-center">
+        <div class="candidate-info d-flex align-items-center">
+          <div *ngIf="imageAvailable === true">
+            <img class="avatar" [src]="soImgUrl + ownerId" />
+          </div>
+          <div *ngIf="imageAvailable === false">
+            <img class="avatar" src="assets/images/avatar-default-skillowner.png" />
+          </div>
+          <div class="experience">
+            <h4>{{ skillOwnerName }}</h4>
+            <p>{{ skillOwnerExperience }}</p>
+          </div>
+        </div>
+
+        <div class="middle d-none d-lg-block" style="width: 500px">
+          <mat-form-field class="field4x col-md-10 mt-1" appearance="outline">
+            <input class="control" matInput type="text" placeholder="Search for Job ID, Skill Seeker, Job Title" [(ngModel)]="searchText2" />
+            <mat-icon matSuffix color="primary">search</mat-icon>
+          </mat-form-field>
+        </div>
+        <div></div>
+        <!-- <button routerLink="/spHiring" class="btn"><i class="fa fa-arrow-left mx-2" aria-hidden="true"></i>Employee List</button> -->
+      </div>
+
+      <div class="card-body job-list-body">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Job ID</th>
+              <th scope="col">Skill Seeker</th>
+              <th scope="col">Job Title</th>
+              <th scope="col">Job Location</th>
+              <th scope="col">Job Level & Exp</th>
+              <th scope="col">Hiring Status</th>
+              <th scope="col">Hiring Stage</th>
+              <th scope="col"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let a of tabledata | customHotJobs : searchText2">
+              <th scope="row">
+                <input type="checkbox" aria-label="Checkbox for following text input" />&nbsp;
+                {{ a.jobId }}
+              </th>
+              <td>{{ a.businessName }}</td>
+              <td><img src="assets/images/document-icon.svg" /> {{ a.jobTitle }}</td>
+              <td>{{ a.location }}</td>
+              <td>{{ a.expByName }} & {{ a.levelExperience }}</td>
+              <td>
+                <p
+                  *ngIf="a.hiringStatus"
+                  class="mb-0 text-center col-md-8"
+                  [ngClass]="
+                    a.hiringStatus == 'In Hiring' ? 'green' : a.hiringStatus == 'New' ? 'yellow' : a.hiringStatus == 'Closed' ? 'orange' : 'danger'
+                  ">
+                  {{ a.hiringStatus }}
+                </p>
+              </td>
+              <td>
+                <p
+                  *ngIf="a.currentStage"
+                  class="mb-0 text-center col-md-10"
+                  [ngClass]="
+                    (a.requirementPhases[a.currentStage - 1].status == 'Scheduled' &&
+                      a.requirementPhases[a.currentStage - 1].requirementPhaseName == 'INITIAL SCREENING') ||
+                    a.requirementPhases[a.currentStage - 1].requirementPhaseName == 'OFFER RELEASE'
+                      ? 'green'
+                      : a.requirementPhases[a.currentStage - 1].status == 'Not Cleared'
+                      ? 'danger'
+                      : 'yellow'
+                  ">
+                  {{ a.requirementPhases[a.currentStage - 1].requirementPhaseName }}
+                </p>
+              </td>
+              <td>
+                <div class="dropdown">
+                  <button class="btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <img src="assets/images/icon-more.svg" />
+                  </button>
+                  <ul class="dropdown-menu">
+                    <li>
+                      <a class="dropdown-item" [routerLink]="['/soHotJobs/jobsNotification', ownerId, a.jobId]">View Job Related Notification</a>
+                    </li>
+                  </ul>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,93 @@
+[
+  {
+    "_id": "6203b743ed8b846a9b34337f",
+    "index": 0,
+    "picture": "https://images.generated.photos/CyxdDTGGUubBdVqAdvOXzsQWwM_b0zQWLljEuLkbCFI/rs:fit:512:512/wm:0.95:sowe:18:18:0.33/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LnBob3Rvcy92M18w/MTgxNTY1LmpwZw.jpg",
+    "name": "Vega Chan",
+    "email": "vegachan@zilch.com",
+    "phone": "+1 (861) 500-2226",
+    "position": "Senior UI Strategist",
+    "clientCompany": "KATAKANA",
+    "status": "PO Released",
+    "contractStartDate": "2019-10-30",
+    "pointOfContact": "NIKUDA"
+  },
+  {
+    "_id": "6203b743a3c6fd69fa0dfcfe",
+    "index": 1,
+    "picture": "http://placehold.it/32x32",
+    "name": "Reeves Wilson",
+    "email": "reeveswilson@nikuda.com",
+    "phone": "+1 (806) 564-2173",
+    "position": "Senior UI Strategist",
+    "clientCompany": "ORBIN",
+    "status": "PO Released",
+    "contractStartDate": "2016-09-17",
+    "pointOfContact": "MOBILDATA"
+  },
+  {
+    "_id": "6203b743c3947a7c494857f6",
+    "index": 2,
+    "picture": "http://placehold.it/32x32",
+    "name": "Tamra Watson",
+    "email": "tamrawatson@mobildata.com",
+    "phone": "+1 (836) 412-3213",
+    "position": "Senior UI Strategist",
+    "clientCompany": "PIVITOL",
+    "status": "In Bench",
+    "contractStartDate": "2021-10-29",
+    "pointOfContact": "XYMONK"
+  },
+  {
+    "_id": "6203b74355fcd7943fb62fa2",
+    "index": 3,
+    "picture": "http://placehold.it/32x32",
+    "name": "Kari Larsen",
+    "email": "karilarsen@xymonk.com",
+    "phone": "+1 (997) 484-3218",
+    "position": "Senior UI Strategist",
+    "clientCompany": "UNCORP",
+    "status": "In Bench",
+    "contractStartDate": "2019-10-29",
+    "pointOfContact": "EARGO"
+  },
+  {
+    "_id": "6203b7431b20bfe52d879b2d",
+    "index": 4,
+    "picture": "http://placehold.it/32x32",
+    "name": "Justine Olson",
+    "email": "justineolson@eargo.com",
+    "phone": "+1 (884) 512-2980",
+    "position": "Senior UI Strategist",
+    "clientCompany": "EARTHMARK",
+    "status": "Active",
+    "contractStartDate": "2020-09-10",
+    "pointOfContact": "OLUCORE"
+  },
+  {
+    "_id": "6203b7433a3c3b4f2f922d5d",
+    "index": 5,
+    "picture": "http://placehold.it/32x32",
+    "name": "Kate Tyson",
+    "email": "katetyson@olucore.com",
+    "phone": "+1 (980) 579-2896",
+    "position": "Senior UI Strategist",
+    "clientCompany": "COMTOUR",
+    "status": "Expiring Soon",
+    "contractStartDate": "2018-11-03",
+    "pointOfContact": "SIGNIDYNE"
+  },
+  {
+    "_id": "6203b743eac4b1f5930b6e19",
+    "index": 6,
+    "picture": "http://placehold.it/32x32",
+    "name": "Alvarado Castro",
+    "email": "alvaradocastro@signidyne.com",
+    "phone": "+1 (925) 428-3644",
+    "position": "Senior UI Strategist",
+    "clientCompany": "UTARIAN",
+    "status": "Expiring Soon",
+    "contractStartDate": "2016-03-28",
+    "pointOfContact": "QUALITERN"
+  }
+]

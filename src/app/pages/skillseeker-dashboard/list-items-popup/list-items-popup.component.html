@@ -1,0 +1,101 @@
+<app-loader *ngIf="isLoading">{{ isLoading }}</app-loader>
+<div *ngFor="let list of sliderList; let i = index" class="slider-height">
+  <div class="candidate-info d-flex align-items-center box">
+    <img class="avatar" [src]="list?.image" />
+    <div class="candidate-name-experience">
+      <h4 class="mb-0">{{ list.skillOwnerName }}</h4>
+      <p class="m-0">Experience: {{ list.experience }}</p>
+    </div>
+  </div>
+  <div
+    [ngStyle]="{
+      height:
+        list?.requirementPhaseList?.length === 3
+          ? '265px'
+          : list?.requirementPhaseList?.length === 4
+          ? '600px'
+          : list?.requirementPhaseList?.length === 5
+          ? '555px'
+          : list?.requirementPhaseList?.length === 6
+          ? '550px'
+          : list?.requirementPhaseList?.length === 7
+          ? '470px'
+          : '900px'
+    }"
+    style="position: relative">
+    <ngx-slider
+      [ngClass]="list.requirementPhaseList[list.currentStage - 1].status == 'Not Cleared' ? 'class2' : 'custom-slider1'"
+      [ngStyle]="{
+        height:
+          list?.requirementPhaseList?.length === 3
+            ? '90%'
+            : list?.requirementPhaseList?.length === 4
+            ? '108%'
+            : list?.requirementPhaseList?.length === 5
+            ? '134%'
+            : list?.requirementPhaseList?.length === 6
+            ? '164%'
+            : list?.requirementPhaseList?.length === 7
+            ? '230%'
+            : '170%'
+      }"
+      [(value)]="list.currentStage"
+      [options]="sliderOptions(list)"></ngx-slider>
+
+    <div class="interviewContainer" *ngIf="viewProcess" [formGroup]="processForm">
+      <div
+        class="interviewDetails"
+        [ngStyle]="{
+          'margin-bottom':
+            list?.requirementPhaseList?.length === 3
+              ? '265px'
+              : list?.requirementPhaseList?.length === 4
+              ? '71px'
+              : list?.requirementPhaseList?.length === 5
+              ? '47px'
+              : list?.requirementPhaseList?.length === 6
+              ? '44px'
+              : list?.requirementPhaseList?.length === 7
+              ? '44px'
+              : '34px'
+        }"
+        *ngFor="let data of list.requirementPhaseList; let i = index; let last = last">
+        <div *ngIf="i + 1 <= list.currentStage && !last">
+          <p class="status" *ngIf="data.status" [ngClass]="data.status == 'Cleared' ? 'green' : data.status == 'Not Cleared' ? 'red' : 'yellow'">
+            {{ data?.status }}
+          </p>
+          <div class="d-flex align-items-center pt-1">
+            <h6>
+              <i class="fa fa-calendar"></i>
+              Date of INTERVIEW :
+              <span *ngIf="viewProcess && data.dateOfInterview"
+                >{{ data.dateOfInterview + ',' + data.timeOfInterview | date : 'short' }}-{{
+                  data.dateOfInterview + ',' + data.endTimeOfInterview | date : 'shortTime'
+                }}</span
+              >
+            </h6>
+          </div>
+
+          <div class="d-flex align-items-center pt-1">
+            <h6 *ngIf="data.interviewedBy !== 'Skill Seeker'">
+              <i class="fa fa-user"></i> Interviewed by :
+              <span *ngIf="viewProcess">{{ data.interviewedBy }}</span>
+            </h6>
+            <h6 *ngIf="data.interviewedBy === 'Skill Seeker'">
+              <i class="fa fa-user"></i> Interviewed by :
+              <span *ngIf="viewProcess">{{ name }} {{ surname }}</span>
+            </h6>
+          </div>
+
+          <div class="pt-2">
+            <h5 class="h5"><i class="fa fa-message"></i>Feedback :</h5>
+            <!-- <div *ngIf="viewProcess"></div> -->
+            <div *ngIf="viewTextbox">
+              <h5 class="h5"><app-edit-input [data]="data.feedback" (focusOut)="saveCost($event, i, list)"></app-edit-input></h5>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

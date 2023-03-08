@@ -1,0 +1,109 @@
+.job-list .job-list-header {
+  h4 {
+    font-size: 18px;
+    font-weight: 600;
+  }
+
+  button {
+    background: #1565d8;
+    border: 1px solid #1565d8;
+    border-radius: 6px;
+    color: #ffffff;
+  }
+}
+
+.job-list .job-list-body {
+  table tbody {
+    vertical-align: middle;
+    color: #000000;
+    font-size: 14px;
+    font-weight: 300;
+
+    th {
+      font-size: 14px;
+      font-weight: 300;
+    }
+
+    .yellow {
+      font-size: 12px;
+      font-weight: 400;
+      background: #f4c20d;
+      border: 1px solid #f4c20d;
+      border-radius: 35px;
+      padding: 4px 12px;
+    }
+    .red {
+      font-size: 12px;
+      font-weight: 400;
+      background: #ffecec;
+      border: 1px solid #e04b4e;
+      border-radius: 35px;
+      padding: 4px 12px;
+      color: #e04b4e;
+    }
+    .blue {
+      font-size: 12px;
+      font-weight: 400;
+      background: #4885ed;
+      border: 1px solid #4885ed;
+      border-radius: 35px;
+      padding: 4px 12px;
+      color: white;
+    }
+    .green {
+      font-size: 12px;
+      font-weight: 400;
+      background: #3cba54;
+      border: 1px solid #3cba54;
+      border-radius: 35px;
+      padding: 4px 12px;
+      color: white;
+    }
+    .Danger {
+      font-size: 12px;
+      font-weight: 400;
+      background: #db3236;
+      border: 1px solid #db3236;
+      border-radius: 35px;
+      padding: 4px 12px;
+      color: white;
+    }
+    .orange {
+      font-size: 12px;
+      font-weight: 400;
+      background: #f97d0b;
+      border: 1px solid #f97d0b;
+      border-radius: 35px;
+      padding: 4px 12px;
+      color: white;
+    }
+
+    .status-draft {
+      background-color: #f97d0b;
+      border: 1px solid #f97d0b;
+    }
+
+    .status-publish {
+      background-color: #3cba54;
+      border: 1px solid #3cba54;
+    }
+
+    a {
+      padding-left: 10px;
+      text-decoration-line: underline;
+      color: #4885ed;
+      font-weight: 500;
+    }
+  }
+}
+
+::ng-deep .mdc-notched-outline__leading {
+  border-width: 1px;
+  border-radius: 28px 0 0 28px !important;
+  min-width: 28px !important;
+}
+
+::ng-deep .mdc-notched-outline__trailing {
+  border-width: 1px;
+  border-radius: 0 28px 28px 0 !important;
+}

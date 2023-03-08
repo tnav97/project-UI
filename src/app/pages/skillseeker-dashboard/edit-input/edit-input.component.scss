@@ -1,0 +1,27 @@
+$lightGray: #c8c8c8;
+
+.cell {
+  width: 90%;
+  height: 60px;
+  box-sizing: border-box;
+  border: 2px solid transparent;
+  border-radius: 4px;
+  resize: none;
+
+  &:hover {
+    cursor: pointer;
+    width: 90%;
+    height: 60px;
+  }
+}
+
+.cellInput {
+  width: 400px;
+  height: 60px;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  background-color: #f8f8f8;
+  font-size: 16px;
+  resize: none;
+}

@@ -1,0 +1,52 @@
+.admin-dashboard {
+  .dashboard-header {
+    h4 {
+      font-weight: 600;
+      font-size: 18px;
+    }
+  }
+
+  .dashboard-body {
+    .dashboard-info {
+      .card {
+        background: #ffffff;
+        border: 1px solid #eaecef;
+        border-radius: 8px;
+        cursor: pointer;
+        padding-top: 10px;
+        padding-bottom: 10px;
+
+        .card-body {
+          display: flex;
+          align-items: center;
+          flex-direction: column;
+
+          h5 {
+            font-weight: 600;
+            font-size: 20px;
+            color: #1565d8;
+            padding-top: 15px;
+          }
+        }
+      }
+
+      .card:hover {
+        background: #f5f9ff;
+      }
+    }
+
+    .add-info {
+      padding: 20px 20px;
+
+      a {
+        font-weight: 500;
+        font-size: 16px;
+        color: #1565d8;
+
+        img {
+          height: 20px;
+        }
+      }
+    }
+  }
+}

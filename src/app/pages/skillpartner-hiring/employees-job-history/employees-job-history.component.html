@@ -1,0 +1,365 @@
+<div class="row">
+  <div class="col-md-12 job-list">
+    <div class="card job-list-wrapper">
+      <div class="card-header job-list-header d-flex justify-content-between align-items-center">
+        <div class="candidate-info d-flex align-items-center">
+          <div *ngIf="imageAvailable === true">
+            <img class="avatar" [src]="soImgUrl + skillOwnerId" />
+          </div>
+          <div *ngIf="imageAvailable === false">
+            <img class="avatar" src="assets/images/avatar-default-skillowner.png" />
+          </div>
+          <div class="experience">
+            <h4>{{ skillOwnerName }}</h4>
+            <p>{{ skillOwnerExperience }}</p>
+          </div>
+        </div>
+        <!-- <div class="middle d-none d-lg-block" style="width: 400px">
+          <mat-form-field class="field4x col-md-10 mt-1" appearance="outline">
+            <input class="control" matInput type="text" placeholder="Search for Clients, Projects, Requirement" [(ngModel)]="searchText2" />
+            <mat-icon matSuffix color="primary">search</mat-icon>
+          </mat-form-field>
+        </div> -->
+        <button routerLink="/spHiring" class="btn"><i class="fa fa-arrow-left mx-2" aria-hidden="true"></i>Employee
+          List</button>
+      </div>
+
+      <!-- <div class="card-body job-list-body">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Job ID</th>
+              <th scope="col">Skill Seeker</th>
+              <th scope="col">Job Title</th>
+              <th scope="col">Job Location</th>
+              <th scope="col">Job Level & Exp</th>
+              <th scope="col">Hiring Status</th>
+              <th scope="col">Hiring Stage</th>
+              <th scope="col">Date of Hiring</th>
+              <th scope="col"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let a of tabledata | customFilter2 : searchText2">
+              <th scope="row">
+                <input type="checkbox" aria-label="Checkbox for following text input" />&nbsp;
+                {{ a.jobId }}
+              </th>
+              <td>{{ a.businessName }}</td>
+              <td><img src="assets/images/document-icon.svg" /> {{ a.jobTitle }}</td>
+              <td *ngIf="a.location">{{ a.location }}</td>
+              <td>{{ a.expByName }} & {{ a.levelExperience }}</td>
+              <td>
+                <p
+                  *ngIf="a.hiringStatus"
+                  class="mb-0 text-center col-md-8"
+                  [ngClass]="
+                    a.hiringStatus == 'In Hiring' ? 'green' : a.hiringStatus == 'New' ? 'yellow' : a.hiringStatus == 'Closed' ? 'orange' : 'danger'
+                  ">
+                  {{ a.hiringStatus }}
+                </p>
+              </td>
+              <td>
+                <p
+                  *ngIf="a.currentStage"
+                  class="mb-0 text-center col-md-10"
+                  [ngClass]="
+                    (a.requirementPhases[a.currentStage - 1].status == 'Scheduled' &&
+                      a.requirementPhases[a.currentStage - 1].requirementPhaseName == 'INITIAL SCREENING') ||
+                    a.requirementPhases[a.currentStage - 1].requirementPhaseName == 'OFFER RELEASE'
+                      ? 'green'
+                      : a.requirementPhases[a.currentStage - 1].status == 'Not Cleared'
+                      ? 'danger'
+                      : 'yellow'
+                  ">
+                  {{ a.requirementPhases[a.currentStage - 1].requirementPhaseName }}
+                </p>
+              </td>
+              <td>
+                {{ a.requirementPhases[0].createdAt | date : 'yyyy-MMM-dd' }}
+              </td>
+              <td>
+                <div class="dropdown">
+                  <button class="btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <img src="assets/images/icon-more.svg" />
+                  </button>
+                  <ul class="dropdown-menu">
+                    <li>
+                      <a class="dropdown-item" [routerLink]="['/spHiring/jobsNotification', a.jobId, skillOwnerId]">View Job Related Notification</a>
+                    </li>
+                  </ul>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div> -->
+      <div class="card-body job-list-body">
+        <tabset #tabset>
+          <tab heading="Hiring History">
+            <div class="card">
+              <div class="card-body d-flex align-items-center">
+                <!-- <div class="col-xl-1 col-lg-1 col-md-1 col-sm-1">
+                <div class="name">
+                  <p class="mb-0">Job Id</p>
+                  <h5 class="mb-0">{{ a.jobId }}</h5>
+                </div>
+              </div>
+              <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2">
+                <div class="name">
+                  <p class="mb-0">Skill Seeker</p>
+                  <h5 class="mb-0">{{ a.businessName }}</h5>
+                </div>
+              </div>
+              <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2">
+                <div class="name">
+                  <p class="mb-0">Job Title</p>
+                 <h5 class="mb-0">{{ a.jobTitle }}</h5>
+                </div>
+              </div>
+              <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2">
+                <div class="name">
+                  <p class="mb-0">Job Location</p>
+                  <h5 class="mb-0">{{ a.location }}</h5>
+                </div>
+              </div>
+              <div class="col-xl-1 col-lg-1 col-md-1 col-sm-1">
+                <div class="name">
+                  <p class="mb-0">Job Level & Exp</p>
+                   <h5 class="mb-0">{{ a.expByName }} & {{ a.levelExperience }}</h5>
+                </div>
+              </div>
+              <div class="col-xl-1 col-lg-1 col-md-1 col-sm-1">
+                <div class="name">
+                  <p class="mb-0">Hiring Status</p>
+                   <h5 class="mb-0"> {{ a.hiringStatus }} & {{ a.levelExperience }}</h5>
+                </div>
+              </div>
+              <div class="col-xl-1 col-lg-2 col-md-2 col-sm-2">
+                <div class="name">
+                  <p class="mb-0">Hiring Stage</p>
+                  <h5 class="mb-0">{{ a.requirementPhases[a.currentStage - 1].requirementPhaseName }}</h5>
+                </div>
+              </div>
+              <div class="col-xl-1 col-lg-2 col-md-2 col-sm-2">
+                <div class="name">
+                  <p class="mb-0">Date of Hiring</p>
+                  <h5 class="mb-0">{{ a.requirementPhases[0].createdAt | date : 'yyyy-MMM-dd' }}</h5>
+                </div>
+              </div>
+              <div class="col-xl-1 col-lg-2 col-md-2 col-sm-2">
+              <div>
+                <img src="assets/images/more.svg" class="view" />
+              </div>
+            </div> -->
+
+
+                <table class="table table-borderless">
+                  <thead>
+                    <tr>
+                      <th scope="col">Job ID</th>
+                      <th scope="col">Skill Seeker</th>
+                      <th scope="col">Job Title</th>
+                      <th scope="col">Job Location</th>
+                      <th scope="col">Job Level & Exp</th>
+                      <th scope="col">Hiring Status</th>
+                      <th scope="col">Hiring Stage</th>
+                      <th scope="col">Date of Hiring</th>
+                      <th scope="col"></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let a of tabledata | customFilter2 : searchText2">
+                      <th scope="row">
+                        <input type="checkbox" aria-label="Checkbox for following text input" />&nbsp;
+
+                        {{ a.jobId }}
+
+                      </th>
+                      <td>
+                        <p>
+                          {{ a.businessName }}
+                        </p>
+                      </td>
+                      <td>
+                        <p><img src="assets/images/document-icon.svg" /> {{ a.jobTitle }}</p>
+                      </td>
+                      <td *ngIf="a.location">
+                        <p>{{ a.location }}</p>
+                      </td>
+                      <td>
+                        <p>{{ a.expByName }} & {{ a.levelExperience }}</p>
+                      </td>
+                      <td>
+                        <p *ngIf="a.hiringStatus" class="mb-0 text-center col-md-8" [ngClass]="
+                        a.hiringStatus == 'In Hiring' ? 'green' : a.hiringStatus == 'New' ? 'yellow' : a.hiringStatus == 'Closed' ? 'orange' : 'danger'
+                      ">
+                          {{ a.hiringStatus }}
+                        </p>
+                      </td>
+                      <td>
+                        <p *ngIf="a.currentStage" class="mb-0 text-center col-md-10" [ngClass]="
+                        (a.requirementPhases[a.currentStage - 1].status == 'Scheduled'
+                         &&
+                          a.requirementPhases[a.currentStage - 1].requirementPhaseName == 'INITIAL SCREENING') ||
+                        a.requirementPhases[a.currentStage - 1].requirementPhaseName == 'OFFER RELEASE'
+                          ? 'green'
+                          : a.requirementPhases[a.currentStage - 1].status == 'Not Cleared'
+                          ? 'danger'
+                          : 'yellow'
+                      ">
+                          {{ a.requirementPhases[a.currentStage - 1].requirementPhaseName }}
+                        </p>
+                      </td>
+                      <td>
+                        <p>
+                          {{ a.requirementPhases[0].createdAt | date : 'MM/dd/yyyy' }}
+                        </p>
+                      </td>
+                      <td>
+                        <div class="dropdown">
+                          <button class="btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <img class="img1" src="assets/images/icon-more.svg" />
+                          </button>
+                          <ul class="dropdown-menu">
+                            <li>
+                              <a class="dropdown-item"
+                                [routerLink]="['/spHiring/jobsNotification', a.jobId, skillOwnerId]">View Job Related
+                                Notification</a>
+                            </li>
+                          </ul>
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </tab>
+          <tab heading="Job History">
+            <div class="card" *ngFor="let a of _tabledata">
+              <div class="card-body d-flex align-items-center">
+                <table class="table table-borderless">
+                  <thead>
+                    <tr>
+                      <th scope="col">Job </th>
+                      <th scope="col">Skill Seeker</th>
+                      <th scope="col">Job Title</th>
+                      <th scope="col">Job Location</th>
+                      <th scope="col">Job Level & Exp</th>
+                      <th scope="col">Contract Status</th>
+                      <th scope="col">From Date</th>
+                      <th scope="col">To Date</th>
+                      <th scope="col">Project</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let a of _tabledata | customFilter2 : searchText2">
+                      <th scope="row">
+                        <input type="checkbox" aria-label="Checkbox for following text input" />&nbsp;
+                        {{a.jobId}}
+                      </th>
+                      <td>
+                        {{a.seekerName}}
+                      </td>
+                      <td>
+                        <img src="assets/images/document-icon.svg" /> {{ a.jobTitle }}
+                      </td>
+                      <td *ngIf="a.location">{{ a.location }}</td>
+                      <td>
+                        {{a.levelExperience}}
+                      <td>
+                        <p class="mb-0 text-center col-md-8"
+                          [ngClass]="a.contractStatus == 'Active'?'green' : a.contactStatus == 'Expired'? 'red':'orange'">
+                          {{a.contractStatus}}
+                        </p>
+                      </td>
+                      <td>
+
+                        {{a.fromDate | date : 'MM/dd/yyyy' }}
+
+                      </td>
+                      <td>
+                        {{a.toDate | date : 'MM/dd/yyyy' }}
+
+                        <!-- {{ a.requirementPhases[0].createdAt | date : 'yyyy-MMM-dd' }} -->
+                      </td>
+                      <td>
+                        {{a.project}}
+
+                      </td>
+                      <td>
+                        <div class="dropdown">
+                          <button class="btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <img class="img1" src="assets/images/icon-more.svg" />
+                          </button>
+                          <ul class="dropdown-menu">
+                            <li>
+                              <a class="dropdown-item"
+                                [routerLink]="['/spHiring/jobsNotification', a.jobId, skillOwnerId]">View Job Related
+                                Notification</a>
+                            </li>
+                          </ul>
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <!-- <div class="card-body d-flex align-items-center">
+            <div class="col-xl-1 col-lg-1 col-md-1 col-sm-1">
+              <div class="name">
+                <p class="mb-0">Job Id</p>
+                <h5 class="mb-0">{{ a.jobId }}</h5>
+              </div>
+            </div>
+            <div class="col-xl-1 col-lg-1 col-md-1 col-sm-1">
+              <div class="name">
+                <p class="mb-0">Skill Seeker</p>
+                <h5 class="mb-0">{{ a.businessName }}</h5>
+              </div>
+            </div>
+            <div class="col-xl-1 col-lg-1 col-md-1 col-sm-1">
+              <div class="name">
+                <p class="mb-0">Job Title</p>
+               <h5 class="mb-0">{{ a.jobTitle }}</h5>
+              </div>
+            </div>
+            <div class="col-xl-1 col-lg-1 col-md-1 col-sm-1">
+              <div class="name">
+                <p class="mb-0">Job Location</p>
+                <h5 class="mb-0">{{ a.location }}</h5>
+              </div>
+            </div>
+            <div class="col-xl-1 col-lg-1 col-md-1 col-sm-1">
+              <div class="name">
+                <p class="mb-0">Job Level & Exp</p>
+                 <h5 class="mb-0">{{ a.expByName }} & {{ a.levelExperience }}</h5>
+              </div>
+            </div>
+            <div class="col-xl-1 col-lg-1 col-md-1 col-sm-1">
+              <div class="name">
+                <p class="mb-0">Hiring Status</p>
+                 <h5 class="mb-0"> {{ a.hiringStatus }} & {{ a.levelExperience }}</h5>
+              </div>
+            </div>
+            <div class="col-xl-1 col-lg-1 col-md-1 col-sm-1">
+              <div class="name">
+                <p class="mb-0">Hiring Stage</p>
+                <h5 class="mb-0">{{ a.requirementPhases[a.currentStage - 1].requirementPhaseName }}</h5>
+              </div>
+            </div>
+            <div class="col-xl-1 col-lg-1 col-md-1 col-sm-1">
+              <div class="name">
+                <p class="mb-0">Date of Hiring</p>
+                <h5 class="mb-0">{{ a.requirementPhases[0].createdAt | date : 'yyyy-MMM-dd' }}</h5>
+              </div>
+            </div>
+          </div> -->
+            </div>
+          </tab>
+        </tabset>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,265 @@
+@mixin field4x() {
+  mat-form-field.field4x {
+    .mat-form-field-wrapper {
+      padding-bottom: 0;
+    }
+    .mat-form-field-infix {
+      padding: 0.525em 0;
+      > input {
+        position: relative;
+        top: -4px;
+        font-size: 15px;
+      }
+      > .mat-form-field-label-wrapper {
+        > .mat-form-field-label {
+          top: 1.4em;
+          left: 10px;
+          font-size: 14px;
+        }
+      }
+    }
+    &.mat-form-field-can-float {
+      &.mat-form-field-should-float .mat-form-field-label,
+      .mat-input-server:focus + .mat-form-field-label-wrapper .mat-form-field-label {
+        transform: translateY(-1.25em) scale(0.75);
+      }
+    }
+  }
+  .mat-form-field-outline-start {
+    // border-width: 1px;
+    border-radius: 12px 0 0 12px !important;
+    min-width: 12px !important;
+  }
+
+  .mat-form-field-outline-end {
+    // border-width: 1px;
+    border-radius: 0 12px 12px 0 !important;
+  }
+}
+
+@mixin field4xGroup() {
+  mat-form-field {
+    line-height: 1.75;
+    .mat-form-field-wrapper {
+      background-color: #fbfbfb;
+      padding-bottom: 0;
+    }
+    .mat-form-field-infix {
+      padding: 0.525em 0;
+      > input {
+        text-transform: unset;
+        position: relative;
+        top: -4px;
+        font-size: 15px;
+      }
+      > .mat-form-field-label-wrapper {
+        > .mat-form-field-label {
+          top: 1.6em;
+          font-size: 15px;
+        }
+      }
+    }
+    &.mat-form-field-can-float {
+      &.mat-form-field-should-float .mat-form-field-label,
+      .mat-input-server:focus + .mat-form-field-label-wrapper .mat-form-field-label {
+        left: 2px;
+        color: #515151;
+        transform: translateY(-1.55em) scale(0.75);
+      }
+    }
+  }
+  .mdc-notched-outline__leading {
+    border-width: 1px;
+    border-radius: 12px 0 0 12px !important;
+    min-width: 12px !important;
+  }
+
+  .mdc-notched-outline__trailing {
+    border-width: 1px;
+    border-radius: 0 12px 12px 0 !important;
+  }
+}
+
+@mixin field3x() {
+  mat-form-field.field3x {
+    .mat-form-field-wrapper {
+      padding-bottom: 0;
+    }
+    .mat-form-field-infix {
+      padding: 0.28em 0;
+      > input {
+        font-size: 14px;
+        position: relative;
+        top: -3px;
+      }
+      > .mat-form-field-label-wrapper {
+        > .mat-form-field-label {
+          font-size: 14px;
+          top: 1.37em;
+        }
+      }
+    }
+    &.mat-form-field-can-float {
+      &.mat-form-field-should-float .mat-form-field-label,
+      .mat-input-server:focus + .mat-form-field-label-wrapper .mat-form-field-label {
+        transform: translateY(-1.15em) scale(0.7);
+      }
+    }
+  }
+  .mat-form-field-outline-start {
+    // border-width: 1px;
+    border-radius: 12px 0 0 12px !important;
+    min-width: 12px !important;
+  }
+
+  .mat-form-field-outline-end {
+    //  border-width: 1px;
+    border-radius: 0 12px 12px 0 !important;
+  }
+}
+
+.form-label-group {
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+.form-label-group input,
+.form-label-group textarea,
+.form-label-group label {
+  height: 3.125rem;
+  padding: 0.75rem;
+}
+
+.form-label-group label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  width: 100%;
+  margin-bottom: 0; /* Override default `<label>` margin */
+  line-height: 1.5;
+  color: var(--input-dark);
+  pointer-events: none;
+  cursor: text; /* Match the input under the label */
+  border: 1px solid transparent;
+  border-radius: 0.25rem;
+  transition: all 0.1s ease-in-out;
+}
+
+.form-label-group.fxf {
+  input,
+  textarea {
+    &::-webkit-input-placeholder {
+      color: transparent;
+    }
+    &::-moz-placeholder {
+      color: transparent;
+    }
+    &:-ms-input-placeholder {
+      color: transparent;
+    }
+    &::placeholder {
+      color: transparent;
+    }
+    &:not(:-moz-placeholder-shown) {
+      padding-top: 1.25rem;
+      padding-bottom: 0.25rem;
+    }
+    &:not(:-ms-input-placeholder) {
+      padding-top: 1.25rem;
+      padding-bottom: 0.25rem;
+    }
+    &:not(:placeholder-shown) {
+      padding-top: 1.25rem;
+      padding-bottom: 0.25rem;
+    }
+    &:not(:-moz-placeholder-shown) ~ label {
+      padding-top: 0.25rem;
+      padding-bottom: 0.25rem;
+      font-size: 12px;
+      color: var(--input-default);
+    }
+    &:not(:-ms-input-placeholder) ~ label {
+      padding-top: 0.25rem;
+      padding-bottom: 0.25rem;
+      font-size: 12px;
+      color: var(--input-default);
+    }
+    &:not(:placeholder-shown) ~ label {
+      padding-top: 0.25rem;
+      padding-bottom: 0.25rem;
+      font-size: 12px;
+      color: var(--input-default);
+    }
+    &:-webkit-autofill ~ label {
+      padding-top: 0.25rem;
+      padding-bottom: 0.25rem;
+      font-size: 12px;
+      color: var(--input-default);
+    }
+  }
+  &.primary {
+    input,
+    textarea {
+      /* &:not(:-moz-placeholder-shown) ~ label,
+      &:-webkit-autofill ~ label,
+      &:not(:placeholder-shown) ~ label,
+      &:not(:-ms-input-placeholder) ~ label,
+      &:not(:-moz-placeholder-shown) ~ label {
+      } */
+      color: var(--primary-hex-dark);
+    }
+  }
+  &.lg {
+    input.form-control {
+      min-height: calc(1.5em + 1.5rem + 2px);
+      font-size: 1.25rem;
+      border-radius: 0.5rem;
+    }
+    textarea.form-control {
+      min-height: calc(2.5em + 2.5rem + 2px);
+      font-size: 1.25rem;
+      border-radius: 0.5rem;
+    }
+    label {
+      padding: 1rem 0.75rem;
+      height: 3.5rem;
+    }
+    .fxf-btn-group {
+      > .fxf-btn {
+        height: 3.5rem;
+      }
+    }
+  }
+  input,
+  textarea {
+    &.ng-invalid.ng-touched {
+      border-color: var(--warn-hex);
+    }
+    &:focus {
+      box-shadow: none;
+      border-color: var(--primary-hex);
+      border-width: 2px;
+    }
+  }
+  .fxf-btn-group {
+    position: absolute;
+    top: 0;
+    &.left {
+      left: 0;
+    }
+    &.right {
+      right: 0;
+    }
+    > .fxf-btn {
+      padding: 1rem;
+      height: 3rem;
+      display: flex;
+      align-items: center;
+    }
+  }
+}
+
+.invalid-feedback {
+  display: block;
+}

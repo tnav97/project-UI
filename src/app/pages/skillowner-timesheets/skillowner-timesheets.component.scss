@@ -1,0 +1,450 @@
+.card-body {
+  height: 75vh;
+  overflow-y: auto;
+}
+
+.create-agreement-section {
+  .create-agreement-header {
+    h4 {
+      font-weight: 600;
+      font-size: 18px;
+    }
+    .create-btn {
+      background: #1565d8;
+      border: 1px solid #1565d8;
+      border-radius: 8px;
+      color: #ffffff;
+      font-weight: 600;
+    }
+    .cancel-btn {
+      color: #db3236;
+      font-weight: 600;
+      font-size: 14px;
+      border: none;
+    }
+  }
+  .create-agreement-body {
+    .mas-bg-image {
+      img {
+        height: 410px;
+      }
+      p {
+        font-weight: 500;
+        font-size: 16px;
+        color: #333333;
+      }
+      .create-msa-btn {
+        font-weight: 600;
+        font-size: 14px;
+        color: #ffffff;
+        background: #1565d8;
+        border: 1px solid #1565d8;
+        border-radius: 6px;
+      }
+    }
+  }
+  .client-body {
+    h5 {
+      color: #325e9e;
+      font-weight: 600;
+      font-size: 18px;
+    }
+    p {
+      color: #656565;
+      font-weight: 300;
+      font-size: 14px;
+      font-style: italic;
+    }
+    form {
+      .form-select {
+        height: 58px;
+      }
+    }
+  }
+  .create-new-footer {
+    background: #ffffff;
+    .proceed-btn {
+      background: #1565d8;
+      border-radius: 6px;
+      color: #ffffff;
+    }
+  }
+
+  .multifile3 {
+    visibility: hidden;
+    display: none;
+  }
+}
+
+// Upload Agreement CSS Start
+.upload-agreement {
+  h5 {
+    font-weight: 600;
+    font-size: 24px;
+    color: #1c4684;
+    padding-top: 20px;
+  }
+
+  p {
+    color: #656565;
+    font-weight: 400;
+    font-size: 14px;
+    max-width: 40%;
+    margin: auto;
+    padding-top: 20px;
+  }
+
+  .upload-document {
+    max-width: 45%;
+    margin: auto;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    background-color: #f5f9ff;
+
+    p {
+      color: #333333;
+      font-weight: 400;
+      font-size: 14px;
+    }
+
+    a {
+      color: #4885ed;
+      text-decoration-line: underline;
+      font-weight: 400;
+      font-size: 12px;
+      padding-top: 15px;
+    }
+
+    .browse-btn {
+      border: 1px solid #1565d8;
+      border-radius: 6px;
+      background: #ffffff;
+      padding: 8px 16px;
+      color: #1565d8;
+      margin-top: 15px;
+      font-size: 16px;
+      font-weight: 600;
+    }
+
+    .upload-btn {
+      background: #325e9e;
+      border: 1px solid #325e9e;
+      border-radius: 6px;
+      color: #ffffff;
+      font-size: 16px;
+      font-weight: 600;
+      margin-top: 15px;
+      margin-left: 10px;
+    }
+  }
+}
+
+.create-agreement-footer {
+  background-color: #ffffff;
+  .back-btn {
+    color: #656565;
+    border: none;
+    text-decoration-line: underline;
+    font-weight: 600;
+    font-size: 16px;
+  }
+
+  .preview-btn {
+    background: #f5f9ff;
+    border: 1px solid #eaecef;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 16px;
+    color: #1565d8;
+  }
+}
+
+// Preview Page CSS Start
+.preview-info {
+  position: relative;
+
+  .tag {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  .title {
+    p {
+      font-weight: 300;
+      font-size: 14px;
+      color: #333333;
+      padding-left: 15px;
+    }
+
+    h2 {
+      color: #1565d8;
+      font-weight: 600;
+      font-size: 30px;
+      padding-left: 15px;
+    }
+  }
+
+  .preview-agreement-details {
+    border-bottom: 1px solid #eaecef;
+    padding-bottom: 15px;
+
+    #detail {
+      border-right: none !important;
+    }
+
+    .details {
+      padding: 0 15px;
+      border-right: 1px solid #eaecef;
+    }
+
+    p {
+      font-size: 12px;
+      color: #656565;
+      font-weight: 400;
+      margin-bottom: 0;
+    }
+
+    h5 {
+      font-size: 18px;
+      color: #1565d8;
+      font-weight: 600;
+      margin-bottom: 0;
+    }
+  }
+}
+
+.complete-modal {
+  .modal-header {
+    border-bottom: none;
+
+    .close {
+      border: none;
+      background: #f5f9ff;
+      border-radius: 8px;
+    }
+  }
+  .modal-body {
+    h3 {
+      font-weight: 600;
+      font-size: 22px;
+      color: #1565d8;
+    }
+    p {
+      font-weight: 400;
+      font-size: 14px;
+    }
+  }
+  .modal-footer {
+    border-top: none;
+
+    .cancel-btn {
+      color: #db3236;
+      font-weight: 400;
+      font-size: 14px;
+      text-decoration-line: underline;
+      border: none;
+    }
+  }
+}
+
+// Create timesheet Ng-template second page CSS Start
+
+.create-timesheet {
+  height: 75vh;
+  .card {
+    cursor: pointer;
+
+    .card-body {
+      .add-icon {
+        i {
+          color: #ffffff;
+          padding: 5px 7px;
+          background-color: #c4c4c4;
+          border-radius: 100%;
+        }
+      }
+      .add-link {
+        font-weight: 500;
+        font-size: 16px;
+        color: #325e9e;
+      }
+    }
+  }
+}
+
+// Create timesheet Ng-template third page CSS Start
+.timesheet-body {
+  height: 60vh;
+  overflow-y: auto;
+  .timesheet-tab-left {
+    border-right: 1px solid #eaecef;
+
+    h4 {
+      text-align: left;
+      font-weight: 600;
+      font-size: 18px;
+      color: #325e9e;
+      padding-left: 5px;
+    }
+
+    .nav-pills {
+      .nav-link.active {
+        color: #1c4684;
+        border: 1px solid #1565d8;
+        background: #f5f9ff;
+      }
+      .nav-link {
+        text-align: left;
+        border: 1px solid #eaecef;
+        border-radius: 8px;
+        background-color: #ffffff;
+        color: #656565;
+        font-weight: 500;
+        font-size: 16px;
+        margin: 10px 0px 5px;
+      }
+    }
+  }
+
+  .timesheet-tab-info {
+    padding-left: 20px;
+
+    h4 {
+      text-align: left;
+      font-weight: 600;
+      font-size: 18px;
+      color: #325e9e;
+      padding-left: 5px;
+    }
+
+    .tab-content {
+      height: 60vh;
+      background: #f5f9ff;
+      border: 1px solid #eaecef;
+      border-radius: 8px;
+
+      p {
+        margin: 0 auto;
+        color: #656565;
+        font-weight: 400;
+        font-size: 16px;
+      }
+    }
+  }
+
+  .timesheet-task-info {
+    padding-left: 20px;
+
+    .task-pills {
+      border-right: 1px solid #eaecef;
+
+      h4 {
+        text-align: left;
+        font-weight: 600;
+        font-size: 18px;
+        color: #325e9e;
+        padding-left: 5px;
+      }
+
+      .nav-pills {
+        .nav-link.active {
+          color: #1c4684;
+          border: 1px solid #1565d8;
+          background: #f5f9ff;
+        }
+        .nav-link {
+          text-align: left;
+          border: 1px solid #eaecef;
+          border-radius: 8px;
+          background-color: #ffffff;
+          color: #656565;
+          font-weight: 500;
+          font-size: 16px;
+          margin: 10px 0px 5px;
+        }
+      }
+    }
+
+    .task-pane {
+      .task-content {
+        padding-left: 20px;
+        text-align: left;
+
+        h4 {
+          text-align: left;
+          font-weight: 600;
+          font-size: 18px;
+          color: #325e9e;
+          padding-left: 5px;
+        }
+      }
+    }
+  }
+}
+
+.idle {
+  border: 1px solid #eaecef;
+  border-radius: 8px;
+  &.primary {
+    background-color: rgba(var(--primary), 0.2);
+  }
+  &.grey {
+    background-color: #eaecef;
+  }
+}
+
+.mxw-7x {
+  max-width: 70px;
+  margin: auto;
+  text-align: center;
+}
+
+.a-crawl {
+  text-decoration: underline;
+  &.danger {
+    color: #db3236;
+    &:hover {
+      color: #db3236;
+    }
+  }
+}
+
+.fa-outline {
+  padding: 1rem;
+  border-radius: 50%;
+  border: 3px solid;
+  &.success {
+    border-color: #3cba54;
+    color: #3cba54;
+  }
+}
+
+.input-group-prepend,
+.input-group-append {
+  > .input-group-text {
+    font-size: 1.25rem;
+    padding: 0.85rem;
+    color: var(--primary-hex);
+    > .fa {
+      color: var(--primary-hex);
+    }
+    &.pointer {
+      cursor: pointer;
+    }
+  }
+}
+
+.input-group-prepend {
+  > .input-group-text {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+}
+
+.input-group-append {
+  > .input-group-text {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+}

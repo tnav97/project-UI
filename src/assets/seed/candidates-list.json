@@ -1,0 +1,72 @@
+[
+  {
+    "_id": "6203a7ee08fdb655d94e3267",
+    "index": 0,
+    "guid": "bebc1818-beb1-40f1-8a75-9078ee81349d",
+    "picture": "http://placehold.it/32x32",
+    "name": "Casandra Camacho",
+    "company": "AVENETRO",
+    "email": "casandracamacho@avenetro.com",
+    "phone": "+1 (819) 537-3546",
+    "position": "Senior UI Strategist",
+    "clientCompany": "AFFLUEX",
+    "status": "Active",
+    "joinedDate": "2015-03-09"
+  },
+  {
+    "_id": "6203a7ee55685a5c19eed8a3",
+    "index": 1,
+    "guid": "7333b262-572e-4053-803a-f43cd31e882b",
+    "picture": "http://placehold.it/32x32",
+    "name": "Mcconnell Ray",
+    "company": "ZILLACON",
+    "email": "mcconnellray@zillacon.com",
+    "phone": "+1 (843) 422-3421",
+    "position": "Senior UI Strategist",
+    "clientCompany": "ZIZZLE",
+    "status": "Active",
+    "joinedDate": "2014-04-28"
+  },
+  {
+    "_id": "6203a7ee2e92bfad15ea8729",
+    "index": 2,
+    "guid": "3b794cbb-929b-4155-919f-4e4874fcf2d8",
+    "picture": "http://placehold.it/32x32",
+    "name": "Workman Madden",
+    "company": "INVENTURE",
+    "email": "workmanmadden@inventure.com",
+    "phone": "+1 (954) 597-2786",
+    "position": "Senior UI Strategist",
+    "clientCompany": "SINGAVERA",
+    "status": "Active",
+    "joinedDate": "2015-05-04"
+  },
+  {
+    "_id": "6203a7eedc478b9c186aed76",
+    "index": 3,
+    "guid": "438deae2-bda2-4ecd-bc4b-7aac42c98d6b",
+    "picture": "http://placehold.it/32x32",
+    "name": "Tracie Campbell",
+    "company": "NAMEBOX",
+    "email": "traciecampbell@namebox.com",
+    "phone": "+1 (830) 443-2659",
+    "position": "Senior UI Strategist",
+    "clientCompany": "TROLLERY",
+    "status": "Active",
+    "joinedDate": "2018-02-03"
+  },
+  {
+    "_id": "6203a7ee526c6361ff90bcfc",
+    "index": 4,
+    "guid": "88822cac-8866-453d-adbb-f0170c077830",
+    "picture": "http://placehold.it/32x32",
+    "name": "Fitzgerald Pollard",
+    "company": "ASIMILINE",
+    "email": "fitzgeraldpollard@asimiline.com",
+    "phone": "+1 (835) 420-2158",
+    "position": "Senior UI Strategist",
+    "clientCompany": "COMSTRUCT",
+    "status": "Active",
+    "joinedDate": "2018-11-10"
+  }
+]

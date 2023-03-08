@@ -1,0 +1,70 @@
+<div class="row card admin-clients">
+  <div class="col-md-12 card-header dashboard-header d-flex justify-content-between align-items-center">
+    <h4 class="mb-0">Skill Seekers</h4>
+    <button class="btn" (click)="add()">+ Add New</button>
+  </div>
+
+  <div class="card-body clients-body">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="table-responsive-md clients-table">
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Seeker ID</th>
+                <th scope="col">Business Name</th>
+                <th scope="col">Contact Person</th>
+                <th scope="col"></th>
+                <th scope="col">Start Date</th>
+                <th scope="col">Status</th>
+                <th scope="col">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let c of clientData">
+                <th scope="row">{{ c.id }}</th>
+                <td>{{ c.skillSeekerName }}</td>
+                <td>{{ c.primaryContactFullName }}</td>
+                <td>
+                  <div class="d-flex align-items-center">
+                    <a href="mailto: {{ c.email }}" title="{{ c.email }}" data-toggle="tooltip" data-placement="top"
+                      ><img src="assets/images/icon-message.svg"
+                    /></a>
+                    <a href="tel:{{ c.phone }}" title="{{ c.phone }}"><img src="assets/images/icon-phone.svg" /></a>
+                    <a href="#" title="{{ c.location }}"><img src="assets/images/icon-location.svg" /></a>
+                  </div>
+                </td>
+                <td>{{ c.startDate | date : 'MM/dd/yyyy' }} </td>
+                <td>
+                  <span *ngIf="c.status == null"></span>
+                  <span class="badge active-badge" *ngIf="c.status == 'Active'">active</span>
+                  <span class="badge in-active-badge" *ngIf="c.status == 'inactive'">in active</span>
+                </td>
+                <td>
+                  <div class="d-flex align-items-center">
+                    <a (click)="preview(c.id)"><img src="assets/images/preview.svg" /></a>
+                    <a (click)="edit(c.id)"><img src="assets/images/edit-icon.svg" /></a>
+                    <!-- <a><img src="assets/images/icon-archive.svg" /></a> -->
+                  </div>
+                </td>
+
+                <td>
+                  <div class="dropdown">
+                    <button class="btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      <img src="assets/images/icon-more.svg" />
+                    </button>
+                    <ul class="dropdown-menu">
+                      <!-- <li>
+                        <a class="dropdown-item" (click)="changeStatus(c)">Account Status</a>
+                      </li> -->
+                    </ul>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

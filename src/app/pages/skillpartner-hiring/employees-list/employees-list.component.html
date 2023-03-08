@@ -1,0 +1,83 @@
+<div class="row">
+  <div class="col-md-12 job-list">
+    <div class="card job-list-wrapper">
+      <div class="card-header job-list-header d-flex justify-content-between align-items-center">
+        <h4 class="mb-0">Employees List</h4>
+        <div class="middle d-none d-lg-block" style="width: 400px">
+          <mat-form-field class="field4x col-md-10 mt-1" appearance="outline">
+            <input class="control" matInput type="text" [(ngModel)]="searchText1" placeholder="Search for Employees" />
+            <mat-icon matSuffix color="primary">search</mat-icon>
+          </mat-form-field>
+        </div>
+
+        <button routerLink="/spdashboard/addTalent" class="btn"><i class="fa fa-plus" aria-hidden="true"></i> Add Talent</button>
+      </div>
+
+      <div class="card-body job-list-body">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col" class="px-2">Employee ID</th>
+              <th scope="col" class="px-2">Employee Name</th>
+              <th scope="col" class="px-2">Location</th>
+              <th scope="col" class="px-2">Level & Experience</th>
+              <th scope="col" class="px-2">Status</th>
+              <th scope="col" class="px-2">Owner Status</th>
+              <th scope="col" class="px-2">Joined Date</th>
+              <th scope="col" class="px-2">Rate</th>
+              <th scope="col"></th>
+              <th scope="col"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let a of tabledata | customFilter2 : searchText1; let i = index">
+              <td scope="row" class="px-2"><input type="checkbox" aria-label="Checkbox for following text input" />&nbsp; EMP-{{ a.employeeId }}</td>
+              <td class="px-2"><img src="assets/images/document-icon.svg" /> {{ a.employeeName }}</td>
+              <td *ngIf="a?.location !== 'null,null'" class="px-2">{{ a?.location }}</td>
+              <td *ngIf="a?.location === 'null,null'" class="px-2">-</td>
+              <td *ngIf="a?.levelExperience !== 'null+'" class="px-2">
+                {{ a?.levelExperience }}
+              </td>
+              <td *ngIf="a?.levelExperience === 'null+'" class="px-2">-</td>
+              <td class="px-2">
+                <p class="mb-0 text-center" title="Able to Login" *ngIf="a?.status" [ngClass]="'green'">Active</p>
+                <p class="mb-0 text-center" title="Login Access Denied" *ngIf="!a?.status" [ngClass]="'Danger'">In-Active</p>
+              </td>
+              <td>
+                <p class="text-center" [ngClass]="a?.ownerStatus == 'In Bench'? 'yellow' : a?.ownerStatus == 'In Contract'?
+                'green' : a?.ownerStatus == 'In Hiring'?'green':'red' "> {{a?.ownerStatus }}</p>
+              </td>
+              <td class="px-2">
+                {{ a.joinedDate | date : 'MM/dd/yyyy' }}
+              </td>
+              <td>
+                <div *ngIf="!a['editable']">
+                  {{ a.rate }}
+                </div>
+                <div *ngIf="a['editable']">
+                  <input type="number" [(ngModel)]="rateValue" class="form-control" (keyup.enter)="updateRate(a.employeeId)" />
+                </div>
+              </td>
+              <td>
+                <a [routerLink]="['/spHiring/jobsHistory', a.employeeId]" routerLinkActive="router-link-active">View Jobs History </a>
+              </td>
+              <td>
+                <div class="dropdown">
+                  <button class="btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <img src="assets/images/icon-more.svg" />
+                  </button>
+                  <ul class="dropdown-menu">
+                    <li>
+                      <span class="dropdown-item" (click)="changeStatus(a)">Update Status</span>
+                      <span class="dropdown-item" (click)="editRate(i)">Edit Rate</span>
+                    </li>
+                  </ul>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

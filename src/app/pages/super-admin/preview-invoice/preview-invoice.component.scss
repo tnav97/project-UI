@@ -1,0 +1,160 @@
+.logo-section {
+  border-bottom: 1px solid #eaecef;
+  padding-bottom: 75px;
+  .invoice-logo {
+    img {
+      width: 300px;
+      height: 56px;
+    }
+  }
+  .logo-right {
+    label {
+      font-size: 14px;
+      font-weight: 500px;
+    }
+    .value {
+      font-size: 16px;
+    }
+  }
+}
+.logo-right-section {
+  padding-right: 32px;
+  .status {
+    font-size: 9px;
+    font-weight: 600;
+    color: #fff;
+    text-transform: uppercase;
+    padding: 2px 6px;
+    background-color: #3cba54;
+    border-radius: 9px;
+    height: 15px;
+    display: flex;
+    align-items: center;
+  }
+  .active-badge {
+    font-size: 9px;
+    font-weight: 600;
+    color: #fff;
+    text-transform: uppercase;
+    padding: 2px 6px;
+    background-color: #3cba54;
+    border-radius: 9px;
+    height: 15px;
+    display: flex;
+    align-items: center;
+  }
+  .in-active-badge {
+    background: #db3236;
+    font-size: 9px;
+    font-weight: 600;
+    color: #fff;
+    text-transform: uppercase;
+    padding: 2px 6px;
+    border-radius: 9px;
+    height: 15px;
+    display: flex;
+    align-items: center;
+  }
+
+  .approve-badge {
+    background-color: #a9efb6;
+    color: #3cba54;
+    font-size: 9px;
+    font-weight: 600;
+    text-transform: uppercase;
+    padding: 2px 6px;
+    border-radius: 9px;
+    height: 15px;
+    display: flex;
+    align-items: center;
+  }
+
+  .reject-badge {
+    background: #f3b5b6;
+    color: #db3236;
+    font-size: 9px;
+    font-weight: 600;
+    text-transform: uppercase;
+    padding: 2px 6px;
+    border-radius: 9px;
+    height: 15px;
+    display: flex;
+    align-items: center;
+  }
+
+  .pending-badge {
+    background-color: rgb(160, 160, 236);
+    color: #0a2954;
+    font-size: 9px;
+    font-weight: 600;
+    text-transform: uppercase;
+    padding: 2px 6px;
+    border-radius: 9px;
+    height: 15px;
+    display: flex;
+    align-items: center;
+  }
+
+  .paid-badge {
+    background-color: rgb(249, 224, 161);
+    color: rgb(250, 181, 7);
+    text-transform: uppercase;
+    border-radius: 9px;
+  }
+  label {
+    font-size: 14px;
+    font-weight: 500px;
+  }
+  .value {
+    font-size: 14px;
+  }
+  .amount-value {
+    font-size: 18px;
+    font-weight: 600;
+    color: #1565d8;
+  }
+}
+.date-section {
+  label {
+    font-size: 14px;
+    font-weight: 500px;
+  }
+  .value {
+    font-size: 16px;
+  }
+}
+.partner-section {
+  border-bottom: 1px solid #eaecef;
+}
+.partner-name {
+  font-size: 18px;
+  font-weight: 500;
+}
+thead {
+  background-color: #f7f7f7;
+  border: 1px solid #d5d5d5;
+  border-radius: 10px;
+  border-collapse: separate;
+  th {
+    padding: 15px;
+  }
+}
+.card-footer {
+  padding: 20px;
+  font-size: 14px;
+  font-weight: 500;
+  background-color: #fff;
+  .total {
+    font-size: 16px;
+    font-weight: 600;
+    color: #1565d8;
+  }
+}
+.mb-35 {
+  margin-bottom: 35px;
+}
+.total1{
+  font-size: 16px;
+  font-weight: 600;
+  color: #1565d8;
+}

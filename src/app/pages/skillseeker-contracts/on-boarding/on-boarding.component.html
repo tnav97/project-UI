@@ -1,0 +1,110 @@
+<div class="card">
+  <div class="col-md-12 card-header d-flex justify-content-between align-items-center">
+    <h2 class="mb-0" routerLink="/ssContracts/list">
+      <i _ngcontent-aao-c361="" title="Go Back" aria-hidden="true" class="fa fa-chevron-left mx-2"></i> Onboard
+    </h2>
+    <a href="#" routerLink="/ssContracts/list" class="text-danger">Cancel</a>
+  </div>
+  <div class="card-body client-body mb-5 mt-3 pb-5 pt-4">
+    <form [formGroup]="onBoardingForm" (ngSubmit)="onBoardingSubmit()">
+      <div class="row client-form d-flex flex-column justify-content-center">
+        <h3 class="basic-info">Onboard the candidate into the respective project</h3>
+        <div class="form-group offset-md-4 col-md-4">
+          <div class="form-group form-floating input-form">
+            <input type="text" class="form-control" placeholder="Candidate Name" name="CandidateName" formControlName="name" />
+            <label for="email">Candidate Name*</label>
+          </div>
+          <div class="form-group form-floating mt-3 input-form">
+            <input type="text" class="form-control" placeholder="Project" name="projectName" formControlName="projectName" />
+            <label for="email">Project*</label>
+          </div>
+          <div class="form-group form-floating mt-3 input-form">
+            <select class="form-control form-control-lg form-select" formControlName="status">
+              <option hidden selected value="">Status*</option>
+              <option hidden value="PO Released">PO Released</option>
+              <option hidden value="SOW Released">SOW Released</option>
+              <option hidden value="Expiring soon">Expiring soon</option>
+              <option *ngFor="let item of listOfStatus" [value]="item">
+                <span>{{ item }}</span>
+              </option>
+            </select>
+            <label class="year" for="floatingSelect">Status*</label>
+          </div>
+          <div class="form-group form-floating mt-3 input-form date-form1">
+            <input
+              type="text"
+              bsDatepicker
+              #dp1="bsDatepicker"
+              onkeydown="return false"
+              [bsConfig]="{ containerClass: 'theme-dark-blue' }"
+              class="form-control"
+              [minDate]="today"
+              placement="right"
+              [daysDisabled]="[6, 0]"
+              (onHidden)="handler()"
+              id="startDate"
+              placeholder="mm/dd/yyyy"
+              name="startDate"
+              formControlName="startDate" />
+            <label for="startDate">Start Date*</label>
+            <div
+              (click)="dp1.toggle()"
+              [attr.aria-expanded]="dp1.isOpen"
+              type="button"
+              for="calendar-input"
+              class="date-range-picker-icon fa fa-calendar"></div>
+            <small
+              class="text-danger"
+              *ngIf="
+                onBoardingForm.errors?.dateValid &&
+                (onBoardingForm.get('startDate').touched ||
+                  (onBoardingForm.get('startDate').touched && onBoardingForm.get('startDate').value !== '') ||
+                  onBoardingForm.get('startDate').dirty)
+              "
+              >Please provide a valid contract start date</small
+            >
+          </div>
+
+          <div class="form-group form-floating mt-3 input-form date-form2">
+            <input
+              type="text"
+              bsDatepicker
+              #dp2="bsDatepicker"
+              onkeydown="return false"
+              [minDate]="disabledDates"
+              placement="right"
+              [daysDisabled]="[6, 0]"
+              [bsConfig]="{ containerClass: 'theme-dark-blue' }"
+              class="form-control"
+              id="endDate"
+              placeholder="mm/dd/yyyy"
+              name="endDate"
+              formControlName="endDate" />
+            <label for="endDate">End Date*</label>
+            <div
+              (click)="dp2.toggle()"
+              [attr.aria-expanded]="dp2.isOpen"
+              type="button"
+              for="calendar-input"
+              class="date-range-picker-icon fa fa-calendar"></div>
+
+            <small
+              class="text-danger"
+              *ngIf="
+                onBoardingForm.errors?.dateValid &&
+                (onBoardingForm.get('endDate').touched ||
+                  (onBoardingForm.get('endDate').touched && onBoardingForm.get('endDate').value !== '') ||
+                  onBoardingForm.get('endDate').dirty)
+              "
+              >Please provide a valid contract end date</small
+            >
+          </div>
+        </div>
+
+        <div class="card-footer create-new-footer mt-5 d-flex justify-content-center">
+          <button type="submit" [disabled]="!this.onBoardingForm.valid" class="btn proceed-btn">Submit -></button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

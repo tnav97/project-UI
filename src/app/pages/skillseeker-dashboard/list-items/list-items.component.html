@@ -1,0 +1,274 @@
+<app-loader *ngIf="isLoading">{{ isLoading }}</app-loader>
+<div class="row">
+  <div class="col-lg-12 list-items">
+    <div class="card list-items-wrapper">
+      <div class="card-header list-item-header d-flex align-items-center">
+        <h4 class="mb-0" routerLink="/ssdashboard/joblist">
+          <i class="fa fa-chevron-left" title="Go Back" aria-hidden="true"></i>
+          View Selection Progress
+        </h4>
+      </div>
+      <div class="card-body list-item-body">
+        <div class="row title-row justify-content-between">
+          <div class="col title">
+            <div class="talent-selection">
+              <p>Talents’ selection progress for</p>
+              <h5>
+                {{ jobId }}. <span>{{ jobTitle }}</span>
+              </h5>
+            </div>
+          </div>
+          <div class="col msa-btn-section" style="direction: rtl">
+            <button class="btn msa-btn" *ngIf="isLocked" routerLink="/ssdashboard/widgets/jobId/{{ jobId }}">Update Requirement Phase</button>
+          </div>
+        </div>
+        <div class="card card11 list-items-info" *ngFor="let list of candidateItemList; let i = index">
+          <div class="row card-body d-flex align-items-center justify-content-between list-items-row">
+            <div class="col-xl-2 form-check d-flex align-items-center">
+              <label class="form-check-label">
+                <input type="checkbox" class="form-check-input" value="" />
+              </label>
+              <div class="candidate-name d-flex align-items-center">
+                <img class="avatar" [src]="list?.image" />
+                <h4 class="mb-0">{{ list?.skillOwnerName }}</h4>
+                <br />
+                <p class="mb-0">{{ list?.experience }}</p>
+              </div>
+            </div>
+            <div
+              class="col-xl-7 col-lg-11 col-md-11 col-sm-11 col-xs-6 slider"
+              [ngStyle]="{ 'min-width': list.requirementPhaseList.length > 6 ? '1200px' : '900px' }">
+              <ngx-slider
+                [ngClass]="list.requirementPhaseList[list.currentStage - 1]?.status == 'Not Cleared' ? 'class1' : 'custom-slider'"
+                [(value)]="list.currentStage"
+                [options]="sliderOptions(list, i)"
+                (mouseup)="sliderEvent(list)"
+                id="slider{{ i + 1 }}"></ngx-slider>
+            </div>
+            <div class="col-xl-2 list-item-view">
+              <div class="tooltips">
+                <a><img class="view" src="assets/images/info.svg" /></a>
+                <div class="left">
+                  <ul *ngFor="let item of list.requirementPhaseList; index as i">
+                    <li *ngIf="item.percentageExpected !== 'null'">
+                      {{ item.requirementPhaseName }} -<span *ngIf="item.candidateRate !== null">
+                        Ratings -{{ item.candidateRate.rate }}% </span
+                      >
+                      <span *ngIf="item.candidateRate === null">NA</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <img src="assets/images/preview.svg" class="view" (click)="onSelect(list); icon()" />
+              <a
+                ><img
+                  src="assets/images/icon-edit.svg"
+                  *ngIf="list?.requirementPhaseList[list?.currentStage - 1]?.status !== 'Not Cleared' && updateInterviewVisiblity"
+                  (click)="onSelect2(list); edit()"
+              /></a>
+              <a
+                ><img
+                  src="assets/images/icon-edit.svg"
+                  *ngIf="list?.requirementPhaseList[list?.currentStage - 1]?.status == 'Not Cleared' && updateInterviewVisiblity"
+                  (click)="onSelect(list); icon()"
+              /></a>
+              <div class="dropdown btn-group">
+                <button class="btn p-0" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  <img src="assets/images/icon-more.svg" />
+                </button>
+                <ul class="dropdown-menu">
+                  <li>
+                    <a
+                      class="dropdown-item"
+                      *ngIf="
+                        list?.interviewAccepted == true &&
+                        (list?.currentStage === 1 || list?.currentStage === list?.requirementPhaseList.length - 1) &&
+                        list?.requirementPhaseList[list?.currentStage - 1]?.status !== 'Not Cleared' &&
+                        schedulingVisiblity
+                      "
+                      (click)="onSelected(list)"
+                      >Cleared Round</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      class="dropdown-item"
+                      *ngIf="
+                        list?.interviewAccepted == true &&
+                        list?.currentStage !== list?.requirementPhaseList.length - 1 &&
+                        list?.currentStage !== 1 &&
+                        list?.requirementPhaseList[list?.currentStage - 1]?.status !== 'Not Cleared' &&
+                        list?.currentStage !== list?.requirementPhaseList.length &&
+                        schedulingVisiblity
+                      "
+                      (click)="onSelectedRound(list)"
+                      data-toggle="modal"
+                      data-target="#exampleModal"
+                      >Cleared Round</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      class="dropdown-item"
+                      *ngIf="
+                        list?.interviewAccepted == true &&
+                        list?.currentStage !== list?.requirementPhaseList.length &&
+                        list?.requirementPhaseList[list?.currentStage - 1]?.status !== 'Not Cleared' &&
+                        list?.currentStage !== list?.requirementPhaseList.length &&
+                        schedulingVisiblity
+                      "
+                      (click)="onSelected2(list)"
+                      >Re-Schedule</a
+                    >
+                  </li>
+                  <!-- <li><a class="dropdown-item">View Resume</a></li> -->
+                  <li>
+                    <a
+                      class="dropdown-item"
+                      *ngIf="
+                        list?.requirementPhaseList[list?.currentStage - 1]?.status !== 'Not Cleared' &&
+                        list?.currentStage !== list?.requirementPhaseList.length &&
+                        rejectVisibility
+                      "
+                      (click)="onReject(list)"
+                      >Rejected</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      class="dropdown-item"
+                      *ngIf="
+                        list?.currentStage !== list?.requirementPhaseList.length &&
+                        list?.requirementPhaseList[list?.currentStage - 1]?.status === 'Not Cleared'
+                      "
+                      (click)="onReIntiate(list)"
+                      >ReInitiate Hiring</a
+                    >
+                  </li>
+                  <!--
+                  <li>
+                    <a
+                      class="dropdown-item"
+                      *ngIf="list?.currentStage === list?.requirementPhaseList.length && sowVisibility && !list?.sowCreated && list?.msaCreated"
+                      (click)="onSow(list)"
+                      >Create SOW</a
+                    >
+                  </li> -->
+                  <li>
+                    <a
+                      class="dropdown-item"
+                      *ngIf="list?.currentStage === list?.requirementPhaseList.length && msaVisibility && !list?.msaCreated"
+                      (click)="onMsa(list)"
+                      >Create MSA</a
+                    >
+                  </li>
+                  <!-- <li>
+                    <a
+                      class="dropdown-item"
+                      *ngIf="list?.currentStage === list?.requirementPhaseList.length && poVisibility && !list?.poCreated && list?.msaCreated"
+                      (click)="onPow(list)"
+                      >Create / Release PO</a
+                    >
+                  </li> -->
+                  <li>
+                    <a [routerLink]="['/ssdashboard/notifications', list?.skillOwnerId, jobId]" class="dropdown-item">View Notifications</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div
+            class="modal complete-modal fade"
+            id="exampleModal"
+            tabindex="-1"
+            aria-labelledby="exampleModalLabel"
+            [ngStyle]="{ display: toggleSideBar2 ? 'block' : 'none' }">
+            <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content" role="document">
+                <div class="modal-header d-flex justify-content-between align-items-center">
+                  <h4 class="mb-0">Update rating and feedback for {{ savedrequirementPhaseName }}</h4>
+                  <button type="button" class="close text-right" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <form [formGroup]="updateForm">
+                  <div class="modal-body">
+                    <div class="form-group col-md-6">
+                      <label for="email1">Rate out of 1-10</label>
+                      <!-- <input
+                        type="Number"
+                        min="0"
+                        max="100"
+                        formControlName="marks"
+                        class="form-control"
+                        id="email1"
+                        placeholder="Scored Percentage" /> -->
+                        <select formControlName="ratings" class="form-control form-control-lg form-select">
+                          <option hidden selected value="">Select Rating</option>
+                          <option>0</option>
+                          <option *ngFor="let value of rating_Value" [ngValue]="value">
+                            {{ value.rate }}
+                          </option>
+                        </select>
+                    </div>
+                    <br />
+                    <div class="row">
+                      <div class="col-12 about">
+                        <div class="form-group">
+                          <label for="exampleFormControlTextarea4">Feedback</label>
+                          <textarea
+                            for="exampleFormControlTextarea4"
+                            class="form-control"
+                            id="exampleFormControlTextarea4"
+                            rows="4"
+                            placeholder="Please Enter Your Feedback Here"
+                            formControlName="feedback"></textarea>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="modal-footer border-top-0 d-flex justify-content-center">
+                    <button type="submit" [disabled]="!updateForm.valid" (click)="onFinal()" class="btn btn-primary">Submit</button>
+                    <button type="submit" (click)="onFinal2()" class="btn btn-success">Skip</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="modal right fade"
+          id="myModal2"
+          tabindex="-1"
+          role="dialog"
+          aria-labelledby="myModalLabel2"
+          [ngStyle]="{ display: toggleSideBar ? 'block' : 'none' }">
+          <div class="modal-dialog" role="document">
+            <div class="right-side-model">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <div class="modal-title">
+                    <p class="m-0">Selection Progress Details</p>
+                    <h5 class="m-0">
+                      {{ jobId }}. <span>{{ jobTitle }}</span>
+                    </h5>
+                  </div>
+                  <button type="button" class="close" (click)="closeBar()">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body scroll" *ngIf="show">
+                  <app-list-items-popup [skillOwnerId]="skillOwnerId"></app-list-items-popup>
+                </div>
+                <div class="modal-body scroll" *ngIf="!show">
+                  <app-list-items-edit [skillOwnerId]="skillOwnerId" [formDisplay]="formDisplay"></app-list-items-edit>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

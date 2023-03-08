@@ -1,0 +1,63 @@
+<div class="container">
+  <div class="row create-job">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header d-flex justify-content-between align-items-center">
+          <h4 class="mb-0">Create New Job</h4>
+          <a routerLink="createjob">Cancel</a>
+        </div>
+        <div class="card-body pt-5 pb-5">
+          <div class="text-center basic-info">
+            <h2>To which project are you hiring for?</h2>
+            <form class="mt-5">
+              <div class="form-row align-items-center form-info">
+                <div class="form-floating text-center mb-3 col-sm-4 info-form">
+                  <div class="input-group">
+                    <img src="assets/images/dept-icon.svg" />
+                    <select class="form-select" aria-label="Filter select">
+                      <option selected><i class="bi bi-funnel"></i> Select Department</option>
+                      <option value="1">All</option>
+                      <option value="2">Active</option>
+                      <option value="3">Inactive</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-floating text-center mb-3 col-sm-4 info-form">
+                  <div class="input-group">
+                    <img src="assets/images/proj-icon.svg" />
+                    <select class="form-select" aria-label="Filter select">
+                      <option selected><i class="bi bi-funnel"></i> Select a Project</option>
+                      <option value="1">All</option>
+                      <option value="2">Active</option>
+                      <option value="3">Inactive</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="skip">
+                  <a routerLink="">Skip <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="card-footer text-center">
+          <div class="d-flex align-items-center">
+            <div class="d-flex">
+              <img src="assets/images/left-arrow.svg" alt="login" class="back-arr" />
+              <span class="back-txt">
+                <button class="btn back-btn">Back</button>
+              </span>
+            </div>
+
+            <div class="d-flex">
+              <span class="nxt-txt">
+                <button class="btn nxt-btn">Next</button>
+              </span>
+              <img src="assets/images/right-arrow.svg" alt="login" class="next-arr" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

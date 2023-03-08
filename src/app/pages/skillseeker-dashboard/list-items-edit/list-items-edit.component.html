@@ -1,0 +1,250 @@
+<app-loader *ngIf="isLoading">{{ isLoading }}</app-loader>
+<div *ngFor="let list of sliderList; let i = index" class="slider-height">
+  <div class="candidate-info d-flex align-items-center justify-content-between">
+    <div class="d-flex align-items-center">
+      <img class="avatar" [src]="list?.image" />
+      <div class="candidate-name-experience">
+        <h4 class="mb-0">{{ list.skillOwnerName }}</h4>
+        <p class="m-0">Experience: {{ list.experience }}</p>
+      </div>
+    </div>
+    <button *ngIf="formDisplay" [disabled]="!scheduleInterviewForm.valid" class="btn edit-btn" (click)="saveProcess(list)">Save</button>
+    <button *ngIf="!formDisplay" [disabled]="!updateInterviewForm.valid" class="btn edit-btn" (click)="updateProcess(list)">Save</button>
+  </div>
+
+  <div *ngIf="formDisplay">
+    <h5 class="mt-2 shedule">Schedule Next Round</h5>
+    <form [formGroup]="scheduleInterviewForm">
+      <div class="pt-1 schedule-interview">
+        <h6>Date of Interview :</h6>
+        <div class="form-group col-6 date-form2">
+          <input
+            type="text"
+            placeholder="Interview Date & Time"
+            class="form-control"
+            onkeydown="return false"
+            formControlName="dateOfInterview"
+            #dp="bsDatepicker"
+            [bsConfig]="{ containerClass: 'theme-dark-blue' }"
+            [minDate]="today"
+            (onHidden)="handler(1)"
+            [daysDisabled]="[6, 0]"
+            bsDatepicker />
+          <div
+            (click)="dp.toggle()"
+            [attr.aria-expanded]="dp.isOpen"
+            type="button"
+            for="calendar-input"
+            class="date-range-picker-icon fa fa-calendar"></div>
+        </div>
+      </div>
+      <div class="pt-1 schedule-interview">
+        <h6>From</h6>
+        <div class="form-group col-6">
+          <timepicker *ngIf="show1" formControlName="timePicker1" [min]="today" (isValid)="isValid($event)"> </timepicker>
+          <timepicker *ngIf="!show1" formControlName="timePicker1" [min]="preminDates" (isValid)="isValid($event)"> </timepicker>
+        </div>
+      </div>
+      <div class="pt-1 schedule-interview">
+        <h6>To</h6>
+        <div class="form-group col-6">
+          <timepicker formControlName="timePicker2" [min]="minDates"> </timepicker>
+        </div>
+      </div>
+
+      <div class="pt-1 schedule-interview">
+        <h6>Interviewing By :</h6>
+
+        <div class="form-group col-6">
+          <input type="text" class="form-control" placeholder="Interviewing By" formControlName="interviewedBy" />
+        </div>
+      </div>
+
+      <div class="schedule-interview">
+        <h6>Mode Of Interview:</h6>
+        <div class="form-group col-6">
+          <select formControlName="modeOfInterview" class="form-select" aria-label="Default select example">
+            <option hidden selected value="">Mode of Interview</option>
+            <option value="Remote">Remote</option>
+            <option value="Face To Face">Face To Face</option>
+          </select>
+        </div>
+      </div>
+    </form>
+
+    <!-- <form [formGroup]="scheduleInterviewForm">
+      <div class="modal-body text-center">
+        <div class="btn-group d-flex justify-content-center align-items-center date-form date-form1 dateform-2" role="group" aria-label="...">
+          <input
+            type="text"
+            placeholder="Slot 1"
+            class="col-4 m-1"
+            onkeydown="return false"
+            formControlName="slot1"
+            #dp="bsDatepicker"
+            [bsConfig]="{
+              containerClass: 'theme-dark-blue',
+              withTimepicker: true,
+              rangeInputFormat: 'MM-DD-YYYY, h:mm A ',
+              dateInputFormat: 'MM-DD-YYYY, h:mm A'
+            }"
+            bsDatepicker />
+          <div
+            (click)="dp.toggle()"
+            [attr.aria-expanded]="dp.isOpen"
+            type="button"
+            for="calendar-input"
+            class="date-range-picker-icon fa fa-calendar"></div>
+          <input
+            type="text"
+            placeholder="Slot 2"
+            class="col-4 m-1"
+            formControlName="slot2"
+            onkeydown="return false"
+            #dp1="bsDatepicker"
+            [bsConfig]="{
+              containerClass: 'theme-dark-blue',
+              withTimepicker: true,
+              rangeInputFormat: 'MM-DD-YYYY, h:mm A ',
+              dateInputFormat: 'MM-DD-YYYY, h:mm A'
+            }"
+            bsDatepicker />
+          <div
+            (click)="dp1.toggle()"
+            [attr.aria-expanded]="dp.isOpen"
+            type="button"
+            for="calendar-input"
+            class="date-range-picker-icon2 fa fa-calendar">
+          </div>
+          <input
+            type="text"
+            placeholder="Slot 3"
+            class="col-4 m-1"
+            onkeydown="return false"
+            formControlName="slot3"
+            #dp2="bsDatepicker"
+            [bsConfig]="{
+              containerClass: 'theme-dark-blue',
+              withTimepicker: true,
+              rangeInputFormat: 'MM-DD-YYYY, h:mm A ',
+              dateInputFormat: 'MM-DD-YYYY, h:mm A'
+            }"
+            bsDatepicker />
+          <div
+            (click)="dp2.toggle()"
+            [attr.aria-expanded]="dp.isOpen"
+            type="button"
+            for="calendar-input"
+            class="date-range-picker-icon3 fa fa-calendar">
+          </div>
+
+
+        </div>
+
+
+
+
+      </div>
+      <div class="modal-footer d-flex justify-content-center">
+        <button type="button" [disabled]="!SlotForm.valid" (click)="onSubmit()" class="btn btn-primary" data-dismiss="modal">Submit</button>
+      </div>
+    </form> -->
+  </div>
+
+  <div *ngIf="!formDisplay">
+    <h5 class="mt-2 shedule">Update any Particular Round</h5>
+    <form [formGroup]="updateInterviewForm">
+      <div class="pt-1 schedule-interview">
+        <h6>Stage:</h6>
+        <div class="form-group col-6">
+          <select
+            formControlName="stage"
+            class="form-select"
+            aria-label="Default select example"
+            #mySelect
+            (change)="onOptionsSelected(mySelect.value)">
+            <option hidden selected value="">Stage</option>
+            <option *ngFor="let stage of stages" [value]="stage">
+              {{ stage }}
+            </option>
+          </select>
+        </div>
+      </div>
+      <div class="pt-1 schedule-interview">
+        <h6>Date of Interview :</h6>
+        <div class="form-group col-6 date-form">
+          <input
+            type="text"
+            placeholder="Interview Date & Time"
+            class="form-control"
+            onkeydown="return false"
+            formControlName="dateOfInterview"
+            #dp="bsDatepicker"
+            [bsConfig]="{ containerClass: 'theme-dark-blue' }"
+            [minDate]="today"
+            (onHidden)="handler(1)"
+            [daysDisabled]="[6, 0]"
+            bsDatepicker />
+          <div
+            (click)="dp.toggle()"
+            [attr.aria-expanded]="dp.isOpen"
+            type="button"
+            for="calendar-input"
+            class="date-range-picker-icon fa fa-calendar"></div>
+        </div>
+      </div>
+      <div class="pt-1 schedule-interview">
+        <h6>From</h6>
+        <div class="form-group col-6">
+          <timepicker *ngIf="show1" formControlName="timePicker1" [min]="today" (isValid)="isValid($event)"> </timepicker>
+          <timepicker *ngIf="!show1" formControlName="timePicker1" [min]="preminDates" (isValid)="isValid($event)"> </timepicker>
+        </div>
+      </div>
+      <div class="pt-1 schedule-interview">
+        <h6>To</h6>
+        <div class="form-group col-6">
+          <timepicker formControlName="timePicker2" [min]="minDates"> </timepicker>
+        </div>
+      </div>
+
+      <div class="schedule-interview">
+        <h6>Interviewed By :</h6>
+
+        <div class="form-group col-6">
+          <input type="text" class="form-control" placeholder="Interviewed By" formControlName="interviewedBy" />
+        </div>
+      </div>
+      <div class="schedule-interview">
+        <h6>Rate out of 1-10</h6>
+
+        <div class="form-group col-6">
+          <select formControlName="ratings" class="form-control form-control-lg form-select">
+            <option hidden selected value="">Select Rating</option>
+            <option>0</option>
+            <option *ngFor="let value of rating_Value" [ngValue]="value">
+              {{ value.rate }}
+            </option>
+          </select>
+        </div>
+      </div>
+      <div class="pt-1 schedule-interview">
+        <h6>Feedback:</h6>
+
+        <div class="form-group col-6">
+          <input type="text" class="form-control" placeholder="Feedback" formControlName="feedback" />
+        </div>
+      </div>
+
+      <div class="pt-1 schedule-interview">
+        <h6>Mode Of Interview:</h6>
+        <div class="form-group col-6">
+          <select formControlName="modeOfInterview" class="form-select" aria-label="Default select example">
+            <option hidden selected value="">Mode of Interview</option>
+            <option value="Remote">Remote</option>
+            <option value="Face To Face">Face To Face</option>
+          </select>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,180 @@
+<div class="card">
+  <div class="col-md-12 card-header d-flex justify-content-between align-items-center">
+    <h2 class="mb-0 cursor" routerLink="/ssdashboard/viewPro">
+      <i _ngcontent-aao-c361="" title="Go Back" aria-hidden="true" class="fa fa-chevron-left mx-2"></i>Create task
+    </h2>
+    <!-- <button class="btn" routerLink="/ssdashboard/viewPro">View Projects</button> -->
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <div class="card-body client-body mb-5 mt-3 pb-5 pt-4">
+        <form [formGroup]="taskForm">
+          <div class="row client-form d-flex flex-column justify-content-center">
+            <div class="row client-form d-flex flex-column justify-content-center">
+              <h3 class="basic-info">Create Tasks</h3>
+              <div class="form-group offset-md-1 col-md-10">
+                <div class="form-group form-floating mt-3 input-form">
+                  <select
+                    class="form-control form-control-lg form-select projectform"
+                    formControlName="ProjectDepartment1"
+                    (change)="projectChange()"
+                    id="floatingSelect"
+                    aria-label="Floating label select example">
+                    <!-- <option hidden selected value="">please select</option> -->
+                    <option *ngFor="let project of projectName" [ngValue]="project">
+                      {{ project.title }}
+                    </option>
+                  </select>
+                  <label for="floatingSelect">Project*</label>
+                </div>
+
+                <!-- <div class="form-floating text-center mb-3 col-sm-4 info-form">
+                <div class="input-group">
+                  <img src="assets/images/proj-icon.svg" />
+                  <select formControlName="project" class="form-select" aria-label="Default select example1">
+                    <option hidden selected value="">Select Project</option>
+                   
+                    <option *ngFor="let project of projectName" [ngValue]="project">
+                      {{ project.title }}
+                    </option>
+                  </select>
+                </div>
+              </div> -->
+
+                <div class="form-group form-floating input-form mt-3">
+                  <input type="text" class="form-control" placeholder="Task Title" name="TaskTitle" formControlName="TaskTitle" />
+                  <label for="title">Task Title *</label>
+                </div>
+                <div class="form-group form-floating form-floating2 mt-3 input-form">
+                  <textarea
+                    type="text"
+                    class="form-control text-area"
+                    placeholder="Project Description"
+                    name="projectdescription"
+                    formControlName="taskDescription"></textarea>
+                  <label for="project">Task Description *</label>
+                </div>
+              </div>
+              <div class="card-footer create-new-footer mt-5 d-flex justify-content-center">
+                <button [disabled]="!this.taskForm.valid" class="btn proceed-btn" (click)="createTask()">Create -></button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card-body notify-section mt-2">
+        <div class="table">
+          <div class="row">
+            <h3 class="basic-info">Tasks List</h3>
+            <div *ngIf="projectTitle" class="taskcard inner-content mt-4">
+              <div class="card-body row justify-content-between align-items-center">
+                <!-- <h4 >Select Project</h4> -->
+                <div *ngIf="projectTitle">
+                  <th class="col">
+                    <!-- <p>Project title</p> -->
+                    <h4>{{ projectTitle }}</h4>
+                    <span>{{ projectDesc }}</span>
+                  </th>
+
+                  <!-- <th class="col">
+                      <p>Project Description</p>
+                      <p>{{projectDesc}}</p>
+                  </th> -->
+
+                  <hr />
+                </div>
+                <div *ngIf="taskinfo?.length > 0" class="taskcontainer">
+                  <div *ngFor="let item of taskinfo">
+                    <div class="row">
+                      <div class="col-10">
+                        <div class="row">
+                          <td class="col-2">
+                            <p>Task Id</p>
+                            <h3>{{ item.taskId }}</h3>
+                          </td>
+                          <td class="col-3">
+                            <p>Task Title</p>
+                            <h4>{{ item.taskTitle }}</h4>
+                          </td>
+                          <td class="col-7">
+                            <p>Task Description</p>
+                            <p>{{ item.taskDescription }}</p>
+                          </td>
+                        </div>
+                      </div>
+                      <div class="col-2">
+                        <td>
+                          <div class="d-flex align-items-center mt-2">
+                            <a><img src="assets/images/edit-icon.svg" (click)="open(item)" class="mx-2" /></a>
+                            <a><img src="assets/images/icon-delete.png" (click)="deleteTask(item.taskId)" /></a>
+                          </div>
+                        </td>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal modal-backdrop" tabindex="-1" [ngStyle]="{ display: dialogConfig === 'rateCard' ? 'block' : 'none' }">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header border-0">
+        <h4 class="modal-title txt mb-0 fw-6 dark">Update Task</h4>
+        <button type="button" class="close" (click)="dialogConfig = ''">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="text-center mt-4">
+          <form [formGroup]="updatetaskForm">
+            <div class="row client-form d-flex flex-column justify-content-center">
+              <div class="row client-form d-flex flex-column justify-content-center">
+                <div class="form-group offset-md-3 col-md-6">
+                  <!-- <div class="form-floating text-center mb-3 col-sm-4 info-form">
+                  <div class="input-group">
+                    <img src="assets/images/proj-icon.svg" />
+                    <select formControlName="project" class="form-select" aria-label="Default select example1">
+                      <option hidden selected value="">Select Project</option>
+                     
+                      <option *ngFor="let project of projectName" [ngValue]="project">
+                        {{ project.title }}
+                      </option>
+                    </select>
+                  </div>
+                </div> -->
+
+                  <div class="form-group form-floating input-form mt-3">
+                    <input type="text" class="form-control" placeholder="Task Title" name="TaskTitle" formControlName="TaskTitle" />
+                    <label for="title">Task Title *</label>
+                  </div>
+                  <div class="form-group form-floating form-floating2 mt-3 input-form">
+                    <textarea
+                      type="text"
+                      class="form-control text-area"
+                      placeholder="Project Description"
+                      name="projectdescription"
+                      formControlName="taskDescription"></textarea>
+                    <label for="project">Task Description *</label>
+                  </div>
+                </div>
+                <div class="card-footer create-new-footer mt-5 d-flex justify-content-center">
+                  <button [disabled]="!this.updatetaskForm.valid" class="btn proceed-btn" (click)="updateTask()">Update</button>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

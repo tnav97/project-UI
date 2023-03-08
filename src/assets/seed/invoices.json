@@ -1,0 +1,47 @@
+[
+  {
+    "_id": "6203c23f5e5d075fb2bd60fb",
+    "index": 0,
+    "invoiceId": "08fc049a-ee91-4e29-9564-fd968acdd66d",
+    "fromvendor": "PARCOE",
+    "amtBalance": "500",
+    "paidDate": "2018-10-03",
+    "statusDetail": "Paid"
+  },
+  {
+    "_id": "6203c23fd468b4d2500b7ba3",
+    "index": 1,
+    "invoiceId": "099994d8-cfc2-4ac3-b42f-cd1b51b222f6",
+    "fromvendor": "EPLOSION",
+    "amtbalance": "900",
+    "paidDate": "2016-01-01",
+    "statusDetail": "Processing"
+  },
+  {
+    "_id": "6203c23f4c2fd557f082fd22",
+    "index": 2,
+    "invoiceId": "b1029eb1-32ad-4fd4-913a-8b306ee773a7",
+    "fromvendor": "EMTRAC",
+    "amtbalance": "700",
+    "paidDate": "2015-12-11",
+    "statusDetail": "Submitted"
+  },
+  {
+    "_id": "6203c23f858ff1f387f1b1f8",
+    "index": 3,
+    "invoiceId": "54a2f479-12f7-485f-a28f-ae8352fa7fa6",
+    "fromvendor": "MANTRIX",
+    "amtbalance": "800",
+    "paidDate": "2015-12-30",
+    "statusDetail": "Unpaid"
+  },
+  {
+    "_id": "6203c23f15d3d0e1a8b31dcb",
+    "index": 4,
+    "invoiceId": "995fd642-d161-42e1-96d1-6fab97c8cc70",
+    "fromvendor": "KYAGORO",
+    "amtbalance": "500",
+    "paidDate": "2021-07-03",
+    "statusDetail": "Processing"
+  }
+]

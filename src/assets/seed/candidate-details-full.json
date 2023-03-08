@@ -1,0 +1,266 @@
+[
+  {
+    "_id": "6203ae75f58217ed7ddaaf1a",
+    "index": 0,
+    "guid": "99c5b41a-7423-4bbf-bf05-ac153751ac46",
+    "img": "assets/images/avatar-default-skillowner.png",
+    "picture": "https://images.generated.photos/CyxdDTGGUubBdVqAdvOXzsQWwM_b0zQWLljEuLkbCFI/rs:fit:512:512/wm:0.95:sowe:18:18:0.33/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LnBob3Rvcy92M18w/MTgxNTY1LmpwZw.jpg",
+    "name": "Duffy Ballard",
+    "company": "FRANSCENE",
+    "email": "duffyballard@franscene.com",
+    "phone": "+1 (823) 558-3063",
+    "address": "260 Fanchon Place, Sterling, Indiana, 8217",
+    "currentBalance": "500",
+    "altEmail": "duffyballard@franscene.com",
+    "altPhone": "+1 (917) 441-3974",
+    "position": "Senior UI Strategist",
+    "clientCompany": "CEMENTION",
+    "status": "Active",
+    "contractStartDate": "2020-10-06",
+    "contractEndDate": "2016-05-01",
+    "pointOfContact": "XYMONK",
+    "skillSet": [
+      {
+        "id": 0,
+        "role": "Lee Delacruz",
+        "level": "Senior",
+        "technology": "Big Data",
+        "domain": "Finance"
+      },
+      {
+        "id": 1,
+        "role": "Kellie Pitts",
+        "level": "Lead",
+        "technology": "Informatics",
+        "domain": "Retail"
+      },
+      {
+        "id": 2,
+        "role": "Lowe Rivers",
+        "level": "Senior",
+        "technology": "Big Data",
+        "domain": "Finance"
+      }
+    ]
+  },
+  {
+    "_id": "6203ae757a4be8ddb686e08f",
+    "index": 1,
+    "guid": "af58af7e-09c4-4497-8720-58225ea9582d",
+    "img": "assets/images/avatar-default-skillowner.png",
+    "picture": "https://images.generated.photos/Rz3xPCKyyTa_CYi71x181k3VJiuXPSo4ajr7TRN61FQ/rs:fit:512:512/wm:0.95:sowe:18:18:0.33/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LnBob3Rvcy92M18w/NTc5Njk1LmpwZw.jpg",
+    "name": "Susie Merrill",
+    "company": "EXTRO",
+    "email": "susiemerrill@extro.com",
+    "phone": "+1 (845) 490-3866",
+    "address": "106 Arion Place, Bangor, Missouri, 2254",
+    "currentBalance": "800",
+    "altEmail": "susiemerrill@extro.com",
+    "altPhone": "+1 (839) 419-2291",
+    "position": "Technical Lead",
+    "clientCompany": "ZOLAR",
+    "status": "Active",
+    "contractStartDate": "2017-12-12",
+    "contractEndDate": "2021-10-11",
+    "pointOfContact": "EXOSWITCH",
+    "skillSet": [
+      {
+        "id": 0,
+        "role": "Lee Delacruz",
+        "level": "Senior",
+        "technology": "Big Data",
+        "domain": "Finance"
+      },
+      {
+        "id": 1,
+        "role": "Kellie Pitts",
+        "level": "Lead",
+        "technology": "Informatics",
+        "domain": "Retail"
+      },
+      {
+        "id": 2,
+        "role": "Lowe Rivers",
+        "level": "Senior",
+        "technology": "Big Data",
+        "domain": "Finance"
+      }
+    ]
+  },
+  {
+    "_id": "6203ae759d75a62b49c17293",
+    "index": 2,
+    "guid": "602aefc3-bba5-49b5-a068-7854e4c2ab43",
+    "img": "assets/images/avatar-default-skillowner.png",
+    "picture": "https://images.generated.photos/bmAyXyJICV5BG0Z_s2B6WxvtxYYvalcFSxjh3whU8f4/rs:fit:512:512/wm:0.95:sowe:18:18:0.33/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LnBob3Rvcy92M18w/Mjg3ODAwLmpwZw.jpg",
+    "name": "Duke Hickman",
+    "company": "INSURITY",
+    "email": "dukehickman@insurity.com",
+    "phone": "+1 (968) 580-2973",
+    "address": "611 Duffield Street, Forestburg, South Dakota, 7596",
+    "currentBalance": "700",
+    "altEmail": "dukehickman@insurity.com",
+    "altPhone": "+1 (986) 511-3335",
+    "position": "Project Manager",
+    "clientCompany": "SNORUS",
+    "status": "In Training",
+    "contractStartDate": "2021-10-08",
+    "contractEndDate": "2018-09-05",
+    "pointOfContact": "MAXEMIA",
+    "skillSet": [
+      {
+        "id": 0,
+        "role": "Lee Delacruz",
+        "level": "Senior",
+        "technology": "Big Data",
+        "domain": "Finance"
+      },
+      {
+        "id": 1,
+        "role": "Kellie Pitts",
+        "level": "Lead",
+        "technology": "Informatics",
+        "domain": "Retail"
+      },
+      {
+        "id": 2,
+        "role": "Lowe Rivers",
+        "level": "Senior",
+        "technology": "Big Data",
+        "domain": "Finance"
+      }
+    ]
+  },
+  {
+    "_id": "6203ae7567df1b5a81287ed5",
+    "index": 3,
+    "guid": "20783bdc-623f-49b0-89e6-b26a378f6d30",
+    "img": "assets/images/avatar-default-skillowner.png",
+    "picture": "https://images.generated.photos/xNeR7ZK0jg8VWnZVoxG_p8SvzUhZEp8hia5VztXNzJQ/rs:fit:512:512/wm:0.95:sowe:18:18:0.33/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LnBob3Rvcy92M18w/NjIyNzY5LmpwZw.jpg",
+    "name": "Marquez Little",
+    "company": "ASSURITY",
+    "email": "marquezlittle@assurity.com",
+    "phone": "+1 (800) 439-3606",
+    "address": "629 Louisa Street, Elfrida, Ohio, 6571",
+    "currentBalance": "600",
+    "altEmail": "marquezlittle@assurity.com",
+    "altPhone": "+1 (984) 424-2202",
+    "position": "Java Developer",
+    "clientCompany": "EXTRAGEN",
+    "status": "In Bench",
+    "contractStartDate": "2015-05-17",
+    "contractEndDate": "2021-08-03",
+    "pointOfContact": "CONFERIA",
+    "skillSet": [
+      {
+        "id": 0,
+        "role": "Lee Delacruz",
+        "level": "Senior",
+        "technology": "Big Data",
+        "domain": "Finance"
+      },
+      {
+        "id": 1,
+        "role": "Kellie Pitts",
+        "level": "Lead",
+        "technology": "Informatics",
+        "domain": "Retail"
+      },
+      {
+        "id": 2,
+        "role": "Lowe Rivers",
+        "level": "Senior",
+        "technology": "Big Data",
+        "domain": "Finance"
+      }
+    ]
+  },
+  {
+    "_id": "6203ae75f96239f5ceeb6e98",
+    "index": 4,
+    "guid": "efade020-9251-4e86-961e-d39097a53067",
+    "img": "assets/images/avatar-default-skillowner.png",
+    "picture": "https://images.generated.photos/lbfS2PuLgIBds8K-9VBuPkVi-GYYt8FN0W_RUqHZ2V8/rs:fit:512:512/wm:0.95:sowe:18:18:0.33/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LnBob3Rvcy92M18w/MTQyODM1LmpwZw.jpg",
+    "name": "Cooley Glass",
+    "company": "LIQUICOM",
+    "email": "cooleyglass@liquicom.com",
+    "phone": "+1 (880) 501-2284",
+    "address": "199 Tennis Court, Hamilton, Oregon, 4164",
+    "currentBalance": "200",
+    "altEmail": "cooleyglass@liquicom.com",
+    "altPhone": "+1 (959) 429-2028",
+    "position": "Angular Developer",
+    "clientCompany": "APPLIDEC",
+    "status": "Active",
+    "contractStartDate": "2020-11-10",
+    "contractEndDate": "2014-08-27",
+    "pointOfContact": "EXIAND",
+    "skillSet": [
+      {
+        "id": 0,
+        "role": "Lee Delacruz",
+        "level": "Senior",
+        "technology": "Big Data",
+        "domain": "Finance"
+      },
+      {
+        "id": 1,
+        "role": "Kellie Pitts",
+        "level": "Lead",
+        "technology": "Informatics",
+        "domain": "Retail"
+      },
+      {
+        "id": 2,
+        "role": "Lowe Rivers",
+        "level": "Senior",
+        "technology": "Big Data",
+        "domain": "Finance"
+      }
+    ]
+  },
+  {
+    "_id": "6203ae7554cfd7ec7aa51fc7",
+    "index": 5,
+    "guid": "4335ce29-7c49-4891-b8eb-642856397bd8",
+    "img": "assets/images/avatar-default-skillowner.png",
+    "picture": "https://images.generated.photos/PUyizhcF3I_LJgGdd3m_648jQFr-Ea7lTc_xp-U63Cg/rs:fit:512:512/wm:0.95:sowe:18:18:0.33/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LnBob3Rvcy92M18w/MTA1MjA5LmpwZw.jpg",
+    "name": "Erickson Soto",
+    "company": "BRISTO",
+    "email": "ericksonsoto@bristo.com",
+    "phone": "+1 (896) 555-3240",
+    "address": "768 College Place, Rutherford, Georgia, 7020",
+    "currentBalance": "900",
+    "altEmail": "ericksonsoto@bristo.com",
+    "altPhone": "+1 (817) 536-2537",
+    "position": "React Developer",
+    "clientCompany": "XTH",
+    "status": "In Bench",
+    "contractStartDate": "2016-09-02",
+    "contractEndDate": "2016-10-04",
+    "pointOfContact": "FUTURIS",
+    "skillSet": [
+      {
+        "id": 0,
+        "role": "Lee Delacruz",
+        "level": "Senior",
+        "technology": "Big Data",
+        "domain": "Finance"
+      },
+      {
+        "id": 1,
+        "role": "Kellie Pitts",
+        "level": "Lead",
+        "technology": "Informatics",
+        "domain": "Retail"
+      },
+      {
+        "id": 2,
+        "role": "Lowe Rivers",
+        "level": "Senior",
+        "technology": "Big Data",
+        "domain": "Finance"
+      }
+    ]
+  }
+]

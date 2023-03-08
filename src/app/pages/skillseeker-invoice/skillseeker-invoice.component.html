@@ -1,0 +1,86 @@
+<div class="row card admin-clients">
+  <div class="col-md-12 card-header dashboard-header d-flex justify-content-between align-items-center">
+    <h4 class="mb-0">Invoice Listings</h4>
+    <!-- <button routerLink="/superadmin/createInvoice" class="btn">Create Invoice</button> -->
+  </div>
+
+  <div class="card-body clients-body">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="table-responsive-md clients-table">
+          <table class="table">
+            <thead>
+              <tr>
+                <th></th>
+                <th scope="col">Invoice ID</th>
+                <th scope="col">Project</th>
+                <th scope="col">From</th>
+                <th scope="col">Submitted Date</th>
+                <th scope="col">Status</th>
+                <th scope="col"></th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let a of tabledata">
+                <label class="form-check-label">
+                  <input type="checkbox" class="form-check-input" value="" />
+                </label>
+                <td scope="row">{{ a?.invoiceId }}</td>
+                <td>{{ a?.seekerProjectName }}</td>
+                <td>{{a?.clientName}}</td>
+                <td>{{ a?.date | date : 'MM/dd/yyyy'}}</td>
+                <td>
+                  <div class="tooltips">
+                    <span
+                      class="view"
+                      [ngClass]="
+                        a?.status?.status == 'Submitted'
+                          ? 'badge active-badge'
+                          : a?.status?.status == 'Approved'
+                          ? 'badge approve-badge'
+                          : a?.status?.status == 'Paid'
+                          ? 'badge paid-badge'
+                          : a?.status?.status == 'Rejected'
+                          ? 'badge reject-badge'
+                          : 'badge pending-badge'
+                      "
+                      >{{ a?.status?.status }}</span
+                    >
+                    <div class="left" *ngIf="a?.comments !== 'NA'">
+                      <p>{{ a?.comments }}</p>
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <a [routerLink]="['/ssInvoice/previewInvoice', a?.invoiceId]" routerLinkActive="router-link-active">View invoice</a>
+                </td>
+                <td>
+                  <div class="dropdown">
+                    <button class="btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      <img src="assets/images/icon-more.svg" />
+                    </button>
+                    <ul class="dropdown-menu">
+                      <li (click)="updateStatus(a?.invoiceId, item.id, item.status, a?.comments)" *ngFor="let item of invoiceStatusList">
+                        <a
+                          *ngIf="(item.status === 'Approved' || item.status === 'Rejected') && a?.status?.status === 'Submitted'"
+                          class="dropdown-item"
+                          >{{ item.status }}</a
+                        >
+                        <a *ngIf="(item.status === 'Paid' || item.status === 'Pending') && a?.status?.status === 'Approved'" class="dropdown-item">{{
+                          item.status
+                        }}</a>
+                        <a *ngIf="item.status === 'Paid' && a?.status?.status === 'Pending'" class="dropdown-item">{{ item.status }}</a>
+                        <a *ngIf="item.status === 'Rejected' && a?.status?.status === 'Rejected'" class="dropdown-item">Update Comments</a>
+                      </li>
+                    </ul>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

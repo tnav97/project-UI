@@ -1,0 +1,56 @@
+@import '../../../theme/sass/form';
+
+::ng-deep {
+  @include field4x();
+
+  mat-form-field.field4x {
+    > .mat-form-field-wrapper {
+      margin: 0;
+      width: 100%;
+    }
+  }
+}
+
+header.top {
+  background-color: var(--background);
+  padding: 1.5rem;
+  top: 0;
+  position: fixed;
+  z-index: 1001;
+  height: 70px;
+  width: 100%;
+  min-width: var(--resMin);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  // box-shadow: var(--header-top-shadow);
+  border-bottom: 1px solid var(--border-color);
+  box-shadow: 0px 0px 16px rgba(72, 133, 237, 0.2);
+}
+
+.first-order {
+  display: flex;
+  align-items: center;
+
+  > a.logo {
+    min-width: 165px;
+    max-width: 165px;
+    justify-content: center;
+    display: flex;
+
+    > img {
+      height: auto;
+      width: 165px;
+      overflow-x: hidden;
+    }
+  }
+
+  > .hamberger-menu {
+    margin-left: 16px;
+  }
+}
+
+.mat-form-field-prefix .mat-icon,
+.mat-form-field-suffix .mat-icon {
+  color: #325e9e !important;
+}

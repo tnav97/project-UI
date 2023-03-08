@@ -1,0 +1,573 @@
+<style>
+  .card-body.auth-body.pt-1 {
+    padding: 0 !important;
+  }
+</style>
+
+<div class="card">
+  <div class="card-body auth-body pt-1">
+    <ng-container [ngTemplateOutlet]="second" *ngIf="step === 2"></ng-container>
+    <ng-container [ngTemplateOutlet]="third" *ngIf="step === 3"></ng-container>
+    <ng-container [ngTemplateOutlet]="four" *ngIf="step === 4"></ng-container>
+    <ng-container [ngTemplateOutlet]="five" *ngIf="step === 5"></ng-container>
+    <ng-container [ngTemplateOutlet]="six" *ngIf="step === 6"></ng-container>
+    <ng-container [ngTemplateOutlet]="seven" *ngIf="step === 7"></ng-container>
+    <ng-container [ngTemplateOutlet]="eight" *ngIf="step === 8"></ng-container>
+    <ng-container [ngTemplateOutlet]="nine" *ngIf="step === 9"></ng-container>
+  </div>
+</div>
+
+<!-- SS_Register flow step-02 code start here -->
+
+<ng-template #second>
+  <section id="step-04">
+    <div class="page-content page-container" id="page-content">
+      <div class="padding">
+        <div class="row d-flex justify-content-center">
+          <div class="col-md-8 col-lg-8">
+            <form [formGroup]="formForm" class="card animate__animated animate__fadeInRight">
+              <div routerLink="/registration">
+                <img src="assets/images/icon-btn-home.svg" alt="login" class="home-btn" />
+              </div>
+              <h5 class="card-title fw-400">
+                <img src="assets/images/logo-flexcub.svg" alt="login" class="top-logo" />
+              </h5>
+              <h2 class="logo-subtext">What is the nature of your business?</h2>
+              <div class="card-body formsection-s-4">
+                <div class="container-fluid vertical-scrollable d-flex justify-content-center">
+                  <div class="row text-center">
+                    <!-- <div (click)="next(3)" style="width: 100%;" *ngFor="let domain of domainList">
+                                            <div class="col-sm-10"(click)="getDomain(domain)">
+                                                {{domain.domainValues}}
+                                            </div>
+                                        </div> -->
+                    <div class="form-group">
+                      <select
+                        formControlName="domain"
+                        class="form-select"
+                        aria-placeholder="Nature of Business"
+                        aria-label="Default select example"
+                        #mySelect>
+                        <option hidden selected value="">Nature of Business</option>
+                        <option *ngFor="let domain of domainList" [value]="domain.domainId">
+                          {{ domain.domainValues }}
+                        </option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card-footer text-muted">
+                <div class="d-flex">
+                  <div class="d-flex" routerLink="/registration">
+                    <img src="assets/images/left-arrow.svg" alt="login" class="back-arr" routerLink="/registration" />
+                    <span class="back-txt"> Back </span>
+                  </div>
+
+                  <div class="d-flex">
+                    <span class="nxt-txt">
+                      <button (click)="next(3)" [disabled]="!domain.valid" class="nxt-btn">Next</button>
+                    </span>
+                    <img src="assets/images/right-arrow.svg" alt="login" class="next-arr" />
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</ng-template>
+
+<ng-template #third>
+  <section id="step-04">
+    <div class="page-content page-container" id="page-content">
+      <div class="padding">
+        <div class="row d-flex justify-content-center">
+          <div class="col-md-8 col-lg-8">
+            <form [formGroup]="formForm" class="card animate__animated animate__fadeInLeft">
+              <div routerLink="/registration">
+                <img src="assets/images/icon-btn-home.svg" alt="login" class="home-btn" routerLink="/registration" />
+              </div>
+
+              <h5 class="card-title fw-400">
+                <img src="assets/images/logo-flexcub.svg" alt="login" class="top-logo" />
+                <div id="details-box"></div>
+              </h5>
+              <h2 class="logo-subtext">Where is your business located?</h2>
+              <div class="card-body formsection-s-4">
+                <div class="form-group col-xl-6 col-lg-6 col-md-10 col-sm-10 mx-auto">
+                  <!-- <select  [(ngModel)]="selected" hidden class="form-select" aria-label="Default select example">
+                                        <option  *ngFor="let country of countries" [value]="country.shortName">{{country.name }}</option>
+                                    </select> -->
+                  <select formControlName="state" (click)="getCityList();" class="form-select" aria-label="Default select example">
+                    <option hidden selected value="">Select State</option>
+                    <option *ngFor="let state of stateList"  [value]="state.state_name">
+                      {{ state.state_name }}
+                    </option>
+                  </select>
+                </div>
+                <div class="map-section">
+                  <!-- <img src="assets/images/map-svg.svg" alt="login" class="map-img"> -->
+                  <app-chart [selectedState]="this.formForm.get('state').value"></app-chart>
+                </div>
+              </div>
+              <div class="card-footer text-muted">
+                <div class="d-flex">
+                  <div class="d-flex" (click)="back(2)">
+                    <img src="assets/images/left-arrow.svg" alt="login" class="back-arr" />
+                    <span class="back-txt"> Back </span>
+                  </div>
+
+                  <div class="d-flex">
+                    <span class="nxt-txt">
+                      <button (click)="next(4)" [disabled]="!stateValue.valid" class="nxt-btn">Next</button>
+                    </span>
+                    <img src="assets/images/right-arrow.svg" alt="login" class="next-arr" />
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</ng-template>
+
+<ng-template #four>
+  <section id="step-04">
+    <div class="page-content page-container" id="page-content">
+      <div class="padding">
+        <div class="row d-flex justify-content-center">
+          <div class="col-md-8 col-lg-8">
+            <form [formGroup]="formForm" class="card animate__animated animate__fadeInLeft">
+              <div routerLink="/registration">
+                <img src="assets/images/icon-btn-home.svg" alt="login" class="home-btn" routerLink="/registration" />
+              </div>
+              <h5 class="card-title fw-400">
+                <img src="assets/images/logo-flexcub.svg" alt="login" class="top-logo" />
+                <div id="details-box"></div>
+              </h5>
+              <h2 class="logo-subtext business-subtext">Where is your business located?</h2>
+              <div class="card-body formsection-s-4">
+                <div class="form-group col-xl-6 col-lg-6 col-md-10 col-sm-10 mx-auto">
+                  <select formControlName="state" (click)="getCityList()" class="form-select form-location" aria-label="Default select example">
+                    <option hidden selected value="">Select State</option>
+                    <option *ngFor="let state of stateList" [value]="state.state_name">
+                      {{ state.state_name }}
+                    </option>
+                  </select>
+                  <div class="pt-4">
+                    <select formControlName="city" class="form-select form-location" aria-label="Default select example">
+                      <option hidden selected value="">Select City</option>
+                      <option *ngFor="let city of cityList" [value]="city.city_name">
+                        {{ city.city_name }}
+                      </option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <div class="card-footer text-muted">
+                <div class="d-flex">
+                  <div class="d-flex" (click)="back(3)">
+                    <img src="assets/images/left-arrow.svg" alt="login" class="back-arr" />
+                    <span class="back-txt"> Back </span>
+                  </div>
+
+                  <div class="d-flex">
+                    <span class="nxt-txt">
+                      <button (click)="next(5)" [disabled]="!stateValue.valid || !cityValue.valid" class="nxt-btn">Next</button>
+                    </span>
+                    <img src="assets/images/right-arrow.svg" alt="login" class="next-arr" />
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</ng-template>
+
+<ng-template #five>
+  <section id="step-04">
+    <div class="page-content page-container" id="page-content">
+      <div class="padding">
+        <div class="row d-flex justify-content-center">
+          <div class="col-md-8 col-lg-8">
+            <form [formGroup]="formForm" class="card animate__animated animate__fadeInLeft">
+              <div routerLink="/registration">
+                <img src="assets/images/icon-btn-home.svg" alt="login" class="home-btn" routerLink="/registration" />
+              </div>
+              <h5 class="card-title fw-400">
+                <img src="assets/images/logo-flexcub.svg" alt="login" class="top-logo" />
+              </h5>
+              <h2 class="logo-subtext about-subtext">Tell us a little about your business...</h2>
+              <div class="card-body formsection-s-4">
+                <div class="col-xl-6 col-lg-6 col-md-10 col-sm-10 mx-auto">
+                  <div class="form-floating mb-3">
+                    <input
+                      class="form-control"
+                      [class.is-invalid]="formForm.get('businessName').invalid && formForm.get('businessName').touched"
+                      type="text"
+                      placeholder="Business Name"
+                      onfocus="this.placeholder = ''"
+                      onblur="this.placeholder = 'enter your text'"
+                      class="form-control"
+                      formControlName="businessName" />
+                    <div *ngIf="(businessName.invalid && businessName.touched) || businessName.dirty">
+                      <small *ngIf="businessName.errors?.required" class="text-danger">Business Name is required</small>
+                      <!--question mark(?) is a safe navigation operator-->
+                      <!-- <small *ngIf="businessName.errors?.pattern" class="text-danger">Please provide a valid  address</small> -->
+                    </div>
+                    <!-- <input class="form-control" formControlName="businessName" type="text" placeholder="Business Name"> -->
+                    <label for="floatingInput">Business Name</label>
+                    <!-- <error-component [controlName]="obj.get('formArray')?.get([0]).controls['businessName']"
+                                    [KeyName]="'Business Name'">
+                                    </error-component> -->
+                  </div>
+
+                  <div class="form-floating inner-addon right-addon">
+                    <i class="glyphicon glyphicon-user"></i>
+                    <img
+                      *ngIf="!((businessNumber.invalid && businessNumber.touched) || businessNumber.dirty)"
+                      src="assets/images/icon-lock.svg"
+                      alt="login"
+                      class="glyphicon glyphicon-user" />
+                    <input
+                      class="form-control"
+                      [class.is-invalid]="formForm.get('businessNumber').invalid && formForm.get('businessNumber').touched"
+                      type="text"
+                      class="form-control"
+                      id="floatingPassword"
+                      placeholder="Employer Identification Number (EIN)"
+                      onfocus="this.placeholder = ''"
+                      onblur="this.placeholder = 'enter your text'"
+                      formControlName="businessNumber" />
+                    <div *ngIf="(businessNumber.invalid && businessNumber.touched) || businessNumber.dirty">
+                      <small *ngIf="businessNumber.errors?.required" class="text-danger">Employer Identification Number is required</small>
+                      <!--question mark(?) is a safe navigation operator-->
+                      <!-- <small *ngIf="businessName.errors?.pattern" class="text-danger">Please provide a valid  address</small> -->
+                    </div>
+                    <!-- <input type="text" class="form-control" id="floatingPassword"
+                                        placeholder="Business License Number" /> -->
+                    <label>Employer Identification Number (EIN)</label>
+                    <div class="form-text mt-3">
+                      In order to post a job requirement, you need to provide your Employer Identification Number (EIN).
+                    </div>
+                  </div>
+
+                  <!-- <div class="footer1 pt-2 inner-addon right-addon"> -->
+                  <!-- <i class="fas fa-exclamation-circle" style="font-size:18px"></i> -->
+                  <!-- <i class="material-icons" style="font-size:18px">error</i>
+                                  <p class="px-1">you can add the business license in your profile.</p>  -->
+
+                  <!-- <h5 class="slog-sub-txt">
+                      <img src="assets/images/info-icon.svg" alt="login" class="" />
+                    </h5>
+                  </div> -->
+                </div>
+              </div>
+              <div class="card-footer text-muted">
+                <div class="d-flex">
+                  <div class="d-flex" (click)="back(4)">
+                    <img src="assets/images/left-arrow.svg" alt="login" class="back-arr" />
+                    <span class="back-txt"> Back </span>
+                  </div>
+
+                  <div class="d-flex">
+                    <span class="nxt-txt">
+                      <button (click)="next(6)" [disabled]="!businessName.valid || !businessNumber.valid" class="nxt-btn">Next</button>
+                    </span>
+                    <img src="assets/images/right-arrow.svg" alt="login" class="next-arr" />
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</ng-template>
+
+<ng-template #six>
+  <section id="step-04">
+    <div class="page-content page-container" id="page-content">
+      <div class="padding">
+        <div class="row d-flex justify-content-center">
+          <div class="col-md-8 col-lg-8">
+            <form [formGroup]="formForm" class="card animate__animated animate__fadeInRight">
+              <div routerLink="/registration">
+                <img src="assets/images/icon-btn-home.svg" alt="login" class="home-btn" routerLink="/registration" />
+              </div>
+              <h5 class="card-title fw-400">
+                <img src="assets/images/logo-flexcub.svg" alt="login" class="top-logo" />
+              </h5>
+              <h2 class="logo-subtext name-subtext">By what name do we call you?</h2>
+              <div class="card-body formsection-s-4">
+                <div class="form-floating mb-3 col-xl-6 col-lg-6 col-md-10 col-sm-10 mx-auto">
+                  <input
+                    type="text"
+                    [class.is-invalid]="formForm.get('firstName').invalid && formForm.get('firstName').touched"
+                    class="form-control"
+                    id="floatingInput"
+                    formControlName="firstName"
+                    placeholder="First Name"
+                    onfocus="this.placeholder = ''"
+                    onblur="this.placeholder = 'enter your text'" />
+                  <div *ngIf="(firstName.invalid && firstName.touched) || firstName.dirty">
+                    <small *ngIf="firstName.errors?.required" class="text-danger">First Name is required</small>
+                  </div>
+                  <label for="floatingInput">First Name</label>
+                </div>
+                <div class="form-floating mb-3 col-xl-6 col-lg-6 col-md-10 col-sm-10 mx-auto">
+                  <input
+                    type="text"
+                    [class.is-invalid]="formForm.get('lastName').invalid && formForm.get('lastName').touched"
+                    class="form-control"
+                    id="floatingInput"
+                    formControlName="lastName"
+                    placeholder="Last Name"
+                    onfocus="this.placeholder = ''"
+                    onblur="this.placeholder = 'enter your text'" />
+                  <div *ngIf="(lastName.invalid && lastName.touched) || lastName.dirty">
+                    <small *ngIf="lastName.errors?.required" class="text-danger">Last Name is required</small>
+                  </div>
+                  <label for="floatingInput">Last Name</label>
+                </div>
+              </div>
+              <div class="card-footer text-muted">
+                <div class="d-flex">
+                  <div class="d-flex" (click)="back(5)">
+                    <img src="assets/images/left-arrow.svg" alt="login" class="back-arr" />
+                    <span class="back-txt"> Back </span>
+                  </div>
+
+                  <div class="d-flex">
+                    <span class="nxt-txt">
+                      <button (click)="next(7)" [disabled]="!firstName.valid || !lastName.valid" class="nxt-btn">Next</button>
+                    </span>
+                    <img src="assets/images/right-arrow.svg" alt="login" class="next-arr" />
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</ng-template>
+
+<ng-template #seven>
+  <app-loader *ngIf="isLoading">{{ isLoading }}</app-loader>
+  <section *ngIf="!isLoading" id="step-06">
+    <div class="page-content page-container" id="page-content">
+      <div class="padding">
+        <div class="row d-flex justify-content-center">
+          <div class="col-md-8 col-lg-8">
+            <form [formGroup]="formForm" class="card animate__animated animate__fadeInLeft">
+              <div routerLink="/registration">
+                <img src="assets/images/icon-btn-home.svg" alt="login" class="home-btn" routerLink="/registration" />
+              </div>
+              <h5 class="card-title fw-400">
+                <img src="assets/images/logo-flexcub.svg" alt="login" class="top-logo" />
+              </h5>
+              <h2 class="logo-subtext contact-subtext">How do we contact you?</h2>
+              <h5 class="slog-sub-txt">
+                <img src="assets/images/info-icon.svg" alt="login" class="info-img-register" />
+                You will receive a verification code to your email.
+              </h5>
+              <div class="card-body formsection-s-4">
+                <div class="form-floating mb-3 inner-addon left-addon m-b-15 col-xl-6 col-lg-6 col-md-10 col-sm-10 mx-auto">
+                  <i class="glyphicon glyphicon-user"></i>
+                  <img src="assets/images/envelope.svg" alt="login" class="glyphicon glyphicon-envelope" />
+                  <input
+                    [class.is-invalid]="formForm.get('email').invalid && formForm.get('email').touched"
+                    type="email"
+                    class="form-control"
+                    placeholder="Email Address"
+                    onfocus="this.placeholder = ''"
+                    onblur="this.placeholder = 'enter your text'"
+                    formControlName="email"
+                    [(ngModel)]="emailIdName" />
+                  <div *ngIf="(email.invalid && email.touched) || email.dirty">
+                    <small *ngIf="email.errors?.required" class="text-danger">Email Address is required</small>
+                    <small *ngIf="email.errors?.pattern || (formForm.get('email').invalid && !email.errors?.required)" class="text-danger"
+                      >Please provide a valid email address</small
+                    >
+                  </div>
+                  <label for="floatingInput">Email Address</label>
+                </div>
+
+                <div class="form-floating mb-3 inner-addon left-addon m-b-15 col-xl-6 col-lg-6 col-md-10 col-sm-10 mx-auto">
+                  <i class="glyphicon glyphicon-user"></i>
+                  <img src="assets/images/phone.svg" alt="login" class="glyphicon glyphicon-phone" />
+                  <input
+                    [class.is-invalid]="formForm.get('phone').invalid && formForm.get('phone').touched"
+                    type="phone"
+                    (keypress)="keyPressNumbers($event)"
+                    class="form-control"
+                    formControlName="phone"
+                    id="floatingInput"
+                    placeholder="Phone Number"
+                    onfocus="this.placeholder = ''"
+                    onblur="this.placeholder = 'enter your text'" />
+                  <div *ngIf="(phone.invalid && phone.touched) || phone.dirty">
+                    <small *ngIf="phone.errors?.required" class="text-danger">Phone Number is required</small>
+                    <!--question mark(?) is a safe navigation operator-->
+                    <small *ngIf="phone.errors?.pattern" class="text-danger">Please provide a valid phone number</small>
+                  </div>
+                  <label for="floatingInput">Phone Number</label>
+                </div>
+                <div class="form-check m-top-2rem col-xl-6 col-lg-6 col-md-10 col-sm-10 mx-auto">
+                  <input
+                    type="checkbox"
+                    class="form-check-input"
+                    id="exampleCheck1"
+                    [class.is-invalid]="formForm.get('acceptTerms').invalid && formForm.get('acceptTerms').touched"
+                    formControlName="acceptTerms" />
+                  <label class="form-check-label" for="exampleCheck1">
+                    <p class="login-card-footer-text step-06">
+                      By continuing, you agree to FlexCub’s
+                      <a class="text-reset blue-txt"> Terms Of Service.</a>
+                    </p>
+                  </label>
+                  <div *ngIf="acceptTerms.invalid && acceptTerms.touched">
+                    <small *ngIf="acceptTerms.errors?.required" class="text-danger">You need to agree to the terms of service!</small>
+                    <!--question mark(?) is a safe navigation operator-->
+                  </div>
+                </div>
+
+                <div class="d-flex justify-content-center">
+                  <button
+                    id="proceed"
+                    (click)="submit()"
+                    [disabled]="!email.valid || !phone.valid || !acceptTerms.valid"
+                    class="btn btn-block login-btn mb-4">
+                    Proceed
+                  </button>
+                </div>
+              </div>
+              <div class="card-footer text-muted">
+                <div class="d-flex">
+                  <div class="d-flex" (click)="back(6)">
+                    <img src="assets/images/left-arrow.svg" alt="login" class="back-arr" />
+                    <span class="back-txt">Back </span>
+                    <!-- <a href="step-5.html">Back </a> -->
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</ng-template>
+
+<ng-template #eight>
+  <section id="step-04">
+    <div class="page-content page-container" id="page-content">
+      <div class="padding">
+        <div class="row d-flex justify-content-center">
+          <div class="col-md-8 col-lg-8">
+            <form [formGroup]="formForm" class="card animate__animated animate__fadeInRight">
+              <div routerLink="/registration">
+                <img src="assets/images/icon-btn-home.svg" alt="login" class="home-btn" routerLink="/registration" />
+              </div>
+              <h5 class="card-title fw-400">
+                <img src="assets/images/logo-flexcub.svg" alt="login" class="top-logo" />
+              </h5>
+              <h2 class="logo-subtext">Please confirm your email address</h2>
+              <img src="assets/images/envelop.svg" alt="login" class="envelop-img" />
+              <h5 class="slog-sub-txt step-07">
+                We have sent a verification code to <br />
+                the email {{ emailIdName }}
+              </h5>
+
+              <!-- <div class="d-flex justify-content-center">
+                                   <button id="proceed" (click)="next(7)"
+                                    class="btn btn-block login-btn mb-4">Confirm</button>
+
+                            </div> -->
+
+              <div class="card-footer text-muted">
+                <div class="d-flex">
+                  <nav class="login-card-footer-nav step-7">
+                    No Message received?
+                    <a (click)="Resend()" class="step-7subtext">Resend Sign-Up Email</a>
+                    make sure to check your spam or <br />
+                    junk folders - the email was sent by
+                    <a href="#!" class="step-7subtext">no-reply@flexcub.com</a>
+                  </nav>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">
+              <b>
+                <div class="center">Thank You!</div>
+              </b>
+            </h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">Please Login for further instructions on how to complete your account setup.</div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</ng-template>
+
+<ng-template #nine>
+  <section id="step-04">
+    <div class="page-content page-container" id="page-content">
+      <div class="padding">
+        <div class="row d-flex justify-content-center">
+          <div class="col-md-8 col-lg-8">
+            <form [formGroup]="formForm" class="card animate__animated animate__fadeInRight">
+              <div routerLink="/registration">
+                <img src="assets/images/icon-btn-home.svg" alt="login" class="home-btn" routerLink="/registration" />
+              </div>
+              <h5 class="card-title fw-400">
+                <img src="assets/images/logo-flexcub.svg" alt="login" class="top-logo" />
+              </h5>
+              <img src="assets/images/tick-img.svg" alt="login" class="tick-img" />
+              <h2 class="logo-subtext">Your email has been verified!</h2>
+              <p class="text-center">
+                <span class="color-grey">Thank you for creating an account with FlexCub!</span>
+              </p>
+              <h5 class="slog-sub-txt step-07">
+                <b>We have emailed you the link to login to your account.</b>
+              </h5>
+              <div class="card-body formsection-s-4">
+                <div class="d-flex justify-content-center">
+                  <input name="login" id="start-now-btn" class="btn btn-block login-btn mb-4" type="button" value="Get Started Now" />
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</ng-template>

@@ -1,0 +1,82 @@
+.create-job .card .card-header a {
+  color: #db3236;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.create-job .card .card-header h4 {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.create-job .card-body h2 {
+  font-size: 1.875rem;
+  font-weight: 600;
+  color: #1c4684;
+}
+
+.create-job .card-body form .form-info {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.create-job .card-body form .info-form {
+  position: relative;
+
+  img {
+    position: absolute;
+    top: 28%;
+    left: 3%;
+  }
+  label {
+    padding-left: 3rem;
+  }
+  .input-group img {
+    z-index: 1;
+  }
+  .input-group .form-select {
+    height: 58px;
+    padding-left: 3rem;
+    border-radius: 4px;
+  }
+  .form-select:focus {
+    z-index: 0;
+  }
+}
+.create-job .card-body form .form-row .skip {
+  width: 33%;
+  text-align: right;
+}
+.create-job .card .card-footer {
+  margin-top: 8rem;
+  border-top: none;
+  background: #ffffff !important;
+  text-align: center;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+
+  .btn {
+    text-decoration: underline;
+    font-size: 20px;
+    font-weight: 600;
+  }
+  .back-btn {
+    color: #656565;
+  }
+  .nxt-btn {
+    color: #4885ed;
+  }
+}
+.create-job .card-body a {
+  text-decoration: underline;
+  color: #325e9e;
+  font-size: 16px;
+  font-weight: 600;
+}
+.create-job .card-body a:hover {
+  color: #4885ed;
+}

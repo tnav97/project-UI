@@ -1,0 +1,277 @@
+<div class="skill-owner-notify-wrapper">
+  <div class="card header-section">
+    <div class="card-body d-flex justify-content-between align-items-center">
+      <h4 class="cursor" routerLink="/ssdashboard">
+        <i _ngcontent-aao-c361="" title="Go Back" aria-hidden="true" class="fa fa-chevron-left mx-2"></i>View Project Details
+      </h4>
+      <!-- <a [routerLink]="['/ssdashboard']">Create Project</a> -->
+      <div>
+        <button class="btn" [routerLink]="['/ssdashboard/createproject']"><i class="fa fa-plus" aria-hidden="true"></i> Create Project</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="card notify-section">
+    <div class="card-body">
+      <div class="table">
+        <div *ngFor="let list of projectDetails">
+          <div class="row">
+            <div class="card inner-content">
+              <div class="card-body row justify-content-between align-items-center">
+                <div class="d-flex justify-content-between">
+                  <div class="col-11 d-flex">
+                    <div class="col-1">
+                      <th>
+                        <span>Project Id</span>
+                        <p>{{ list.skillSeekerProjectEntity?.id }}</p>
+                      </th>
+                    </div>
+                    <div class="col-11">
+                      <th>
+                        <h4>{{ list.skillSeekerProjectEntity?.title }}</h4>
+                        <p>{{ list.skillSeekerProjectEntity?.summary }}</p>
+                      </th>
+                    </div>
+                  </div>
+                  <div class="col-1 d-flex justify-content-end">
+                    <td>
+                      <div class="d-flex align-items-center mt-2">
+                        <a *ngIf="list.skillSeekerProjectEntity?.title !== 'Default'"
+                          ><img
+                            src="assets/images/edit-icon.svg"
+                            (click)="dialogConfig = 'rateCard'; updateProject(list.skillSeekerProjectEntity)"
+                            class="mx-2"
+                        /></a>
+                        <!-- <a><img src="assets/images/icon-delete.png" (click)="deleteProject(list.skillSeekerProjectEntity?.id )" /></a> -->
+                        <a class="mx-2"><img src="assets/images/icon-add.png" (click)="redirectProject(list.skillSeekerProjectEntity?.id)" /></a>
+                        <!-- <button class=" btn-outline-primary" [routerLink]="['/ssdashboard/createtask']">
+                          <i class="fa fa-plus" aria-hidden="true"></i>
+                        </button> -->
+                      </div>
+                    </td>
+                  </div>
+                </div>
+
+                <hr />
+                <h4 *ngIf="!list?.skillSeekerTasks?.length">Please Add Tasks into the Project</h4>
+                <div *ngIf="list?.skillSeekerTasks?.length" [ngClass]="list?.skillSeekerTasks?.length > 3 ? 'taskcontainer' : ''">
+                  <div *ngFor="let item of list.skillSeekerTasks | sortByTask">
+                    <div class="row">
+                      <div class="col-11 d-flex">
+                        <div class="col-1">
+                          <td>
+                            <p>Task Id</p>
+                            <h3>{{ item.taskId }}</h3>
+                          </td>
+                        </div>
+                        <div class="col-2">
+                          <td>
+                            <p>Task Title</p>
+                            <h4>{{ item.taskTitle }}</h4>
+                          </td>
+                        </div>
+                        <div class="col-9">
+                          <td>
+                            <p>Task Description</p>
+                            <p>{{ item.taskDescription }}</p>
+                          </td>
+                        </div>
+                      </div>
+                      <div class="col-1 d-flex justify-content-end">
+                        <td>
+                          <div class="d-flex align-items-center mt-2">
+                            <a><img src="assets/images/edit-icon.svg" (click)="open(item, list)" class="mx-2" /></a>
+                            <a><img src="assets/images/icon-delete.png" (click)="deleteTask(item.taskId)" /></a>
+                          </div>
+                        </td>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- <div class="pagination-section">
+        <pagination-controls class="pagination" previousLabel="Prev" nextLabel="Next" (pageChange)="pageChanges($event)"></pagination-controls>
+      </div> -->
+  </div>
+</div>
+
+<div class="modal modal-backdrop" tabindex="-1" [ngStyle]="{ display: dialogConfig === 'rateCard' ? 'block' : 'none' }">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header border-0">
+        <h4 class="modal-title txt mb-0 fw-6 dark">Update Project</h4>
+        <button type="button" class="close" (click)="dialogConfig = ''">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="projectForm">
+          <div class="row client-form d-flex flex-column justify-content-center">
+            <div class="form-group offset-md-3 col-md-6">
+              <div class="form-group form-floating input-form">
+                <input type="text" class="form-control" placeholder="Candidate Name" name="CandidateName" formControlName="ProjectTitle" />
+                <label for="email">Project Title *</label>
+              </div>
+              <div class="form-group form-floating form-floating2 mt-3 input-form">
+                <textarea
+                  type="text"
+                  class="form-control text-area"
+                  placeholder="Project Description"
+                  name="projectdescription"
+                  formControlName="projectDescription"></textarea>
+                <label for="email">Project Description *</label>
+              </div>
+              <div class="form-group form-floating mt-3 input-form">
+                <select
+                  class="form-control form-control-lg form-select projectform"
+                  formControlName="ProjectDepartment"
+                  id="floatingSelect"
+                  aria-label="Floating label select example">
+                  <option hidden selected value="">please select</option>
+                  <option *ngFor="let item of departmentData" [value]="item.domainId">
+                    {{ item?.domainValues }}
+                  </option>
+                </select>
+                <label for="floatingSelect">Project Department*</label>
+              </div>
+              <div class="form-group form-floating mt-3 input-form date-form1">
+                <input
+                  type="text"
+                  bsDatepicker
+                  #dp1="bsDatepicker"
+                  onkeydown="return false"
+                  [bsConfig]="{ containerClass: 'theme-dark-blue' }"
+                  class="form-control"
+                  [minDate]="today"
+                  placement="right"
+                  [daysDisabled]="[6, 0]"
+                  (onHidden)="handler()"
+                  id="startDate"
+                  placeholder="mm/dd/yyyy"
+                  name="startDate"
+                  formControlName="startDate" />
+                <label for="startDate">Start Date *</label>
+                <div
+                  (click)="dp1.toggle()"
+                  [attr.aria-expanded]="dp1.isOpen"
+                  type="button"
+                  for="calendar-input"
+                  class="date-range-picker-icon fa fa-calendar"></div>
+                <small
+                  class="text-danger"
+                  *ngIf="
+                    projectForm.errors?.dateValid &&
+                    (projectForm.get('startDate').touched ||
+                      (projectForm.get('startDate').touched && projectForm.get('startDate').value !== '') ||
+                      projectForm.get('startDate').dirty)
+                  "
+                  >Please provide a valid contract start date</small
+                >
+              </div>
+
+              <div class="form-group form-floating mt-3 input-form date-form2">
+                <input
+                  type="text"
+                  bsDatepicker
+                  #dp2="bsDatepicker"
+                  onkeydown="return false"
+                  [minDate]="disabledDates"
+                  placement="right"
+                  [daysDisabled]="[6, 0]"
+                  [bsConfig]="{ containerClass: 'theme-dark-blue' }"
+                  class="form-control"
+                  id="endDate"
+                  placeholder="mm/dd/yyyy"
+                  name="endDate"
+                  formControlName="endDate" />
+                <label for="endDate">End Date *</label>
+                <div
+                  (click)="dp2.toggle()"
+                  [attr.aria-expanded]="dp2.isOpen"
+                  type="button"
+                  for="calendar-input"
+                  class="date-range-picker-icon fa fa-calendar"></div>
+
+                <small
+                  class="text-danger"
+                  *ngIf="
+                    projectForm.errors?.dateValid &&
+                    (projectForm.get('endDate').touched ||
+                      (projectForm.get('endDate').touched && projectForm.get('endDate').value !== '') ||
+                      projectForm.get('endDate').dirty)
+                  "
+                  >Please provide a valid contract end date</small
+                >
+              </div>
+            </div>
+
+            <div class="card-footer create-new-footer mt-5 d-flex justify-content-center">
+              <!-- <button type="submit"  class="btn proceed-btn" >Submit</button> -->
+              <button class="btn" type="submit" [disabled]="!this.projectForm.valid" (click)="onProjectSubmit()">Submit</button>
+            </div>
+          </div>
+        </form>
+        <div class="text-center mt-4"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal modal-backdrop" tabindex="-1" [ngStyle]="{ display: dialogConfig === 'task' ? 'block' : 'none' }">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header border-0">
+        <h4 class="modal-title txt mb-0 fw-6 dark">Update Task</h4>
+        <button type="button" class="close" (click)="dialogConfig = ''">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="text-center mt-4">
+          <form [formGroup]="updatetaskForm">
+            <div class="row client-form d-flex flex-column justify-content-center">
+              <div class="row client-form d-flex flex-column justify-content-center">
+                <div class="form-group offset-md-3 col-md-6">
+                  <!-- <div class="form-floating text-center mb-3 col-sm-4 info-form">
+                  <div class="input-group">
+                    <img src="assets/images/proj-icon.svg" />
+                    <select formControlName="project" class="form-select" aria-label="Default select example1">
+                      <option hidden selected value="">Select Project</option>
+                     
+                      <option *ngFor="let project of projectName" [ngValue]="project">
+                        {{ project.title }}
+                      </option>
+                    </select>
+                  </div>
+                </div> -->
+
+                  <div class="form-group form-floating input-form mt-3">
+                    <input type="text" class="form-control" placeholder="Task Title" name="TaskTitle" formControlName="TaskTitle" />
+                    <label for="title">Task Title *</label>
+                  </div>
+                  <div class="form-group form-floating form-floating2 mt-3 input-form input_textarea">
+                    <textarea
+                      type="text"
+                      class="form-control text-area"
+                      placeholder="Project Description"
+                      name="projectdescription"
+                      formControlName="taskDescription"></textarea>
+                    <label for="project">Task Description *</label>
+                  </div>
+                </div>
+                <div class="card-footer create-new-footer mt-5 d-flex justify-content-center">
+                  <button [disabled]="!this.updatetaskForm.valid" class="btn proceed-btn" (click)="updateTask()">Update</button>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,64 @@
+<div class="card">
+  <div class="row bg-white skill-seeker-dashboard">
+    <div class="col-md-12 skill-seeker-dashboard-right">
+      <div class="top-title d-flex justify-content-between pt-3 pb-2 pr-1">
+        <h4>Recent Updates</h4>
+        <!-- <a (click)="onMarkAllRead()">Mark all as read</a> -->
+      </div>
+      <p>Notifications</p>
+      <div class="row">
+        <div class="col-md-12" *ngFor="let list of sortedData; let i = index; odd as isOdd; even as isEven">
+          <div class="card">
+            <div class="card-body" [ngClass]="{ even: isEven, odd: isOdd }">
+              <div class="row">
+                <div class="col-11">
+                  <h5>{{ list?.title }}</h5>
+                </div>
+                <div *ngIf="!list.markAsRead" class="col-1">
+                  <i
+                    title="Mark as Read"
+                    *ngIf="list.contentId !== 2 && list.contentId !== 10"
+                    (click)="onMarkRead(list)"
+                    class="fa fa-circle fa-xs markRead"></i>
+                </div>
+              </div>
+
+              <p>{{ list?.content }}</p>
+            </div>
+            <div *ngIf="(list.contentId == 2 || list.contentId == 4 || list.contentId == 6) && !list.markAsRead">
+              <h5 class="slot-title">Select any one slot</h5>
+              <div class="card-btn d-flex align-items-center">
+                <button
+                  class="btn accept-btn"
+                  (click)="onDateConfirm(list, list?.date1)"
+                  *ngIf="list.contentId == 2 || list.contentId == 4 || list.contentId == 6">
+                  {{ list?.date1 | date : 'medium' }}
+                </button>
+                <button
+                  class="btn accept-btn"
+                  (click)="onDateConfirm(list, list?.date2)"
+                  *ngIf="list.contentId == 2 || list.contentId == 4 || list.contentId == 6">
+                  {{ list?.date2 | date : 'medium' }}
+                </button>
+                <button
+                  class="btn accept-btn"
+                  (click)="onDateConfirm(list, list?.date3)"
+                  *ngIf="list.contentId == 2 || list.contentId == 4 || list.contentId == 6">
+                  {{ list?.date3 | date : 'medium' }}
+                </button>
+              </div>
+            </div>
+            <div
+              class="card-btn d-flex align-items-center mt-2"
+              *ngIf="(list.contentId == 2 || list.contentId == 4 || list.contentId == 6 || list.contentId == 10) && !list.markAsRead">
+              <a *ngIf="list.contentId !== 2 && list.contentId !== 4 && list.contentId !== 6" (click)="onAccept(list)" class="btn accept-btn"
+                >Accept</a
+              >
+              <a (click)="onReject(list)" class="btn btn-request ml-3">Request for More Slots</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

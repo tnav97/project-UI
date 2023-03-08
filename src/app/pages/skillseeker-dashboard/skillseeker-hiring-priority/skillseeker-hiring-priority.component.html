@@ -1,0 +1,50 @@
+<div class="container">
+  <div class="row create-job">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header d-flex justify-content-between align-items-center">
+          <h4 class="mb-0">Create New Job</h4>
+          <a routerLink="createjob">Cancel</a>
+        </div>
+        <div class="card-body pt-5 pb-5">
+          <div class="text-center basic-info">
+            <p>Almost done!<br />Few other relevent details.</p>
+            <h2 class="pt-2">What is the hiring priority?</h2>
+            <div class="experience-category d-flex justify-content-center mt-1">
+              <button class="btn m-2">Low</button>
+              <button class="btn m-2">Medium</button>
+              <button class="btn active m-2">High</button>
+            </div>
+          </div>
+          <div class="experience-year pt-3 text-center">
+            <h2>Number of positions available</h2>
+            <form>
+              <div class="form-row d-flex justify-content-center">
+                <div class="value-button" id="decrease" value="Decrease Value">-</div>
+                <input type="number" id="number" value="0" />
+                <div class="value-button" id="increase" value="Increase Value">+</div>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="card-footer text-center">
+          <div class="d-flex align-items-center">
+            <div class="d-flex">
+              <img src="assets/images/left-arrow.svg" alt="login" class="back-arr" />
+              <span class="back-txt">
+                <button class="btn back-btn">Back</button>
+              </span>
+            </div>
+
+            <div class="d-flex">
+              <span class="nxt-txt">
+                <button class="btn nxt-btn">Next</button>
+              </span>
+              <img src="assets/images/right-arrow.svg" alt="login" class="next-arr" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

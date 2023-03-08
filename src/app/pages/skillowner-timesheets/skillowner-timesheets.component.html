@@ -1,0 +1,310 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="card create-agreement-section">
+      <div class="card-header create-agreement-header d-flex justify-content-between align-items-center">
+        <h4 class="mb-0">Timesheets</h4>
+        <button class="btn cancel-btn" routerLink="/sodashboard">Cancel</button>
+      </div>
+      <ng-container [ngTemplateOutlet]="stepOne" *ngIf="step === 1"></ng-container>
+      <ng-container [ngTemplateOutlet]="stepTwo" *ngIf="step === 2"></ng-container>
+      <ng-container [ngTemplateOutlet]="stepThree" *ngIf="step === 3"></ng-container>
+      <ng-container [ngTemplateOutlet]="stepFour" *ngIf="step === 4"></ng-container>
+    </div>
+  </div>
+</div>
+
+<ng-template #stepOne>
+  <div class="card-body create-agreement-body pb-5">
+    <div class="mas-bg-image text-center">
+      <img src="assets/images/timesheet-img.svg" class="pt-5" alt="Create msa bg image" />
+      <p class="pt-3"></p>
+      <button (click)="next(2)" class="btn create-msa-btn mt-3"><i class="fa fa-plus" aria-hidden="true"></i> Create Timesheet</button>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #stepTwo>
+  <div class="row d-flex justify-content-center create-timesheet align-items-center">
+    <div class="card col-md-4 m-3" (click)="next(3)" style="width: 18rem; height: 10rem">
+      <div class="card-body text-center d-flex flex-column align-items-center mt-3">
+        <a class="add-icon"><i class="fa fa-plus" aria-hidden="true"></i></a>
+        <a class="add-link pt-3">Create a<br />New Log</a>
+      </div>
+    </div>
+    <div class="card col-md-4 m-3" (click)="copyLast()" style="width: 18rem; height: 10rem">
+      <div class="card-body text-center d-flex flex-column align-items-center mt-3">
+        <a class="add-icon" id="add-icon"><i class="fa fa-file" aria-hidden="true"></i></a>
+        <a class="add-link pt-3">Copy from<br />Last Week</a>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #stepThree>
+  <div class="card-body timesheet-body">
+    <div class="row">
+      <div class="col-12 col-md-4 col-lg-4 col-xl-3 timesheet-tab-left">
+        <h5 class="txt fw-6 primary-dark fs-16 mb-3">Projects</h5>
+        <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+          <button
+            class="nav-link"
+            [ngClass]="n?.id === selections?.project ? 'active' : ''"
+            type="button"
+            role="tab"
+            *ngFor="let n of projects"
+            (click)="itemSelection(n, 'project')">
+            {{ n?.title }}
+          </button>
+        </div>
+      </div>
+
+      <div class="col-12 col-md-4 col-lg-4 col-xl-3 timesheet-tab-info task-tab-content">
+        <div class="d-flex justify-content-between mb-3">
+          <h5 class="txt fw-6 primary-dark fs-16 truncate mb-0">Tasks</h5>
+          <button class="btn btn-link py-0 border-0" *ngIf="selections?.project" (click)="dialogConfig.type = 'addTask'; dialogConfig.visible = true">
+            <i class="fa fa-plus" aria-hidden="true"></i>
+          </button>
+        </div>
+
+        <div class="tab-content d-flex align-items-center mt-2" *ngIf="tasks[selections?.project]?.length === 0 || !tasks[selections?.project]">
+          <p>Select a project to<br />list the associated tasks</p>
+        </div>
+
+        <div class="timesheet-tab-left" *ngIf="tasks[selections?.project]?.length > 0">
+          <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+            <button
+              class="nav-link"
+              [ngClass]="n?.taskId === selections?.task ? 'active' : ''"
+              type="button"
+              role="tab"
+              *ngFor="let n of tasks[selections?.project]"
+              (click)="itemSelection(n, 'task')">
+              {{ n?.taskTitle }}
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-md-4 col-lg-4 col-xl-6">
+        <h5 class="txt fw-6 primary-dark fs-16 mb-3">Task Detail</h5>
+        <p *ngIf="selections?.task">{{ taskInfo?.taskDescription }}</p>
+      </div>
+    </div>
+  </div>
+  <div class="card-footer create-agreement-footer mt-5 d-flex justify-content-center">
+    <button (click)="next(2)" class="btn back-btn"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</button>
+    <button (click)="createSheet()" class="btn preview-btn">Create Timesheet <i class="fa fa-arrow-right" aria-hidden="true"></i></button>
+  </div>
+</ng-template>
+
+<ng-template #stepFour>
+  <div class="card-body p-3">
+    <div class="row">
+      <div class="col-md-12 col-lg-12 col-xl-10 offset-xl-1">
+        <div class="mb-3">
+          <h5 class="txt primary bold fs-18">Add Time logs</h5>
+        </div>
+        <div class="row">
+          <div class="col-xs-12 col-12 col-md-4 col-lg-5 form-group mb-3">
+            <div class="input-group input-group-lg mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text pointer" (click)="weekChange('previous')">
+                  <i class="fa fa-angle-left" aria-hidden="true"></i>
+                </span>
+              </div>
+              <input
+                type="text"
+                placeholder="MM/DD/YYYY"
+                class="form-control"
+                [(ngModel)]="selectedWeek"
+                [maxDate]="maxDate"
+                bsDatepicker
+                [bsConfig]="bgConfig" />
+              <div class="input-group-append">
+                <span class="input-group-text pointer" (click)="weekChange('next')">
+                  <i class="fa fa-angle-right" aria-hidden="true"></i>
+                </span>
+              </div>
+            </div>
+            <div class="form-group form-check ms-4">
+              <input type="checkbox" [checked]="weekEnd" [(ngModel)]="weekEnd" class="form-check-input" />
+              <label class="form-check-label">Show weekends</label>
+            </div>
+          </div>
+        </div>
+
+        <table class="table table-borderless mb-3">
+          <thead>
+            <tr>
+              <td></td>
+              <td *ngFor="let n of weekOptions">
+                <ng-container *ngIf="n?.weekEnd && weekEnd" [ngTemplateOutlet]="weekendTemplate"></ng-container>
+                <ng-container *ngIf="!n?.weekEnd" [ngTemplateOutlet]="weekTemplate"></ng-container>
+
+                <ng-template #weekendTemplate>
+                  <div class="d-block text-center">
+                    <p class="mb-1 txt text-uppercase bold primary fs-14">{{ n?.day }}</p>
+                    <p class="mb-0 txt text-uppercase dark sm">{{ n?.date | date : 'dd' }}</p>
+                  </div>
+                </ng-template>
+
+                <ng-template #weekTemplate>
+                  <div class="d-block text-center">
+                    <p class="mb-1 txt text-uppercase bold primary fs-14">{{ n?.day }}</p>
+                    <p class="mb-0 txt text-uppercase dark sm">{{ n?.date | date : 'dd' }}</p>
+                  </div>
+                </ng-template>
+              </td>
+            </tr>
+          </thead>
+          <tbody>
+            <ng-container *ngFor="let n of projects">
+              <tr class="idle primary">
+                <td colspan="9">
+                  <p class="txt fs-16 bold dark mb-0">{{ n?.title }}</p>
+                </td>
+              </tr>
+              <tr *ngFor="let j of n?.tasks">
+                <td>
+                  <p class="txt fs-14 mb-0">{{ j?.title }}</p>
+                  <p class="txt sm mb-0 text-truncate">{{ j?.description }}</p>
+                </td>
+
+                <td *ngFor="let k of j?.duration; let ki = index">
+                  <input
+                    type="text"
+                    class="form-control mxw-7x"
+                    (change)="durationChange($event, k, ki)"
+                    (keypress)="onlyDuration($event)"
+                    [value]="k?.duration"
+                    *ngIf="k?.weekEnd && weekEnd" />
+
+                  <input
+                    type="text"
+                    class="form-control mxw-7x"
+                    (change)="durationChange($event, k, ki)"
+                    (keypress)="onlyDuration($event)"
+                    [value]="k?.duration"
+                    *ngIf="!k?.weekEnd" />
+                </td>
+              </tr>
+            </ng-container>
+            <tr class="idle grey">
+              <td>
+                <p class="txt bold dark mb-0 fs-16">Total hours</p>
+              </td>
+              <td *ngFor="let n of total; let i = index">
+                <ng-container *ngIf="n?.weekEnd && weekEnd">
+                  <div class="text-center">
+                    <p class="txt bold mb-0 fs-16">{{ _total[i] }}</p>
+                  </div>
+                </ng-container>
+                <ng-container *ngIf="!n?.weekEnd">
+                  <div class="text-center">
+                    <p class="txt bold mb-0 fs-16">{{ _total[i] }}</p>
+                  </div>
+                </ng-container>
+              </td>
+              <td class="text-center">
+                <p class="txt bold primary mb-0 fs-16">{{ getTotal(_total) }}</p>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="acg">
+          <button class="btn btn-outline-primary" (click)="dialogConfig.type = 'addTask'; dialogConfig.visible = true">
+            <i class="fa fa-plus" aria-hidden="true"></i>&nbsp;&nbsp;Add Task
+          </button>
+          <button class="btn btn-outline-primary" (click)="fileSelection()">
+            <i class="fa fa-plus" aria-hidden="true"></i>&nbsp;&nbsp;Add attachment
+          </button>
+          <!-- <button class="btn btn-outline-primary"><i class="fa fa-plus" aria-hidden="true"></i>&nbsp;&nbsp;Add Another Project</button> -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card-footer create-agreement-footer mt-5 d-flex justify-content-center">
+    <button (click)="next(3)" class="btn back-btn"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</button>
+    <button (click)="submitSheet()" class="btn preview-btn">Submit Timesheet <i class="fa fa-arrow-right" aria-hidden="true"></i></button>
+  </div>
+</ng-template>
+
+<input type="file" hidden #fileSelect accept="image/*">
+
+<div class="modal modal-backdrop" tabindex="-1" aria-hidden="true" [ngStyle]="{ display: dialogConfig?.visible ? 'block' : 'none' }">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <ng-container [ngTemplateOutlet]="successTemplate" *ngIf="dialogConfig?.type === 'success'"></ng-container>
+      <ng-container [ngTemplateOutlet]="addTaskTemplate" *ngIf="dialogConfig?.type === 'addTask'"></ng-container>
+    </div>
+  </div>
+</div>
+
+<ng-template #successTemplate>
+  <div class="modal-header border-0">
+    <button
+      type="button"
+      class="btn-close"
+      data-bs-dismiss="modal"
+      aria-label="Close"
+      (click)="dialogConfig.visible = false; dialogConfig.type = ''"></button>
+  </div>
+  <div class="modal-body">
+    <div class="text-center">
+      <div class="mb-4">
+        <i class="fa fa-check fa-4x fa-outline success" aria-hidden="true"></i>
+      </div>
+      <h5 class="txt primary fs-20">Timesheet submitted successfully.</h5>
+      <p class="txt dark fs-14">
+        Your timesheet for {{ dialogConfig?.startDate | date : 'MMM d, y' }} - {{ dialogConfig?.endDate | date : 'MMM d, y' }} has been sent for
+        approval. You will be notified on the further updates effective.
+      </p>
+    </div>
+  </div>
+  <div class="p-3 border-0 text-center">
+    <a href="javascript:void(0)" class="a-crawl danger" (click)="dialogConfig.visible = false; dialogConfig.type = ''">Close</a>
+  </div>
+</ng-template>
+
+<ng-template #addTaskTemplate>
+  <div class="modal-header border-0">
+    <h5 class="txt mb-0 fw-6"></h5>
+    <button
+      type="button"
+      class="btn-close"
+      data-bs-dismiss="modal"
+      aria-label="Close"
+      (click)="dialogConfig.visible = false; dialogConfig.type = ''"></button>
+  </div>
+  <div class="modal-body">
+    <div class="text-center">
+      <h5 class="txt primary fs-20 mb-4">Select task</h5>
+    </div>
+    <form class="form" [formGroup]="formTask">
+      <div class="form-floating mb-3">
+        <select class="form-select" (change)="taskSelection($event)">
+          <option selected hidden [value]="null">Select the task</option>
+          <option [value]="n?.taskId" *ngFor="let n of projects[0]?._tasks">{{ n?.taskTitle }}</option>
+        </select>
+        <label>Task</label>
+      </div>
+      <div class="form-label-group fxf lg" *ngIf="selfTask">
+        <input class="form-control" placeholder="Task Title" formControlName="task" />
+        <label>Task Title</label>
+      </div>
+      <div class="form-label-group fxf lg">
+        <textarea class="form-control" placeholder="Task Description" row="2" formControlName="description"></textarea>
+        <label>Task Description</label>
+      </div>
+    </form>
+  </div>
+  <div class="p-3 border-0 text-center">
+    <!-- selfTask ? createTask() : addTask() -->
+    <button class="btn btn-primary" [disabled]="!formTask?.valid" (click)="createTask()">
+      Add
+      <span><i class="fa fa-arrow-right" aria-hidden="true"></i></span>
+    </button>
+  </div>
+</ng-template>

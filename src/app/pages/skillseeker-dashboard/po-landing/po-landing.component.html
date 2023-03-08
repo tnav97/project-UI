@@ -1,0 +1,188 @@
+<div class="row card msa-process-section">
+  <div class="col-md-12 card-header d-flex justify-content-between align-items-center">
+    <h4 class="mb-0">Purchase Orders</h4>
+    <!-- <button class="btn" routerLink="/ssdashboard/po-process">+ Create New</button>         -->
+  </div>
+
+  <div class="card-body msa-info">
+    <!-- <form [formGroup]="form"> -->
+    <div class="form-row d-flex align-items-center">
+      <div class="col-md-4 search-input">
+        <input type="text" [(ngModel)]="searchfilter" class="form-control" id="inlineFormInputName" placeholder="search in contracts..." />
+      </div>
+      <div class="col-md-8 top-menu-icon d-flex justify-content-end">
+        <div class="dropdown">
+          <button type="button" class="btn dropdown-info" data-toggle="dropdown" data-display="static" aria-expanded="false">
+            <img class="filter-icon" src="assets/images/icon-filter.svg" />
+          </button>
+          <div class="dropdown-menu dropdown-menu-right">
+            <div class="card filter-info">
+              <div class="card-header filter-header d-flex justify-content-between align-items-center">
+                <h5 class="mb-0">Filter by</h5>
+                <a (click)="resetFilter()" class="reset-btn d-flex"><img src="assets/images/icon-reset.svg" /> Reset</a>
+              </div>
+              <div class="card-body filter-body">
+                <div class="row">
+                  <div class="col-4">
+                    <div class="nav flex-column filter-left nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                      <button
+                        class="nav-link active"
+                        id="v-pills-home-tab"
+                        data-toggle="pill"
+                        data-target="#v-pills-home"
+                        type="button"
+                        role="tab"
+                        aria-controls="v-pills-home"
+                        aria-selected="true">
+                        Status
+                      </button>
+                      <button
+                        class="nav-link"
+                        id="v-pills-profile-tab"
+                        data-toggle="pill"
+                        data-target="#v-pills-profile"
+                        type="button"
+                        role="tab"
+                        aria-controls="v-pills-profile"
+                        aria-selected="false">
+                        Project
+                      </button>
+                      <button
+                        class="nav-link"
+                        id="v-pills-messages-tab"
+                        data-toggle="pill"
+                        data-target="#v-pills-messages"
+                        type="button"
+                        role="tab"
+                        aria-controls="v-pills-messages"
+                        aria-selected="false">
+                        Department
+                      </button>
+                      <button
+                        class="nav-link"
+                        id="v-pills-settings-tab"
+                        data-toggle="pill"
+                        data-target="#v-pills-settings"
+                        type="button"
+                        role="tab"
+                        aria-controls="v-pills-settings"
+                        aria-selected="false">
+                        Date Signed
+                      </button>
+                    </div>
+                  </div>
+                  <div class="col-8">
+                    <div class="tab-content filter-content-right" id="v-pills-tabContent">
+                      <div
+                        class="tab-pane fade filter-content-right-info show active"
+                        id="v-pills-home"
+                        role="tabpanel"
+                        aria-labelledby="v-pills-home-tab">
+                        <div class="d-flex info" *ngFor="let data of statuses">
+                          <input type="checkbox" aria-label="Checkbox for following text input" />
+                          <p class="mb-0">{{ data.value }}</p>
+                        </div>
+                      </div>
+
+                      <div
+                        class="tab-pane nav fade filter-content-right-info project-filter-info"
+                        id="v-pills-profile"
+                        role="tabpanel"
+                        aria-labelledby="v-pills-profile-tab">
+                        <div class="d-flex info">
+                          <input type="text" aria-label="input" [(ngModel)]="search" placeholder="search projects,..." />
+                        </div>
+                        <a class="nav-link active" *ngFor="let list of poDetails | filter : searchfilter | search : search">{{
+                          list.skillSeekerProjectName
+                        }}</a>
+                      </div>
+
+                      <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
+                        <div class="d-flex info" *ngFor="let data of departments">
+                          <input
+                            type="checkbox"
+                            (change)="getAnswers(data, $event.target)"
+                            value="data"
+                            aria-label="Checkbox for following text input" />
+                          <p class="mb-0">{{ data }}</p>
+                        </div>
+                      </div>
+
+                      <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
+                        <div class="input-group date" data-provide="datepicker">
+                          <mat-form-field appearance="outline">
+                            <mat-label>Choose Date Range</mat-label>
+                            <mat-date-range-input [rangePicker]="picker" [formGroup]="dateRange">
+                              <input matStartDate formControlName="start" placeholder="Start Date" />
+                              <input matEndDate formControlName="end" placeholder="End Date" />
+                            </mat-date-range-input>
+                            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                            <mat-date-range-picker #picker></mat-date-range-picker>
+                          </mat-form-field>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card-footer filter-footer bg-white text-end">
+                <button class="btn filter-btn" (click)="getApply()">Apply Filter(s)</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <img class="menu-icon" src="assets/images/icon-menu.svg" />
+      </div>
+    </div>
+    <!-- </form>   -->
+
+    <div class="card msa-detail mt-3">
+      <div
+        class="row card-body d-flex justify-content-between align-items-center"
+        *ngFor="let list of poDetails | filter : searchfilter | search : search | reverse">
+        <div class="col-md-1">
+          <input type="checkbox" aria-label="Checkbox for following text input" />
+        </div>
+
+        <div class="col-md-2 d-flex align-items-center">
+          <div>
+            <img class="avatar" [src]="list?.image" />
+          </div>
+          <div class="project">
+            <p class="mb-0">Name</p>
+            <h5 class="mb-0">{{ list.ownerName }}</h5>
+          </div>
+        </div>
+
+        <div class="col-md-2 project">
+          <p class="mb-0">Position</p>
+          <h5 class="mb-0">{{ list.role }}</h5>
+        </div>
+
+        <div class="col-md-2 project">
+          <p class="mb-0">Project</p>
+          <h5 class="mb-0">{{ list.skillSeekerProjectName }}</h5>
+        </div>
+
+        <div class="col-md-2 department">
+          <p class="mb-0">Department</p>
+          <h5 class="mb-0">{{ list.skillSeekerProjectDept }}</h5>
+        </div>
+
+        <div class="col-md-1 department align">
+          <a class="mx-2" title="{{ list.email }}" data-toggle="tooltip" data-placement="top"><img src="assets/images/icon-message.svg" /></a>
+          <a title="{{ list.phoneNumber }}"><img src="assets/images/icon-phone.svg" /></a>
+        </div>
+
+        <div class="col-md-1">
+          <span class="badge active-badge">{{ list.status }}</span>
+        </div>
+
+        <div class="col-md-1">
+          <a class="mx-2" href="#"><img src="assets/images/preview.svg" /></a>
+          <img class="menu-icon" src="assets/images/icon-more.svg" />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,75 @@
+button {
+  &.btn {
+    font-weight: 600;
+    cursor: pointer;
+    &:focus,
+    &.focus,
+    &.active:focus,
+    &:active:focus,
+    &.active.focus {
+      outline: none;
+    }
+  }
+  &.fxc-lg {
+    padding-top: 0.9rem;
+    padding-bottom: 0.9rem;
+  }
+}
+
+@mixin styleButton($color, $borderColor) {
+  background: $color;
+  border-color: $borderColor;
+}
+
+@mixin buttonColor($color, $borderColor) {
+  @include styleButton($color, $borderColor);
+}
+
+@mixin buttonFocus($color) {
+  background-color: $color;
+  box-shadow: none;
+}
+
+button.btn.btn-primary {
+  @include buttonColor(var(--primary-hex), var(--primary-hex));
+  &:not(:disabled),
+  &:not(.disabled) {
+    &:active,
+    &.active,
+    &.target,
+    &:target {
+      @include styleButton(var(--primary-hex), var(--primary-hex));
+      &:focus {
+        @include buttonFocus(var(--primary-hex));
+      }
+    }
+  }
+  &:focus {
+    @include buttonFocus(var(--primary-hex));
+  }
+}
+
+button.btn.btn-primary.dark {
+  @include buttonColor(var(--primary-hex-dark), var(--primary-hex-dark));
+  &:not(:disabled),
+  &:not(.disabled) {
+    &:active,
+    &.active,
+    &.target,
+    &:target {
+      @include styleButton(var(--primary-hex-dark), var(--primary-hex-dark));
+      &:focus {
+        @include buttonFocus(var(--primary-hex-dark));
+      }
+    }
+  }
+  &:focus {
+    @include buttonFocus(var(--primary-hex-dark));
+  }
+}
+
+button.close {
+  padding: 0;
+  background-color: transparent;
+  border: 0;
+}

@@ -1,0 +1,371 @@
+<!-- <app-skillpartner-list-item></app-skillpartner-list-item> -->
+<div class="row card msa-process-section">
+  <div class="col-md-12 card-header d-flex justify-content-between align-items-center">
+    <h4 class="mb-0">Contracts</h4>
+    <!-- <button class="btn" routerLink="/ssdashboard/po-process">+ Create New</button>         -->
+  </div>
+
+  <div class="card-body msa-info">
+    <!-- <form [formGroup]="form"> -->
+    <div class="form-row d-flex align-items-center">
+      <div class="col-md-4 search-input">
+        <input type="text" class="form-control" id="inlineFormInputName" placeholder="Search in Contracts..." [(ngModel)]="search" />
+      </div>
+      <div class="col-md-8 top-menu-icon d-flex justify-content-end">
+        <div class="dropdown">
+          <button type="button" class="btn dropdown-info" data-toggle="dropdown" data-display="static" aria-expanded="false">
+            <img class="filter-icon" src="assets/images/icon-filter.svg" />
+          </button>
+          <div class="dropdown-menu dropdown-menu-right">
+            <div class="card filter-info">
+              <div class="card-header filter-header d-flex justify-content-between align-items-center">
+                <h5 class="mb-0">Filter by</h5>
+                <a (click)="resetFilter()" class="reset-btn d-flex"><img src="assets/images/icon-reset.svg" /> Reset</a>
+              </div>
+              <div class="card-body filter-body">
+                <div class="row">
+                  <div class="col-4">
+                    <div class="nav flex-column filter-left nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                      <button
+                        class="nav-link active"
+                        id="v-pills-home-tab"
+                        data-toggle="pill"
+                        data-target="#v-pills-home"
+                        type="button"
+                        role="tab"
+                        aria-controls="v-pills-home"
+                        aria-selected="true">
+                        Status
+                      </button>
+                      <button
+                        class="nav-link"
+                        id="v-pills-profile-tab"
+                        data-toggle="pill"
+                        data-target="#v-pills-profile"
+                        type="button"
+                        role="tab"
+                        aria-controls="v-pills-profile"
+                        aria-selected="false">
+                        Vendor
+                      </button>
+                      <button
+                        class="nav-link"
+                        id="v-pills-messages-tab"
+                        data-toggle="pill"
+                        data-target="#v-pills-messages"
+                        type="button"
+                        role="tab"
+                        aria-controls="v-pills-messages"
+                        aria-selected="false">
+                        Position
+                      </button>
+                      <button
+                        class="nav-link"
+                        id="v-pills-settings-tab"
+                        data-toggle="pill"
+                        data-target="#v-pills-settings"
+                        type="button"
+                        role="tab"
+                        aria-controls="v-pills-settings"
+                        aria-selected="false">
+                        Date Signed
+                      </button>
+                    </div>
+                  </div>
+                  <div class="col-8">
+                    <div class="tab-content filter-content-right" id="v-pills-tabContent">
+                      <div
+                        class="tab-pane fade filter-content-right-info show active"
+                        id="v-pills-home"
+                        role="tabpanel"
+                        aria-labelledby="v-pills-home-tab">
+                        <div class="d-flex info" *ngFor="let data of statuses">
+                          <input type="checkbox" aria-label="Checkbox for following text input" />
+                          <p class="mb-0">{{ data.value }}</p>
+                        </div>
+                      </div>
+
+                      <div
+                        class="tab-pane nav fade filter-content-right-info project-filter-info"
+                        id="v-pills-profile"
+                        role="tabpanel"
+                        aria-labelledby="v-pills-profile-tab">
+                        <div class="d-flex info">
+                          <input type="text" aria-label="input" placeholder="search vendors,..." [(ngModel)]="search1" />
+                        </div>
+                        <a class="nav-link active" *ngFor="let list of contractDetails | getContractDetails : search1">{{ list.vendor }}</a>
+                      </div>
+
+                      <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
+                        <div class="d-flex info" *ngFor="let data of vendors">
+                          <input
+                            type="checkbox"
+                            (change)="getAnswers(data, $event.target)"
+                            value="data"
+                            aria-label="Checkbox for following text input" />
+                          <p class="mb-0">{{ data }}</p>
+                        </div>
+                      </div>
+
+                      <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
+                        <div class="input-group date" data-provide="datepicker">
+                          <mat-form-field appearance="outline">
+                            <mat-label>Choose Date Range</mat-label>
+                            <mat-date-range-input [rangePicker]="picker">
+                              <input matStartDate placeholder="Start Date" />
+                              <input matEndDate placeholder="End Date" />
+                            </mat-date-range-input>
+                            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                            <mat-date-range-picker #picker></mat-date-range-picker>
+                          </mat-form-field>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card-footer filter-footer bg-white text-end">
+                <button class="btn filter-btn" (click)="getApply()">Apply Filter(s)</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <img class="menu-icon" src="assets/images/icon-menu.svg" data-toggle="modal" data-target="#myModal2" />
+      </div>
+    </div>
+    <!-- </form>   -->
+    <div *ngFor="let list of contractDetails | search : search">
+      <div class="card msa-detail mt-3" *ngIf="list !== null">
+        <div class="row card-body d-flex align-items-center">
+          <!-- <div class="col-xl-1 col-lg-1 col-md-3 col-sm-1 col-1">
+            <input type="checkbox" aria-label="Checkbox for following text input" />
+          </div> -->
+
+          <div class="col-xl-2 col-lg-2 col-md-3 col-sm-11 col-11 d-flex align-items-center firstCheck">
+            <div>
+              <img class="avatar" [src]="list?.image" />
+            </div>
+            <div class="name">
+              <p class="mb-0">Name</p>
+              <h5 class="mb-0">{{ list?.name }}</h5>
+            </div>
+          </div>
+
+          <div class="col-xl-1 col-lg-1 col-md-3 col-sm-9 col-9 messagePhone">
+            <a href="#" title="{{ list?.ownerMailId }}" data-toggle="tooltip" data-placement="top"><img src="assets/images/icon-message.svg" /></a>
+            <a href="#" title="{{ list?.ownerContactNumber }}"><img src="assets/images/icon-phone.svg" /></a>
+          </div>
+
+          <div class="col-xl-2 col-lg-2 col-md-6 col-sm-12 col-12 position">
+            <p class="mb-0">Position</p>
+            <h5 class="mb-0">{{ list?.position }}</h5>
+          </div>
+
+          <div class="col-xl-1 col-lg-1 col-md-2 col-sm-2 col-2 vendor">
+            <p class="mb-0">Seeker</p>
+            <h5 class="mb-0">{{ list?.seekerName }}</h5>
+          </div>
+
+          <div class="col-xl-1 col-lg-1 col-md-3 col-sm-9 col-9 messagePhone">
+            <a href="#" title="{{ list?.seekerContactEmail }}" data-toggle="tooltip" data-placement="top"><img src="assets/images/icon-message.svg" /></a>
+            <a href="#" title="{{ list?.seekerContactPhone }}"><img src="assets/images/icon-phone.svg" /></a>
+          </div>
+
+          <div class="col-xl-2 col-lg-2 col-md-6 col-sm-10 col-10 status row">
+            <div class="col-12" style="text-align: center">
+              <p *ngIf="this.contractStatus === ''" class="mb-0">Status</p>
+              <!-- <p *ngIf="this.contractStatus === 'MSA'" class="mb-0">MSA Status</p>
+              <p *ngIf="this.contractStatus === 'SOW'" class="mb-0">SOW Status</p>
+              <p *ngIf="this.contractStatus === 'PO'" class="mb-0">PO Status</p> -->
+            </div>
+            <div class="col-12 d-flex" style="justify-content: center">
+              <!-- <div class="input-group-prepend mx-2" (click)="statusChange('previous', list)">
+                <span class="input-group-text pointer">
+                  <i class="fa fa-angle-left" aria-hidden="true"></i>
+                </span>
+              </div> -->
+              <span
+                [ngClass]="
+                  list?.status == 'PO Released'
+                    ? 'badge active-badge'
+                    : list?.status == 'SOW Released'
+                    ? 'badge active-badge'
+                    : list?.status == 'MSA Released'
+                    ? 'badge active-badge'
+                    : list?.status == 'On-Boarded'
+                    ? 'badge active-badge'
+                    : 'badge correction-badge'
+                "
+                *ngIf="this.contractStatus === ''"
+                >{{ list?.status }}</span
+              >
+              <!-- <span
+                *ngIf="this.contractStatus === 'MSA' && list?.msaStatus"
+                [ngClass]="
+                  list?.msaStatus == 'MSA Released'
+                    ? 'badge active-badge'
+                    : list?.msaStatus == 'MSA Rejected'
+                    ? 'badge expired-badge'
+                    : 'badge correction-badge'
+                "
+                >{{ list?.msaStatus }}</span
+              >
+              <span
+                *ngIf="this.contractStatus === 'SOW' && list?.sowStatus"
+                [ngClass]="
+                  list?.sowStatus == 'SOW Released'
+                    ? 'badge active-badge'
+                    : list?.sowStatus == 'SOW Rejected'
+                    ? 'badge expired-badge'
+                    : 'badge correction-badge'
+                "
+                >{{ list?.sowStatus }}</span
+              >
+              <span
+                *ngIf="this.contractStatus === 'PO' && list?.poStatus"
+                [ngClass]="
+                  list?.poStatus == 'PO Released'
+                    ? 'badge active-badge'
+                    : list?.poStatus == 'PO Rejected'
+                    ? 'badge expired-badge'
+                    : 'badge correction-badge'
+                "
+                >{{ list?.poStatus }}</span
+              >
+              <span *ngIf="this.contractStatus === 'MSA' && !list?.msaStatus" [ngClass]="'badge white-badge'">Not Available</span>
+              <span *ngIf="this.contractStatus === 'SOW' && !list?.sowStatus" [ngClass]="'badge white-badge'">Not Available</span>
+              <span *ngIf="this.contractStatus === 'PO' && !list?.poStatus" [ngClass]="'badge white-badge'">Not Available</span>
+              <div class="input-group-append mx-2" (click)="statusChange('next', list)">
+                <span class="input-group-text pointer">
+                  <i class="fa fa-angle-right" aria-hidden="true"></i>
+                </span>
+              </div> -->
+            </div>
+          </div>
+
+          <div class="col-xl-2 col-lg-2 col-md-3 col-sm-12 col-12 contractDate" style="text-align: center">
+            <p *ngIf="!list?.contractDurationStartDate && list?.onBoarding" class="mb-0">Onboarding</p>
+            <p *ngIf="!list?.onBoarding && !list?.expiresOn && !list?.contractDurationStartDate" class="mb-0">Processed On</p>
+            <p *ngIf="list?.onBoarding && list?.contractDurationStartDate && !list?.expiresOn" class="mb-0">Contract Duration</p>
+            <p *ngIf="list?.expiresOn" class="mb-0">Expires On</p>
+            <h5 *ngIf="!list?.contractDurationStartDate && list?.onBoarding" class="mb-0">
+              {{ list?.onBoarding | date : 'shortDate' }}
+            </h5>
+            <h5 *ngIf="list?.onBoarding && list?.contractDurationStartDate && !list?.expiresOn" class="mb-0">
+              {{ list?.contractDurationStartDate | date : 'shortDate' }}-{{ list?.contractDurationEndDate | date : 'shortDate' }}
+            </h5>
+            <h5 *ngIf="!list?.onBoarding && !list?.expiresOn && !list?.contractDurationStartDate" class="mb-0">Not Available</h5>
+            <h5 *ngIf="list?.expiresOn" class="mb-0">{{ list?.expiresOn | date : 'shortDate' }}</h5>
+          </div>
+
+          <div class="col-xl-1 col-lg-1 col-md-9 col-sm-12 col-12 preview" style="display: flex">
+            <div>
+              <img src="assets/images/preview.svg" class="view" (click)="onSelect(list); icon()" />
+            </div>
+
+            <button
+              *ngIf="
+                !(
+                  (list?.msaStatus && list?.msaStatus === 'MSA Send') ||
+                  (list?.sowStatus && list?.sowStatus === 'SOW Initiated') ||
+                  (list?.poStatus && list?.poStatus === 'PO Initiated')
+                )
+              "
+              class="btn"
+              type="button">
+              <img src="assets/images/icon-more.svg" />
+            </button>
+
+            <div
+              *ngIf="
+                (list?.msaStatus && list?.msaStatus === 'MSA Send') ||
+                (list?.sowStatus && list?.sowStatus === 'SOW Initiated') ||
+                (list?.poStatus && list?.poStatus === 'PO Initiated')
+              "
+              class="dropdown">
+              <button mat-button [matMenuTriggerFor]="animals" class="btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <img src="assets/images/icon-more.svg" />
+              </button>
+
+              <mat-menu #animals="matMenu">
+                <button *ngIf="list?.msaStatus && list?.msaStatus === 'MSA Send'" mat-menu-item [matMenuTriggerFor]="MSA">MSA Status</button>
+                <button *ngIf="list?.sowStatus && list?.sowStatus === 'SOW Initiated'" mat-menu-item [matMenuTriggerFor]="SOW">SOW Status</button>
+                <button *ngIf="list?.poStatus && list?.poStatus === 'PO Initiated'" mat-menu-item [matMenuTriggerFor]="PO">PO Status</button>
+              </mat-menu>
+              <mat-menu #MSA="matMenu">
+                <div *ngFor="let item of StatusList">
+                  <button *ngIf="item?.status === 'Accepted'" mat-menu-item (click)="updateMSAStatus(list?.msaId, item.id, item.status)">
+                    {{ item.status }}
+                  </button>
+                </div>
+              </mat-menu>
+              <mat-menu #SOW="matMenu">
+                <div *ngFor="let item of StatusList">
+                  <button *ngIf="item?.status === 'Released'" mat-menu-item (click)="updateSOWStatus(list?.sowId, item.id, item.status)">
+                    {{ item.status }}
+                  </button>
+                </div>
+              </mat-menu>
+              <mat-menu #PO="matMenu">
+                <div *ngFor="let item of StatusList">
+                  <button *ngIf="item?.status === 'Released'" mat-menu-item (click)="updatePOStatus(list?.poId, item.id, item.status)">
+                    {{ item.status }}
+                  </button>
+                </div>
+              </mat-menu>
+              <!-- <ul class="dropdown-menu">
+                <li>
+                  <a
+                    class="dropdown-item"
+                    *ngIf="list?.status !== 'On-Boarded' && list?.status === 'PO In-Progress'"
+                    [routerLink]="['/ssContracts/onboard', list?.ownerId]"
+                    >OnBoarding</a
+                  >
+                </li>
+                <li>
+                  <a
+                    class="dropdown-item"
+                    *ngIf="list?.status !== 'SOW In-Progress' && list?.status !== 'PO In-Progress' && list?.status !== 'MSA In-Progress'"
+                    [routerLink]="['/ssContracts/onboard', list?.ownerId]"
+                    >Update</a
+                  >
+                </li>
+                <li>
+                    <a class="dropdown-item" (click)="onSow(list)">Create SOW</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" (click)="onPow(list)">Create / Release PO</a>
+                  </li>
+              </ul> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div
+  class="modal right fade"
+  id="myModal2"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="myModalLabel2"
+  [ngStyle]="{ display: toggleSideBar ? 'block' : 'none' }">
+  <div class="modal-dialog" role="document">
+    <div class="right-side-model">
+      <div class="modal-content">
+        <div class="modal-header">
+          <div class="modal-title">
+            <p class="m-0">Contract Details</p>
+          </div>
+          <button type="button" class="close" (click)="closeBar()">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <app-skillpartner-list-item [skillOwnerId]="skillOwnerId"></app-skillpartner-list-item>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

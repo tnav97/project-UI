@@ -1,0 +1,215 @@
+.skill-seeker-dashboard {
+  min-height: calc(100vh - 120px);
+  border-radius: 10px;
+}
+
+.skill-seeker-dashboard .card {
+  background-image: linear-gradient(#dafbe1, #ffffff);
+}
+
+.skill-seeker-dashboard .card-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.markRead {
+  color: #00cc99;
+  cursor: pointer;
+}
+
+.skill-seeker-dashboard-left h2 {
+  color: #1c4684;
+  font-size: 26px;
+  font-weight: 600;
+}
+
+.skill-seeker-dashboard-left p {
+  color: #656565;
+  font-size: 14px;
+  font-weight: 500;
+}
+.skill-seeker-dashboard-left {
+  padding-left: 30px;
+  padding-right: 30px;
+}
+.skill-seeker-dashboard-left .cursor-pointer img {
+  cursor: pointer;
+}
+
+.skill-seeker-dashboard-right p {
+  font-size: 10px;
+  font-weight: 400;
+  font-family: inter;
+  color: #656565;
+}
+
+.skill-seeker-dashboard-right {
+  height: 700px;
+  padding-left: 20px;
+  overflow-y: auto;
+
+  .card {
+    .slot-title {
+      padding-left: 15px;
+    }
+
+    .btn-request {
+      color: #db3236;
+      border: none;
+      font-size: 14px !important;
+      font-weight: 600 !important;
+      text-decoration: underline;
+    }
+  }
+
+  .notification-info {
+    .para {
+      padding: 0 10px 10px;
+      margin-bottom: 0;
+    }
+
+    .notification-title {
+      h5 {
+        padding: 10px 10px;
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+
+.skill-seeker-dashboard-right .top-title h4 {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.skill-seeker-dashboard-right .card {
+  // background: #f5f9ff;
+  background: #e6faf5;
+  border-left: 6px solid #00cc99;
+  border-color: #00cc99;
+}
+
+.skill-seeker-dashboard-right .card1 {
+  background: #ffffff;
+  border: 1px solid #d5d5d5;
+  border-left: 6px solid #d5d5d5;
+  position: relative;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+  padding: 1.5rem 1.5rem;
+}
+
+.skill-seeker-dashboard-right .card .card-body h5 {
+  font-size: 12px;
+  font-weight: 600;
+  font-family: inter;
+  color: rgba(0, 0, 0, 0.75);
+}
+
+.skill-seeker-dashboard-right .card1 .card-body h5 {
+  font-size: 12px;
+  font-weight: 600;
+  font-family: inter;
+  color: rgba(0, 0, 0, 0.75);
+}
+
+.skill-seeker-dashboard-right .card .card-body .title span {
+  width: 8px;
+  height: 8px;
+  border-radius: 100%;
+  background: #1565d8;
+}
+
+.skill-seeker-dashboard-right .card .card-body p {
+  font-size: 10px;
+  font-weight: 400;
+  font-family: inter;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.skill-seeker-dashboard-right .card1 .card-body p {
+  font-size: 10px;
+  font-weight: 400;
+  font-family: inter;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.skill-seeker-dashboard-right .card .card-btn .btn {
+  font-size: 12px;
+  font-weight: 400;
+}
+
+.skill-seeker-dashboard-right .card .card-btn .accept-btn {
+  background: #1565d8;
+  color: #ffffff;
+  padding: 10px 15px;
+  margin: 3px 10px;
+}
+
+.skill-seeker-dashboard-right .card .card-btn .decline-btn {
+  color: #db3236;
+  padding-left: 15px;
+}
+
+.skill-seeker-dashboard-right .card .card-btn .ignore-btn {
+  color: #f4c20d;
+  padding-left: 15px;
+}
+
+.leftbox {
+  @media (max-width: 769px) {
+    margin: '2px' !important;
+  }
+  margin: '20px' !important;
+}
+
+// Responsive CSS Start
+@media only screen and (max-device-width: 1280px), screen and (max-width: 1280px) {
+  .bg-white.skill-seeker-dashboard {
+    height: 103vh !important;
+  }
+}
+
+@media only screen and (max-device-width: 1200px), screen and (max-width: 1200px) {
+  .bg-white.skill-seeker-dashboard {
+    height: 112vh !important;
+  }
+}
+
+@media only screen and (max-device-width: 912px), screen and (max-width: 912px) {
+  .bg-white.skill-seeker-dashboard {
+    height: 103vh !important;
+  }
+}
+
+@media only screen and (max-device-width: 768px), screen and (max-width: 768px) {
+  .bg-white.skill-seeker-dashboard {
+    height: 112vh !important;
+  }
+}
+
+@media only screen and (max-device-width: 576px), screen and (max-width: 576px) {
+  .bg-white.skill-seeker-dashboard {
+    height: 290vh !important;
+  }
+}
+
+@media only screen and (max-device-width: 540px), screen and (max-width: 540px) {
+  .bg-white.skill-seeker-dashboard {
+    height: 245vh !important;
+  }
+}
+
+@media only screen and (max-device-width: 414px), screen and (max-width: 414px) {
+  .bg-white.skill-seeker-dashboard {
+    height: 192vh !important;
+  }
+}
+
+@media only screen and (max-device-width: 360px), screen and (max-width: 360px) {
+  .bg-white.skill-seeker-dashboard {
+    height: 228vh !important;
+  }
+}
+// Responsive CSS End

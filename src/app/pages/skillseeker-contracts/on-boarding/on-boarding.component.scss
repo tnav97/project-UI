@@ -1,0 +1,48 @@
+form {
+  .form-select {
+    height: 58px;
+  }
+}
+
+.basic-info {
+  background: #ffffff;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 700;
+  color: #1c4684;
+  height: 58px;
+}
+
+.create-new-footer {
+  background: #ffffff;
+  border: none;
+  .proceed-btn {
+    background: #1565d8;
+    border-radius: 6px;
+    color: #ffffff;
+    width: 120px;
+  }
+}
+::ng-deep .mat-form-field {
+  width: 100%;
+}
+::ng-deep .mat-form-field-appearance-fill .mat-form-field-flex {
+  background-color: transparent;
+}
+::ng-deep .cdk-overlay-container .cdk-overlay-pane .listPanel {
+  margin-top: 13%;
+}
+
+.date-form2 .fa-calendar {
+  position: absolute;
+  top: 31%;
+  left: 90%;
+  color: #325e9e;
+}
+
+.date-form1 .fa-calendar {
+  position: absolute;
+  top: 31%;
+  left: 90%;
+  color: #325e9e;
+}

@@ -1,0 +1,129 @@
+<div class="container skill-owner-activation-wrapper">
+  <div class="row">
+    <div class="col-sm skill-owner-left-side-wrapper">
+      <div class="card">
+        <div class="card-body">
+          <img src="assets/images/skill-owner-activation-img.jpg" alt="avatar" class="img-fluid avatar" />
+        </div>
+      </div>
+    </div>
+    <div class="col-sm skill-owner-right-side-wrapper">
+      <div class="card">
+        <div class="card-body">
+          <img src="assets/images/logo-flexcub.svg" alt="avatar" class="img-fluid header-logo" />
+          <h3 class="text-center">Activate your account!</h3>
+          <p class="text-center">Verify the below information and proceed to set up your account.</p>
+
+          <div class="container First ame-form readonly">
+            <form [formGroup]="form" class="form-wrapper form row">
+              <div class="form-floating mb-3 col-sm-8">
+                <input
+                  readonly
+                  type="text"
+                  class="form-control"
+                  placeholder="First Name*"
+                  name="firstname"
+                  formControlName="firstName"
+                  [class.is-invalid]="form.get('firstName').invalid && form.get('firstName').touched" />
+                <label for="firstname">First Name*</label>
+                <div *ngIf="(firstName.invalid && firstName.touched) || firstName.dirty" class="error">
+                  <small *ngIf="firstName.errors?.required" class="text-danger">First Name is required</small>
+                </div>
+              </div>
+
+              <div class="form-floating mb-3 col-sm-8">
+                <input
+                  readonly
+                  type="text"
+                  class="form-control"
+                  placeholder="Last Name*"
+                  name="lastname"
+                  formControlName="lastName"
+                  [class.is-invalid]="form.get('lastName').invalid && form.get('lastName').touched" />
+                <label for="lastname">Last Name*</label>
+                <div *ngIf="(lastName.invalid && lastName.touched) || lastName.dirty" class="error">
+                  <small *ngIf="lastName.errors?.required" class="text-danger">Last Name is required</small>
+                </div>
+              </div>
+
+              <div class="form-floating mb-3 col-sm-8 date-form readonly">
+                <input
+                  readonly
+                  [disabled]="true"
+                  autocomplete="off"
+                  (click)="disableDate()"
+                  type="text"
+                  bsDatepicker
+                  #dp="bsDatepicker"
+                  onkeydown="return false"
+                  [bsConfig]="{ containerClass: 'theme-dark-blue' }"
+                  class="form-control"
+                  [class.is-invalid]="form.get('dob').invalid && form.get('dob').touched"
+                  id="DateOfBirth"
+                  placeholder="mm/dd/yyyy"
+                  name="date of birth"
+                  formControlName="dob"
+                  [maxDate]="today" />
+                <label for="DateOfBirth">Date of Birth*</label>
+                <div
+                  *ngIf="!(dob.invalid && dob.touched) || dob.dirty"
+                  [attr.aria-expanded]="false"
+                  type="button"
+                  for="calendar-input"
+                  class="date-range-picker-icon fa fa-calendar"
+                  aria-disabled="true"></div>
+
+                <div *ngIf="(dob.invalid && dob.touched) || dob.dirty">
+                  <small *ngIf="dob.errors?.required" class="text-danger"> DOB is required</small>
+                </div>
+              </div>
+
+              <div class="form-floating mail-form mb-3 col-sm-8">
+                <img src="assets/images/envelope.svg" alt="login" class="label-icon" />
+                <input
+                  readonly
+                  type="email"
+                  class="form-control"
+                  id="DateOfBirth"
+                  placeholder="Primary Email Address*"
+                  name="PrimaryEmailAddress"
+                  formControlName="email"
+                  [class.is-invalid]="form.get('email').invalid && form.get('email').touched" />
+
+                <label for="email">Primary Email Address*</label>
+                <div *ngIf="(email.invalid && email.touched) || email.dirty" class="error">
+                  <small *ngIf="email.errors?.required" class="text-danger">Email id is required</small>
+                  <small *ngIf="email.errors?.pattern" class="text-danger">Please provide a valid email address</small>
+                </div>
+              </div>
+
+              <div class="form-floating mail-form mb-3 col-sm-8">
+                <img src="assets/images/phone.svg" alt="login" class="label-icon" />
+                <input
+                  readonly
+                  type="email"
+                  class="form-control"
+                  id="DateOfBirth"
+                  placeholder="Primary Phone Number*"
+                  name="PrimaryEmailAddress"
+                  formControlName="phone"
+                  [class.is-invalid]="form.get('phone').invalid && form.get('phone').touched" />
+                <label for="email">Primary Phone Number*</label>
+                <div *ngIf="(phone.invalid && phone.touched) || phone.dirty" class="error">
+                  <small *ngIf="phone.errors?.required" class="text-danger">Phone number is required</small>
+                  <small *ngIf="phone.errors?.pattern" class="text-danger">Please provide a valid Phone Number</small>
+                </div>
+              </div>
+
+              <div class="col-12 text-center proceed-btn">
+                <button class="btn btn-primary" type="submit" (click)="submit()" [disabled]="!form.valid">Proceed ></button>
+              </div>
+
+              <div class="col-12 text-center Privacy-text">Privacy Policy | Terms of Service</div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

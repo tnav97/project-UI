@@ -1,0 +1,181 @@
+@use '@angular/material' as mat;
+
+@include mat.core();
+
+$primary-palette: (
+  50: #e9f0f1,
+  100: #c7d9dd,
+  200: #a2c0c6,
+  300: #7da7af,
+  400: #61949d,
+  500: #4885ed,
+  600: #3e7984,
+  700: #366e79,
+  800: #2e646f,
+  900: #1f515c,
+  A100: #9cecff,
+  A200: #69e3ff,
+  A400: #36d9ff,
+  A700: #1dd4ff,
+  contrast: (
+    50: #000000,
+    100: #000000,
+    200: #000000,
+    300: #000000,
+    400: #000000,
+    500: #ffffff,
+    600: #ffffff,
+    700: #ffffff,
+    800: #ffffff,
+    900: #ffffff,
+    A100: #000000,
+    A200: #000000,
+    A400: #000000,
+    A700: #000000,
+  ),
+);
+
+$my-accent: (
+  50: #443003,
+  100: #5c4104,
+  200: #755205,
+  300: #8d6307,
+  400: #a57508,
+  500: #be8609,
+  600: #eea80b,
+  700: #f5b21e,
+  800: #f6bb37,
+  900: #f7c34f,
+  A100: #eea80b,
+  A200: #d6970a,
+  A400: #be8609,
+  A700: #f8cb68,
+  contrast: (
+    50: #000000,
+    100: #000000,
+    200: #000000,
+    300: #000000,
+    400: #000000,
+    500: #ffffff,
+    600: #ffffff,
+    700: #ffffff,
+    800: #ffffff,
+    900: #ffffff,
+    A100: #000000,
+    A200: #000000,
+    A400: #000000,
+    A700: #000000,
+  ),
+);
+
+$my-primary: mat.define-palette($primary-palette);
+$my-accent: mat.define-palette($my-accent);
+
+$my-theme: mat.define-light-theme(
+  (
+    color: (
+      primary: $my-primary,
+      accent: $my-accent,
+    ),
+    typography:
+      mat.define-typography-config(
+        $font-family: Inter,
+        $headline-1: mat.define-typography-level(112px, 112px, 300, $letter-spacing: -0.05em),
+        $headline-2: mat.define-typography-level(56px, 56px, 400, $letter-spacing: -0.02em),
+        $headline-3: mat.define-typography-level(45px, 48px, 400, $letter-spacing: -0.005em),
+        $headline-4: mat.define-typography-level(34px, 40px, 400),
+        $headline-5: mat.define-typography-level(24px, 32px, 400),
+      ),
+    density: 0,
+  )
+);
+
+$my-custom-level: mat.define-typography-level(
+  $font-family: Roboto,
+  $font-weight: 400,
+  $font-size: 1rem,
+  $line-height: 1,
+  $letter-spacing: normal,
+);
+
+@include mat.all-component-themes($my-theme);
+
+.swal2-title {
+  font: 500 20px/32px Inter !important;
+  letter-spacing: normal !important;
+  margin: 0 0 16px !important;
+}
+
+.mat-mdc-button {
+  --mat-mdc-button-persistent-ripple-color: white;
+  background-color: transparent;
+}
+
+.mat-mdc-icon-button {
+  --mat-mdc-button-persistent-ripple-color: white;
+  --mat-mdc-button-ripple-color: white;
+}
+
+// @import '~@angular/material/theming';
+// // @include mat-core();
+
+// $mat-primary: mat-palette(
+//   (
+//     100: rgba(var(--primary), 0.1),
+//     500: rgba(var(--primary), 1),
+//     700: rgba(var(--primary), 1),
+//     contrast: (
+//       100: rgba(var(--primary-contrast), 1),
+//       500: rgba(var(--primary-contrast), 1),
+//       700: rgba(var(--primary-contrast), 1),
+//     ),
+//   )
+// ) !default;
+
+// $mat-accent: mat-palette(
+//   (
+//     100: rgba(var(--accent), 0.1),
+//     500: rgba(var(--accent), 1),
+//     700: rgba(var(--accent), 1),
+//     contrast: (
+//       100: rgba(var(--accent-contrast), 1),
+//       500: rgba(var(--accent-contrast), 1),
+//       700: rgba(var(--accent-contrast), 1),
+//     ),
+//   )
+// ) !default;
+
+// $mat-warn: mat-palette(
+//   (
+//     100: rgba(var(--warn), 0.1),
+//     500: rgba(var(--warn), 1),
+//     700: rgba(var(--warn), 1),
+//     contrast: (
+//       100: rgba(var(--warn-contrast), 1),
+//       500: rgba(var(--warn-contrast), 1),
+//       700: rgba(var(--warn-contrast), 1),
+//     ),
+//   )
+// ) !default;
+
+// $mat-theme: mat-light-theme(
+//   (
+//     color: (
+//       primary: $mat-primary,
+//       accent: $mat-accent,
+//       warn: $mat-warn,
+//     ),
+//   )
+// );
+// @include angular-material-theme($mat-theme);
+
+// $mat-typography: mat-typography-config(
+//   $font-family: 'Inter',
+//   $headline: mat-typography-level(32px, 48px, 700),
+//   $body-1: mat-typography-level(16px, 24px, 500),
+// );
+
+// @include mat-core($mat-typography);
+// @include angular-material-typography($mat-typography);
+// @include mat-base-typography($mat-typography);
+// @include mat-checkbox-typography($mat-typography);

@@ -1,0 +1,35 @@
+.card {
+  position: relative;
+  background-color: var(--background);
+
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+  @include scrollBar(8px, var(--scroll-thumb), var(--scroll-track));
+  > .card-header {
+    padding: 1.5rem 1.5rem;
+    background-color: transparent;
+    border-bottom: 1px solid var(--border-color);
+    .card-title {
+      margin-bottom: 0;
+      font-weight: 600;
+      font-size: 16px;
+      color: var(--dark-text);
+    }
+  }
+  .card-body {
+    padding: 1.5rem 1.5rem;
+  }
+}
+
+.card10 {
+  margin-bottom: 0;
+  @media (max-width: 1337px) {
+    // min-width: max-content;
+  }
+  width: 100%;
+}
+
+.modal-backdrop {
+  background-color: rgba(0, 0, 0, 0.27);
+}

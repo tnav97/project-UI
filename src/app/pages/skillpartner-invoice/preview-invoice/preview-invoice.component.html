@@ -1,0 +1,360 @@
+<div class="card" #screen>
+  <div class="col-md-12 card-header d-flex justify-content-between align-items-center">
+    <div class="d-flex align-items-center">
+      <a routerLink="/spInvoice"> <i _ngcontent-aao-c361="" title="Go Back" aria-hidden="true" class="fa fa-chevron-left mx-2"></i></a>
+      <h2 class="mb-0">Invoice Preview</h2>
+    </div>
+
+    <div>
+      <!-- <button class="btn btn-outline-primary me-3">Send</button> -->
+      <button class="btn btn-outline-primary" (click)="download()">Download</button>
+    </div>
+  </div>
+  <div class="card-body client-body mb-5 mt-5 pb-5 pt-5" *ngFor="let a of tabledata">
+    <div class="row">
+      <div class="col-md-7 pe-4">
+        <div class="d-flex justify-content-between logo-section">
+          <div class="invoice-logo">
+            <img alt="logo" src="assets/logo/flexcub-logo-revised.svg" />
+          </div>
+          <div class="logo-right">
+            <!-- <div class="date-section mb-35">
+              <label class="py-2">Invoice Date</label>
+              <div class="value">{{ a.invoiceDate | date : 'yyyy-MMM-dd' }}</div>
+            </div> -->
+            <!-- <div class="date-section">
+              <label class="py-2">Due Date</label>
+              <div class="value">{{ a.dueDate | date : 'yyyy-MMM-dd' }}</div>
+            </div> -->
+          </div>
+        </div>
+      </div>
+      <div class="col-md-5 logo-right-section">
+        <div class="border rounded p-3">
+          <div class="d-flex justify-content-between mb-3">
+            <div>
+              <label class="py-2">Invoice ID</label>
+              <div class="value">{{ invoiceId }}</div>
+            </div>
+            <div class="status"  [ngClass]="
+            a?.status?.status == 'Submitted'
+              ? 'badge active-badge'
+              : a?.status?.status == 'Approved'
+              ? 'badge approve-badge'
+              : a?.status?.status == 'Paid'
+              ? 'badge paid-badge'
+              : a?.status?.status == 'Rejected'
+              ? 'badge reject-badge'
+              : 'badge pending-badge'
+          ">
+              {{ a.status.status }}
+            </div>
+          </div>
+          <div class="d-flex justify-content-between mb-3">
+            <div>
+              <label class="py-1 pt-0">Invoice Date</label>
+              <div class="value">{{ a.invoiceDate | date : 'MM/dd/yyyy' }}</div>
+            </div>
+            </div>
+
+            <div class="d-flex justify-content-between">
+            <div>
+              <label class="py-1 pt-0">Due Date</label>
+              <div class="value" *ngIf="a.status.status == 'Approved' ">{{ a.dueDate | date : 'MM/dd/yyyy' }}</div>
+            </div>
+
+            <div>
+              <label class="py-1">Amount</label>
+              <div class="amount-value">$ {{ finalAmt }}</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <div class="row partner-section" *ngFor="let list of a.invoiceData">
+            <div class="col-md-7 p-3 pe-4">
+                <div class="d-flex justify-content-between">
+                    <div class="partner-name">
+                        From, <br/>{{list?.clientName }}
+                    </div>
+                    <div class="logo-right">
+                        <div class="date-section">
+                            <label class="py-2">Project ID</label>
+                            <div class="value">{{list?.skillSeekerProjectEntityId }}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="col-md-5 logo-right-section">
+                <div class="p-3">
+
+                    <div>
+                        <label class="py-2">Department</label>
+                        <div class="value">Health Analytics</div>
+                    </div>
+
+
+
+
+                </div>
+            </div> -->
+        </div>
+
+
+        <div class="row">
+          <div class="col-md-12 p-4">
+            <table class="table table-borderless">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <!-- <th scope="col">Service Description(Project Details)</th> -->
+                  <th scope="col">Client Name - Position</th>
+                  <th scope="col">Resource Name</th>
+                  <th scope="col">Total Hours</th>
+                  <th scope="col">Rate/Hr</th>
+                  <th scope="col">Amount</th>
+                  <th>
+
+                  </th>
+
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let list of a.invoiceData; let i = index">
+                  <th scope="row">{{ i + 1 }}</th>
+                  <td>
+                    {{ list?.projectName[0] }}{{ list?.skillSeekerProjectEntityId }}-{{ list?.projectName }}-{{ list?.clientName[0]
+                    }}{{ list?.skillSeekerEntityId }}-{{ list?.clientName }}
+                  </td>
+                  <td>{{ list.ownerName }}</td>
+                  <td>{{ list.totalHours }}</td>
+                  <td>$ {{ list.rate }}</td>
+                  <td>$ {{ list.amount }}</td>
+                  <td>
+                    <div class="d-flex">
+                      <div class="px-2" (click)="openView(list?.skillOwnerEntityId)">
+                        <i class="fa fa-eye" ></i>
+                      </div>
+                      <div class="px-2" (click)="urlDownloadTimesheetDocuments((list)?.timesheetId)">
+                        <span class="px-3">
+                          <a [href]="webkitRelativePath1 ? webkitRelativePath1: 'javascript:void(0)'">
+                            <i class="fa fa-download" aria-hidden="true" > </i>
+                          </a>
+                        </span>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+                <!-- <p>Total: ${{finalAmt }}</p>
+                <p>Flexcub Service Fee: ${{_serviceFeeAmount}}</p> -->
+              </tbody>
+              <hr>
+              <tfoot>
+          <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td class="d-none">Total: ${{finalAmt }}
+                </td>
+              <td class="d-none">Flexcub Service Fee: ${{_serviceFeeAmount}}</td>
+          </tr>
+      </tfoot>
+      <tfoot class="table1">
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+              </td>
+            <td class="d-none">Flexcub Service Fee: ${{_serviceFeeAmount}}</td>
+        </tr>
+    </tfoot>
+    <tfoot>
+      <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>
+            <div class="d-flex align-items-baseline">
+            <label class="total1">Total: </label>
+            <p class="total1" style="margin-left: 28px;">${{finalAmt }}</p>
+          </div>
+          </td>
+
+      </tr>
+  </tfoot>
+  <tfoot  class="table1">
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>
+          </td>
+          <td>
+            <div class="d-flex align-items-baseline">
+            <label class="totals">Flexcub Service Fee: </label>
+            <p class="total2" style="margin-left: 28px;">${{_serviceFeeAmount}}</p>
+            </div>
+          </td>
+
+    </tr>
+</tfoot>
+<tfoot  class="table1">
+  <tr>
+    <td><div>{{ finalCount }} Item</div></td>
+    <td><div>Total Work Hours :{{ finalHours }}</div></td>
+    <td>
+    </td>
+    <td></td>
+    <td></td>
+    <td>
+      <div class=" d-flex align-items-baseline">
+      <label class="totals2"> Amount Payable :</label>
+      <p class="total5" style="margin-left: 28px;">$ {{ amountPayable }}</p>
+
+    </div>
+  </td>
+  </tr>
+</tfoot>
+<!-- <div class="row">
+  <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2">
+
+  <div>{{ finalCount }} Item</div>
+  </div>
+  <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
+  <div>Total Work Hours :{{ finalHours }}</div>
+
+  </div>
+  <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+  <div class="d-flex">
+    <div class="total">Amount Payable : $ {{ amountPayable }}</div>
+  </div>
+</div>
+
+</div> -->
+
+
+
+
+
+            </table>
+          </div>
+        </div>
+
+
+
+
+
+    <!-- <div class="row">
+      <div class="col-md-12 p-4">
+        <table class="table table-borderless">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Service Description (Project Details)</th>
+              <th scope="col">Resource Name</th>
+              <th scope="col">Total Hours</th>
+              <th scope="col">Rate/hr</th>
+
+              <th scope="col">Amount</th>
+              <th scope="col"></th>
+
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let list of a.invoiceData; let i = index">
+              <th scope="row">{{ i + 1 }}</th>
+              <td>
+                {{ list?.projectName[0] }}{{ list?.skillSeekerProjectEntityId }}-{{ list?.projectName }}-{{ list?.clientName[0]
+                }}{{ list?.skillSeekerEntityId }}-{{ list?.clientName }}
+              </td>
+              <td>{{ list.ownerName }}</td>
+              <td>{{ list.totalHours }}</td>
+              <td>$ {{ list.rate }}</td>
+              <td>$ {{ list.amount }}</td>
+              <td>
+                <div class="d-flex">
+                <button class="btn btn-icon me-2">
+                  <i class="fa fa-eye" ></i>
+                </button>
+                <button class="btn btn-icon me-2">
+                  <i class="fa fa-download"></i>
+                </button>
+              </div>
+              </td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td class="d-none">Total: ${{finalAmt }}
+                  </td>
+                <td class="d-none">Flexcub Service Fee: ${{_serviceFeeAmount}}</td>
+            </tr>
+        </tfoot>
+        <tfoot>
+          <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td>
+                </td>
+              <td class="d-none">Flexcub Service Fee: ${{_serviceFeeAmount}}</td>
+          </tr>
+      </tfoot>
+          <tfoot>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td class="total1">Total: ${{finalAmt }}
+                  </td>
+            </tr>
+        </tfoot>
+        <tfoot>
+          <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td>
+                </td>
+                <td class="total2">Flexcub Service Fee: ${{_serviceFeeAmount}}</td>
+
+          </tr>
+      </tfoot>
+        </table>
+      </div>
+    </div> -->
+  </div>
+
+<app-timesheet-details *ngIf="_view" [selectedWeek]="selecteddate" [id]="ownerId
+" (close)="closeView()"></app-timesheet-details>
+  <!-- <div class="card-footer">
+    <div class="d-flex justify-content-between">
+      <div>{{ finalCount }} Item</div>
+      <div>Total Work Hours :{{ finalHours }}</div>
+
+      <div class="total">Amount Payable :${{ amountPayable }}</div>
+    </div>
+  </div> -->
+</div>
+<div id="download">
+  <div #canvas></div>
+  <a #downloadLink></a>
+</div>
+
+
+

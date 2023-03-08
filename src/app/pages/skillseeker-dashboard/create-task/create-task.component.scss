@@ -1,0 +1,168 @@
+form {
+  .form-select {
+    height: 58px;
+  }
+
+  .text-area {
+    height: 200px;
+  }
+}
+
+.form-floating2 {
+  position: relative;
+  // max-width: 300px; /* not relevant */
+  // margin: 40px 20px; /* not relevant */
+}
+
+.form-floating2:before {
+  content: '';
+  position: absolute;
+  top: 1px; /* border-width (default by BS) */
+  left: 1px; /* border-width (default by BS) */
+  width: calc(100% - 14px); /* to show scrollbar */
+  height: 32px;
+  border-radius: 4px; /* (default by BS) */
+  background-color: #ffffff;
+}
+
+.form-floating2 textarea.form-control {
+  padding-top: 32px; /* height of pseudo element */
+  min-height: 80px; /* not relevant */
+}
+
+.btn {
+  background: #1565d8;
+  color: #ffffff;
+  border-radius: 8px;
+}
+
+.taskcard-body,
+.notify-section {
+  height: 100%;
+  border-radius: 0px 0px 6px 6px;
+
+  .card-body {
+    margin: 0;
+  }
+
+  .even {
+    background: #f5f9ff;
+  }
+
+  .odd {
+    background: #f3f3f3;
+    border: 1px solid #c8c8c8;
+    border-radius: 12px;
+  }
+}
+
+.taskcard,
+.inner-content {
+  background: #f5f9ff;
+  @media screen and (min-width: 1000px) {
+    //height: 136px;
+  }
+  border: 1px solid #1565d8;
+  border-radius: 12px;
+
+  h4 {
+    font-weight: 600;
+    font-size: 16px;
+    color: #1565d8;
+    margin: 0;
+  }
+
+  h3 {
+    font-weight: 600;
+    font-size: 16px;
+    color: #11da6f;
+    margin: 0;
+  }
+
+  p {
+    font-weight: 400;
+    font-size: 14px;
+    color: rgba(0, 0, 0, 0.6);
+    margin: 0;
+    padding-top: 0.3rem;
+  }
+
+  h5 {
+    font-weight: 400;
+    font-size: 12px;
+    color: #676767;
+    margin: 0;
+    text-align: right;
+  }
+}
+
+.basic-info {
+  background: #ffffff;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 700;
+  color: #1c4684;
+  height: 58px;
+}
+
+.create-new-footer {
+  background: #ffffff;
+  border: none;
+  .proceed-btn {
+    background: #1565d8;
+    border-radius: 6px;
+    color: #ffffff;
+    width: 120px;
+  }
+}
+::ng-deep .mat-form-field {
+  width: 100%;
+}
+::ng-deep .mat-form-field-appearance-fill .mat-form-field-flex {
+  background-color: transparent;
+}
+::ng-deep .cdk-overlay-container .cdk-overlay-pane .listPanel {
+  margin-top: 13%;
+}
+
+.date-form2 .fa-calendar {
+  position: absolute;
+  top: 31%;
+  left: 90%;
+  color: #325e9e;
+}
+
+.date-form1 .fa-calendar {
+  position: absolute;
+  top: 31%;
+  left: 90%;
+  color: #325e9e;
+}
+.input-group .form-select {
+  height: 58px;
+  padding-left: 3rem;
+  border-radius: 4px;
+}
+
+.card1 {
+  position: relative;
+  background-color: var(--background);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+  width: 97%;
+  height: 96%;
+  margin-left: 20px;
+}
+
+.taskcontainer {
+  height: 280px;
+  overflow-y: scroll;
+}
+
+.projectform {
+  padding-top: 1.75rem;
+  padding-bottom: 0.625rem;
+  color: #4885ed !important;
+  font-weight: 600;
+}

@@ -1,0 +1,61 @@
+<div class="row">
+  <div class="col-md-12 job-list">
+    <div class="card job-list-wrapper">
+      <div class="card-header job-list-header d-flex justify-content-between align-items-center">
+        <h4 class="mb-0">Seeker Employees List</h4>
+        <div class="middle d-none d-lg-block" style="width: 400px">
+          <mat-form-field class="field4x search col-md-10 mt-1" appearance="outline">
+            <input class="control" matInput type="text" [(ngModel)]="searchText1" placeholder="Search for Employees" />
+            <mat-icon matSuffix color="primary">search</mat-icon>
+          </mat-form-field>
+        </div>
+
+        <button routerLink="/seekerRoles/rolelist" class="btn">Roles Listing</button>
+      </div>
+
+      <div class="card-body job-list-body">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Employee ID</th>
+              <th scope="col">Employee Name</th>
+
+              <th scope="col">Role</th>
+              <th scope="col">Location</th>
+              <th scope="col">Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let a of tabledata | customEmployeeFilter : searchText1 : ['skillSeekerName', 'state', 'city']">
+              <th scope="row"><input type="checkbox" aria-label="Checkbox for following text input" />&nbsp; EMP-{{ a?.id }}</th>
+              <td><img src="assets/images/document-icon.svg" /> {{ a?.skillSeekerName }}</td>
+
+              <td>
+                {{ a?.subRoles?.subRoleDescription }}
+              </td>
+              <td>{{ a?.city }} ,{{ a?.state }}</td>
+              <td class="col-md-1">
+                <p class="mb-0 text-center" title="Able to Login" *ngIf="a?.active" [ngClass]="'green'">Active</p>
+                <p class="mb-0 text-center" title="Login Access Denied" *ngIf="!a?.active" [ngClass]="'Danger'">In-Active</p>
+              </td>
+
+              <td>
+                <div class="dropdown" *ngIf="a?.id !== seekerId">
+                  <button class="btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <img src="assets/images/icon-more.svg" />
+                  </button>
+                  <ul class="dropdown-menu">
+                    <li>
+                      <a class="dropdown-item" (click)="userMapping(a)">User Mapping</a>
+                      <a class="dropdown-item" (click)="changeStatus(a)">Update Status</a>
+                    </li>
+                  </ul>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

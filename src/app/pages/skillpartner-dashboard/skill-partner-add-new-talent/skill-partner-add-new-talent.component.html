@@ -1,0 +1,238 @@
+<div class="container">
+  <div class="row bg-white add-new-talent-wrapper">
+    <div class="card">
+      <div class="card-body">
+        <div class="talentBack" routerLink="/spdashboard">
+          <h2 class="iconBack"><i class="fa fa-angle-left" title="Go Back"></i> Add New Talent</h2>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-8 sp-add-talent-leftsection">
+      <p>Fill in the fields below to create a new talent record or you can import to add multiple talents.</p>
+      <form [formGroup]="form">
+        <div class="row">
+          <div class="col">
+            <div class="form-floating mb-3 mt-3">
+              <input
+                type="text"
+                class="form-control"
+                [class.is-invalid]="form.get('firstName').invalid && form.get('firstName').touched"
+                id="firstname"
+                placeholder="First Name*"
+                name="firstname"
+                formControlName="firstName" />
+              <label for="firstname">First Name*</label>
+              <div *ngIf="(firstName.invalid && firstName.touched) || firstName.dirty">
+                <small *ngIf="firstName.errors?.required" class="text-danger">First Name is required</small>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="form-floating mb-3 mt-3">
+              <input
+                type="text"
+                class="form-control"
+                [class.is-invalid]="form.get('lastName').invalid && form.get('lastName').touched"
+                id="lastname"
+                placeholder="Last Name*"
+                name="lastname"
+                formControlName="lastName" />
+              <label for="lastname">Last Name*</label>
+              <div *ngIf="(lastName.invalid && lastName.touched) || lastName.dirty">
+                <small *ngIf="lastName.errors?.required" class="text-danger">Last Name is required</small>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col">
+            <div class="form-floating mb-3 mt-3 date-form">
+              <input
+                type="text"
+                bsDatepicker
+                #dp="bsDatepicker"
+                onkeydown="return false"
+                [bsConfig]="{ containerClass: 'theme-dark-blue' }"
+                class="form-control"
+                [class.is-invalid]="form.get('dob').invalid && form.get('dob').touched"
+                id="DateOfBirth"
+                placeholder="mm/dd/yyyy"
+                name="date of birth"
+                formControlName="dob"
+                [maxDate]="today" />
+              <label for="DateOfBirth">Date of Birth*</label>
+              <div
+                *ngIf="!(dob.invalid && dob.touched) || dob.dirty"
+                (click)="dp.toggle()"
+                [attr.aria-expanded]="dp.isOpen"
+                type="button"
+                for="calendar-input"
+                class="date-range-picker-icon fa fa-calendar"></div>
+
+              <div *ngIf="(dob.invalid && dob.touched) || dob.dirty">
+                <small *ngIf="dob.errors?.required" class="text-danger"> DOB is required</small>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="form-floating mb-3 mt-3 mail-form">
+              <input
+                type="email"
+                class="form-control"
+                [class.is-invalid]="form.get('email').invalid && form.get('email').touched"
+                id="DateOfBirth"
+                id="email"
+                placeholder="Primary Email Address*"
+                name="PrimaryEmailAddress"
+                formControlName="email" />
+              <label for="email">Primary Email Address*</label>
+              <div *ngIf="(email.invalid && email.touched) || email.dirty">
+                <small *ngIf="email.errors?.required" class="text-danger">Primary Email Address is required</small>
+                <small *ngIf="email.errors?.pattern" class="text-danger">Please provide a valid email address</small>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col">
+            <div class="form-floating mb-3 inner-addon left addon mt-3">
+              <input
+                type="tel"
+                class="form-control"
+                [class.is-invalid]="form.get('phone').invalid && form.get('phone').touched"
+                id="phone"
+                placeholder="Primary Phone Number*"
+                name="Primary Phone Number"
+                formControlName="phone"
+                (keypress)="keyPressNumbers($event)" />
+              <label for="phone">Primary Phone Number*</label>
+              <div *ngIf="(phone.invalid && phone.touched) || phone.dirty">
+                <small *ngIf="phone.errors?.required" class="text-danger">Primary Phone Number is required</small>
+                <small *ngIf="phone.errors?.pattern" class="text-danger">Please provide a valid Phone Number</small>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="form-floating mb-3 mt-3">
+              <input
+                type="tel"
+                class="form-control"
+                id="phone1"
+                placeholder="Alternate Phone Number*"
+                name="Alternatephonenumber"
+                formControlName="altPhone"
+                (keypress)="keyPressNumbers($event)" />
+              <label for="phone1">Alternate Phone Number</label>
+              <div *ngIf="(altPhone.invalid && altPhone.touched) || altPhone.dirty">
+                <small *ngIf="altPhone.errors?.required" class="text-danger">Alternate Phone number is required</small>
+                <small *ngIf="altPhone.errors?.pattern" class="text-danger">Please provide a valid alternate phone number</small>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-6 col-md-6 col-sm-6">
+            <div class="form-floating mb-3 inner-addon left addon mt-3">
+
+              <input
+                type="text"
+                class="form-control"
+                [class.is-invalid]="form.get('rate').invalid && form.get('rate').touched"
+                placeholder="Rate Card*"
+                name="Rate Card"
+                formControlName="rate"
+                (keypress)="keyPressNumbers($event)" />
+              <label for="phone">Hourly Rate*</label>
+              <div *ngIf="(rate.invalid && rate.touched) || rate.dirty">
+                <small *ngIf="rate.errors?.required" class="text-danger">Rate Card is required</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <div [fileUploadInputFor]="fileUploadQueue" class="col-md-4 sp-add-talent-rightsection upload-drop-zone">
+      <form [formGroup]="form">
+        <h3>Import Multiple Talent Profiles</h3>
+        <div class="upload-drop-zone text-center">
+          <img class="doc-image" src="assets/images/icon-documents.svg" />
+          <p>Drag and drop a .csv file<br />to upload multiple talent profiles.</p>
+        </div>
+
+        <div class="text-center">
+          <div>
+            <img src="assets/images/icon-info.svg" width="10px" />
+            <a [href]="doc" target="_blank" rel="noopener noreferrer" download="sample_template.xlsx">See upload format</a>
+            <p class="p-0 m-0">or</p>
+            <a role="button" (click)="downloadSP()" download="sample_template.xlsx">Download template</a>
+          </div>
+          <div class="row">
+            <div>
+              <input
+                id="singleFile"
+                accept=".csv,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.ms-excel"
+                hidden
+                type="file"
+                class="uploadfile"
+                multiple
+                [fileUploadInputFor]="fileUploadQueue"
+                (change)="fileChangeEvent(fileUploadQueue)" />
+              <label for="singleFile" class="btn btn-primary">Browse file</label>
+              <br />
+            </div>
+
+            <div>
+              <ul>
+                <li *ngIf="imageError">{{ imageError }}</li>
+                <li *ngIf="imageFileError">{{ imageFileError }}</li>
+                <li *ngIf="imageTypeError">{{ imageTypeError }}</li>
+              </ul>
+
+              <mat-file-upload-queue #fileUploadQueue [fileAlias]="'file'" [httpUrl]="fileUrl + partnerId" multiple>
+                <mat-file-upload [file]="file" [id]="i" *ngFor="let file of fileUploadQueue.files; let i = index"> </mat-file-upload>
+              </mat-file-upload-queue>
+            </div>
+          </div>
+        </div>
+        <div class="instruction pt-3">
+          <p>Upload Instructions:</p>
+          <ul class="">
+            <li>Maximum 3 files can be uploaded at once</li>
+            <li>Each file should not exceed 1.0 MB</li>
+            <li>Make sure the data are arranged in the given format</li>
+          </ul>
+        </div>
+      </form>
+    </div>
+    <div class="bottom-cta d-flex align-items-center justify-content-center">
+      <a routerLink="/spdashboard">Cancel</a>
+      <button class="btn reset" (click)="onReset()">Reset</button>
+      <button class="btn confirm-btn" [disabled]="!form.valid" (click)="submit()">Save Talent Profile</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="AddNewTalent-popup" tabindex="-1" role="dialog" aria-labelledby="AddNewTalent-popup" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle"></h5>
+        <button type="button" class="close" (click)="closePopup()" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body text-center">
+        <img src="assets/images/tick.svg" alt="login" class="top-logo" />
+        <h3>Talent profile created successfully.</h3>
+        <p>
+          Talent profile added successfully <br />
+          and activation mail has been sent to email address.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,47 @@
+$top: 70px;
+@include scrollBar(8px, var(--scroll-thumb), var(--scroll-track));
+
+@mixin collapsed {
+  &.collapsed {
+    margin-left: 80px;
+  }
+}
+
+main.main-content {
+  min-height: calc(100vh - 70px);
+  top: 70px;
+  margin-left: 265px;
+  position: relative;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  padding: 1.5rem;
+  background-color: var(--background-custom);
+  @include collapsed();
+}
+div.main {
+  height: calc(100vh - 70px);
+}
+@media (max-width: 767px) {
+  main.main-content {
+    margin-left: 0;
+  }
+}
+
+aside.nav-menu {
+  position: fixed;
+  z-index: 1000;
+  top: $top;
+  height: 100%;
+  line-height: inherit;
+  background: var(--background);
+  border-right: 1px solid var(--border-color);
+  width: 250px;
+  text-align: left;
+  padding: 1.5rem 1.5rem;
+  transition: 0.3s ease;
+  &.collapsed {
+    width: 0;
+    padding: 0;
+    border: 0;
+  }
+}

@@ -1,0 +1,56 @@
+[
+  {
+    "_id": "6203c40da079097ee0e6626e",
+    "index": 0,
+    "weekstarts": "2020-09-06",
+    "contractname": "Marilyn Santiago",
+    "totalHours": "02:39",
+    "client": "ENORMO",
+    "status": "Approved"
+  },
+  {
+    "_id": "6203c40dbff064065d8a58cd",
+    "index": 1,
+    "weekstarts": "2021-11-23",
+    "contractname": "Floyd Romero",
+    "totalHours": "07:57",
+    "client": "MAGNEMO",
+    "status": "Rejected"
+  },
+  {
+    "_id": "6203c40d30c8ecc637ecfa34",
+    "index": 2,
+    "weekstarts": "2019-12-24",
+    "contractname": "Rhodes Howell",
+    "totalHours": "02:15",
+    "client": "REVERSUS",
+    "status": "Submitted"
+  },
+  {
+    "_id": "6203c40d6a4ccb5d1045a050",
+    "index": 3,
+    "weekstarts": "2017-06-09",
+    "contractname": "Collier Brewer",
+    "totalHours": "05:33",
+    "client": "FISHLAND",
+    "status": "Approved"
+  },
+  {
+    "_id": "6203c40da0d680e550b09d3a",
+    "index": 4,
+    "weekstarts": "2021-01-17",
+    "contractname": "Pansy Nelson",
+    "totalHours": "04:10",
+    "client": "FILODYNE",
+    "status": "Submitted"
+  },
+  {
+    "_id": "6203c40d7e2c1679a2d20907",
+    "index": 5,
+    "weekstarts": "2014-07-04",
+    "contractname": "Henson Wilcox",
+    "totalHours": "02:16",
+    "client": "QUANTALIA",
+    "status": "Rejected"
+  }
+]

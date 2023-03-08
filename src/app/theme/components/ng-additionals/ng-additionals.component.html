@@ -1,0 +1,120 @@
+<div class="ng-additionals">
+  <!-- <div class="middle d-none d-lg-block">
+     <mat-form-field class="field4x col-md-10 mt-1" appearance="outline">
+      <input class="control" matInput type="text" placeholder="Search for clients,projects,requirement" />
+      <mat-icon matSuffix color="primary">search</mat-icon>
+     </mat-form-field>
+    </div> -->
+  <!-- <div class="dropdown">
+     <button mat-icon-button aria-label="Notification dropdown button" class="dropdown-toggle" data-bs-toggle="dropdown"
+      aria-expanded="false">
+      <mat-icon class="material-icons-outlined">history</mat-icon>
+     </button>
+     <ng-container [ngTemplateOutlet]="history"></ng-container>
+    </div> -->
+  <div class="dropdown">
+    <button
+      mat-icon-button
+      [disableRipple]="true"
+      aria-label="History dropdown button"
+      class="dropdown-toggle"
+      data-bs-toggle="dropdown"
+      aria-expanded="false">
+      <mat-icon class="material-icons-outlined">notifications</mat-icon>
+    </button>
+    <!-- <ng-container [ngTemplateOutlet]="notification"></ng-container> -->
+  </div>
+  <div class="dropdown">
+    <button
+      mat-button
+      [disableRipple]="true"
+      aria-label="Login dropdown button"
+      class="dropdown-toggle"
+      data-bs-toggle="dropdown"
+      aria-expanded="false">
+      <div class="d-flex">
+        <div class="mx-1 mt-1">
+          <h5 class="d-block h-title">{{ name | titlecase }}</h5>
+          <h6 class="d-block h-subtitle" *ngIf="isAdmin">Super Admin</h6>
+          <h6 class="d-block h-subtitle" *ngIf="isPartner">Skill Partner</h6>
+          <h6 class="d-block h-subtitle" *ngIf="isSeeker">Skill Seeker</h6>
+          <h6 class="d-block h-subtitle" *ngIf="isOwner">Skill Owner</h6>
+          <!-- <h6 class="d-block h-subtitle" >Skill Seeker</h6> -->
+        </div>
+        <div *ngIf="isOwner">
+          <div *ngIf="imageAvailable === true">
+            <img class="img-fluid avatar" [src]="soImgUrl + id" />
+          </div>
+          <div *ngIf="imageAvailable === false">
+            <img class="img-fluid avatar" src="assets/images/avatar-default-skillowner.png" />
+          </div>
+        </div>
+        <div *ngIf="!isOwner">
+          <img src="assets/images/avatar-default-skillowner.png" class="img-fluid avatar" alt="Profile image" />
+        </div>
+      </div>
+    </button>
+    <ng-container [ngTemplateOutlet]="user"></ng-container>
+  </div>
+  <!-- <div class="dropdown">
+     <button mat-icon-button aria-label="History dropdown button" class="dropdown-toggle" data-bs-toggle="dropdown"
+      aria-expanded="false">
+      <mat-icon class="material-icons-outlined" routerLink="/registration">logout</mat-icon>
+     </button>
+    </div> -->
+</div>
+
+<ng-template #user>
+  <div class="dropdown-menu" style="border-radius: 20px">
+    <div class="dropdown-header d-flex">
+      <div class="mx-1">
+        <h5 class="d-block h-title">{{ name | titlecase }}</h5>
+        <h6 class="d-block h-subtitle" *ngIf="isAdmin">Super Admin</h6>
+        <h6 class="d-block h-subtitle" *ngIf="isPartner">Skill Partner</h6>
+        <h6 class="d-block h-subtitle" *ngIf="isSeeker">Skill Seeker</h6>
+        <h6 class="d-block h-subtitle" *ngIf="isOwner">Skill Owner</h6>
+        <!-- <h6 class="d-block h-subtitle" >Super Admin</h6> -->
+      </div>
+      <div *ngIf="isOwner">
+        <div *ngIf="imageAvailable === true">
+          <img class="img-fluid avatar" [src]="soImgUrl + id" />
+        </div>
+        <div *ngIf="imageAvailable === false">
+          <img class="img-fluid avatar" src="assets/images/avatar-default-skillowner.png" />
+        </div>
+      </div>
+      <div *ngIf="!isOwner">
+        <img src="assets/images/avatar-default-skillowner.png" class="img-fluid avatar" alt="Profile image" />
+      </div>
+    </div>
+    <!-- <a class="dropdown-item" (click)="careerProfile(id)" *ngIf="isOwner"><span matBadgeOverlap="false" translate>My Profile</span></a> -->
+    <!-- <a class="dropdown-item" *ngIf="isSeeker"><span matBadgeOverlap="false" translate>My Profile</span></a> -->
+    <!-- <a class="dropdown-item"> <span translate>Messages</span></a>
+    <a class="dropdown-item"> <span translate>Activity</span></a>
+    <a class="dropdown-item"><span translate>FAQ</span></a> -->
+    <a class="dropdown-item" (click)="logout()"><span translate>Sign Out</span></a>
+  </div>
+</ng-template>
+
+<ng-template #history>
+  <div class="dropdown-menu" style="border-radius: 20px">
+    <div class="dropdown-header">
+      <p class="">Select a category to view history</p>
+      <button class="mx-3" mat-stroked-button color="primary" routerLink="/in-hiring/jobs">Jobs</button><span>or</span>
+      <button mat-stroked-button color="primary" routerLink="/candidates/applicants">Applicant</button>
+      <hr />
+      <mat-form-field class="field4x middle" appearance="outline">
+        <input class="control" matInput type="text" placeholder="Search for job,history" />
+        <mat-icon matSuffix color="primary">search</mat-icon>
+      </mat-form-field>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #notification>
+  <ul class="dropdown-menu">
+    <li><a class="dropdown-item" href="#">Action</a></li>
+    <li><a class="dropdown-item" href="#">Another action</a></li>
+    <li><a class="dropdown-item" href="#">Something else here</a></li>
+  </ul>
+</ng-template>

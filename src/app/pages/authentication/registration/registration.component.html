@@ -1,0 +1,44 @@
+<app-loader *ngIf="isLoading">{{ isLoading }}</app-loader>
+<div *ngIf="!isLoading">
+  <div class="d-flex align-items-center min-vh-100 py-3 py-md-0">
+    <div class="container">
+      <div class="card login-card animate__animated animate__fadeInLeft" data-wow-duration="1.5s">
+        <div class="row">
+          <div class="col-md-5 bg-left-color fadeInUp">
+            <!-- <img src="assets/images/login-bg.png" alt="login" class="login-card-img" /> -->
+            <img src="assets/images/register-left-img.png" alt="login" class="login-card-img" />
+          </div>
+          <div class="col-md-7 bg-right-section">
+            <div class="card-body">
+              <div class="brand-wrapper">
+                <img src="assets/images/logo-flexcub.svg" alt="logo" class="logo" />
+              </div>
+              <p class="login-card-description">Join Us!</p>
+              <p class="main-sub-text">To begin this journey, pick an option that best describes you!</p>
+
+              <!-- <div (click)="next(2);skillseeker()"> -->
+              <div routerLink="/registration/skillseeker">
+                <div class="sudo">
+                  <!-- <img src="assets/images/skill-seeker-img-blue.png"> -->
+                </div>
+              </div>
+
+              <div class="skill-partner-g" routerLink="/registration/skillpartner">
+                <!-- <div class="skill-partner-g" (click)="next(10);skillpartner()"> -->
+
+                <div class="sudo1">
+                  <!-- <img src="assets/images/skill-partner-blue.svg"> -->
+                </div>
+              </div>
+
+              <div class="login-card-footer-text">
+                Already have an account?
+                <a routerLink="/login" class="text-reset b-sign"><u>Sign In</u></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,1293 @@
+<div class="row card add-profile-section">
+  <div class="col-md-12 card-header add-profile-header">
+    <h4 class="mb-0">
+      <span *ngIf="!isNew">
+        <button class="btn me-2 border-0" routerLink="/superadmin/clients">
+          <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        </button>
+        <span>{{ editable ? 'Edit Skill Seeker' : 'View Skill Seeker' }}</span>
+      </span>
+      <span *ngIf="isNew" class="d-flex align-items-center"> Add New Skill Seeker </span>
+    </h4>
+  </div>
+
+  <div class="row card-body add-profile-body">
+    <!-- <div class=""> -->
+    <div class="col-2 tab-left" *ngIf="editable">
+      <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+        <button
+          class="nav-link"
+          [ngClass]="activeTab == 'Basic' ? 'active' : ''"
+          id="v-pills-home-tab"
+          data-toggle="pill"
+          data-target="#v-pills-home"
+          type="button"
+          role="tab"
+          aria-controls="v-pills-home"
+          aria-selected="true">
+          Basic Details
+        </button>
+        <button
+          class="nav-link"
+          [ngClass]="activeTab == 'Project' ? 'active' : ''"
+          id="v-pills-profile-tab"
+          data-toggle="pill"
+          data-target="#v-pills-profile"
+          type="button"
+          role="tab"
+          aria-controls="v-pills-profile"
+          aria-selected="false">
+          Projects
+        </button>
+        <button
+          class="nav-link"
+          [ngClass]="activeTab == 'Requirement' ? 'active' : ''"
+          id="v-pills-messages-tab"
+          data-toggle="pill"
+          data-target="#v-pills-messages"
+          type="button"
+          role="tab"
+          aria-controls="v-pills-messages"
+          aria-selected="false">
+          Requirements
+        </button>
+      </div>
+    </div>
+    <div class="tab-info" [ngClass]="editable ? 'col-10' : 'col-12'">
+      <div class="tab-content" id="v-pills-tabContent">
+        <!-- Basic Details Start -->
+        <div
+          class="tab-pane basic-info-tab fade"
+          [ngClass]="activeTab == 'Basic' ? 'show active' : ''"
+          id="v-pills-home"
+          role="tabpanel"
+          aria-labelledby="v-pills-home-tab">
+          <h5 class="mb-0">Basic Details</h5>
+          <form [formGroup]="form">
+            <div>
+              <div class="row">
+                <div class="col-md-6 with-icon">
+                  <div class="form-group form-floating mb-3 mt-3 input-form">
+                    <img src="assets/images/icon-business.svg" alt="Business" class="label-icon" />
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="Skill Seeker / Client Business Name*"
+                      name="SkillSeekerClientBusinessName"
+                      formControlName="businessName"
+                      [readonly]="!editable"
+                      [ngClass]="{ 'is-invalid': !f?.businessName?.valid && f?.businessName?.touched }" />
+                    <label for="email">Skill Seeker / Client Business Name*</label>
+                    <div *ngIf="!f?.businessName?.valid && f?.businessName?.touched" class="invalid-feedback">
+                      <div class="text-danger">Skill Seeker / Client Business Name is required</div>
+                    </div>
+                    <!-- <div class="error">
+                                        <small class="text-danger">Email id is required</small>
+                                        <small class="text-danger">Please provide a valid email address</small>
+                                    </div> -->
+                  </div>
+                </div>
+
+                <div class="form-group col-md-6">
+                  <!-- <select formControlName="businessDomain" class="custom-select form-select" aria-label="Default select example" (change)="changeDomain($event)"
+                    [ngClass]="{ 'is-invalid': submitted && f.businessDomain.errors }">
+                      <option hidden selected value="">Business Domain*</option>
+                      <option value="">Business Domain1</option>
+                      <option value="">Business Domain2</option>
+                      <option value="">Business Domain3</option>
+                    </select> -->
+                  <div class="my-3">
+                    <select
+                      formControlName="businessDomain"
+                      class="form-select"
+                      aria-placeholder="Nature of Business"
+                      aria-label="Default select example"
+                      #mySelect
+                      [ngClass]="{
+                        'is-invalid': !f?.businessDomain?.valid && f?.businessDomain?.touched
+                      }">
+                      <option hidden selected [value]="null">Business Domain*</option>
+                      <option *ngFor="let domain of domainList" [value]="domain.domainId">
+                        {{ domain?.domainValues }}
+                      </option>
+                    </select>
+                    <div *ngIf="!f?.businessDomain?.valid && f?.businessDomain?.touched">
+                      <small class="text-danger">Business Domain is required</small>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <div class="col-md-6 with-icon">
+                  <div class="form-floating mb-3 mt-3 input-form">
+                    <img src="assets/images/envelope.svg" alt="BusinessEmail" class="label-icon" />
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="Business Email Address"
+                      name="businessEmail"
+                      formControlName="businessEmail"
+                      [readonly]="!editable"
+                      [ngClass]="{
+                        'is-invalid': f?.businessEmail?.touched && f?.businessEmail?.invalid
+                      }" />
+                    <label for="businessEmail">Business Email Address*</label>
+                    <div *ngIf="!f?.businessEmail?.valid && f?.businessEmail?.touched && !f?.businessEmail?.errors?.pattern">
+                      <small class="text-danger">Business Email Address is required</small>
+                    </div>
+                    <div *ngIf="f?.businessEmail?.touched && f?.businessEmail?.errors?.pattern">
+                      <small class="text-danger">Please provide a valid email address</small>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-md-6 with-icon">
+                  <div class="form-floating mb-3 mt-3 input-form">
+                    <img src="assets/images/phone.svg" alt="BusinessPhone" class="label-icon" />
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="Business Phone Number*"
+                      name="BusinessPhone"
+                      formControlName="businessphone"
+                      [readonly]="!editable"
+                      (keypress)="keyPressNumbers($event)"
+                      [ngClass]="{ 'is-invalid': !f?.businessphone?.valid && f?.businessphone?.touched }" />
+                    <label for="email">Business Phone Number*</label>
+                    <div *ngIf="!f?.businessphone?.valid && f?.businessphone?.touched && !f?.businessphone?.errors?.pattern">
+                      <small class="text-danger">Business Phone Number is required</small>
+                    </div>
+                    <div *ngIf="f?.businessphone?.touched && f?.businessphone?.errors?.pattern">
+                      <small class="text-danger">Please provide a valid phone number</small>
+                    </div>
+                    <!-- <div class="error">
+                                        <small class="text-danger">Email id is required</small>
+                                        <small class="text-danger">Please provide a valid email address</small>
+                                    </div> -->
+                  </div>
+                </div>
+              </div>
+              <div class="form-group row">
+                <div class="col-md-4">
+                  <div class="form-group form-floating mb-3 mt-3">
+                    <input
+                      type="text"
+                      [class.is-invalid]="form.get('firstName').invalid && form.get('firstName').touched"
+                      class="form-control"
+                      id="floatingInput"
+                      formControlName="firstName"
+                      placeholder="First Name"
+                      onfocus="this.placeholder = ''"
+                      onblur="this.placeholder = 'enter your text'" />
+                    <div *ngIf="(firstName.invalid && firstName.touched) || firstName.dirty">
+                      <small *ngIf="firstName.errors?.required" class="text-danger">First Name is required</small>
+                    </div>
+                    <label for="floatingInput">First Name*</label>
+                  </div>
+                </div>
+
+                <div class="col-md-4">
+                  <div class="form-group form-floating mb-3 mt-3">
+                    <input
+                      type="text"
+                      [class.is-invalid]="form.get('lastName').invalid && form.get('lastName').touched"
+                      class="form-control"
+                      id="floatingInput"
+                      formControlName="lastName"
+                      placeholder="Last Name"
+                      onfocus="this.placeholder = ''"
+                      onblur="this.placeholder = 'enter your text'" />
+                    <div *ngIf="(lastName.invalid && lastName.touched) || lastName.dirty">
+                      <small *ngIf="lastName.errors?.required" class="text-danger">Last Name is required</small>
+                    </div>
+                    <label for="floatingInput">Last Name*</label>
+                  </div>
+                </div>
+
+                <div class="col-md-4">
+                  <div class="form-group form-floating mb-3 mt-3">
+                    <input
+                      class="form-control"
+                      [class.is-invalid]="form.get('businessNumber').invalid && form.get('businessNumber').touched"
+                      type="text"
+                      class="form-control"
+                      id="floatingPassword"
+                      placeholder="Business License Number"
+                      onfocus="this.placeholder = ''"
+                      onblur="this.placeholder = 'enter your text'"
+                      formControlName="businessNumber" />
+                    <div *ngIf="(businessNumber.invalid && businessNumber.touched) || businessNumber.dirty">
+                      <small *ngIf="businessNumber.errors?.required" class="text-danger">Business License Number is required</small>
+                      <!--question mark(?) is a safe navigation operator-->
+                      <!-- <small *ngIf="businessName.errors?.pattern" class="text-danger">Please provide a valid  address</small> -->
+                    </div>
+                    <!-- <input type="text" class="form-control" id="floatingPassword"
+                                      placeholder="Business License Number" /> -->
+                    <label for="floatingPassword">Business License Number*</label>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group row">
+                <div class="col-md-6">
+                  <div class="form-group form-floating mb-3 mt-3">
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="addressline1"
+                      placeholder="Address Line 1*"
+                      name="addressline1"
+                      formControlName="addressline1"
+                      [readonly]="!editable"
+                      [ngClass]="{
+                        'is-invalid': !f?.addressline1?.valid && f?.addressline1?.touched
+                      }" />
+                    <label for="addressline1">Address Line 1*</label>
+                    <div *ngIf="!f?.addressline1?.valid && f?.addressline1?.touched">
+                      <small class="text-danger">Address Line 1 is required</small>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-md-6">
+                  <div class="form-group form-floating mb-3 mt-3">
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="addressline2"
+                      placeholder="Address Line 2"
+                      name="addressline2"
+                      formControlName="addressline2"
+                      [readonly]="!editable"
+                      [ngClass]="{ 'is-invalid': !f?.addressline2?.valid && f?.addressline2?.touched }" />
+                    <label for="addressline2">Address Line 2*</label>
+                    <div *ngIf="!f?.addressline2?.valid && f?.addressline2?.touched">
+                      <small class="text-danger">Address Line 2 is required</small>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="form-group col-md-4">
+                  <div class="my-3">
+                    <select
+                      formControlName="state"
+                      (click)="getCityList()"
+                      class="form-select"
+                      aria-label="Default select example"
+                      [ngClass]="{ 'is-invalid': !f?.state?.valid && f?.state?.touched }">
+                      <option hidden selected [value]="null">Select State*</option>
+                      <option *ngFor="let state of stateList" [value]="state.state_name">
+                        {{ state.state_name }}
+                      </option>
+                    </select>
+                    <div *ngIf="!f?.state?.valid && f?.state?.touched">
+                      <small class="text-danger">State is required</small>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group col-md-4">
+                  <div class="my-3">
+                    <select
+                      formControlName="city"
+                      class="form-select"
+                      aria-label="Default select example"
+                      [ngClass]="{ 'is-invalid': !f?.city?.valid && f?.city?.touched }">
+                      <option hidden selected [value]="null">Select city*</option>
+                      <option *ngFor="let city of cityList" [value]="city.city_name">
+                        {{ city.city_name }}
+                      </option>
+                    </select>
+                    <div *ngIf="!f?.city?.valid && f?.city?.touched">
+                      <small class="text-danger">City is required</small>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group col-md-4">
+                  <div class="form-floating mb-3 mt-3">
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="zipcode"
+                      placeholder="Zipcode*"
+                      name="zipcode"
+                      formControlName="zipcode"
+                      [readonly]="!editable"
+                      maxlength="5"
+                      (keypress)="onlyNumber($event)"
+                      [ngClass]="{ 'is-invalid': !f?.zipcode?.valid && f?.zipcode?.touched }" />
+                    <label for="zipcode">Zipcode*</label>
+                    <div *ngIf="!f?.zipcode?.valid && f?.zipcode?.touched">
+                      <small class="text-danger">Zipcode is required</small>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-6 with-icon">
+                  <div class="form-group form-floating mb-3 mt-3 input-form">
+                    <img src="assets/images/phone.svg" alt="PhoneNumber" class="label-icon" />
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="Phone Number*"
+                      name="phone"
+                      formControlName="phone1"
+                      [readonly]="!editable"
+                      (keypress)="keyPressNumbers($event)"
+                      [ngClass]="{
+                        'is-invalid': !f?.phone1?.valid && f?.phone1?.touched
+                      }" />
+                    <label for="phone">Phone Number*</label>
+                    <div *ngIf="!f?.phone1?.valid && f?.phone1?.touched && !f?.phone1?.errors?.pattern">
+                      <small class="text-danger">Phone Number is required</small>
+                      <!--question mark(?) is a safe navigation operator-->
+                    </div>
+                    <div *ngIf="f?.phone1?.touched && f?.phone1?.errors?.pattern">
+                      <small class="text-danger">Please provide a valid phone number</small>
+                      <!--question mark(?) is a safe navigation operator-->
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-md-6 with-icon">
+                  <div class="form-group form-floating mb-3 mt-3 input-form">
+                    <img src="assets/images/envelope.svg" alt="EmailAddress" class="label-icon" />
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="Email Address"
+                      name="email"
+                      formControlName="email"
+                      [readonly]="!editable"
+                      [ngClass]="{ 'is-invalid': !f?.email?.valid && f?.email?.touched }" />
+                    <label for="email">Email Address*</label>
+                    <div *ngIf="!f?.email?.valid && f?.email?.touched && !f?.email?.errors?.pattern">
+                      <small class="text-danger">Email Address is required</small>
+                    </div>
+                    <div *ngIf="f?.email?.touched && f?.email?.errors?.pattern">
+                      <small class="text-danger">Please provide a valid email address</small>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <div class="col-md-6 with-icon">
+                  <div class="form-floating mb-3 mt-3 input-form">
+                    <img src="assets/images/phone.svg" alt="AlternativePhoneNumber" class="label-icon" />
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="Alternative Phone Number*"
+                      name="AlternativePhoneNumber"
+                      (keypress)="keyPressNumbers($event)"
+                      [readonly]="!editable"
+                      formControlName="alternativephonenumber" />
+                    <label for="alternativephone">Alternative Phone Number</label>
+                    <div *ngIf="f?.alternativephonenumber?.touched && f?.alternativephonenumber?.errors?.pattern">
+                      <small class="text-danger">Please provide a valid phone number</small>
+                      <!--question mark(?) is a safe navigation operator-->
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-md-6 with-icon">
+                  <div class="form-floating mb-3 mt-3 input-form">
+                    <img src="assets/images/envelope.svg" alt="AlternativeEmailAddress" class="label-icon" />
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="Alternative Email Address"
+                      name="AlternativeEmailAddress"
+                      [readonly]="!editable"
+                      formControlName="alternativeemailaddress" />
+                    <label for="email">Alternative Email Address</label>
+                    <div *ngIf="f?.alternativeemailaddress?.touched && f?.alternativeemailaddress?.errors?.pattern">
+                      <small class="text-danger">Please provide a valid email address</small>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="form-group col-md-4">
+                  <div class="my-3">
+                    <select
+                      formControlName="status"
+                      class="form-select"
+                      aria-label="Default select example"
+                      [ngClass]="{ 'is-invalid': !f?.status?.valid && f?.status?.touched }">
+                      <option hidden selected [value]="null">Select Status</option>
+                      <option value="true">Active</option>
+                      <option value="false">Inactive</option>
+                    </select>
+                    <div *ngIf="!f?.status?.valid && f?.status?.touched">
+                      <small class="text-danger">Status is required</small>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group add-profile-footer card-footer text-muted text-center" *ngIf="editable">
+                <button class="btn cancel-btn float-right" type="button" (click)="onReset()">Cancel</button>
+                <button class="btn save-btn" [disabled]="!form.valid" *ngIf="!edit" (click)="onSubmit()">Save Changes</button>
+                <button class="btn save-btn" *ngIf="edit" (click)="updateSubmit()">Save Changes</button>
+              </div>
+            </div>
+          </form>
+        </div>
+        <!-- Basic Details End -->
+
+        <!-- Projects Details Start -->
+        <div
+          class="tab-pane project-info-tab fade"
+          [ngClass]="activeTab == 'Project' ? 'show active' : ''"
+          id="v-pills-profile"
+          role="tabpanel"
+          aria-labelledby="v-pills-profile-tab">
+          <!-- <h6 class="mb-0">Project #1:</h6> -->
+          <form [formGroup]="form2">
+            <h5 class="mb-0">Projects Details</h5>
+            <div formArrayName="projects">
+              <div class="row" *ngFor="let project of projects.controls; let i = index" [formGroupName]="i">
+                <h6 class="mb-0">Project : {{ i + 1 }}</h6>
+
+                <div class="row">
+                  <div class="form-group col-md-3">
+                    <div class="my-3">
+                      <select
+                        formControlName="seekerclient"
+                        class="form-select"
+                        aria-label="Default select example"
+                        [ngClass]="{ 'is-invalid': !project?.get('seekerclient')?.valid && project?.get('seekerclient')?.touched }">
+                        <option hidden selected [value]="null">Seeker Client*</option>
+                        <option value="{{ d.id }}" *ngFor="let d of clientData">
+                          {{ d.skillSeekerName }}
+                        </option>
+                      </select>
+                      <div *ngIf="!project?.get('seekerclient')?.valid && project?.get('seekerclient')?.touched">
+                        <small class="text-danger">Seeker Client is required</small>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group col-md-3">
+                    <div class="my-3">
+                      <select
+                        formControlName="projectdepartment"
+                        class="form-select"
+                        aria-label="Default select example"
+                        [ngClass]="{ 'is-invalid': !project?.get('projectdepartment')?.valid && project?.get('projectdepartment')?.touched }">
+                        <option hidden selected [value]="null">Project Department*</option>
+                        <option [value]="d?.domainId" *ngFor="let d of departmentData">
+                          {{ d?.domainValues }}
+                        </option>
+                      </select>
+                      <div *ngIf="!project?.get('projectdepartment')?.valid && project?.get('projectdepartment')?.touched">
+                        <small class="text-danger">Project Department is required</small>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group col-md-3 date-form">
+                    <div class="form-floating my-3">
+                      <!-- <input type="date" class="form-control" id="startDate"
+                       name="startDate" formControlName="startDate" /> -->
+
+                      <input
+                        type="text"
+                        bsDatepicker
+                        #dp="bsDatepicker"
+                        onkeydown="return false"
+                        [bsConfig]="{ containerClass: 'theme-dark-blue' }"
+                        class="form-control"
+                        id="startDate"
+                        placeholder="mm/dd/yyyy"
+                        name="startDate"
+                        formControlName="startDate"
+                        max="9999-12-31"
+                        [ngClass]="{ 'is-invalid': !project?.get('startDate')?.valid && project?.get('startDate')?.touched }"
+                        (bsValueChange)="project?.get('endDate')?.setValue('')" />
+
+                      <label for="startDate">Start Date*</label>
+                      <div
+                        (click)="dp.toggle()"
+                        [attr.aria-expanded]="dp.isOpen"
+                        type="button"
+                        for="calendar-input"
+                        class="date-range-picker-icon fa fa-calendar"></div>
+
+                      <div *ngIf="!project?.get('startDate')?.valid && project?.get('startDate')?.touched">
+                        <small class="text-danger">Start Date is required</small>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="form-group col-md-3 date-form2">
+                    <div class="form-floating my-3">
+                      <!-- <input type="date" class="form-control" id="endDate"
+                      name="endDate" formControlName="endDate" /> -->
+
+                      <input
+                        type="text"
+                        bsDatepicker
+                        #dp1="bsDatepicker"
+                        onkeydown="return false"
+                        [bsConfig]="{ containerClass: 'theme-dark-blue' }"
+                        class="form-control"
+                        id="endDate"
+                        placeholder="mm/dd/yyyy"
+                        name="endDate"
+                        formControlName="endDate"
+                        [minDate]="project?.get('startDate')?.value"
+                        [ngClass]="{ 'is-invalid': !project?.get('endDate')?.valid && project?.get('endDate')?.touched }"
+                        max="9999-12-31" />
+
+                      <label for="endDate">End Date*</label>
+                      <div
+                        (click)="dp1.toggle()"
+                        [attr.aria-expanded]="dp1.isOpen"
+                        type="button"
+                        for="calendar-input"
+                        class="date-range-picker-icon fa fa-calendar"></div>
+
+                      <div *ngIf="!project?.get('endDate')?.valid && project?.get('endDate')?.touched">
+                        <small class="text-danger">End Date is required</small>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-floating mb-3 mt-3">
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="projecttitle"
+                        placeholder="Project Title*"
+                        name="projecttitle"
+                        formControlName="projecttitle"
+                        [ngClass]="{ 'is-invalid': !project?.get('projecttitle')?.valid && project?.get('projecttitle')?.touched }" />
+                      <label for="projecttitle">Project Title*</label>
+                      <div *ngIf="!project?.get('projecttitle')?.valid && project?.get('projecttitle')?.touched">
+                        <small class="text-danger">Project Title is required</small>
+                      </div>
+                      <div></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row edit-style">
+                  <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                    <quill-editor formControlName="summarytext" class="d-block my-3"></quill-editor>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-md-6 with-icon">
+                    <div class="form-group form-floating mb-3 mt-3 input-form">
+                      <img src="assets/images/phone.svg" alt="PhoneNumber" class="label-icon" />
+                      <input
+                        type="text"
+                        (keypress)="keyPressNumbers($event)"
+                        class="form-control"
+                        placeholder="Phone Number*"
+                        name="PhoneNumber"
+                        formControlName="phonenumber"
+                        [ngClass]="{ 'is-invalid': !project?.get('phonenumber')?.valid && project?.get('phonenumber')?.touched }" />
+                      <label for="phone">Phone Number*</label>
+                      <div
+                        *ngIf="
+                          !project?.get('phonenumber')?.valid && project?.get('phonenumber')?.touched && !project?.get('phonenumber')?.errors?.pattern
+                        ">
+                        <small class="text-danger">Phone Number is required</small>
+                      </div>
+                      <div *ngIf="project?.get('phonenumber')?.touched && project?.get('phonenumber')?.errors?.pattern">
+                        <small class="text-danger">Please provide a valid phone number</small>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-md-6 with-icon">
+                    <div class="form-group form-floating mb-3 mt-3 input-form">
+                      <img src="assets/images/envelope.svg" alt="EmailAddress" class="label-icon" />
+                      <input
+                        type="text"
+                        class="form-control"
+                        placeholder="Email Address"
+                        name="EmailAddress"
+                        formControlName="emailaddress"
+                        [ngClass]="{
+                          'is-invalid': !project?.get('emailaddress')?.valid && project?.get('emailaddress')?.touched
+                        }" />
+                      <label for="email">Email Address*</label>
+
+                      <div
+                        *ngIf="
+                          !project?.get('emailaddress')?.valid &&
+                          project?.get('emailaddress')?.touched &&
+                          !project?.get('emailaddress')?.errors?.pattern
+                        ">
+                        <small class="text-danger">Email Address is required</small>
+                      </div>
+                      <div *ngIf="project?.get('emailaddress')?.touched && project?.get('emailaddress')?.errors?.pattern">
+                        <small class="text-danger">Please provide a valid email address</small>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-md-6 with-icon">
+                    <div class="form-floating mb-3 mt-3 input-form">
+                      <img src="assets/images/phone.svg" alt="AlternativePhoneNumber" class="label-icon" />
+                      <input
+                        type="text"
+                        class="form-control"
+                        placeholder="Alternative Phone Number*"
+                        name="AlternativePhoneNumber"
+                        (keypress)="keyPressNumbers($event)"
+                        formControlName="alternativephonenumber1"
+                        [ngClass]="{
+                          'is-invalid': !project?.get('alternativephonenumber1')?.valid && project?.get('alternativephonenumber1')?.touched
+                        }" />
+                      <label for=" alternativephone">Alternative Phone Number</label>
+                      <!-- <div class="error">
+                                    <small class="text-danger">Email id is required</small>
+                                    <small class="text-danger">Please provide a valid email address</small>
+                                </div> -->
+
+                      <div *ngIf="project?.get('alternativephonenumber1')?.touched && project?.get('alternativephonenumber1')?.errors?.pattern">
+                        <small class="text-danger">Please provide a valid phone number</small>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-md-6 with-icon">
+                    <div class="form-floating mb-3 mt-3 input-form">
+                      <img src="assets/images/envelope.svg" alt="AlternativeEmailAddress" class="label-icon" />
+                      <input
+                        type="text"
+                        class="form-control"
+                        placeholder="Alternative Email Address"
+                        name="AlternativeEmailAddress"
+                        formControlName="alternativeemailaddress1"
+                        [ngClass]="{
+                          'is-invalid': !project?.get('alternativeemailaddress1')?.valid && project?.get('alternativeemailaddress1')?.touched
+                        }" />
+                      <label for="email">Alternative Email Address</label>
+                      <div *ngIf="project?.get('alternativeemailaddress1')?.touched && project?.get('alternativeemailaddress1')?.errors?.pattern">
+                        <small class="text-danger">Please provide a valid email address</small>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-md-4">
+                    <div class="my-3">
+                      <select
+                        formControlName="technology"
+                        class="form-select"
+                        aria-label="Default select example"
+                        [ngClass]="{
+                          'is-invalid': !project?.get('technology')?.valid && project?.get('technology')?.touched
+                        }">
+                        <option hidden selected [value]="null">Technology</option>
+                        <option [ngValue]="t" *ngFor="let t of technologyData">
+                          {{ t.technologyValues }}
+                        </option>
+                      </select>
+                      <div *ngIf="!project?.get('technology')?.valid && project?.get('technology')?.touched">
+                        <small class="text-danger">Technology is required</small>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-md-4">
+                    <div class="my-3">
+                      <select
+                        formControlName="role"
+                        class="form-select"
+                        aria-label="Default select example"
+                        [ngClass]="{
+                          'is-invalid': !project?.get('role')?.valid && project?.get('role')?.touched
+                        }">
+                        <option hidden selected [value]="null">Role</option>
+                        <option [ngValue]="r" *ngFor="let r of roleData">
+                          {{ r.rolesDescription }}
+                        </option>
+                      </select>
+                      <div *ngIf="!project?.get('role')?.valid && project?.get('role')?.touched">
+                        <small class="text-danger">Role is required</small>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-md-4">
+                    <div class="my-3">
+                      <select
+                        formControlName="level"
+                        class="form-select"
+                        aria-label="Default select example"
+                        [ngClass]="{ 'is-invalid': !project?.get('level')?.valid && project?.get('level')?.touched }">
+                        <option hidden selected [value]="null">Level</option>
+                        <option [ngValue]="l" *ngFor="let l of levelData">
+                          {{ l.skillLevelDescription }}
+                        </option>
+                      </select>
+                      <div *ngIf="!project?.get('level')?.valid && project?.get('level')?.touched">
+                        <small class="text-danger">Level is required</small>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-md-3 with-icon">
+                    <div class="form-floating mb-3 mt-3 input-form">
+                      <img src="assets/images/price-doller.svg" alt="BaseRate" class="label-icon" />
+                      <input
+                        type="text"
+                        class="form-control"
+                        placeholder="Base Rate*"
+                        name="BaseRate"
+                        formControlName="baserate"
+                        (keypress)="onlyPrice($event)"
+                        [ngClass]="{ 'is-invalid': !project?.get('baserate')?.valid && project?.get('baserate')?.touched }" />
+                      <label for="baserate">Base Rate</label>
+                      <div *ngIf="!project?.get('baserate')?.valid && project?.get('baserate')?.touched">
+                        <small class="text-danger">Base Rate is required</small>
+                      </div>
+                      <!-- <div class="error">
+                                    <small class="text-danger">Email id is required</small>
+                                    <small class="text-danger">Please provide a valid email address</small>
+                                </div> -->
+                    </div>
+                  </div>
+
+                  <div class="col-md-3 with-icon">
+                    <div class="form-floating mb-3 mt-3 input-form">
+                      <img src="assets/images/price-doller.svg" alt="MaxRate" class="label-icon" />
+                      <input
+                        type="text"
+                        class="form-control"
+                        placeholder="Max Rate*"
+                        name="MaxRate"
+                        formControlName="maxrate"
+                        (keypress)="onlyPrice($event)"
+                        [ngClass]="{ 'is-invalid': !project?.get('maxrate')?.valid && project?.get('maxrate')?.touched }" />
+                      <label for="maxrate">Max Rate</label>
+                      <div *ngIf="!project?.get('maxrate')?.valid && project?.get('maxrate')?.touched && !project?.get('maxrate')?.errors?.maximum">
+                        <small class="text-danger">Max Rate is required</small>
+                      </div>
+                      <div *ngIf="project?.get('maxrate')?.touched && project?.get('maxrate')?.errors?.maximum">
+                        <small class="text-danger">Max Rate has to be greater or equal to Base Rate.</small>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-md-4 date-form3">
+                    <div class="form-floating mb-3 mt-3">
+                      <!-- <input type="date" class="form-control" id="expireon"
+                      placeholder="MM/dd/yyyy*" name="expireon" formControlName="expireon" /> -->
+
+                      <input
+                        type="text"
+                        bsDatepicker
+                        #dp2="bsDatepicker"
+                        onkeydown="return false"
+                        [bsConfig]="expireConfig"
+                        class="form-control"
+                        id="expireon"
+                        placeholder="mm/dd/yyyy"
+                        name="expireon"
+                        formControlName="expireon"
+                        [ngClass]="{ 'is-invalid': !project?.get('expireon')?.valid && project?.get('expireon`')?.touched }"
+                        max="9999-12-31" />
+
+                      <label for="expireon">Expire date</label>
+
+                      <div
+                        (click)="dp2.toggle()"
+                        [attr.aria-expanded]="dp2.isOpen"
+                        type="button"
+                        for="calendar-input"
+                        class="date-range-picker-icon fa fa-calendar"></div>
+
+                      <div *ngIf="!project?.get('expireon')?.valid && project?.get('expireon')?.touched">
+                        <small class="text-danger">Expire date is required</small>
+                      </div>
+                      <div></div>
+                    </div>
+                  </div>
+
+                  <div class="col-md-2">
+                    <div class="d-flex my-3">
+                      <button
+                        class="btn border-0 px-4 py-3 btn-icon"
+                        type="button"
+                        [disabled]="!technologyBuilder(project)?.valid"
+                        (click)="addTechnology(project, i)">
+                        <!-- <i class="fa fa-plus" aria-hidden="true"></i> -->
+                        <img src="assets/images/icon-add.svg" width="20px" height="20px" />
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-md-12 project-info-table">
+                    <div class="table-responsive-md clients-table">
+                      <table class="table">
+                        <thead>
+                          <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Technology</th>
+                            <th scope="col">Role</th>
+                            <th scope="col">Level</th>
+                            <th scope="col">Base Rate</th>
+                            <th scope="col">Max Rate</th>
+                            <th scope="col">Expires On</th>
+                            <th scope="col">Status</th>
+                            <th scope="col">Actions</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <!-- <tr *ngFor="let s of projectArray;let i=index"> -->
+                          <tr *ngFor="let s of technologyGroup[i]; let k = index">
+                            <th scope="row">{{ k + 1 }}</th>
+                            <td (click)="editSeekarData(s?.skillSeeker?.id)">{{ s?.technology?.technologyValues }}</td>
+                            <td>{{ s?.role?.rolesDescription }}</td>
+                            <td>{{ s?.level?.skillLevelDescription }}</td>
+                            <td>{{ s?.baserate | currency : 'USD' }}</td>
+                            <td>{{ s?.maxrate | currency : 'USD' }}</td>
+                            <td>{{ s?.expireon | date : 'dd-MMM-yyyy' }}</td>
+                            <td>
+                              <span class="badge active-badge">{{ s?.status }}</span>
+                            </td>
+                            <td>
+                              <button class="btn" (click)="deleteTechnology(i, k)">
+                                <i class="fa fa-trash" aria-hidden="true"></i>
+                              </button>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                  <button class="btn remove-btn float-right" (click)="deleteProject(i)">Remove</button>
+                </div>
+              </div>
+            </div>
+            <button class="btn add-project-btn" [disabled]="!form2?.valid" (click)="addProject()">
+              <img src="assets/images/icon-plus-blue.svg" /> Add Another Project
+            </button>
+
+            <div class="add-profile-footer card-footer text-muted text-center">
+              <button class="btn cancel-btn float-right" type="button" (click)="onReset1()">Cancel</button>
+              <button class="btn save-btn" type="submit" [disabled]="!form2?.valid" (click)="onSubmit1()">Save Changes</button>
+            </div>
+          </form>
+        </div>
+        <!-- Projects Details End -->
+
+        <!-- Requirement Details Start -->
+        <div
+          class="tab-pane requirement-info-tab fade"
+          [ngClass]="activeTab == 'Requirement' ? 'show active' : ''"
+          id="v-pills-messages"
+          role="tabpanel"
+          aria-labelledby="v-pills-messages-tab">
+          <form [formGroup]="form3">
+            <h5 class="mb-0">Requirement Details</h5>
+            <div formArrayName="requirementList">
+              <div class="row" *ngFor="let requirement of requirementList?.controls; let i = index" [formGroupName]="i">
+                <h6 class="mb-0">Requirement : {{ i + 1 }}</h6>
+                <div class="row">
+                  <div class="form-group col-md-6">
+                    <div class="my-3">
+                      <select
+                        formControlName="seekerclient"
+                        class="form-select"
+                        aria-label="Default select example"
+                        (change)="seekerSelection($event, i)"
+                        [ngClass]="{ 'is-invalid': !requirement?.get('seekerclient')?.valid && requirement?.get('seekerclient')?.touched }">
+                        <option hidden selected [value]="null">Seeker Client*</option>
+                        <option value="{{ d.id }}" *ngFor="let d of clientData">
+                          {{ d.skillSeekerName }}
+                        </option>
+                      </select>
+                      <div *ngIf="!requirement?.get('seekerclient')?.valid && requirement?.get('seekerclient')?.touched">
+                        <small class="text-danger">Seeker Client is required</small>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="my-3">
+                      <select
+                        formControlName="projectName"
+                        class="form-select"
+                        aria-label="Default select example"
+                        (change)="projectSelection($event, i)"
+                        [ngClass]="{ 'is-invalid': !requirement?.get('projectName')?.valid && requirement?.get('projectName')?.touched }">
+                        <option hidden selected [value]="null">Project Name*</option>
+                        <option *ngFor="let p of requirementProjects[i]" [value]="p?.id">
+                          {{ p.title }}
+                        </option>
+                      </select>
+                      <div *ngIf="!requirement?.get('projectName')?.valid && requirement?.get('projectName')?.touched">
+                        <small class="text-danger">Project Name is required</small>
+                      </div>
+                      <div *ngIf="requirementProjects[i]?.length === 0">
+                        <small class="text-danger">Projects doesn't exist</small>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-12">
+                    <div class="my-3">
+                      <select class="form-select" formControlName="rateCard" aria-label="Default select example" (change)="rateSelection($event, i)">
+                        <option hidden selected [value]="null">Select Rate Card*</option>
+                        <option *ngFor="let p of requirementRatings[i]" [value]="p?.id">
+                          {{ p?._rate }}
+                        </option>
+                      </select>
+                      <div *ngIf="requirementRatings[i]?.length === 0">
+                        <small class="text-danger">Rate card doesn't exist</small>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group col-md-6">
+                    <div class="my-3">
+                      <select
+                        formControlName="coreTechnology"
+                        class="form-select"
+                        aria-label="Default select example"
+                        [ngClass]="{ 'is-invalid': !requirement?.get('seekerclient')?.valid && requirement?.get('seekerclient')?.touched }">
+                        <option hidden selected [value]="null">Core Technology*</option>
+                        <option [value]="d?.technologyId" *ngFor="let d of coreTechnology">
+                          {{ d?.technologyValues }}
+                        </option>
+                      </select>
+                      <div *ngIf="!requirement?.get('coreTechnology')?.valid && requirement?.get('coreTechnology')?.touched">
+                        <small class="text-danger">Core Technology is required</small>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="my-3">
+                      <select
+                        formControlName="hiringPriority"
+                        class="form-select"
+                        aria-label="Default select example"
+                        [ngClass]="{ 'is-invalid': !requirement?.get('hiringPriority')?.valid && requirement?.get('hiringPriority')?.touched }">
+                        <option hidden selected [value]="null">Hiring Priority*</option>
+                        <option *ngFor="let p of priority" [value]="p?.id">
+                          {{ p?.hiringPriority }}
+                        </option>
+                      </select>
+                      <div *ngIf="!requirement?.get('hiringPriority')?.valid && requirement?.get('hiringPriority')?.touched">
+                        <small class="text-danger">Hiring Priority is required</small>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-floating mb-3 mt-3">
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="jobrequirementtitle"
+                        placeholder="Job Requirement Title*"
+                        name="jobrequirementtitle"
+                        formControlName="jobrequirementtitle"
+                        [ngClass]="{
+                          'is-invalid': !requirement?.get('jobrequirementtitle')?.valid && requirement?.get('jobrequirementtitle')?.touched
+                        }" />
+                      <label for="jobrequirementtitle">Job Requirement Title*</label>
+                      <div *ngIf="!requirement?.get('jobrequirementtitle')?.valid && requirement?.get('jobrequirementtitle')?.touched">
+                        <small class="text-danger">Job Requirement Title is required</small>
+                      </div>
+                      <div></div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row edit-style">
+                  <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                    <quill-editor formControlName="jopDescription" class="d-block my-3"></quill-editor>
+                  </div>
+                </div>
+
+                <div class="d-flex">
+                  <div class="col-md-6 preview-right-section">
+                    <div class="card preview-info-1">
+                      <div class="card-body d-flex">
+                        <img src="assets/images/Vector.svg" />
+                        <div class="preview-right-info">
+                          <h5>Federal Security Clearance Check</h5>
+                          <p>Do you need the candidate(s) to have federal security clearance to work on this project?</p>
+                        </div>
+                      </div>
+                      <div class="card-footer d-flex justify-content-between align-items-center">
+                        <a routerLink="#"><img src="assets/images/question-icon.svg" /> About</a>
+                        <div class="d-flex align-items-center">
+                          <h5 class="mb-0">
+                            <!-- <div style="color: grey">NOT REQUIRED</div>
+                          <div class="toggle px-2">
+                            <label class="switch">
+                              <input type="checkbox" formControlName="federalSecurityClearance" />
+                              <span class="slider round"></span>
+                            </label>
+                          </div>
+                          <div style="color: #3cba54">REQUIRED</div> -->
+
+                            <p *ngIf="!checkedvalue1" style="color: grey; margin-top: 12px">NOT REQUIRED</p>
+                            <p *ngIf="checkedvalue1" style="color: #3cba54; margin-top: 12px">REQUIRED</p>
+                          </h5>
+                          <div class="toggle">
+                            <label class="switch">
+                              <input type="checkbox" [checked]="checkedvalue1" (change)="required($event)" />
+                              <span class="slider round"></span>
+                            </label>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6 preview-right-section">
+                    <div class="card preview-info-2">
+                      <div class="card-body d-flex">
+                        <img src="assets/images/blue-icon.svg" />
+                        <div class="preview-right-info">
+                          <h5>Screening Questions</h5>
+                          <p>Would you like to add pre-screening questions to shortlist the candidate(s) for this project?</p>
+                        </div>
+                      </div>
+                      <div class="card-footer d-flex justify-content-between align-items-center">
+                        <a routerLink="#"><img src="assets/images/question-icon.svg" /> About</a>
+                        <div class="d-flex align-items-center">
+                          <h5 class="mb-0">
+                            <!-- <p style="color: grey; margin-top: 12px"></p>
+                            <p style="color: #3cba54; margin-top: 12px"></p> -->
+
+                            <!-- <div class="toggle">
+                            <label class="switch">
+                              <input type="checkbox" formControlName="screeningQuestions" />
+                              <span class="slider round"></span>
+                            </label>
+                          </div>  -->
+
+                            <p *ngIf="!checkedvalue" style="color: grey; margin-top: 12px">DISABLE</p>
+                            <p *ngIf="checkedvalue" style="color: #3cba54; margin-top: 12px">ENABLE</p>
+                          </h5>
+                          <div class="toggle">
+                            <label class="switch">
+                              <input type="checkbox" [checked]="checkedvalue" (change)="EnableDisable($event)" />
+                              <span class="slider round"></span>
+                            </label>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-md-4">
+                    <div class="my-3">
+                      <select
+                        formControlName="experienceyear"
+                        class="form-select"
+                        aria-label="Default select example"
+                        [ngClass]="{ 'is-invalid': !requirement?.get('experienceyear')?.valid && requirement?.get('experienceyear')?.touched }">
+                        <option hidden selected [value]="null">Exp. Years*</option>
+                        <option *ngFor="let data of experienceBatch[requirement?.get('experienceSelection')?.value]" [value]="data">
+                          {{ data }}
+                        </option>
+                      </select>
+                      <div *ngIf="!requirement?.get('experienceyear')?.valid && requirement?.get('experienceyear')?.touched">
+                        <small class="text-danger">Experience Year is required</small>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-md-4">
+                    <div class="my-3">
+                      <select
+                        formControlName="experiencemonth"
+                        class="form-select"
+                        aria-label="Default select example"
+                        [ngClass]="{ 'is-invalid': !requirement?.get('experiencemonth')?.valid && requirement?.get('experiencemonth')?.touched }">
+                        <option hidden selected [value]="null">Exp. Months*</option>
+                        <option *ngFor="let data of expMonth | async" [ngValue]="data.name">
+                          {{ data.displayName }}
+                        </option>
+                      </select>
+                      <div *ngIf="!requirement?.get('experiencemonth')?.valid && requirement?.get('experiencemonth')?.touched">
+                        <small class="text-danger">Experience Months is required</small>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-md-4">
+                    <div class="mb-3 mt-3">
+                      <div class="form-floating">
+                        <ngx-autocomplete
+                          class="form-control autocomplete-label ngx-float"
+                          id="locationAuto"
+                          formControlName="joblocation"
+                          [data]="location"
+                          [searchOnProperty]="'cityNames'"
+                          (inputChanged)="getLocations($event)"
+                          [itemTemplate]="itemTemplate"
+                          [notFoundTemplate]="notFoundTemplate">
+                        </ngx-autocomplete>
+                        <label for="locationAuto">Location*</label>
+                      </div>
+
+                      <div *ngIf="!requirement?.get('joblocation')?.valid && requirement?.get('joblocation')?.touched">
+                        <small class="text-danger">Job Location is required</small>
+                      </div>
+
+                      <ng-template #itemTemplate let-item>
+                        <a [innerHTML]="item"></a>
+                      </ng-template>
+
+                      <ng-template #notFoundTemplate let-notFound>
+                        <div [innerHTML]="notFound"></div>
+                      </ng-template>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-md-4 date-form4">
+                    <div class="form-floating mb-3 mt-3">
+                      <!-- <input
+                        type="date"
+                        id="reqExpireon"
+                        class="form-control"
+                        id="expireon"
+                        placeholder="Expire On*"
+                        name="expireon"
+                        formControlName="reqExpireon" /> -->
+
+                      <input
+                        type="text"
+                        bsDatepicker
+                        #dp3="bsDatepicker"
+                        onkeydown="return false"
+                        [bsConfig]="expireConfig"
+                        class="form-control"
+                        id="expireon"
+                        placeholder="mm/dd/yyyy"
+                        name="expireon"
+                        formControlName="reqExpireon"
+                        max="9999-12-31" />
+
+                      <label for="expireon">Expire Date*</label>
+
+                      <div
+                        (click)="dp3.toggle()"
+                        [attr.aria-expanded]="dp3.isOpen"
+                        type="button"
+                        for="calendar-input"
+                        class="date-range-picker-icon fa fa-calendar"></div>
+
+                      <div *ngIf="!requirement?.get('reqExpireon')?.valid && requirement?.get('reqExpireon')?.touched">
+                        <small class="text-danger">Expire Date is required</small>
+                      </div>
+                      <div></div>
+                    </div>
+                  </div>
+
+                  <div class="col-md-4">
+                    <div class="form-floating mb-3 mt-3">
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="originalpositions"
+                        placeholder="Original No. of Positions"
+                        name="originalpositions"
+                        formControlName="originalpositions"
+                        (keypress)="onlyNumber($event)" />
+                      <label for="originalpositions">Original No. of Positions *</label>
+                      <div></div>
+                    </div>
+                  </div>
+
+                  <div class="col-md-4">
+                    <div class="form-floating mb-3 mt-3">
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="positionsavailable"
+                        placeholder="Positions Available"
+                        name="positionsavailable"
+                        formControlName="positionsavailable"
+                        (keypress)="onlyNumber($event)" />
+                      <label for="positionsavailable">Positions Available</label>
+                      <div *ngIf="requirement?.get('positionsavailable')?.touched && requirement?.get('positionsavailable')?.errors?.maximum">
+                        <small class="text-danger">Available positions has to be less than original positions.</small>
+                      </div>
+                      <div *ngIf="requirement?.get('positionsavailable')?.touched && requirement?.get('positionsavailable')?.errors?.minimum">
+                        <small class="text-danger">Positions available should be greater than 0</small>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="acg my-3">
+                  <div class="row align-items-center mb-3">
+                    <div class="col-12 col-md-4 col-lg-3 col-xl-2">
+                      <input type="checkbox" id="remote1" name="remote1" value="Remote" class="first-check" formControlName="remote" />
+                      <label for="remote1">Remote</label>
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-9 col-xl-10">
+                      <ngx-slider
+                        color="primary"
+                        *ngIf="requirement.get('remote').value == true"
+                        formControlName="remotePercent"
+                        [options]="options1"></ngx-slider>
+                      <label *ngIf="requirement.get('remote').value == true">{{ requirement.get('remotePercent').value }} %</label>
+                    </div>
+                  </div>
+
+                  <div class="row align-items-center mb-3">
+                    <div class="col-12 col-md-4 col-lg-3 col-xl-2">
+                      <input type="checkbox" id="travel1" name="travel1" value="Travel" class="first-check" formControlName="travel" />
+                      <label for="travel1"> Travel</label>
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-9 col-xl-10">
+                      <ngx-slider
+                        color="primary"
+                        *ngIf="requirement.get('travel').value == true"
+                        formControlName="travelPercent"
+                        [options]="options1"></ngx-slider>
+                      <label *ngIf="requirement.get('travel').value == true">{{ requirement.get('travelPercent').value }} %</label>
+                    </div>
+                  </div>
+                </div>
+                <button class="btn remove-btn delete float-right" (click)="deleteRequirement(i)">Remove</button>
+              </div>
+            </div>
+            <button class="btn add-requirement-btn" [disabled]="!form3?.valid" (click)="addRequirement(i)">
+              <img src="assets/images/icon-plus-blue.svg" /> Add Another Requirement
+            </button>
+            <div class="add-profile-footer card-footer text-muted text-center">
+              <button class="btn cancel-btn float-right" type="button" (click)="onReset2()">Cancel</button>
+              <button class="btn save-btn" type="submit" [disabled]="!form3?.valid" (click)="onSubmit2()">Save Changes</button>
+            </div>
+          </form>
+        </div>
+
+        <!-- Requirement Details End -->
+      </div>
+    </div>
+    <!-- </div> -->
+  </div>
+</div>

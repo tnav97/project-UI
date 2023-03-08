@@ -1,0 +1,52 @@
+.candidate-info {
+  .candidate-name-experience {
+    padding-left: 10px;
+  }
+
+  .edit-btn {
+    background-color: #1565d8;
+    color: #ffffff;
+    border-radius: 6px;
+    border: none;
+  }
+}
+
+.shedule {
+  font-size: 16px;
+  color: #1565d8;
+}
+
+.schedule-interview {
+  h6 {
+    font-weight: 400;
+    font-size: 16px;
+    color: #333333;
+    margin-bottom: 0;
+    padding-top: 15px;
+  }
+
+  .form-group {
+    padding-top: 5px;
+  }
+}
+
+.avatar {
+  vertical-align: middle;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+.date-form .fa-calendar {
+  position: absolute;
+  top: 36%;
+  left: 45%;
+  color: #325e9e;
+}
+
+.date-form2 .fa-calendar {
+  position: absolute;
+  top: 24%;
+  left: 45%;
+  color: #325e9e;
+}

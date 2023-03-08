@@ -1,0 +1,63 @@
+// .card {
+//     height: 85vh;
+// }
+.create-job .card .card-header a {
+  color: #db3236;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.create-job .card .card-header h4 {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.create-job .card-body h2 {
+  font-size: 1.875rem;
+  font-weight: 600;
+  color: #1c4684;
+}
+
+.create-job .card-body form .form-info {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.create-job .card-body form .info-form {
+  position: relative;
+
+  img {
+    position: absolute;
+    top: 27%;
+    left: 3%;
+  }
+  label {
+    padding-left: 3rem;
+  }
+  .input-group img {
+    z-index: 1;
+  }
+  // .input-group img:focus {
+  //     z-index: 1;
+  // }
+  .input-group .form-select {
+    height: 58px;
+    padding-left: 3rem;
+    border-radius: 4px;
+  }
+  .form-select:focus {
+    z-index: 0;
+  }
+}
+.create-job .card .card-footer {
+  border-top: none;
+  background: #ffffff !important;
+
+  .btn {
+    background: #1565d8;
+    color: #ffffff;
+    font-size: 18px;
+    font-weight: 500;
+  }
+}

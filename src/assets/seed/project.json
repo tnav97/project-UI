@@ -1,0 +1,56 @@
+[
+  {
+    "_id": "PRX123",
+    "picture": "assets/company logos/Apple-Logo-Design.png.webp",
+    "name": "APPLE",
+    "department": "Finance & Banking",
+    "status": "Active",
+    "contractStartDate": "2019-10-30",
+    "contractEndDate": "2020-12-25"
+  },
+  {
+    "_id": "PRX124",
+    "picture": "assets/company logos/Microsoft-Logo-Design.png.jpeg",
+    "name": "MICROSOFT",
+    "department": "Consumer",
+    "status": "Active",
+    "contractStartDate": "2019-12-12",
+    "contractEndDate": "2020-10-09"
+  },
+  {
+    "_id": "PRX125",
+    "picture": "assets/company logos/IBM.png.jpeg",
+    "name": "IBM",
+    "department": "E-Commerce",
+    "status": "Active",
+    "contractStartDate": "2019-08-03",
+    "contractEndDate": "2020-09-12"
+  },
+  {
+    "_id": "PRX126",
+    "picture": "assets/company logos/Toyota-Logo-Design.png",
+    "name": "TOYOTA",
+    "department": "Finance & Banking",
+    "status": "Active",
+    "contractStartDate": "2019-07-10",
+    "contractEndDate": "2020-12-25"
+  },
+  {
+    "_id": "PRX127",
+    "picture": "assets/company logos/Samsung-Famous-Logos.png",
+    "name": "SAMSUNG",
+    "department": "E-Commerce",
+    "status": "Active",
+    "contractStartDate": "2019-04-03",
+    "contractEndDate": "2020-06-12"
+  },
+  {
+    "_id": "PRX124",
+    "picture": "assets/company logos/Walmart-Logo-Design.png.webp",
+    "name": "WALMART",
+    "department": "Consumer",
+    "status": "Active",
+    "contractStartDate": "2019-05-12",
+    "contractEndDate": "2021-10-09"
+  }
+]

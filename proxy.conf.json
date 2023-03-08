@@ -1,0 +1,12 @@
+{
+  "/flexcub-api/*": {
+    "_comment": "Try This",
+    "target": "https://dev.flexcub.com/resource-planning",
+    "secure": false,
+    "logLevel": "debug",
+    "pathRewrite": {
+      "^/flexcub-api": ""
+    },
+    "changeOrigin": true
+  }
+}

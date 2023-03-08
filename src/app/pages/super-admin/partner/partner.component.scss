@@ -1,0 +1,55 @@
+.admin-clients {
+  .dashboard-header {
+    h4 {
+      font-weight: 600;
+      font-size: 18px;
+    }
+    .btn {
+      background: #1565d8;
+      border-radius: 6px;
+      color: #ffffff;
+      font-weight: 600;
+      font-size: 14px;
+    }
+  }
+
+  .clients-body {
+    .clients-table {
+      padding-left: 15px;
+      padding-right: 15px;
+
+      thead tr th {
+        font-weight: 500;
+        font-size: 14px;
+        color: #000000;
+      }
+      tbody {
+        img {
+          padding: 0 5px;
+        }
+        th,
+        td {
+          font-weight: 300;
+          font-size: 14px;
+          color: #000000;
+        }
+        td {
+          .active-badge {
+            background: #3cba54;
+            border-radius: 9px;
+            font-weight: 600;
+            font-size: 9px;
+            text-transform: uppercase;
+          }
+          .in-active-badge {
+            background: #db3236;
+            border-radius: 9px;
+            font-weight: 600;
+            font-size: 9px;
+            text-transform: uppercase;
+          }
+        }
+      }
+    }
+  }
+}

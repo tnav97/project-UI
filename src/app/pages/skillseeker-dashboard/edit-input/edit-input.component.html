@@ -1,0 +1,9 @@
+<div *ngIf="!editMode" (click)="editMode = true" class="cell">{{ data }}</div>
+<textarea
+  *ngIf="editMode"
+  (focusout)="onFocusOut()"
+  [(ngModel)]="data"
+  class="cellInput"
+  appAutofocus
+  type="text"
+  (focusout)="editMode = false"></textarea>

@@ -1,0 +1,54 @@
+:root {
+  --primary: 72, 133, 237;
+  --primary-hex: #4885ed;
+  --primary-contrast: 255, 255, 255;
+  --primary-contrast-hex: #ffffff;
+  --accent: 255, 217, 102;
+  --accent-hex: #ffd966;
+  --accent-contrast: 48, 49, 49;
+  --accent-contrast-hex: #303131;
+  --warn: 244, 67, 54;
+  --warn-hex: #f44336;
+  --warn-contrast: 255, 255, 255;
+  --warn-contrast-hex: #ffffff;
+  --custom-hex: #e7ecf8;
+  --primary-hex-dark: #325e9e;
+
+  --background: #ffffff;
+  --background-disabled: #fafbfb;
+  --background-tint: #f5f7fb;
+  --background-custom: #e7ecf8;
+  --border-color: #d8d8d8;
+  --dark-text: #363c42;
+  --default-text: #65696e;
+  --light-text: #8d9095;
+  --white-text: #ffffff;
+  --custom-text: #4885ed;
+  --custom-dark-text: #656565;
+  --header-top-shadow: 0 0 20px rgba(220, 220, 220, 0.8);
+  --input-dark: #363c42;
+  --input-default: #65696e;
+  --scroll-thumb: #c2c4c7;
+  --scroll-track: rgba(0, 0, 0, 0.1);
+
+  /* Breakpoints */
+  --resFHD: 1920px;
+  --resHD: 1600px;
+  --resXXL: 1280px;
+  --resXL: 1170px;
+  --resL: 991px;
+  --resM: 768px;
+  --resS: 660px;
+  --resXS: 500px;
+  --resXXS: 435px;
+  --resMin: 320px;
+
+  /* FullCalendar */
+  --fc-event-bg-color: var(--primary-hex);
+  --fc-button-bg-color: var(--primary-hex);
+  --fc-button-border-color: var(--primary-hex);
+  --fc-button-active-bg-color: var(--primary-hex);
+  --fc-button-active-border-color: var(--primary-hex);
+  --fc-button-hover-bg-color: var(--primary-hex);
+  --fc-button-hover-border-color: var(--primary-hex);
+}

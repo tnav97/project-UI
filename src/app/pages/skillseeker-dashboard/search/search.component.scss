@@ -1,0 +1,10 @@
+::ng-deep .mat-form-field-outline-start {
+  border-width: 2px;
+  border-radius: 28px 0 0 28px !important;
+  min-width: 28px !important;
+}
+
+::ng-deep .mat-form-field-outline-end {
+  border-width: 2px;
+  border-radius: 0 28px 28px 0 !important;
+}

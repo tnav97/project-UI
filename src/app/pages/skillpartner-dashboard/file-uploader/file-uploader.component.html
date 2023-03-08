@@ -1,0 +1,27 @@
+<div class="row">
+  <div [fileUploadInputFor]="fileUploadQueue" class="upload-drop-zone">
+    <input
+      accept=".csv,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.ms-excel"
+      hidden
+      id="singleFile"
+      type="file"
+      class="uploadfile"
+      multiple
+      [fileUploadInputFor]="fileUploadQueue"
+      (change)="fileChangeEvent(fileUploadQueue)" />
+    <label class="btn btn-primary" for="singleFile">Browse file</label>
+    <br />
+  </div>
+
+  <div>
+    <ul>
+      <li>{{ imageError }}</li>
+      <li>{{ imageFileError }}</li>
+      <li>{{ imageTypeError }}</li>
+    </ul>
+
+    <mat-file-upload-queue #fileUploadQueue [fileAlias]="'file'" [httpUrl]="fileUrl + partnerId" multiple>
+      <mat-file-upload [file]="file" [id]="i" *ngFor="let file of fileUploadQueue.files; let i = index"></mat-file-upload>
+    </mat-file-upload-queue>
+  </div>
+</div>

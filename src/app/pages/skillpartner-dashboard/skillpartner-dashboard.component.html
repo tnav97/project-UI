@@ -1,0 +1,62 @@
+<div class="container">
+  <div class="row bg-white skill-seeker-dashboard">
+    <div class="col-md-8 skill-seeker-dashboard-left">
+      <div class="card mt-3">
+        <div class="card-body header-section">
+          <div class="col-md-8">
+            <h2>Welcome {{ name | titlecase }}!</h2>
+            <p>Profile Completion: 100%</p>
+          </div>
+          <div class="col-md-4">
+            <!-- <button type="button" class="btn btn-success header-btn-sec">Go To Profile ></button> -->
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6 p-2 cursor-pointer" routerLink="addTalent">
+          <img src="assets/images/sp-talents.svg" width="100%" />
+        </div>
+        <div class="col-md-6 p-2 cursor-pointer" routerLink="/spContracts">
+          <img src="assets/images/ss-contracts.svg" width="100%" />
+        </div>
+        <div class="col-md-6 p-2 cursor-pointer" routerLink="/spHiring">
+          <img src="assets/images/ss-hiring.svg" width="100%" />
+        </div>
+        <div class="col-md-6 p-2 cursor-pointer" routerLink="/spInvoice">
+          <img src="assets/images/ss-invoice.svg" width="100%" />
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4 skill-seeker-dashboard-right">
+      <div class="top-title d-flex justify-content-between pt-3 pb-2 pr-1">
+        <h4>Recent Updates</h4>
+        <!-- <p>{{date}}/p> -->
+        <!-- <a (click)="onMarkAllRead()">Mark all as read</a> -->
+      </div>
+      <p>Notifications</p>
+      <div *ngFor="let list2 of groupArrays; let j = index">
+        <p>{{ list2.date | date : 'fullDate' }}</p>
+        <div *ngFor="let list of list2.games; let i = index">
+          <div [ngClass]="!list.markAsRead === true ? 'card' : 'card1'">
+            <div class="card-body notification-info">
+              <div class="row">
+                <div class="col-6">
+                  <h5>{{ list?.title }}</h5>
+                </div>
+
+                <div class="col-5">
+                  <p *ngIf="list?.date">{{ list?.date | date : 'mediumDate' }} at {{ list?.date | date : 'shortTime' }}</p>
+                </div>
+                <div class="col-1" *ngIf="!list.markAsRead">
+                  <i title="Mark as Read" (click)="onMarkRead(list)" class="fa fa-circle fa-xs markRead"></i>
+                </div>
+              </div>
+
+              <p class="mt-2">{{ list?.content }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,258 @@
+.create-agreement-section {
+  .create-agreement-header {
+    h4 {
+      font-weight: 600;
+      font-size: 18px;
+    }
+    .create-btn {
+      background: #1565d8;
+      border: 1px solid #1565d8;
+      border-radius: 8px;
+      color: #ffffff;
+      font-weight: 600;
+    }
+    .cancel-btn {
+      color: #db3236;
+      font-weight: 600;
+      font-size: 14px;
+      border: none;
+    }
+  }
+  .create-agreement-body {
+    .mas-bg-image {
+      img {
+        height: 410px;
+      }
+      p {
+        font-weight: 500;
+        font-size: 16px;
+        color: #333333;
+      }
+      .create-msa-btn {
+        font-weight: 600;
+        font-size: 14px;
+        color: #ffffff;
+        background: #1565d8;
+        border: 1px solid #1565d8;
+        border-radius: 6px;
+      }
+    }
+  }
+  .client-body {
+    h5 {
+      color: #325e9e;
+      font-weight: 600;
+      font-size: 18px;
+    }
+    p {
+      color: #656565;
+      font-weight: 300;
+      font-size: 14px;
+      font-style: italic;
+    }
+    form {
+      .form-select {
+        height: 58px;
+      }
+    }
+  }
+  .create-new-footer {
+    background: #ffffff;
+    .proceed-btn {
+      background: #1565d8;
+      border-radius: 6px;
+      color: #ffffff;
+    }
+  }
+
+  .multifile3 {
+    visibility: hidden;
+    display: none;
+  }
+}
+
+// Upload Agreement CSS Start
+.upload-agreement {
+  h5 {
+    font-weight: 600;
+    font-size: 24px;
+    color: #1c4684;
+    padding-top: 20px;
+  }
+
+  p {
+    color: #656565;
+    font-weight: 400;
+    font-size: 14px;
+    max-width: 40%;
+    margin: auto;
+    padding-top: 20px;
+  }
+
+  .upload-document {
+    max-width: 45%;
+    margin: auto;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    background-color: #f5f9ff;
+
+    p {
+      color: #333333;
+      font-weight: 400;
+      font-size: 14px;
+    }
+
+    a {
+      color: #4885ed;
+      text-decoration-line: underline;
+      font-weight: 400;
+      font-size: 12px;
+      padding-top: 15px;
+    }
+
+    .browse-btn {
+      border: 1px solid #1565d8;
+      border-radius: 6px;
+      background: #ffffff;
+      padding: 8px 16px;
+      color: #1565d8;
+      margin-top: 15px;
+      font-size: 16px;
+      font-weight: 600;
+    }
+
+    .upload-btn {
+      background: #325e9e;
+      border: 1px solid #325e9e;
+      border-radius: 6px;
+      color: #ffffff;
+      font-size: 16px;
+      font-weight: 600;
+      margin-top: 15px;
+      margin-left: 10px;
+    }
+  }
+}
+
+.create-agreement-footer {
+  background-color: #ffffff;
+  .back-btn {
+    color: #656565;
+    border: none;
+    text-decoration-line: underline;
+    font-weight: 600;
+    font-size: 16px;
+  }
+
+  .preview-btn {
+    background: #f5f9ff;
+    border: 1px solid #eaecef;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 16px;
+    color: #1565d8;
+  }
+}
+
+// Preview Page CSS Start
+.preview-info {
+  position: relative;
+
+  .tag {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  .title {
+    p {
+      font-weight: 300;
+      font-size: 14px;
+      color: #333333;
+      padding-left: 15px;
+    }
+
+    h2 {
+      color: #1565d8;
+      font-weight: 600;
+      font-size: 30px;
+      padding-left: 15px;
+    }
+  }
+
+  .preview-agreement-details {
+    border-bottom: 1px solid #eaecef;
+    padding-bottom: 15px;
+
+    #detail {
+      border-right: none !important;
+    }
+
+    .details {
+      padding: 0 15px;
+      border-right: 1px solid #eaecef;
+    }
+
+    p {
+      font-size: 12px;
+      color: #656565;
+      font-weight: 400;
+      margin-bottom: 0;
+    }
+
+    h5 {
+      font-size: 18px;
+      color: #1565d8;
+      font-weight: 600;
+      margin-bottom: 0;
+    }
+  }
+}
+
+.complete-modal {
+  .modal-header {
+    border-bottom: none;
+
+    .close {
+      border: none;
+      background: #f5f9ff;
+      border-radius: 8px;
+    }
+  }
+  .modal-body {
+    h3 {
+      font-weight: 600;
+      font-size: 22px;
+      color: #1565d8;
+    }
+    p {
+      font-weight: 400;
+      font-size: 14px;
+    }
+  }
+  .modal-footer {
+    border-top: none;
+
+    .cancel-btn {
+      color: #db3236;
+      font-weight: 400;
+      font-size: 14px;
+      text-decoration-line: underline;
+      border: none;
+    }
+  }
+
+  .showModal {
+    display: block;
+  }
+
+  .upload {
+    margin-top: 8px;
+    cursor: default;
+  }
+
+  .delete-icon {
+    cursor: pointer;
+    margin-left: 12px;
+  }
+}

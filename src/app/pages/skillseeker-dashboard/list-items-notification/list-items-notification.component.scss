@@ -1,0 +1,136 @@
+.skill-seeker-dashboard {
+  height: 100%;
+  border-radius: 0px 0px 6px 6px;
+}
+
+.skill-seeker-dashboard .card {
+  // background-image: linear-gradient(#dafbe1, #ffffff);
+  border: none;
+  .even {
+    background: #f5f9ff;
+    border: 1px solid #1565d8;
+    border-radius: 8px;
+  }
+
+  .odd {
+    background: #f3f3f3;
+    border: 1px solid #c8c8c8;
+    border-radius: 12px;
+  }
+}
+
+.skill-seeker-dashboard .card-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.dot {
+  text-align: end;
+}
+
+.markRead {
+  color: #1565d8;
+  cursor: pointer;
+  padding-left: 68px;
+}
+
+.skill-seeker-dashboard-left h2 {
+  color: #1c4684;
+  font-size: 26px;
+  font-weight: 600;
+}
+
+.skill-seeker-dashboard-left p {
+  color: #656565;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.skill-seeker-dashboard-left .cursor-pointer img {
+  cursor: pointer;
+}
+
+.skill-seeker-dashboard-right p {
+  font-size: 10px;
+  font-weight: 400;
+  font-family: inter;
+  color: #656565;
+}
+
+.skill-seeker-dashboard-right {
+  height: 600px;
+  overflow-y: auto;
+
+  .card {
+    .slot-title {
+      padding-left: 15px;
+    }
+
+    .btn-request {
+      color: #db3236;
+      border: none;
+      font-size: 14px !important;
+      font-weight: 600 !important;
+      text-decoration: underline;
+    }
+  }
+}
+
+.skill-seeker-dashboard-right .top-title h4 {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.skill-seeker-dashboard-right .top-title a {
+  font-size: 12px;
+  font-weight: 400;
+}
+
+.skill-seeker-dashboard-right .card {
+  background: #f5f9ff;
+}
+
+.skill-seeker-dashboard-right .card .card-body h5 {
+  font-size: 14px;
+  font-weight: 600;
+  font-family: inter;
+  color: #1565d8;
+  margin: 0;
+}
+
+.skill-seeker-dashboard-right .card .card-body .title span {
+  width: 8px;
+  height: 8px;
+  border-radius: 100%;
+  background: #1565d8;
+}
+
+.skill-seeker-dashboard-right .card .card-body p {
+  font-size: 12px;
+  font-weight: 400;
+  font-family: inter;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.skill-seeker-dashboard-right .card .card-btn .btn {
+  font-size: 12px;
+  font-weight: 400;
+}
+
+.skill-seeker-dashboard-right .card .card-btn .accept-btn {
+  background: #1565d8;
+  color: #ffffff;
+  padding: 10px 15px;
+  margin: 3px 10px;
+}
+
+.skill-seeker-dashboard-right .card .card-btn .decline-btn {
+  color: #db3236;
+  padding-left: 15px;
+}
+
+.skill-seeker-dashboard-right .card .card-btn .ignore-btn {
+  color: #f4c20d;
+  padding-left: 15px;
+}

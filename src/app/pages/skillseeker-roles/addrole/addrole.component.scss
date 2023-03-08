@@ -1,0 +1,81 @@
+form {
+  .form-select {
+    height: 58px;
+  }
+  // .form-floating2 {
+  //   position: relative;
+  //   // max-width: 300px; /* not relevant */
+  //   // margin: 40px 20px; /* not relevant */
+  // }
+
+  // .form-floating2:before {
+  //   content: '';
+  //   position: absolute;
+  //   top: 1px; /* border-width (default by BS) */
+  //   left: 1px; /* border-width (default by BS) */
+  //   width: calc(100% - 14px); /* to show scrollbar */
+  //   height: 32px;
+  //   border-radius: 4px; /* (default by BS) */
+  //   background-color: #ffffff;
+  // }
+
+  // .form-floating2 textarea.form-control {
+  //   padding-top: 32px; /* height of pseudo element */
+  //   min-height: 80px; /* not relevant */
+  // }
+
+  // .btn {
+  //   background: #1565d8;
+  //   color: #ffffff;
+  //   border-radius: 8px;
+  // }
+}
+
+button {
+  background: #1565d8;
+  border: 1px solid #1565d8;
+  border-radius: 6px;
+  color: #ffffff;
+}
+
+.form-control {
+  height: 58px;
+}
+
+.create-new-footer {
+  background: #ffffff;
+  border: none;
+  .proceed-btn {
+    background: #1565d8;
+    border-radius: 6px;
+    color: #ffffff;
+    width: 100px;
+  }
+}
+
+.access {
+  min-width: 100%;
+}
+
+::ng-deep .mdc-notched-outline__leading,
+.mdc-notched-outline__leading:hover {
+  border: 1px 1px 1px 0px solid #ced4da;
+  border-radius: 5px 0 0 5px !important;
+}
+
+::ng-deep .mdc-notched-outline__trailing,
+.mdc-notched-outline__trailing:hover {
+  border: 1px 0px 1px 1px solid #ced4da;
+  border-radius: 0 5px 5px 0 !important;
+}
+
+::ng-deep .cdk-overlay-container .cdk-overlay-pane .self_drop_multi {
+  margin-top: 13%;
+}
+
+.addRoleform {
+  padding-top: 1.75rem;
+  padding-bottom: 0.625rem;
+  color: #4885ed !important;
+  font-weight: 600;
+}

@@ -1,0 +1,604 @@
+// candidate-suggestion CSS Start
+.label-icon {
+  position: absolute;
+  height: 18px;
+  margin-top: 21px;
+  margin-left: 14px;
+}
+.form-label-group input {
+  padding-left: 1.65rem !important;
+}
+.form-label-group.fxf input:not(:placeholder-shown) {
+  padding-top: 10px !important;
+}
+.form-label-group.fxf.lg label {
+  padding-left: 1.75rem !important;
+}
+
+.avatar {
+  vertical-align: middle;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+.candidate-suggestion {
+  .candidate-suggestion-wrapper {
+    padding: 0 10px;
+  }
+
+  .candidate-suggestion-header {
+    h4 {
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 18px;
+    }
+  }
+
+  .candidate-suggestion-body {
+    height: 550px;
+    overflow-y: auto;
+
+    .talent-list {
+      p {
+        font-weight: 600;
+        font-size: 16px;
+        color: #656565;
+      }
+
+      h5 {
+        font-weight: 600;
+        font-size: 16px;
+        color: #333333;
+      }
+
+      span {
+        font-weight: 600;
+        font-size: 24px;
+        color: #333333;
+      }
+    }
+
+    p,
+    h4 {
+      margin-bottom: 0;
+    }
+
+    .candidate-suggestion-info {
+      margin-top: 20px;
+
+      .candidate-info {
+        .experience {
+          padding-left: 10px;
+        }
+
+        img {
+          // padding-right: 5px;
+        }
+
+        h4 {
+          font-size: 14px;
+          font-weight: 300;
+          color: #333333;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+          overflow: hidden;
+          width: 160px;
+        }
+
+        p {
+          font-size: 12px;
+          font-weight: 400;
+          color: #656565;
+        }
+      }
+
+      .candidate-status {
+        p {
+          font-weight: 500;
+          font-size: 14px;
+        }
+
+        .verify {
+          padding: 0 10px;
+        }
+
+        .pre-screen {
+          img {
+            width: 24px;
+          }
+
+          padding: 0 10px;
+        }
+      }
+
+      .candidate-match {
+        span {
+          font-weight: 400;
+          font-size: 12px;
+          color: #656565;
+          background: #eaecef;
+          border: 1px solid #656565;
+          border-radius: 35px;
+          padding: 4px 12px;
+        }
+
+        p {
+          font-weight: 500;
+          font-size: 14px;
+          color: #000000;
+        }
+      }
+
+      .candidate-resume a {
+        font-weight: 500;
+        font-size: 14px;
+        color: #1565d8;
+      }
+
+      .shortlisted-btn {
+        background: #3cba54;
+        color: #ffffff;
+        border: 1px solid #3cba54;
+        border-radius: 35px;
+      }
+
+      .shortlist-btn {
+        background: #f5f9ff;
+        color: #1565d8;
+        border: 1px solid #e9e7e7;
+        border-radius: 35px;
+      }
+    }
+  }
+
+  .card-footer {
+    background-color: transparent;
+    height: 80px;
+
+    .request-btn {
+      font-weight: 600;
+      font-size: 14px;
+      text-decoration-line: underline;
+      color: #1565d8;
+    }
+
+    .process-btn {
+      background: #1565d8;
+      border: 1px solid #1565d8;
+      border-radius: 6px;
+      padding: 8px 16px;
+      font-weight: 600;
+      font-size: 14px;
+      color: #ffffff;
+    }
+  }
+
+  .flex {
+    display: flex;
+    justify-content: center;
+  }
+
+  .margin-right {
+    margin-right: 2rem;
+  }
+
+  .text-align {
+    text-align: center;
+  }
+
+  .data-not-found {
+    text-align: center;
+    padding: 30px;
+  }
+
+  p.text-align {
+    font-weight: 500;
+    font-size: 14px;
+  }
+}
+
+// Responsive CSS Start
+@media only screen and (max-device-width: 1357px), screen and (max-width: 1357px) {
+  .candidate-suggestion-info {
+    .card-body {
+      padding: 1rem 0.5rem;
+    }
+  }
+}
+
+@media only screen and (max-device-width: 1280px), screen and (max-width: 1280px) {
+  .margin-right {
+    margin-right: 0.5rem !important;
+  }
+}
+
+@media only screen and (max-device-width: 1180px), screen and (max-width: 1180px) {
+  .candidate-suggestion {
+    .candidate-suggestion-body {
+      .candidate-suggestion-info {
+        .card-body {
+          flex-wrap: inherit;
+          justify-content: flex-start !important;
+          padding-left: 2rem;
+          align-items: end !important;
+        }
+
+        .progress-info {
+          padding: 0 30px;
+        }
+
+        .candidate-status {
+          padding: 0 30px;
+        }
+
+        .candidate-match {
+          padding: 0 30px;
+        }
+
+        .candidate-contact {
+          padding: 10px 100px 0;
+        }
+
+        .candidate-resume {
+          padding: 10px 100px 0;
+        }
+
+        .shortlist-btn {
+          margin: 10px 100px 0;
+        }
+
+        .candidate-info {
+          .experience {
+            padding-left: 15px;
+            width: 170px;
+          }
+
+          h4 {
+            width: 125px;
+          }
+        }
+      }
+    }
+  }
+  .candidate-resume {
+    text-align: center;
+  }
+}
+
+@media only screen and (max-device-width: 1117px), screen and (max-width: 1117px) {
+  .candidate-suggestion {
+    .candidate-suggestion-body {
+      .candidate-suggestion-info {
+        .candidate-contact {
+          padding: 0 70px;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-device-width: 1083px), screen and (max-width: 1083px) {
+  .candidate-suggestion {
+    .candidate-suggestion-body {
+      .candidate-suggestion-info {
+        .candidate-match {
+          padding: 0 25px;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-device-width: 1072px), screen and (max-width: 1072px) {
+  .candidate-suggestion {
+    .candidate-suggestion-body {
+      .candidate-suggestion-info {
+        .candidate-status {
+          padding: 0 50px;
+        }
+
+        .progress-info {
+          padding: 0 50px;
+        }
+
+        .candidate-resume {
+          padding: 0 50px;
+        }
+
+        .shortlist-btn {
+          margin: 0 50px;
+        }
+
+        .candidate-match {
+          padding-top: 10px;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-device-width: 1010px), screen and (max-width: 1010px) {
+  .candidate-suggestion {
+    .candidate-suggestion-body {
+      .candidate-suggestion-info {
+        .progress-info {
+          padding: 0 30px;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-device-width: 992px), screen and (max-width: 992px) {
+  .candidate-suggestion {
+    .candidate-suggestion-body {
+      .candidate-suggestion-info {
+        .candidate-status {
+          padding: 0 30px;
+        }
+
+        .candidate-contact {
+          padding: 0 50px;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-device-width: 944px), screen and (max-width: 944px) {
+  .candidate-suggestion {
+    .candidate-suggestion-body {
+      .candidate-suggestion-info {
+        .candidate-contact {
+          padding: 0 30px;
+        }
+
+        .candidate-resume {
+          padding: 0 30px;
+        }
+
+        .progress-info {
+          padding: 0 25px;
+        }
+
+        .shortlist-btn {
+          margin: 0 30px;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-device-width: 920px), screen and (max-width: 920px) {
+  .candidate-suggestion {
+    .candidate-suggestion-body {
+      .candidate-suggestion-info {
+        .progress-info {
+          padding: 0 20px;
+        }
+
+        .candidate-status {
+          padding: 0 20px;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-device-width: 890px), screen and (max-width: 890px) {
+  .candidate-suggestion {
+    .candidate-suggestion-body {
+      .candidate-suggestion-info {
+        .progress-info {
+          padding: 0;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-device-width: 850px), screen and (max-width: 850px) {
+  .candidate-suggestion {
+    .candidate-suggestion-body {
+      .candidate-suggestion-info {
+        .candidate-status {
+          padding: 10px 0 0;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-device-width: 815px), screen and (max-width: 815px) {
+  .candidate-suggestion {
+    .candidate-suggestion-body {
+      .candidate-suggestion-info {
+        .card-body {
+          padding-left: 1rem;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-device-width: 799px), screen and (max-width: 799px) {
+  .candidate-suggestion {
+    .candidate-suggestion-body {
+      .candidate-suggestion-info {
+        .candidate-info {
+          padding: 10px 30px 0;
+        }
+        .progress-info {
+          padding: 10px 30px 0;
+        }
+        .candidate-match {
+          padding: 10px 0 0;
+        }
+        .candidate-contact {
+          padding: 0 5px;
+        }
+        .candidate-resume {
+          padding: 0;
+        }
+        .shortlist-btn {
+          margin: 10px 10px 0;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-device-width: 755px), screen and (max-width: 755px) {
+  .candidate-suggestion {
+    .candidate-suggestion-body {
+      .candidate-suggestion-info {
+        .candidate-info {
+          padding: 0;
+        }
+        .progress-info {
+          padding: 10px 0 0;
+        }
+        .candidate-status {
+          .verify,
+          .pre-screen {
+            padding: 0 5px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-device-width: 636px), screen and (max-width: 636px) {
+  .candidate-suggestion {
+    .candidate-suggestion-body {
+      .candidate-suggestion-info {
+        .candidate-info {
+          .experience {
+            width: 140px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-device-width: 601px), screen and (max-width: 601px) {
+  .candidate-suggestion {
+    .card-footer {
+      padding-left: 0;
+      padding-right: 0;
+
+      .request-btn {
+        font-size: 10px;
+        padding-left: 0;
+      }
+
+      .nxt-txt {
+        .process-btn {
+          font-size: 10px;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-device-width: 596px), screen and (max-width: 596px) {
+  .candidate-suggestion {
+    .candidate-suggestion-body {
+      .candidate-suggestion-info {
+        .progress-info {
+          padding: 10px 20px 0;
+        }
+        .candidate-match {
+          padding: 10px 0px 0;
+        }
+        .candidate-contact {
+          padding: 0 20px;
+        }
+        .candidate-resume {
+          padding: 0 5px;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-device-width: 578px), screen and (max-width: 578px) {
+  .candidate-suggestion {
+    .candidate-suggestion-body {
+      .candidate-suggestion-info {
+        .progress-info {
+          padding: 10px 0 0;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-device-width: 538px), screen and (max-width: 538px) {
+  .candidate-suggestion {
+    .candidate-suggestion-body {
+      .candidate-suggestion-info {
+        .candidate-contact {
+          padding: 0 10px;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-device-width: 404px), screen and (max-width: 404px) {
+  .candidate-suggestion {
+    .flex {
+      flex-direction: column;
+    }
+  }
+
+  .candidate-suggestion {
+    .candidate-suggestion-body {
+      .candidate-suggestion-info {
+        .candidate-info {
+          flex-direction: column;
+
+          .experience {
+            text-align: center;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-device-width: 371px), screen and (max-width: 371px) {
+  .candidate-suggestion {
+    .candidate-suggestion-body {
+      .candidate-suggestion-info {
+        .candidate-contact {
+          padding: 0;
+        }
+
+        .candidate-resume {
+          padding: 0;
+        }
+
+        .shortlist-btn {
+          margin: 10px 0 0;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-device-width: 360px), screen and (max-width: 360px) {
+  .candidate-suggestion {
+    .card-footer {
+      .nxt-txt {
+        .process-btn {
+          font-size: 9px;
+        }
+      }
+    }
+  }
+}
+// Responsive CSS End

@@ -1,0 +1,28 @@
+<header class="top">
+  <div class="first-order">
+    <a routerLink="" *ngIf="isAdmin" class="logo">
+      <img [src]="logo" alt="logo" />
+    </a>
+    <a routerLink="/spdashboard" *ngIf="isPartner" class="logo">
+      <img [src]="logo" alt="logo" />
+    </a>
+    <a routerLink="/ssdashboard" *ngIf="isSeeker" class="logo">
+      <img [src]="logo" alt="logo" />
+    </a>
+    <a routerLink="/sodashboard" *ngIf="isOwner" class="logo">
+      <img [src]="logo" alt="logo" />
+    </a>
+
+    <a routerLink="/superadmin" *ngIf="isSsAdmin" class="logo">
+      <img [src]="logo" alt="logo" />
+    </a>
+
+    <!-- <button mat-icon-button aria-label="Hamburger menu" class="hamberger-menu" (click)="toggleMenu()">
+      <mat-icon>menu</mat-icon>
+    </button> -->
+    <!-- <h2  class="current-component mt-2">FLEX CUB</h2> -->
+  </div>
+  <div class="second-order">
+    <ng-additionals></ng-additionals>
+  </div>
+</header>

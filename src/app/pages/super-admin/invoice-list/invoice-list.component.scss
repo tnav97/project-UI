@@ -1,0 +1,157 @@
+.admin-clients {
+  .dashboard-header {
+    h4 {
+      font-weight: 600;
+      font-size: 18px;
+    }
+    .butn {
+      background: #1565d8;
+      border-radius: 6px;
+      color: #ffffff;
+      font-weight: 600;
+      font-size: 14px;
+    }
+  }
+
+  .clients-body {
+    .clients-table {
+      padding-left: 15px;
+      padding-right: 15px;
+
+      thead tr th {
+        font-weight: 500;
+        font-size: 14px;
+        color: #000000;
+      }
+      tbody {
+        img {
+          padding: 0 5px;
+        }
+        th,
+        td {
+          font-weight: 300;
+          font-size: 14px;
+          color: #000000;
+        }
+        td {
+          .active-badge {
+            background: #3cba54;
+            border-radius: 9px;
+            font-weight: 600;
+            font-size: 9px;
+            text-transform: uppercase;
+          }
+          .in-active-badge {
+            background: #db3236;
+            border-radius: 9px;
+            font-weight: 600;
+            font-size: 9px;
+            text-transform: uppercase;
+          }
+
+          .approve-badge {
+            // background-color: #a9efb6;
+            background-color: #3cba54;
+            text-transform: uppercase;
+            border-radius: 9px;
+          }
+
+          .reject-badge {
+            background: #f3b5b6;
+            color: #db3236;
+            text-transform: uppercase;
+            border-radius: 9px;
+          }
+
+          .pending-badge {
+            background-color: #0a2954;
+            text-transform: uppercase;
+            border-radius: 9px;
+          }
+
+          .paid-badge {
+            // background-color: rgb(249, 224, 161);
+            background-color: rgb(250, 181, 7);
+            text-transform: uppercase;
+            border-radius: 9px;
+            margin-left:12px
+          }
+        }
+      }
+    }
+  }
+}
+
+.label-icon {
+  position: absolute;
+  height: 18px;
+  margin-top: 21px;
+  margin-left: 14px;
+}
+.form-label-group input {
+  padding-left: 1.65rem !important;
+}
+.form-label-group.fxf input:not(:placeholder-shown) {
+  padding-top: 10px !important;
+}
+.form-label-group.fxf.lg label {
+  padding-left: 1.75rem !important;
+}
+
+.avatar {
+  vertical-align: middle;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+.tooltips {
+  display: inline-block;
+  position: relative;
+  text-align: left;
+  z-index: auto;
+}
+
+.tooltips .left {
+  // max-width: 200px;
+  width: max-content;
+  //top: 26rem;
+  //right: -60px;
+  transform: translate(-70%, 10%);
+  padding: 10px 20px;
+  color: #024d6b;
+  background-color: #ffffff;
+  font-weight: normal;
+  font-size: 14px;
+  border-radius: 6px;
+  position: absolute;
+  z-index: 9;
+  box-sizing: border-box;
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.5);
+  display: none;
+}
+
+.tooltips:hover .left {
+  display: block;
+}
+
+.tooltips .left i {
+  // position:absolute;
+  position: absolute;
+  top: 50%;
+  right: 100%;
+  margin-top: -12px;
+  width: 12px;
+  height: 24px;
+  overflow: hidden;
+}
+
+.tooltips .left i::after {
+  content: '';
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(45deg);
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.5);
+}

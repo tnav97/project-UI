@@ -1,0 +1,1081 @@
+<input type="file" hidden #picSelector>
+<app-loader *ngIf="isLoading">{{ isLoading }}</app-loader>
+<div *ngIf="!isLoading" class="row card career-profile-section">
+  <div class="col-md-12 card-header">
+    <h4 class="mb-0">My Professional Profile</h4>
+  </div>
+  <div class="card-body career-profile-body d-flex">
+    <div class="col-md-3 tab-left">
+      <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+        <button class="nav-link active" id="v-pills-home-tab" data-toggle="pill" data-target="#v-pills-home"
+          type="button" role="tab" aria-controls="v-pills-home" aria-selected="true">
+          Basic Details
+        </button>
+        <button class="nav-link" id="v-pills-profile-tab" data-toggle="pill" data-target="#v-pills-profile"
+          type="button" role="tab" aria-controls="v-pills-profile" aria-selected="false">
+          Personal Details
+        </button>
+        <button class="nav-link" id="v-pills-messages-tab" data-toggle="pill" data-target="#v-pills-messages"
+          type="button" role="tab" aria-controls="v-pills-messages" aria-selected="false">
+          Work
+        </button>
+        <button class="nav-link" id="v-pills-settings-tab" data-toggle="pill" data-target="#v-pills-settings"
+          type="button" role="tab" aria-controls="v-pills-settings" aria-selected="false">
+          Skillset
+        </button>
+      </div>
+    </div>
+    <div class="col-md-9 tab-info">
+      <div class="tab-content" id="v-pills-tabContent">
+        <!-- Basic Details Tab Content Start -->
+        <div class="tab-pane basic-info-tab fade show active" id="v-pills-home" role="tabpanel"
+          aria-labelledby="v-pills-home-tab" [formGroup]="form">
+          <h4>Basic Profile</h4>
+          <div class="d-flex name-info">
+            <div class="profile-img">
+              <div>
+                <img src="assets/images/profile-img.png" *ngIf="!isImageLoading && staticImage" />
+                <img class="imagedownload" [src]="soImgUrl + ownerId" *ngIf="isImageLoading && staticImage" />
+                <img id="img" *ngIf="!staticImage" width="100%" [src]="imageUrl" alt="assets/images/profile-img.png"
+                  class="change-img" />
+                <input (change)="getfile($event)" type="file" formControlName="multifile"
+                  accept="image/png,image/jpeg,image/jpg" class="multifile" id="multifile" />
+              </div>
+              <a id="files" onclick="document.getElementById('multifile').click();">Change Image</a>
+            </div>
+
+            <div class="status-info">
+              <div>
+                <span class="badge" [ngClass]="userStatus == 'Active' ? 'successStatus' : 'status'">{{ userStatus
+                  }}</span>
+              </div>
+              <div class="d-flex align-items-center status-toggle">
+                <h5 class="mb-0">Available For Hire</h5>
+                <div class="toggle">
+                  <label class="switch">
+                    <input type="checkbox" formControlName="status" (click)="changeStatus($event)" />
+                    <span class="slider round"></span>
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <form [formGroup]="form">
+            <div class="row">
+              <div class="col-md-5">
+                <div class="form-floating mb-3 mt-3">
+                  <input type="text" class="form-control" id="firstname" placeholder="First Name*" name="firstname"
+                    formControlName="firstName"
+                    [class.is-invalid]="form.get('firstName').invalid && form.get('firstName').touched" />
+                  <label for="firstname">First Name*</label>
+                  <div *ngIf="(firstName.invalid && firstName.touched) || firstName.dirty" class="error">
+                    <small *ngIf="firstName.errors?.required" class="text-danger">First Name is required</small>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-5">
+                <div class="form-floating mb-3 mt-3">
+                  <input type="text" class="form-control" id="lastname" placeholder="Last Name*" name="lastname"
+                    formControlName="lastName"
+                    [class.is-invalid]="form.get('lastName').invalid && form.get('lastName').touched" />
+                  <label for="lastname">Last Name*</label>
+                  <div *ngIf="(lastName.invalid && lastName.touched) || lastName.dirty" class="error">
+                    <small *ngIf="lastName.errors?.required" class="text-danger">Last Name is required</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row with-icon">
+              <div class="col-md-5">
+                <div class="form-floating mb-3 mt-3 mail-form">
+                  <img src="assets/images/envelope.svg" alt="login" class="label-icon" />
+                  <input type="email" class="form-control" id="email" placeholder="Primary Email Address*"
+                    name="PrimaryEmailAddress" formControlName="email"
+                    [class.is-invalid]="form.get('email').invalid && form.get('email').touched" />
+                  <label for="email">Primary Email Address*</label>
+                  <div *ngIf="(email.invalid && email.touched) || email.dirty" class="error">
+                    <small *ngIf="email.errors?.required" class="text-danger">Email id is required</small>
+                    <small *ngIf="email.errors?.pattern" class="text-danger">Please provide a valid email
+                      address</small>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-5">
+                <div class="form-floating mb-3 phone-form inner-addon left addon mt-3">
+                  <img src="assets/images/phone.svg" alt="login" class="label-icon" />
+                  <input type="tel" class="form-control" id="phone1" placeholder="Primary Phone Number*"
+                    name="Primary Phone Number" (keypress)="keyPressNumbers($event)" formControlName="phone"
+                    [class.is-invalid]="form.get('phone').invalid && form.get('phone').touched" />
+                  <label for="phone">Primary Phone Number*</label>
+                </div>
+              </div>
+            </div>
+
+            <div class="row with-icon">
+              <div class="col-md-5">
+                <div class="form-floating mb-3 mt-3 mail-form">
+                  <img src="assets/images/envelope.svg" alt="login" class="label-icon" />
+                  <input type="email" class="form-control" id="alternateEmail" placeholder="Alternate Email Address*"
+                    name="AlternateEmailAddress" formControlName="alternateEmail" />
+                  <label for="email">Alternate Email Address</label>
+                  <div *ngIf="(alternateEmail.invalid && alternateEmail.touched) || alternateEmail.dirty" class="error">
+                    <small *ngIf="alternateEmail.errors?.pattern || form.get('alternateEmail').invalid"
+                      class="text-danger">Please provide a valid email address</small>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-5">
+                <div class="form-floating phone-form mb-3 mt-3">
+                  <img src="assets/images/phone.svg" alt="login" class="label-icon" />
+                  <input type="tel" class="form-control" id="phone" placeholder="Alternate Phone Number*"
+                    name="Alternate Phone Number" (keypress)="keyPressNumbers($event)"
+                    formControlName="Alternatephonenumber" />
+                  <label for="Alternatephonenumber">Alternate Phone Number</label>
+                  <div
+                    *ngIf="(Alternatephonenumber.invalid && Alternatephonenumber.touched) || Alternatephonenumber.dirty"
+                    class="error">
+                    <small *ngIf="Alternatephonenumber.errors?.pattern || form.get('Alternatephonenumber').invalid"
+                      class="text-danger">Please provide a valid Phone Number</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-5">
+                <div class="form-floating mb-3 mt-3 date-form">
+                  <input type="text" bsDatepicker #dp="bsDatepicker" onkeydown="return false"
+                    [bsConfig]="{ containerClass: 'theme-dark-blue' }" class="form-control"
+                    [class.is-invalid]="form.get('dob').invalid && form.get('dob').touched" id="DateOfBirth"
+                    placeholder="mm/dd/yyyy" name="date of birth" formControlName="dob" [maxDate]="today" />
+                  <label for="DateOfBirth">Date of Birth*</label>
+                  <div *ngIf="!(dob.invalid && dob.touched) || dob.dirty" (click)="dp.toggle()"
+                    [attr.aria-expanded]="dp.isOpen" type="button" for="calendar-input"
+                    class="date-range-picker-icon fa fa-calendar"></div>
+
+                  <div *ngIf="(dob.invalid && dob.touched) || dob.dirty">
+                    <small *ngIf="dob.errors?.required" class="text-danger"> DOB is required</small>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-5 gender-detail">
+                <p class="mb-0 gender2">Gender</p>
+                <div>
+                  <select formControlName="gender" class="form-select gender" aria-label="Default select example">
+                    <option hidden selected value="">Select gender</option>
+                    <option *ngFor="let gen of genders" [ngValue]="gen">
+                      <span *ngIf="gen.gender == 'Male'">&#9794; </span>
+                      <span *ngIf="gen.gender == 'Female'"> &#9792;</span>
+                      <span *ngIf="gen.gender == 'Others'">&#9893;</span> {{ gen.gender }}
+                    </option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-10 about">
+                <div class="form-group">
+                  <label for="exampleFormControlTextarea4">About Me</label>
+                  <textarea class="form-control" id="exampleFormControlTextarea4" rows="5" formControlName="aboutme"
+                    (keyup)="onKeyUp($event)"></textarea>
+                  <p class="text-end">{{ numberOfCharacters1 }}/500 Characters</p>
+                </div>
+              </div>
+            </div>
+          </form>
+
+          <div class="row">
+            <div class="preview-right-info">
+              <h4 style="font-size: 20px;
+              font-weight: 600;">Please upload the Federal Security Clearance Certificate</h4>
+              <!-- <p>Do you need the candidate(s) to have federal security clearance to work on this project?</p> -->
+            </div>
+            <div class="d-flex align-items-center">
+              <h5 class="mb-0">
+                <p *ngIf="!checkedvalue1" style="color: grey; margin-top: 4px;padding:9px">NO</p>
+                <p *ngIf="checkedvalue1" style="color: #3cba54; margin-top: 4px;padding:9px">YES</p>
+              </h5>
+              <div class="toggle">
+                <label class="switch">
+                  <input type="checkbox" [checked]="checkedvalue1" (change)="fedaralSecurity($event)" />
+                  <span class="slider round"></span>
+                </label>
+              </div>
+            </div>
+
+            <div class="col-lg-4">
+              <div *ngIf="checkedvalue1">
+                <div class="file-container">
+                  <form [formGroup]="federalDoc">
+                    <div class="form-group">
+                      <div class="uploader">
+                        <input (change)="getFederal($event)" type="file" formControlName="federalfile"
+                          class="multifile3" id="multifile3" accept="application/pdf,application/msword" />
+                        <button class="btn" id="files1" onclick="document.getElementById('multifile3').click();">Upload
+                           Document</button>
+
+                      </div>
+
+                      <div *ngFor="let a of federalFile; let j = index" class="display d-flex align-items-center">
+                        <div class="card" style="width: 300px">
+                          <div class="card-body">
+                            <div class="row">
+                              <div class="col-12">
+                                {{ a?.name }}
+                                <div class="progress" style="height: 5px">
+                                  <div class="progress-bar" role="progressbar" [style.width]="progressValue + '%'"
+                                    aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div *ngIf="show1" class="delete-icon">
+                          <a [href]="a?.webkitRelativePath ? a?.webkitRelativePath : 'javascript:void(0)'">
+                            <img src="assets/images/icon-archive.svg" style="padding-left:10px" />
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+
+            <!-- <div class="col-lg-4">
+          <div *ngIf="checkedvalue1">
+            <div class="mb-4">
+              <div class="mb-2">
+
+
+                <div class="card fx-docs" *ngFor="let n of federalFile;">
+                  <div class="card-body p-3">
+                    <div class="row align-items-center">
+                      <div class="col-8">
+                        <h5 class="txt bold dark text-truncate mb-0">{{n?.name}}</h5>
+                      </div>
+                      <div class="col-4 ms-auto">
+                        <div class="row g-0">
+                          <div class="col-auto">
+                            <a [href]="n?.webkitRelativePath ? n?.webkitRelativePath : 'javascript:void(0)'"
+                              class="btn btn-with-icon txt primary">
+                              <i class="fa fa-download" aria-hidden="true"></i>
+                            </a>
+                          </div>
+                          <div class="col-auto">
+                            <a href="javascript:void(0)" class="btn btn-with-icon text-danger"
+                            >
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <button class="btn btn-primary" (click)="uploadFedaral()">Add federal document</button>
+              </div>
+            </div>
+
+        </div>
+        </div> -->
+
+          </div>
+
+          <!-- <div class="upload-profile"> -->
+
+          <div class="row upload-profile mt-5">
+            <h4 class="mb-0">Upload Profile</h4>
+            <p class="mb-0">
+              Make sure you upload your latest resume here to get most relevant opportunities, upload document
+              format(.doc,.docx,.pdf).
+            </p>
+            <div class="col-lg-4">
+              <!-- <app-upload></app-upload> -->
+              <div class="file-container">
+                <form [formGroup]="resumeDoc">
+                  <div class="form-group">
+                    <div class="uploader">
+                      <input (change)="getResume($event)" type="file" formControlName="resumefile" class="multifile2"
+                        id="multifile2" accept="application/pdf,application/msword" />
+                      <button class="btn" id="files2" onclick="document.getElementById('multifile2').click();">Upload
+                        Profile</button>
+                      <!-- <button *ngIf="show1 == true" class="btn" (click)="getdownloadResume(2)">Download Profile</button> -->
+                    </div>
+
+                    <div *ngFor="let a of resumeFiles; let j = index" class="display d-flex align-items-center">
+                      <div class="card" style="width: 300px">
+                        <div class="card-body">
+                          <div class="row">
+                            <div class="col-12">
+                              {{ a?.name }}
+                              <div class="progress" style="height: 5px">
+                                <div class="progress-bar" role="progressbar" [style.width]="progressValue + '%'"
+                                  aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- <div class="delete-icon">
+                                <img src="assets/images/icon-delete.svg"> -->
+                      <!-- <div *ngIf="file1" class="delete-icon">
+                        <img src="assets/images/icon-delete.svg" (click)="remove1()" />
+                      </div> -->
+                      <div *ngIf="show1" class="delete-icon">
+                        <a [href]="a?.webkitRelativePath ? a?.webkitRelativePath : 'javascript:void(0)'">
+                          <img src="assets/images/icon-archive.svg" />
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+
+          <div class="row doc-upload">
+            <h4 class="mb-0">Other Documents</h4>
+            <p class="mb-0">Attach cover letter, portfolio, your skillset presentations, etc.,</p>
+            <div class="col-lg-4">
+              <div class="file-container">
+                <form [formGroup]="otherDocs">
+                  <div class="form-group">
+                    <div class="display">
+                      <div *ngFor="let n of otherFiles; let j = index" class="d-flex align-items-center">
+                        <div class="card" style="width: 300px; margin: 5px 0px">
+                          <div class="card-body row">
+                            <div class="col-12">
+                              {{ n?.name }}
+                              <div class="progress" style="height: 5px">
+                                <div class="progress-bar" role="progressbar" [style.width]="progressValue1 + '%'"
+                                  aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="delete-icon">
+                          <img src="assets/images/icon-delete.svg" (click)="remove(n,j)" />
+                        </div>
+                        <div class="delete-icon">
+                          <a [href]="n?.webkitRelativePath ? n?.webkitRelativePath : 'javascript:void(0)'">
+                            <img src="assets/images/icon-archive.svg" />
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- <a id="a">Download File</a> -->
+                  <div class="uploader mt-3">
+                    <input (change)="otherfile($event)" type="file" formControlName="otherDocument" class="multifile2"
+                      id="otherfile" multiple accept="application/pdf,application/msword" />
+                    <button class="btn" id="files" onclick="document.getElementById('otherfile').click();">Add Other
+                      Document</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+
+          <div class="career-profile-footer card-footer text-muted text-center">
+            <button class="btn cancel-btn" routerLink="/sodashboard">Cancel</button>
+            <button class="btn save-btn" (click)="save()">Save Changes</button>
+          </div>
+        </div>
+        <!-- Basic Details Tab Content End -->
+
+        <!-- Personal Details Tab Content Start -->
+        <div class="tab-pane personal-info-tab fade" id="v-pills-profile" role="tabpanel"
+          aria-labelledby="v-pills-profile-tab" [formGroup]="form">
+          <h4>Personal Details</h4>
+          <div class="row basic">
+            <div class="col-md-3 ssn-input">
+              <div class="form-floating inner-addon right-addon">
+                <i class="glyphicon glyphicon-user">
+                  <i (click)="toggleFieldTextType()" style="margin-left: -10px" class="fa" [ngClass]="{
+                      'fa-eye-slash': !fieldTextType,
+                      'fa-eye': fieldTextType
+                    }">
+                  </i>
+                </i>
+
+                <input class="form-control pe-5" [type]="fieldTextType ? 'text' : 'password'" id="floatingPassword"
+                  formControlName="SSN" placeholder="000-00-0000" inputmode="numeric" [maxlength]="11" />
+
+                <div class="error-msg">
+                  <div *ngIf="f.SSN.invalid" class="invalid-feedback">Please enter a valid 9 digit SSN (XXX-XX-XXXX).
+                  </div>
+                </div>
+
+                <label for="floatingPassword">SSN</label>
+              </div>
+            </div>
+
+            <div class="form-floating col-md-3">
+              <select formControlName="years" class="form-select" aria-label="Floating label select example">
+                <option hidden selected value="">Select Years</option>
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+                <option value="13">13</option>
+                <option value="14">14</option>
+                <option value="15">15</option>
+              </select>
+              <label class="year" for="floatingSelect">Experience Years*</label>
+            </div>
+
+            <div class="col-md-3 form-floating">
+              <select formControlName="months" class="form-select" aria-label="Floating label select example">
+                <option hidden selected value="">Select Months</option>
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+              </select>
+              <label class="year" for="floatingSelect">Experience Month*</label>
+            </div>
+            <div class="col-md-3 form-group">
+              <div class="form-floating form-label-group">
+              <select formControlName="visaStatus" class="form-select" aria-label="Default select example">
+                <option hidden selected value="">Status</option>
+                <option *ngFor="let visa of visaStatuses" [ngValue]="visa">
+                  {{ visa.visaStatus }}
+                </option>
+              </select>
+              <label class="year" for="floatingSelect">Select VisaStatus*</label>
+            </div>
+            </div>
+            <!-- <div class="col-md-3 form-group">
+              <div class="form-floating form-label-group">
+                <select formControlName="usc" class="form-select" aria-label="Default select example">
+                  <option hidden selected value="">Select Authorization</option>
+                  <option value="true">Yes</option>
+                  <option value="false">No</option>
+                </select>
+                <label class="year" for="floatingSelect">USC*</label>
+              </div>
+            </div> -->
+          </div>
+          <div class="row basic">
+            <div class="col-md-3 form-group form-floating">
+              <select formControlName="usAuthorization" class="form-select" aria-label="Default select example">
+                <option hidden selected value="">Select Authorization</option>
+                <option value="true">True</option>
+                <option value="false">False</option>
+              </select>
+              <label class="year" for="floatingSelect">Work Authorization*</label>
+            </div>
+            <div class="col-md-3 form-group">
+              <div class="form-floating form-label-group">
+                <select formControlName="usc" class="form-select" aria-label="Default select example">
+                  <option hidden selected value="">Select Authorization</option>
+                  <option value="true">Yes</option>
+                  <option value="false">No</option>
+                </select>
+                <label class="year" for="floatingSelect">USC*</label>
+              </div>
+            </div>
+            <!-- <div class="col-md-3 form-group form-floating">
+              <select formControlName="federalSecurityClearance" class="form-select" aria-label="Default select example">
+                <option hidden selected>Select Security Clearance</option>
+                <option value="true">True</option>
+                <option value="false">False</option>
+              </select>
+              <label class="year" for="floatingSelect">Security Clearance*</label>
+            </div> -->
+            <div class="col-md-3 form-group form-floating">
+              <select formControlName="statusVisa" class="form-select" aria-label="Default select example">
+                <option hidden selected value="">Select Status</option>
+                <option value="Active">Active</option>
+                <option value="Inactive">Expired</option>
+              </select>
+              <label class="year" for="floatingSelect">Status*</label>
+            </div>
+            <div class="form-floating col-md-3 form-group date-form">
+              <input type="text" bsDatepicker #dp1="bsDatepicker" onkeydown="return false"
+                [bsConfig]="{ containerClass: 'theme-dark-blue' }" class="form-control" id="visaStart"
+                placeholder="mm/dd/yyyy" name="visaStart" formControlName="visaStart" />
+
+              <label for="Visa start date">Visa start date*</label>
+
+              <div (click)="dp1.toggle()"
+                [attr.aria-expanded]="dp1.isOpen" type="button" for="calendar-input"
+                class="date-range-picker-validity fa fa-calendar"></div>
+
+              <small class="text-danger" *ngIf="
+                  form.errors?.dateValid &&
+                  (form.get('visaStart').touched ||
+                    (form.get('visaStart').touched && form.get('visaStart').value !== '') ||
+                    form.get('visaStart').dirty)
+                ">Please provide a valid visa start date</small>
+            </div>
+
+            <div class="form-floating col-md-3 form-group date-form">
+              <input type="text" bsDatepicker #dp2="bsDatepicker" onkeydown="return false"
+                [bsConfig]="{ containerClass: 'theme-dark-blue' }" class="form-control" id="ValidityLabel"
+                placeholder="mm/dd/yyyy" name="Validity" formControlName="visaEnd" />
+
+              <label for="ValidityLabel">Visa end date*</label>
+
+              <div  (click)="dp2.toggle()"
+                [attr.aria-expanded]="dp2.isOpen" type="button" for="calendar-input"
+                class="date-range-picker-validity fa fa-calendar"></div>
+
+              <small class="text-danger" *ngIf="
+                  form.errors?.dateValid &&
+                  (form.get('visaEnd').touched ||
+                    (form.get('visaEnd').touched && form.get('visaEnd').value !== '') ||
+                    form.get('visaEnd').dirty)
+                ">Please provide a valid visa end date</small>
+            </div>
+
+            <div class="row mt-4">
+              <!-- <div class="col-md-3 form-group form-floating">
+                <select formControlName="visaStatus" class="form-select" aria-label="Default select example">
+                  <option hidden selected value="">Status</option>
+                  <option *ngFor="let visa of visaStatuses" [ngValue]="visa">
+                    {{ visa.visaStatus }}
+                  </option>
+                </select>
+                <label class="year" for="floatingSelect">Select VisaStatus*</label>
+              </div> -->
+            </div>
+          </div>
+          <div class="address">
+            <h5 class="mb-0 address-title">Mailing Address</h5>
+            <form [formGroup]="form">
+              <!-- Current Address Start-->
+              <div class="row">
+                <h5>Current</h5>
+                <div class="col-md-6">
+                  <div class="form-floating mb-3 mt-3">
+                    <input type="text" class="form-control" id="addressline1" placeholder="Address Line 1*"
+                      name="addressline1" formControlName="addressline1" />
+                    <label for="addressline1">Address Line 1*</label>
+                    <div *ngIf="f?.addressline1?.touched && !f?.addressline1?.valid" class="invalid-feedback">
+                      <div *ngIf="f?.addressline1?.errors?.required">Address is required</div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-md-6">
+                  <div class="form-floating mb-3 mt-3">
+                    <input type="text" class="form-control" id="addressline2" placeholder="Address Line 2"
+                      name="addressline2" formControlName="addressline2" />
+                    <label for="addressline2">Address Line 2</label>
+                    <div></div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row location">
+                <div class="form-group col-md-4 form-floating">
+                  <select formControlName="state" (click)="getCityList()" class="form-select"
+                    aria-label="Default select example">
+                    <option hidden selected value="">Select State*</option>
+                    <option *ngFor="let state of stateList" [value]="state.state_name">
+                      {{ state.state_name }}
+                    </option>
+                  </select>
+                  <label class="year" for="floatingSelect">State*</label>
+                </div>
+
+                <div class="form-group col-md-4 form-floating">
+                  <select formControlName="city" class="form-select" aria-label="Default select example">
+                    <option hidden selected value="">Select city</option>
+                    <option *ngFor="let city of cityList" [value]="city.city_name">
+                      {{ city.city_name }}
+                    </option>
+                  </select>
+                  <label class="year" for="floatingSelect">City*</label>
+                </div>
+
+                <div class="form-group col-md-4">
+                  <div class="form-floating">
+                    <input type="text" (keypress)="keyPressNumbers($event)" class="form-control" id="zipcode"
+                      placeholder="Zipcode*" name="zipcode" formControlName="zipcode" maxlength="5" />
+                    <label for="zipcode">Zipcode*</label>
+                    <div></div>
+                    <div *ngIf="f?.zipcode?.touched && !f?.zipcode?.valid" class="invalid-feedback">
+                      <div *ngIf="f?.zipcode?.errors?.required">Zipcode is required</div>
+                    </div>
+                  </div>
+                </div>
+                <div *ngIf="addressError" class="error text-danger">Please fill mailing address first</div>
+              </div>
+              <!-- Current Address End -->
+
+              <!-- Permanent Address Start -->
+              <div class="row">
+                <h5>Permanent</h5>
+                <div class="d-flex align-items-center address-instruction">
+                  <input type="checkbox" formControlName="check" [checked]="false"
+                    aria-label="Checkbox for following text input" (click)="setAddrs()" id="subscribe" />
+                  <p class="mb-0">Same as current mailing address</p>
+                </div>
+
+                <div class="col-md-6">
+                  <div class="form-floating mb-3 mt-3">
+                    <input type="text" class="form-control" id="addressline3" placeholder="Address Line 1"
+                      name="addressline1" formControlName="addressline3" />
+                    <label for="addressline3">Address Line 1</label>
+                    <div>
+                      <!-- <small class="text-danger">First Name is required</small>-->
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-md-6">
+                  <div class="form-floating mb-3 mt-3">
+                    <input type="text" class="form-control" id="addressline4" placeholder="Address Line 2"
+                      name="addressline2" formControlName="addressline4" />
+                    <label for="addressline4">Address Line 2</label>
+                    <div>
+                      <!-- <small class="text-danger">Last Name is required</small>-->
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row location">
+                <div class="form-group col-md-4">
+                  <select formControlName="state1" (click)="getCityList()" class="form-select"
+                    aria-label="Default select example">
+                    <option hidden selected value="">Select State</option>
+                    <option *ngFor="let state of stateList" [value]="state.state_name">
+                      {{ state.state_name }}
+                    </option>
+                  </select>
+                </div>
+
+                <div class="form-group col-md-4">
+                  <select formControlName="city1" class="form-select" aria-label="Default select example">
+                    <option hidden selected value="">Select city</option>
+                    <option *ngFor="let city of cityList" [value]="city.city_name">
+                      {{ city.city_name }}
+                    </option>
+                  </select>
+                </div>
+
+                <div class="form-group col-md-4">
+                  <div class="form-floating">
+                    <input type="text" (keypress)="keyPressNumbers($event)" class="form-control" id="zipcode1"
+                      placeholder="Zipcode*" name="zipcode" formControlName="zipcode1" maxlength="5" />
+                    <label for="zipcode">Zipcode*</label>
+                    <div>
+                      <!-- <small class="text-danger">Last Name is required</small>-->
+                    </div>
+                    <div *ngIf="f?.zipcode1?.touched && !f?.zipcode1?.valid" class="invalid-feedback">
+                      <div *ngIf="f?.zipcode1?.errors?.required">Zipcode is required</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- Permanent Address End -->
+            </form>
+          </div>
+
+          <div class="social-profile">
+            <h5 class="mb-0">Social Profiles</h5>
+            <div class="row">
+              <div class="col-md-6 pe-2">
+                <div class="form-floating mb-3 mt-3">
+                  <input type="url" class="form-control" id="linkedinurlprofileurl" placeholder="LinkedIn Profile URL"
+                    name="linkedinurlprofileurl" formControlName="linkedinurlprofileurl" />
+                  <label for="linkedinurlprofileurl">LinkedIn Profile URL</label>
+                  <div></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="">
+              <div [formGroup]="orderForm">
+                <div formArrayName="items" *ngFor="let item of orderForm.get('items')['controls']; let i = index">
+                  <div [formGroupName]="i" class="row">
+                    <div class="col-md-6 pe-0">
+                      <div class="form-floating mb-3 mt-3 me-2">
+                        <input type="url" class="form-control w-100" id="portfolioUrls"
+                          placeholder="Other Portfolio URL" name="portfolioUrls" formControlName="portfolioUrls" />
+                        <label for="linkedinurlprofileurl">Other Portfolio URL</label>
+                      </div>
+                    </div>
+                    <div class="col-md-1 d-flex align-items-center">
+                      <span> <img (click)="removePortfolio(i)" src="assets/images/icon-delete.svg" /></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <a (click)="addItem()">+ Add URL</a>
+          </div>
+
+          <div class="career-profile-footer card-footer text-muted text-center">
+            <button class="btn cancel-btn" routerLink="/sodashboard">Cancel</button>
+            <button class="btn save-btn" [disabled]="personalDetailsisValid" (click)="save1()">Save Changes</button>
+          </div>
+        </div>
+        <!-- Personal Details Tab Content End -->
+
+        <!-- Work Details tab Content Start -->
+        <div class="tab-pane work-info-tab fade" id="v-pills-messages" role="tabpanel"
+          aria-labelledby="v-pills-messages-tab">
+          <h4 class="mb-0">Work Details</h4>
+
+          <div class="work-info">
+            <form [formGroup]="workDetailsForm">
+              <!-- job title and company Start-->
+              <div class="row">
+                <h5 class="mb-0">Current</h5>
+                <div class="col-md-5">
+                  <div class="form-floating mb-3 mt-3">
+                    <input type="text" class="form-control" id="jobtitle" placeholder="Job Title" name="jobtitle"
+                      formControlName="jobtitle" />
+                    <label for="jobtitle">Job Title*</label>
+                    <div></div>
+                  </div>
+                </div>
+
+                <div class="col-md-5">
+                  <div class="form-floating mb-3 mt-3">
+                    <input type="text" class="form-control" id="companyname" placeholder="Company Name"
+                      name="companyname" formControlName="companyname" />
+                    <label for="companyname">Company Name*</label>
+                    <div></div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-5">
+                  <div class="form-floating mb-3 mt-3 date-form2">
+                    <input type="text" bsDatepicker #dp3="bsDatepicker" onkeydown="return false"
+                      [bsConfig]="{ containerClass: 'theme-dark-blue' }" class="form-control" id="contractStartDate"
+                      placeholder="mm/dd/yyyy" name="contractStartDate" max="9999-12-31"
+                      formControlName="contractstartdate" />
+                    <label for="ContractStartDate">Contract Start Date*</label>
+                    <div (click)="dp3.toggle()" [attr.aria-expanded]="dp3.isOpen" type="button" for="calendar-input"
+                      class="date-range-picker-icon fa fa-calendar"></div>
+                    <small class="text-danger" *ngIf="
+                        workDetailsForm.errors?.dateValid &&
+                        (workDetailsForm.get('contractstartdate').touched ||
+                          (workDetailsForm.get('contractstartdate').touched && workDetailsForm.get('contractstartdate').value !== '') ||
+                          workDetailsForm.get('contractstartdate').dirty)
+                      ">Please provide a valid contract start date</small>
+                  </div>
+                </div>
+
+                <div class="col-md-5">
+                  <div class="form-floating mb-3 mt-3 date-form3">
+                    <input type="text" bsDatepicker #dp4="bsDatepicker" onkeydown="return false"
+                      [bsConfig]="{ containerClass: 'theme-dark-blue' }" class="form-control" id="ContractEndDate"
+                      placeholder="mm/dd/yyyy" name="ContractEndDate" max="9999-12-31"
+                      formControlName="contractenddate" />
+                    <label for="ContractEndDate">Contract End Date*</label>
+                    <div (click)="dp4.toggle()" [attr.aria-expanded]="dp4.isOpen" type="button" for="calendar-input"
+                      class="date-range-picker-icon fa fa-calendar"></div>
+                    <div></div>
+                    <small class="text-danger" *ngIf="
+                        workDetailsForm.errors?.dateValid &&
+                        (workDetailsForm.get('contractenddate').touched ||
+                          (workDetailsForm.get('contractenddate').touched && workDetailsForm.get('contractenddate').value !== '') ||
+                          workDetailsForm.get('contractenddate').dirty)
+                      ">Please provide a valid contract end date</small>
+                  </div>
+                </div>
+              </div>
+              <!-- job title and company End -->
+
+              <div class="row">
+                <div class="col-md-5">
+                  <div class="form-floating mb-3 mt-3">
+                    <input type="text" class="form-control" id="project" placeholder="Project" name="project"
+                      formControlName="project" />
+                    <label for="project">Project*</label>
+                    <div>
+                      <!-- <small class="text-danger">First Name is required</small>-->
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-md-5">
+                  <div class="form-floating mb-3 mt-3">
+                    <input type="text" class="form-control" id="department" placeholder="Department" name="department"
+                      formControlName="department" />
+                    <label for="department">Department*</label>
+                    <div>
+                      <!-- <small class="text-danger">First Name is required</small>-->
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-10 project-description">
+                  <div class="form-group">
+                    <textarea class="form-control" id="exampleFormControlTextarea3" placeholder="Project Description*"
+                      formControlName="projectDesc" rows="5" (keyup)="onKeyUp2($event)"></textarea>
+                    <p class="text-end">{{ numberOfCharacters2 }}/500 Characters</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row d-flex align-items-center">
+                <div class="col-md-5">
+                  <label>Current Working State</label>
+                  <div class="form-floating mb-3 mt-3 location-form">
+                    <img src="assets/images/location.svg" alt="login" class="label-icon" />
+                    <select formControlName="location" class="form-control form-select pt-0 pb-0"
+                      aria-label="Default select example">
+                      <option hidden selected value="">Current Working State*</option>
+                      <option *ngFor="let state of countryList" [value]="state.state_name">
+                        {{ state.state_name }}
+                      </option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="col-md-5 status-info">
+                  <h5 class="mb-0">Current Working Status</h5>
+                  <span class="badge status">Active</span>
+                </div>
+              </div>
+            </form>
+          </div>
+
+          <div class="career-profile-footer card-footer text-muted text-center">
+            <button class="btn cancel-btn" routerLink="/sodashboard">Cancel</button>
+            <button class="btn save-btn" [disabled]="!workDetailsForm.valid" (click)="save2()">Save Changes</button>
+          </div>
+        </div>
+        <!-- Work Details tab Content End -->
+        <ng-container>
+          <!-- Technical Skillset tab content start -->
+          <div class="tab-pane technical-skill fade" id="v-pills-settings" role="tabpanel"
+            aria-labelledby="v-pills-settings-tab">
+            <h4 class="mb-0">My Technical Skillsets</h4>
+
+            <div class="skill-info">
+              <form [formGroup]="skillSetForm">
+                <div class="row skill-details seven-cols">
+                  <div class="form-group col-sm-12 col-md-6 col-lg-1">
+                    <select id="inputState1" class="form-control form-select" formControlName="technology">
+                      <option selected hidden value="">Technology</option>
+                      <option *ngFor="let tech of techArr" value="{{ tech.id }}">
+                        {{ tech.value }}
+                      </option>
+                    </select>
+                  </div>
+
+                  <div class="form-group col-sm-12 col-md-6 col-lg-1">
+                    <select id="inputState2" class="form-control form-select" formControlName="role">
+                      <!-- <option selected>Architecture</option> -->
+                      <option selected hidden value="">Role</option>
+                      <option *ngFor="let role of rolesArr" value="{{ role.id }}">
+                        {{ role.value }}
+                      </option>
+                    </select>
+                  </div>
+
+                  <div class="form-group col-sm-12 col-md-6 col-lg-1">
+                    <select class="form-control form-select"
+                       (change)="onChangeLevel($event)" formControlName="skillLevel">
+                      <!-- <option selected>Senior</option> -->
+                      <option selected hidden value="">Level</option>
+                      <option *ngFor="let level of levelArr" [ngValue]="level" id="{{ level.id }}">
+                        {{ level.value }}
+                      </option>
+                    </select>
+                  </div>
+
+                  <div class="form-group col-sm-12 col-md-6 col-lg-1">
+                    <select id="inputState3" class="form-control form-select" formControlName="domain" >
+                      <!-- <option selected>Healthcare</option> -->
+                      <option selected hidden value="">Domain</option>
+                      <option *ngFor="let Domain of DomainArr; let i = index" value="{{ Domain.id }}">
+                        {{ Domain.value }}
+                      </option>
+                    </select>
+                  </div>
+
+                  <div class="form-group date-form4 col-sm-12 col-md-6 col-lg-1">
+                    <input type="text" bsDatepicker #dp3="bsDatepicker" onkeydown="return false"
+                      [bsConfig]="{ containerClass: 'theme-dark-blue', dateInputFormat: 'MMM-YYYY', showPreviousMonth: true }"
+                      class="form-control" formControlName="lastUsed" id="lastUsed" [maxDate]="today1"
+                      placeholder="Last Used" name="lastUsed" (onShown)="onOpenCalendar($event)"
+                      (onHidden)="handler()" />
+                    <div (click)="dp3.toggle()" [attr.aria-expanded]="dp3.isOpen" type="button" for="calendar-input"
+                      class="date-range-picker-icon fa fa-calendar"></div>
+                  </div>
+
+                  <div class="form-group col-sm-6 col-md-6 col-lg-1">
+                    <select id="inputState" class="form-control form-select"
+                       (change)="onChangeExp($event)" formControlName="experience">
+                      <option selected hidden value="">Experience</option>
+                      <option *ngFor="let exp of getExpData;let i = index" value="{{exp}}">
+                        {{exp}}
+                      </option>
+                    </select>
+                  </div>
+                  <div class="col-sm-6 col-md-6 col-lg-1">
+                    <button class="btn pt-0" [disabled]="!skillSetForm.valid" (click)="InsertData()">
+                      <img src="assets/images/icon-add.svg" width="20px" height="20px" />
+                    </button>
+                  </div>
+                </div>
+              </form>
+
+              <div>
+                <table class="table skill-data">
+                  <thead>
+                    <tr>
+                      <th scope="col">#</th>
+                      <th scope="col">Technology</th>
+                      <th scope="col">Role</th>
+                      <th scope="col">Level</th>
+                      <th scope="col">Domain</th>
+                      <th scope="col">Last Used</th>
+                      <th scope="col">Experience</th>
+                      <th scope="col"></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let data of getALLTableDataResult; let i = index">
+                      <th>{{ i + 1 }}</th>
+                      <td>
+                        <div *ngIf="!data['editable']">
+                          {{ data.ownerSkillTechnologiesEntity.technologyValues }}
+                        </div>
+                        <div *ngIf="data['editable']" class="form-group">
+                          <select class="form-control form-select" (change)="onChangeTechnology($event)"
+                            [(ngModel)]="technologyId">
+                            <option *ngFor="let tech of techArr" value="{{ tech.id }}">
+                              {{ tech.value }}
+                            </option>
+                          </select>
+                        </div>
+                      </td>
+                      <td>
+                        <div *ngIf="!data['editable']">
+                          {{ data.ownerSkillRolesEntity.rolesDescription }}
+                        </div>
+                        <div class="form-group" *ngIf="data['editable']">
+                          <select class="form-control form-select" (change)="onChangeRole($event)"
+                            [(ngModel)]="rolesId">
+                            <!-- <option selected>Architecture</option> -->
+                            <option *ngFor="let role of rolesArr" value="{{ role.id }}">
+                              {{ role.value }}
+                            </option>
+                          </select>
+                        </div>
+                      </td>
+                      <td>
+                        <div *ngIf="!data['editable']">
+                          {{ data.ownerSkillLevelEntity.skillLevelDescription }}
+                        </div>
+                        <div class="form-group" *ngIf="data['editable']">
+                          <select class="form-control form-select" (change)="onChangeLevel2($event)"
+                            [(ngModel)]="skillLevelDesc">
+                            <!-- <option selected>Senior</option> -->
+                            <option selected>Please select</option>
+                            <option *ngFor="let level of levelArr;" value="{{ level.id }}" id="{{ level.id }}">
+                              {{ level.value }}
+                            </option>
+                          </select>
+                        </div>
+                      </td>
+                      <td>
+                        <div *ngIf="!data['editable']">
+                          {{ data.ownerSkillDomainEntity.domainValues }}
+                        </div>
+                        <div class="form-group" *ngIf="data['editable']">
+                          <select class="form-control form-select" (change)="onChangeDomain($event)"
+                            [(ngModel)]="domainId">
+                            <!-- <option selected>Healthcare</option> -->
+                            <option *ngFor="let Domain of DomainArr; let i = index" value="{{ Domain.id }}">
+                              {{ Domain.value }}
+                            </option>
+                          </select>
+                        </div>
+                      </td>
+                      <td>
+                        <div *ngIf="!data['editable']">{{ data.lastUsed }}</div>
+
+                        <div class="form-group date-form5" *ngIf="data['editable']">
+                          <input type="text" bsDatepicker #dp4="bsDatepicker" onkeydown="return false"
+                            [bsConfig]="{ containerClass: 'theme-dark-blue', dateInputFormat: 'MMM-YYYY' }"
+                            class="form-control" [maxDate]="today1" id="lastUsed" placeholder="Last Used"
+                            name="lastUsed" [(ngModel)]="lastUsed" (onShown)="onOpenCalendar($event)" />
+                          <!-- <div
+                            (click)="dp4.toggle()"
+                            [attr.aria-expanded]="dp4.isOpen"
+                            type="button"
+                            for="calendar-input"
+                            class="fa fa-calendar"></div> -->
+                        </div>
+                      </td>
+                      <td>
+                        <div *ngIf="!data['editable']">
+                          {{ data.experience }}
+                        </div>
+                        <div class="form-group" *ngIf="data['editable']">
+                          <select id="inputState" class="form-control form-select" (change)="onChangeExp2($event)"
+                            [(ngModel)]="changeExp">
+                            <option *ngFor="let exp of getExpData2; let i = index" value="{{ exp }}">
+                              {{ exp }}
+                            </option>
+                          </select>
+                        </div>
+                      </td>
+
+                      <td class="icon">
+                        <div class="d-flex align-items-center" *ngIf="!data['editable']">
+                          <!-- <img src="assets/images/edit.svg" (click)="editSkillSet(i)"> -->
+                          <img src="assets/images/edit.svg" (click)="editSkillSet(i)" />
+                          <img src="assets/images/icon-delete.svg" (click)="deleteSkillId(data.ownerSkillSetId)" />
+                        </div>
+                        <!-- <div class="d-flex align-items-center"  *ngIf="data['editable']">
+                        <img src="assets/images/icon-save.svg" width="25px" (click)="updateSKillSet()">
+                      </div> -->
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <div class="career-profile-footer card-footer text-muted text-center">
+              <button class="btn cancel-btn" routerLink="/sodashboard">Cancel</button>
+              <button class="btn save-btn" (click)="updateSKillSet()">Save Changes</button>
+              <!-- <button class="btn save-btn" (click)="updateSKillSet()"
+                [disabled]="currentSkillSetId=='' || currentSkillSetId==undefined">Save Changes </button> -->
+            </div>
+          </div>
+        </ng-container>
+        <!-- Technical Skillset tab content end -->
+      </div>
+    </div>
+  </div>
+</div>

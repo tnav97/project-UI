@@ -1,0 +1,12 @@
+<div class="middle d-none d-lg-block" style="width: 400px">
+  <mat-form-field class="field4x col-md-10 mt-1" appearance="outline">
+    <input
+      class="control"
+      matInput
+      type="text"
+      [(ngModel)]="SearchTextEntered"
+      (input)="onSearchTextChanged()"
+      placeholder="Search for clients,projects,requirement" />
+    <mat-icon matSuffix color="primary">search</mat-icon>
+  </mat-form-field>
+</div>

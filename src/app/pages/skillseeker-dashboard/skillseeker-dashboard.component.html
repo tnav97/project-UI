@@ -1,0 +1,94 @@
+<div class="bg-white skill-seeker-dashboard">
+  <div class="row">
+    <div class="col-md-8 skill-seeker-dashboard-left">
+      <div class="card mt-3">
+        <div class="card-body">
+          <h2>Welcome {{ name | titlecase }}!</h2>
+          <p>Profile Completion: 100%</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6 col-lg-6 p-2 cursor-pointer" routerLink="joblist">
+          <img src="assets/images/ss-jobs.svg" width="100%" />
+        </div>
+        <div class="col-md-6 col-lg-6 p-2 cursor-pointer" routerLink="/ssContracts/list">
+          <img src="assets/images/ss-contracts.svg" width="100%" />
+        </div>
+        <div class="col-md-6 col-lg-6 p-2 cursor-pointer" routerLink="">
+          <img src="assets/images/ss-hiring.svg" width="100%" />
+        </div>
+        <div class="col-md-6 col-lg-6 p-2 cursor-pointer" routerLink="/ssInvoice">
+          <img src="assets/images/ss-invoice.svg" width="100%" />
+        </div>
+        <div class="col-md-6 col-lg-6 p-2 cursor-pointer" routerLink="viewPro">
+          <img src="assets/images/ss-projects.svg" width="100%" />
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4 skill-seeker-dashboard-right">
+      <div class="top-title d-flex justify-content-between pt-3 pb-2 pr-1">
+        <h4>Recent Updates</h4>
+        <!-- <a (click)="onMarkAllRead()">Mark all as read</a> -->
+      </div>
+      <p>Notifications</p>
+      <div *ngFor="let list2 of groupArrays; let j = index">
+        <p>{{ list2.date | date : 'fullDate' }}</p>
+        <div *ngFor="let list of list2.games; let i = index">
+          <div [ngClass]="!list.markAsRead === true ? 'card' : 'card1'">
+            <div class="card-body">
+              <div class="row">
+                <div class="col-6 notification-title">
+                  <h5>{{ list?.title }}</h5>
+                </div>
+                <div class="col-5 notification-title">
+                  <p>{{ list?.date | date : 'mediumDate' }} at {{ list?.date | date : 'shortTime' }}</p>
+                </div>
+
+                <div *ngIf="!list.markAsRead" class="col-1">
+                  <i
+                    title="Mark as Read"
+                    *ngIf="list.contentId !== 2 && list.contentId !== 10"
+                    (click)="onMarkRead(list)"
+                    class="fa fa-circle fa-xs markRead"></i>
+                </div>
+              </div>
+
+              <p class="para mt-2">{{ list?.content }}</p>
+            </div>
+            <div *ngIf="(list.contentId == 2 || list.contentId == 4 || list.contentId == 6) && !list.markAsRead">
+              <h5 class="slot-title">Select any one slot</h5>
+              <div class="card-btn d-flex align-items-center">
+                <button
+                  class="btn accept-btn"
+                  (click)="onDateConfirm(list, list?.date1, list?.endtime1)"
+                  *ngIf="list.contentId == 2 || list.contentId == 4 || list.contentId == 6">
+                  {{ list?.date1 | date : 'medium' }}-{{ list?.endtime1 | date : 'mediumTime' }}
+                </button>
+                <button
+                  class="btn accept-btn"
+                  (click)="onDateConfirm(list, list?.date2, list?.endtime2)"
+                  *ngIf="list.contentId == 2 || list.contentId == 4 || list.contentId == 6">
+                  {{ list?.date2 | date : 'medium' }}-{{ list?.endtime2 | date : 'mediumTime' }}
+                </button>
+                <button
+                  class="btn accept-btn"
+                  (click)="onDateConfirm(list, list?.date3, list?.endtime3)"
+                  *ngIf="list.contentId == 2 || list.contentId == 4 || list.contentId == 6">
+                  {{ list?.date3 | date : 'medium' }}-{{ list?.endtime3 | date : 'mediumTime' }}
+                </button>
+              </div>
+            </div>
+            <div
+              class="card-btn d-flex align-items-center mt-2"
+              *ngIf="(list.contentId == 2 || list.contentId == 4 || list.contentId == 6 || list.contentId == 10) && !list.markAsRead">
+              <a *ngIf="list.contentId !== 2 && list.contentId !== 4 && list.contentId !== 6" (click)="onAccept(list)" class="btn accept-btn"
+                >Accept</a
+              >
+              <a (click)="onReject(list)" class="btn btn-request ml-3">Request for More Slots</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,42 @@
+[
+  {
+    "requirementid": "REQ121",
+    "projectid": "PSR123",
+    "picture": "assets/company logos/Toyota-Logo-Design.png",
+    "name": "TOYOTA",
+    "index": 0,
+    "jobtitle": "Junior Developer",
+    "position": "8",
+    "status": "New"
+  },
+  {
+    "requirementid": "REQ122",
+    "projectid": "PSR124",
+    "picture": "assets/company logos/Apple-Logo-Design.png.webp",
+    "name": "APPLE",
+    "index": 0,
+    "jobtitle": "System Engineer",
+    "position": "5",
+    "status": "In Hiring"
+  },
+  {
+    "requirementid": "REQ123",
+    "projectid": "PSR125",
+    "picture": "assets/company logos/Microsoft-Logo-Design.png.jpeg",
+    "name": "MICROSOFT",
+    "index": 0,
+    "jobtitle": "Enterprise Solution Architect",
+    "position": "3",
+    "status": "Closed"
+  },
+  {
+    "requirementid": "REQ124",
+    "projectid": "PSR126",
+    "picture": "assets/company logos/IBM.png.jpeg",
+    "name": "IBM",
+    "index": 0,
+    "jobtitle": "Senior UI Strategist",
+    "position": "2",
+    "status": "In Hiring"
+  }
+]

@@ -1,0 +1,248 @@
+[
+  {
+    "_id": "CND121",
+    "index": 0,
+    "guid": "982bf6d0-739b-4410-b2fa-587f7e3d3462",
+    "isVerified": false,
+    "picture": "https://images.generated.photos/CyxdDTGGUubBdVqAdvOXzsQWwM_b0zQWLljEuLkbCFI/rs:fit:512:512/wm:0.95:sowe:18:18:0.33/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LnBob3Rvcy92M18w/MTgxNTY1LmpwZw.jpg",
+    "age": 36,
+    "name": "Elise Mcguire",
+    "gender": "female",
+    "company": "GUSHKOOL",
+    "email": "elisemcguire@gushkool.com",
+    "phone": "+1 (903) 489-3003",
+    "position": "Senior UI Strategist",
+    "clientCompany": "INTERLOO",
+    "status": "Active",
+    "address": "134 Adams Street, Davenport, District Of Columbia, 3240",
+    "comments": [
+      {
+        "id": 0,
+        "name": "Lee Romero",
+        "comment": "Excellent team player,and individual contributor,good mentorship",
+        "position": "UI Architecture",
+        "status": "few months ago"
+      },
+      {
+        "id": 1,
+        "name": "Marsha Prince",
+        "comment": "Excellent team player,and individual contributor,good mentorship",
+        "position": "UI Architecture",
+        "status": "few months ago"
+      },
+      {
+        "id": 2,
+        "name": "Chan Castro",
+        "comment": "Excellent team player,and individual contributor,good mentorship",
+        "position": "UI Architecture",
+        "status": "few months ago"
+      }
+    ],
+    "appliedDate": "2020-10-18T12:34:59 -06:-30"
+  },
+  {
+    "_id": "CND122",
+    "index": 1,
+    "guid": "bed86253-edb7-4e3c-ac81-d1f153656cdb",
+    "isVerified": false,
+    "picture": "https://images.generated.photos/Rz3xPCKyyTa_CYi71x181k3VJiuXPSo4ajr7TRN61FQ/rs:fit:512:512/wm:0.95:sowe:18:18:0.33/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LnBob3Rvcy92M18w/NTc5Njk1LmpwZw.jpg",
+    "age": 27,
+    "name": "Swanson Prince",
+    "gender": "male",
+    "company": "ARCHITAX",
+    "email": "swansonprince@architax.com",
+    "phone": "+1 (958) 489-3211",
+    "position": "Senior UI Strategist",
+    "clientCompany": "PROSURE",
+    "status": "Selected",
+    "address": "573 Bradford Street, Leland, Mississippi, 5032",
+    "comments": [
+      {
+        "id": 0,
+        "name": "Lee Romero",
+        "comment": "Excellent",
+        "position": "UI Architecture",
+        "status": "few months ago"
+      },
+      {
+        "id": 1,
+        "name": "Marsha Prince",
+        "comment": "Good",
+        "position": "UI Architecture",
+        "status": "few months ago"
+      },
+      {
+        "id": 2,
+        "name": "Chan Castro",
+        "comment": "Nice",
+        "position": "UI Architecture",
+        "status": "few months ago"
+      }
+    ],
+    "appliedDate": "2021-07-21T05:36:15 -06:-30"
+  },
+  {
+    "_id": "CND123",
+    "index": 2,
+    "guid": "cf31137b-7510-4943-b654-bf3118c5930c",
+    "isVerified": true,
+    "picture": "https://images.generated.photos/bmAyXyJICV5BG0Z_s2B6WxvtxYYvalcFSxjh3whU8f4/rs:fit:512:512/wm:0.95:sowe:18:18:0.33/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LnBob3Rvcy92M18w/Mjg3ODAwLmpwZw.jpg",
+    "age": 22,
+    "name": "Delia Anthony",
+    "gender": "female",
+    "company": "MOLTONIC",
+    "email": "deliaanthony@moltonic.com",
+    "phone": "+1 (927) 403-3849",
+    "position": "UI Specialist",
+    "clientCompany": "PROVIDCO",
+    "status": "Rejected",
+    "address": "277 Clay Street, Sidman, Ohio, 1362",
+    "comments": [
+      {
+        "id": 0,
+        "name": "Lee Romero",
+        "comment": "Excellent",
+        "position": "UI Architecture",
+        "status": "few months ago"
+      },
+      {
+        "id": 1,
+        "name": "Marsha Prince",
+        "comment": "Good",
+        "position": "UI Architecture",
+        "status": "few months ago"
+      },
+      {
+        "id": 2,
+        "name": "Chan Castro",
+        "comment": "Nice",
+        "position": "UI Architecture",
+        "status": "few months ago"
+      }
+    ],
+    "appliedDate": "2014-09-07T11:46:37 -06:-30"
+  },
+  {
+    "_id": "CND124",
+    "index": 3,
+    "guid": "086d26ff-98b9-403a-a301-61c7d1da2127",
+    "isVerified": false,
+    "picture": "https://images.generated.photos/xNeR7ZK0jg8VWnZVoxG_p8SvzUhZEp8hia5VztXNzJQ/rs:fit:512:512/wm:0.95:sowe:18:18:0.33/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LnBob3Rvcy92M18w/NjIyNzY5LmpwZw.jpg",
+    "age": 33,
+    "name": "Peggy Vazquez",
+    "gender": "female",
+    "company": "TROLLERY",
+    "email": "peggyvazquez@trollery.com",
+    "phone": "+1 (926) 569-3682",
+    "position": "PHP Developer",
+    "clientCompany": "EMERGENT",
+    "status": "Active",
+    "address": "726 Clifford Place, Loyalhanna, Puerto Rico, 324",
+    "comments": [
+      {
+        "id": 0,
+        "name": "Lee Romero",
+        "comment": "Excellent",
+        "position": "UI Architecture",
+        "status": "few months ago"
+      },
+      {
+        "id": 1,
+        "name": "Marsha Prince",
+        "comment": "Good",
+        "position": "UI Architecture",
+        "status": "few months ago"
+      },
+      {
+        "id": 2,
+        "name": "Chan Castro",
+        "comment": "Nice",
+        "position": "UI Architecture",
+        "status": "few months ago"
+      }
+    ],
+    "appliedDate": "2017-01-04T05:27:15 -06:-30"
+  },
+  {
+    "_id": "CND125",
+    "index": 4,
+    "guid": "a25be969-7162-414f-865c-0b556d76dd0e",
+    "isVerified": false,
+    "picture": "https://images.generated.photos/lbfS2PuLgIBds8K-9VBuPkVi-GYYt8FN0W_RUqHZ2V8/rs:fit:512:512/wm:0.95:sowe:18:18:0.33/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LnBob3Rvcy92M18w/MTQyODM1LmpwZw.jpg",
+    "age": 25,
+    "name": "Carly Carney",
+    "gender": "female",
+    "company": "COMTOUR",
+    "email": "carlycarney@comtour.com",
+    "phone": "+1 (831) 597-2431",
+    "position": "UI Developer",
+    "clientCompany": "PROWASTE",
+    "status": "Active",
+    "address": "676 Homecrest Avenue, Clara, Texas, 4245",
+    "comments": [
+      {
+        "id": 0,
+        "name": "Lee Romero",
+        "comment": "Excellent",
+        "position": "UI Architecture",
+        "status": "few months ago"
+      },
+      {
+        "id": 1,
+        "name": "Marsha Prince",
+        "comment": "Good",
+        "position": "UI Architecture",
+        "status": "few months ago"
+      },
+      {
+        "id": 2,
+        "name": "Chan Castro",
+        "comment": "Nice",
+        "position": "UI Architecture",
+        "status": "few months ago"
+      }
+    ],
+    "appliedDate": "2019-03-24T08:21:23 -06:-30"
+  },
+  {
+    "_id": "CND126",
+    "index": 5,
+    "guid": "9790d2c6-ce8a-4d09-b643-c716724328c3",
+    "isVerified": false,
+    "picture": "https://images.generated.photos/PUyizhcF3I_LJgGdd3m_648jQFr-Ea7lTc_xp-U63Cg/rs:fit:512:512/wm:0.95:sowe:18:18:0.33/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LnBob3Rvcy92M18w/MTA1MjA5LmpwZw.jpg",
+    "age": 27,
+    "name": "Palmer Ferguson",
+    "gender": "male",
+    "company": "RUGSTARS",
+    "email": "palmerferguson@rugstars.com",
+    "phone": "+1 (815) 466-2874",
+    "position": "UI Developer",
+    "clientCompany": "NIKUDA",
+    "status": "Rejected",
+    "address": "268 Bayview Avenue, Longbranch, Iowa, 1654",
+    "comments": [
+      {
+        "id": 0,
+        "name": "Lee Romero",
+        "comment": "Excellent",
+        "position": "UI Architecture",
+        "status": "few months ago"
+      },
+      {
+        "id": 1,
+        "name": "Marsha Prince",
+        "comment": "Good",
+        "position": "UI Architecture",
+        "status": "few months ago"
+      },
+      {
+        "id": 2,
+        "name": "Chan Castro",
+        "comment": "Nice",
+        "position": "UI Architecture",
+        "status": "few months ago"
+      }
+    ],
+    "appliedDate": "2018-08-17T09:02:27 -06:-30"
+  }
+]

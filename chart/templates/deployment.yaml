@@ -1,0 +1,73 @@
+{{- $persistence := .Values.persistentVolume | default dict -}}
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "dx-chart.fullname" . }}
+  labels:
+    {{- include "dx-chart.labels" . | nindent 4 }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  {{- if .Values.strategyType}}
+  strategy:
+    type: {{ default "RollingUpdate" .Values.strategyType}}
+  {{- end }}
+  selector:
+    matchLabels:
+      {{- include "dx-chart.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      labels:
+        {{- include "dx-chart.selectorLabels" . | nindent 8 }}
+    spec:
+      {{- if .Values.serviceAccount }}
+      serviceAccountName: {{ default "default" .Values.serviceAccount }}
+      {{- end }}
+    {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+    {{- end }}
+      securityContext:
+        {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      containers:
+        - name: {{ .Chart.Name }}
+          securityContext:
+            {{- toYaml .Values.securityContext | nindent 12 }}
+          image: "{{ .Values.image.repository }}:{{ .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          ports:
+            - name: {{ .Values.service.name }}
+              containerPort: {{ .Values.service.port }}
+          envFrom:
+            - configMapRef:
+                name:  {{ .Chart.Name }}
+                optional: true
+            - secretRef:
+                name:  {{ .Chart.Name }}
+                optional: true
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
+          {{- if $persistence.enabled  }}
+          volumeMounts:
+            - name: data
+              mountPath: {{ default "/data" .Values.persistentVolume.mountPath }}
+          {{- end -}}
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+    {{- with .Values.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+    {{- end }}
+    {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+    {{- end }}
+      volumes:
+        - name: data
+          {{- if $persistence.enabled  }}
+          persistentVolumeClaim:
+            claimName: {{ include "dx-chart.fullname" . }}
+          {{- else }}
+          emptyDir: {}
+    {{- end -}}

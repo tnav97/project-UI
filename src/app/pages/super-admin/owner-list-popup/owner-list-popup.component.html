@@ -1,0 +1,124 @@
+<app-loader *ngIf="isLoading">{{ isLoading }}</app-loader>
+<div *ngIf="!isLoading">
+  <div *ngFor="let list of sliderList; let i = index" class="slider-height">
+    <div class="candidate-info d-flex align-items-center">
+      <img class="avatar" [src]="list?.image" />
+      <div class="candidate-name-experience">
+        <h4 class="mb-0">{{ list?.nameOfOwner }}</h4>
+        <p class="m-0">{{ list?.position }}</p>
+        <p class="m-0">Experience: {{ list?.experience }}</p>
+      </div>
+    </div>
+    <div
+      [ngStyle]="{
+        height:
+          list?.requirementPhaseList?.length === 3
+            ? '265px'
+            : list?.requirementPhaseList?.length === 4
+            ? '600px'
+            : list?.requirementPhaseList?.length === 5
+            ? '275px'
+            : list?.requirementPhaseList?.length === 6
+            ? '550px'
+            : list?.requirementPhaseList?.length === 7
+            ? '200px'
+            : list?.requirementPhaseList?.length === 8
+            ? '240px'
+            : list?.requirementPhaseList?.length === 9
+            ? '260px'
+            : list?.requirementPhaseList?.length === 10
+            ? '550px'
+            : list?.requirementPhaseList?.length === 11
+            ? '300px'
+            : '320px'
+      }"
+      style="position: relative">
+      <ngx-slider
+        [ngClass]="'custom-slider'"
+        class="ngx-slider-selection"
+        [(value)]="list.currentStage"
+        [options]="sliderOptions(list)"
+        [ngStyle]="{
+          height:
+            list?.currentStage === 3
+              ? '90%'
+              : list?.currentStage === 4
+              ? '109%'
+              : list?.currentStage === 5
+              ? '134%'
+              : list?.currentStage === 6
+              ? '76%'
+              : list?.currentStage === 7
+              ? '230%'
+              : list?.currentStage === 8
+              ? '230%'
+              : list?.currentStage === 9
+              ? '250%'
+              : list?.currentStage === 10
+              ? '260%'
+              : '258%'
+        }"></ngx-slider>
+      <div class="interviewContainer">
+        <div
+          class="interviewDetails"
+          [ngStyle]="{
+            'margin-bottom':
+              list?.currentStage === 3
+                ? '265px'
+                : list?.currentStage === 4
+                ? '145px'
+                : list?.currentStage === 5
+                ? '20px'
+                : list?.currentStage === 6
+                ? '28px'
+                : list?.currentStage === 7
+                ? '6px'
+                : list?.currentStage === 8
+                ? '8px'
+                : list?.currentStage === 9
+                ? '14px'
+                : '6px'
+          }"
+          *ngFor="let data of list.requirementPhaseList; let i = index; let last = last">
+          <div>
+            <div class="d-flex align-items-center">
+              <h6
+                *ngIf="
+                  i !== list.requirementPhaseList.length - 1 &&
+                  i !== list.requirementPhaseList.length - 2 &&
+                  i !== list.requirementPhaseList.length - 3 &&
+                  i !== list.requirementPhaseList.length - 4
+                ">
+                Date Of Interview :
+                <span>{{ data.interviewDate | date : 'shortDate' }}</span>
+              </h6>
+              <h6
+                *ngIf="
+                  i == list.requirementPhaseList.length - 1 ||
+                  i == list.requirementPhaseList.length - 2 ||
+                  i == list.requirementPhaseList.length - 3 ||
+                  i == list.requirementPhaseList.length - 4
+                ">
+                Date :
+                <span>{{ data.interviewDate | date : 'shortDate' }}</span>
+              </h6>
+              <br />
+              <div class="d-flex mx-3" *ngIf="onCheck(data.requirementPhaseName)">
+                <button class="custom1 mx-2">{{ list?.msaStatus }}</button>
+                <button class="custom2" (click)="downloadMSA(list?.msaId)">Download MSA</button>
+              </div>
+              <div class="d-flex mx-3" *ngIf="onCheck2(data.requirementPhaseName)">
+                <button class="custom1 mx-2">{{ list?.sowStatus }}</button>
+                <button class="custom2" (click)="downloadSOW(list?.sowId)">Download SOW</button>
+              </div>
+              <div class="d-flex mx-3" *ngIf="onCheck3(data.requirementPhaseName)">
+                <button class="custom1 mx-2">{{ list?.poStatus }}</button>
+                <button class="custom2" (click)="downloadPO(list?.poId)">Download PO</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

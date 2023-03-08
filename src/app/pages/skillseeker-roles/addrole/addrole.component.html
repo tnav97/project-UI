@@ -1,0 +1,69 @@
+<div class="card">
+  <div class="col-md-12 card-header d-flex justify-content-between align-items-center">
+    <h2 class="mb-0">Add Roles</h2>
+
+    <button routerLink="/seekerRoles/rolelist" class="btn btn-primary">
+      <i title="Go Back" class="fa fa-arrow-left mx-1" aria-hidden="true"></i> Roles Listing
+    </button>
+  </div>
+  <div class="card-body client-body mb-5 mt-5 pb-5 pt-5">
+    <form [formGroup]="addRole" (ngSubmit)="onAddRole()">
+      <div class="row client-form d-flex flex-column justify-content-center">
+        <div class="form-group offset-md-4 col-md-4 pt-3">
+          <div class="form-group form-floating mb-4 mt-4 input-form rolename">
+            <select
+              class="form-control form-control-lg form-select addRoleform"
+              id="floatingSelect"
+              formControlName="roleId"
+              aria-label="Floating label select example">
+              <option hidden selected value="">Please Select</option>
+              <option *ngFor="let r of roleList" [value]="r.id">{{ r.subRoleDescription }}</option>
+            </select>
+            <label for="candidate">Role Name*</label>
+          </div>
+        </div>
+
+        <div class="form-group form-floating offset-md-4 col-md-4 pt-3">
+          <!-- <select class="form-control form-control-lg form-select">
+            <option hidden selected value="">Access</option>
+            <option *ngFor="let m of modules" [value]="m.id">{{ m.seekerModule }}</option>
+          </select> -->
+          <mat-form-field appearance="outline" class="access">
+            <mat-select
+              disableOptionCentering
+              multiple
+              formControlName="moduleId"
+              panelClass="self_drop_multi"
+              id="floatingSelect"
+              aria-label="Floating label select example">
+              <!-- <mat-option hidden selected value="">please select</mat-option> -->
+              <mat-option *ngFor="let m of modules" [value]="m.id">{{ m.seekerModule }}</mat-option>
+            </mat-select>
+            <mat-label for="candidate">Access</mat-label>
+          </mat-form-field>
+
+          <!-- <select multiple formControlName="moduleId" panelClass="listPanel">
+            <option *ngFor="let m of modules" [value]="m.id">{{ m.seekerModule }}</option>
+          </select> -->
+        </div>
+        <div class="form-group offset-md-4 col-md-4">
+          <div class="form-group form-floating mb-4 mt-4 input-form rolename">
+            <select
+              formControlName="active"
+              class="form-control form-control-lg form-select addRoleform"
+              id="floatingSelect"
+              aria-label="Floating label select example">
+              <option hidden selected value="">Please Select</option>
+              <option value="true">Active</option>
+              <option value="false">Inactive</option>
+            </select>
+            <label for="floatingSelect">Status*</label>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer create-new-footer mt-5 d-flex justify-content-center">
+        <button [disabled]="!addRole.valid" class="btn proceed-btn" type="submit">Save</button>
+      </div>
+    </form>
+  </div>
+</div>

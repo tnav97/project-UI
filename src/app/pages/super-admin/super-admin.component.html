@@ -1,0 +1,81 @@
+<div class="row card admin-dashboard">
+  <div class="col-md-12 card-header dashboard-header">
+    <h4 class="mb-0">Skill Seekers</h4>
+  </div>
+
+  <div class="card-body dashboard-body">
+    <div class="row">
+      <div class="col-md-4 dashboard-info text-center d-flex justify-content-center">
+        <div class="card" style="width: 16rem">
+          <div class="card-body text-center">
+            <img src="assets/images/icon-jobs.svg" />
+            <h5 class="mb-0">Jobs</h5>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 dashboard-info text-center d-flex justify-content-center">
+        <div class="card" style="width: 16rem">
+          <div class="card-body text-center" (click)="contracts()">
+            <img src="assets/images/icon-contract.svg" />
+            <h5 class="mb-0">Contract & Legal</h5>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 dashboard-info text-center d-flex justify-content-center">
+        <div class="card" style="width: 16rem">
+          <div class="card-body text-center">
+            <img src="assets/images/icon-hiring.svg" />
+            <h5 class="mb-0">Hiring</h5>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-4 dashboard-info text-center d-flex justify-content-center">
+        <div class="card" style="width: 16rem">
+          <div class="card-body text-center" (click)="createInvoice()">
+            <img src="assets/images/icon-invoice.svg" />
+            <h5 class="mb-0">Invoice</h5>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 dashboard-info text-center d-flex justify-content-center">
+        <div class="card" style="width: 16rem">
+          <div class="card-body text-center" (click)="clients()">
+            <img src="assets/images/icon-clients.svg" />
+            <h5 class="mb-0">Clients</h5>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 dashboard-info text-center d-flex justify-content-center">
+        <div class="card" style="width: 16rem">
+          <div class="card-body text-center">
+            <img src="assets/images/icon-projects.svg" />
+            <h5 class="mb-0">Projects</h5>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="offset-md-3 col-md-6 d-flex justify-content-center pb-5">
+        <div class="add-client add-info text-center" (click)="addClient()">
+          <a routerLink=""><img src="assets/images/icon-add-client.svg" /> Add Client</a>
+        </div>
+
+        <div class="add-project add-info text-center" (click)="addProject()">
+          <a routerLink=""><img src="assets/images/icon-add-project.svg" /> Add Project</a>
+        </div>
+
+        <div class="add-job add-info text-center" (click)="addRequirement()">
+          <a routerLink=""><img src="assets/images/icon-add-job.svg" /> Add Job</a>
+        </div>
+
+        <div class="notification add-info text-center">
+          <a routerLink=""><img src="assets/images/icon-notification.svg" /> Notification</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

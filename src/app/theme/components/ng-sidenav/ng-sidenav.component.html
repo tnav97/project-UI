@@ -1,0 +1,72 @@
+<!-- <aside class="nav-menu" [ngClass]="menuCollapsed ? 'collapsed' : ''">
+  <ng-container [ngTemplateOutlet]="menuOptions"></ng-container>
+</aside>
+
+<ng-template #menuOptions> -->
+<!-- <ul class="menu-list">
+    <li class="menu" *ngFor="let n of menuItems">
+      <a class="link" [routerLink]="n.route.paths" matRipple [ngClass]="n.selected ? 'active' : ''">
+        <mat-icon [ngClass]="n.selected ? '' : 'material-icons-outlined'">{{n.icon}}</mat-icon>
+        <span>{{n.title}}</span>
+      </a>
+    </li>
+  </ul> -->
+<div class="sidenav" [ngClass]="collapsed ? 'sidenav-collapsed' : ''">
+  <ul class="sidenav-nav" *ngIf="isSeeker && isSeekerAdmin">
+    <li class="sidenav-nav-item" *ngFor="let data of navSeekerAdminData">
+      <a class="sidenav-nav-link" [routerLink]="[data.routeLink]" routerLinkActive="Active" [routerLinkActiveOptions]="{ exact: data.exact }">
+        <i class="sidenav-link-icon" [class]="data.icon"></i>
+        <span class="sidenav-link-text" *ngIf="collapsed">{{ data.label }}</span>
+      </a>
+    </li>
+  </ul>
+  <ul class="sidenav-nav" *ngIf="isSeeker && !isSeekerAdmin">
+    <li class="sidenav-nav-item" *ngFor="let data of navData">
+      <a class="sidenav-nav-link" [routerLink]="[data.routeLink]" routerLinkActive="Active" [routerLinkActiveOptions]="{ exact: data.exact }">
+        <i class="sidenav-link-icon" [class]="data.icon"></i>
+        <span class="sidenav-link-text" *ngIf="collapsed">{{ data.label }}</span>
+      </a>
+    </li>
+  </ul>
+  <ul class="sidenav-nav" *ngIf="isPartner">
+    <li class="sidenav-nav-item" *ngFor="let data of navPartnerData">
+      <a class="sidenav-nav-link" [routerLink]="[data.routeLink]" routerLinkActive="Active" [routerLinkActiveOptions]="{ exact: data.exact }">
+        <i class="sidenav-link-icon" [class]="data.icon"></i>
+        <span class="sidenav-link-text" *ngIf="collapsed">{{ data.label }}</span>
+      </a>
+    </li>
+  </ul>
+  <ul class="sidenav-nav" *ngIf="isOwner">
+    <li class="sidenav-nav-item" *ngFor="let data of navOwnerData">
+      <a class="sidenav-nav-link" [routerLink]="[data.routeLink]" routerLinkActive="Active" [routerLinkActiveOptions]="{ exact: data.exact }">
+        <i class="sidenav-link-icon" [class]="data.icon"></i>
+        <span class="sidenav-link-text" *ngIf="collapsed">{{ data.label }}</span>
+      </a>
+    </li>
+  </ul>
+
+  <ul class="sidenav-nav" *ngIf="isSsAdmin">
+    <li class="sidenav-nav-item" *ngFor="let data of navSsAdminData">
+      <a
+        class="sidenav-nav-link"
+        [routerLink]="[data.routeLink]"
+        [queryParams]="data?.query ? data.query : {}"
+        routerLinkActive="Active"
+        [routerLinkActiveOptions]="{ exact: data.exact }">
+        <i class="sidenav-link-icon" [class]="data.icon"></i>
+        <span class="sidenav-link-text" *ngIf="collapsed">{{ data.label }}</span>
+      </a>
+    </li>
+  </ul>
+
+  <div class="logo-container" [ngClass]="menuCollapsed ? 'collapsed' : ''">
+    <!-- <button class="logo" (click)="toggleCollapse()">-></button>
+    <div class="logo-text" *ngIf="collapsed">Flexcub</div>
+    <button class="btn-close" *ngIf="collapsed" (click)="collapseSidenav()">
+    </button> -->
+    <button class="toggle-btn-nav" (click)="toggleCollapse()">
+      <img [ngClass]="collapsed ? 'rotate' : ''" src="assets/images/menu-item-toggle-btn.svg" />
+    </button>
+  </div>
+</div>
+<!-- </ng-template> -->

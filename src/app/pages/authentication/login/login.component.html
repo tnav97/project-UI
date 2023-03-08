@@ -1,0 +1,101 @@
+<app-loader *ngIf="isLoading">{{ isLoading }}</app-loader>
+<div class="card">
+  <div class="card-body">
+    <div class="d-flex align-items-center min-vh-100 py-3 py-md-0">
+      <div class="container">
+        <div class="card login-card animate__animated animate__fadeInLeft" data-wow-duration="1.5s">
+          <div class="row no-gutters">
+            <div class="col-md-5 bg-left-color fadeInUp">
+              <img src="assets/images/register-left-img.png" alt="login" class="login-card-img" />
+            </div>
+            <div class="col-md-7 login-right-section">
+              <div class="card-body">
+                <div class="brand-wrapper text-center">
+                  <img src="assets/images/logo-flexcub.svg" alt="logo" class="logo" />
+                </div>
+                <p class="login-card-description text-center">Welcome back!</p>
+                <p class="main-sub-text text-center">
+                  Sign in to your account to explore <br />
+                  more of FlexCub!
+                </p>
+
+                <div class="login-card-body login-formsection-s-4 login-box">
+                  <div class="register-form">
+                    <form [formGroup]="form" class="col-sm-12" novalidate>
+                      <div class="user-box mb-3">
+                        <input
+                          type="text"
+                          name=""
+                          required=""
+                          formControlName="email"
+                          [ngClass]="{
+                            'is-invalid': submitted && f.email.errors
+                          }" />
+                        <label>Registered Email Address</label>
+                        <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                          <div *ngIf="f.email.errors.required">Email Address is required</div>
+                          <!-- <div *ngIf="f.email.errors.email">Email is invalid</div> -->
+                          <div *ngIf="f.email.value != '' && f.email.errors.pattern">Please provide valid email address</div>
+                        </div>
+                      </div>
+                      <div class="user-box mb-3">
+                        <input
+                          [type]="fieldTextType ? 'text' : 'password'"
+                          name=""
+                          required=""
+                          formControlName="password"
+                          [ngClass]="{
+                            'is-invalid': submitted && f.password.errors
+                          }" />
+                        <label>Password</label>
+                        <div (click)="toggleFieldTextType()" class="btn_eye">
+                          <i
+                            class="fa"
+                            [ngClass]="{
+                              'fa-eye-slash': !(submitted && f.password.errors) && !fieldTextType,
+                              'fa-eye': !(submitted && f.password.errors) && fieldTextType
+                            }">
+                          </i>
+                        </div>
+                        <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                          <div *ngIf="f.password.errors.required">Password is required</div>
+                          <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
+                          <div *ngIf="f.password.errors.maxlength">password must not exceed 40 characters</div>
+                        </div>
+                      </div>
+                      <div class="d-flex justify-content-between align-items-center remember-password">
+                        <div class="checkbox">
+                          <input type="checkbox" class="form-check-input" id="exampleCheck1" />
+                          <label class="form-check-label" for="exampleCheck1">Remember me</label>
+                        </div>
+                        <a (click)="Forgot()">Forgot Password</a>
+                      </div>
+
+                      <button type="submit" (click)="onSubmit()" class="btn d-block">Sign In</button>
+                      <!-- <div class="form-group">
+          <button type="submit" class="btn d-block">Sign In</button>
+        </div> -->
+                      <p class="text-center pt-2">
+                        Don't have an account yet?
+                        <a routerLink="/registration" class="sign-up-text">Sign Up</a>
+                      </p>
+                    </form>
+                    <div class="remind-me"></div>
+                  </div>
+                </div>
+                <div class="login-card-footer-text pt-2">
+                  <a href="#">Privacy Policy</a> <span>|</span>
+                  <a href="#" class="">Terms of Service</a>
+                </div>
+
+                <div class="bg-icon-img">
+                  <img src="assets/images/login-icon-bg.svg" alt="logo" class="" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,86 @@
+.skill-owner-notify-wrapper {
+  .card.header-section {
+    padding: 0 1rem 0 1rem;
+    margin: 0;
+    border-radius: 6px 6px 0px 0px;
+
+    h4 {
+      font-weight: 600;
+      font-size: 18px;
+      margin: 0;
+    }
+
+    a {
+      font-weight: 500;
+      font-size: 20px;
+      align-items: center;
+      color: #db3236;
+    }
+  }
+
+  .card.notify-section {
+    height: 100%;
+    border-radius: 0px 0px 6px 6px;
+
+    .card-body {
+      margin: 0;
+    }
+
+    .even {
+      background: #f5f9ff;
+    }
+
+    .odd {
+      background: #f3f3f3;
+      border: 1px solid #c8c8c8;
+      border-radius: 12px;
+    }
+  }
+
+  .card.inner-content {
+    background: #f5f9ff;
+    @media screen and (min-width: 1000px) {
+      //height: 136px;
+    }
+    border: 1px solid #1565d8;
+    border-radius: 12px;
+
+    h4 {
+      font-weight: 600;
+      font-size: 16px;
+      color: #1565d8;
+      margin: 0;
+    }
+
+    p {
+      font-weight: 400;
+      font-size: 14px;
+      color: rgba(0, 0, 0, 0.6);
+      margin: 0;
+    }
+
+    h5 {
+      font-weight: 400;
+      font-size: 12px;
+      color: #676767;
+      margin: 0;
+      text-align: right;
+    }
+
+    .markUnread {
+      color: #1565d8;
+      cursor: pointer;
+    }
+
+    .notify{
+      margin-left:72px;
+    }
+  }
+
+  .pagination-section {
+    .pagination {
+      float: right;
+      margin: 0 1rem 1rem 0;
+    }
+  }
+}

@@ -1,0 +1,53 @@
+<div class="container">
+  <div class="row create-job">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header d-flex justify-content-between align-items-center">
+          <h4 class="mb-0">Create New Job</h4>
+          <a routerLink="createjob">Cancel</a>
+        </div>
+        <div class="card-body pt-5 pb-5">
+          <div class="text-center basic-info">
+            <h2>What is the job level and experience required?</h2>
+            <div class="experience-category d-flex justify-content-center mt-5">
+              <button *ngFor="let list of objs; let i = index" class="btn m-2" (click)="listData(list.exp)">
+                {{ list.lvl }}
+              </button>
+              <!-- <button class="btn m-2">Junior</button>
+                        <button class="btn active m-2">Mid</button>
+                        <button class="btn m-2">Senior</button> -->
+            </div>
+          </div>
+          <div class="experience-year pt-3">
+            <h4 class="text-center">Years of experience</h4>
+            <div class="experience-category d-flex justify-content-center mt-1">
+              <button *ngFor="let data of selected; let i = index" class="btn active m-2">
+                {{ data }}
+              </button>
+              <!-- <button class="btn m-2">4+</button>
+                        <button class="btn m-2">5+</button>
+                        <button class="btn m-2">6+</button> -->
+            </div>
+          </div>
+        </div>
+        <div class="card-footer text-center">
+          <div class="d-flex align-items-center">
+            <div class="d-flex">
+              <img src="assets/images/left-arrow.svg" alt="login" class="back-arr" />
+              <span class="back-txt">
+                <button class="btn back-btn">Back</button>
+              </span>
+            </div>
+
+            <div class="d-flex">
+              <span class="nxt-txt">
+                <button class="btn nxt-btn">Next</button>
+              </span>
+              <img src="assets/images/right-arrow.svg" alt="login" class="next-arr" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

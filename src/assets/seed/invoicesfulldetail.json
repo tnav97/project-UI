@@ -1,0 +1,284 @@
+[
+  {
+    "_id": "620476d61d1c360a2e434183",
+    "index": 0,
+    "invoiceId": "ABIP6819",
+    "company": "REALYSIS",
+    "companyEmail": "hensonwilcox@realysis.com",
+    "companyPhone": "+1 (929) 434-2758",
+    "clientCompany": "DELPHIDE",
+    "clientCompanyEmail": "hensonwilcox@delphide.com",
+    "clientCompanyPhone": "+1 (942) 435-2711",
+    "projectTitle": "Health Care Application",
+    "department": "Health Analytics",
+    "amtBalance": "2667",
+    "invoiceDate": "2019-08-18",
+    "paymentDueDate": "2015-07-09",
+    "statusDetail": "Paid",
+    "tasks": [
+      {
+        "id": 0,
+        "taskDesc": "Rectified database",
+        "totalHours": "10:57",
+        "rate": "20",
+        "amt": "500"
+      },
+      {
+        "id": 1,
+        "taskDesc": "Injected data into db",
+        "totalHours": "06:23",
+        "rate": "19",
+        "amt": "600"
+      },
+      {
+        "id": 2,
+        "taskDesc": "Seeding data from backend",
+        "totalHours": "03:05",
+        "rate": "12",
+        "amt": "900"
+      }
+    ],
+    "weekStarts": "2020-09-06",
+    "contractName": "Marilyn Santiago",
+    "totalHours": "02:39",
+    "client": "ENORMO",
+    "status": "Approved",
+    "fromVendor": "PARCOE",
+    "paidDate": "2018-10-03"
+  },
+  {
+    "_id": "620476d69a307d7aed3f3f75",
+    "index": 1,
+    "invoiceId": "CDRF8290",
+    "company": "CENTREXIN",
+    "companyEmail": "marquezchen@centrexin.com",
+    "companyPhone": "+1 (842) 513-3248",
+    "clientCompany": "SNORUS",
+    "clientCompanyEmail": "marquezchen@snorus.com",
+    "clientCompanyPhone": "+1 (947) 578-2510",
+    "projectTitle": "Health Care Application",
+    "department": "Health Analytics",
+    "amtBalance": "3002",
+    "invoiceDate": "2020-03-16",
+    "paymentDueDate": "2020-07-12",
+    "statusDetail": "Unpaid",
+    "tasks": [
+      {
+        "id": 0,
+        "taskDesc": "Rectified database",
+        "totalHours": "10:57",
+        "rate": "20",
+        "amt": "500"
+      },
+      {
+        "id": 1,
+        "taskDesc": "Injected data into db",
+        "totalHours": "06:23",
+        "rate": "19",
+        "amt": "600"
+      },
+      {
+        "id": 2,
+        "taskDesc": "Seeding data from backend",
+        "totalHours": "03:05",
+        "rate": "12",
+        "amt": "900"
+      }
+    ],
+    "weekStarts": "2021-11-23",
+    "contractName": "Floyd Romero",
+    "totalHours": "07:57",
+    "client": "MAGNEMO",
+    "status": "Rejected",
+    "fromVendor": "EPLOSION",
+    "paidDate": "2016-01-01"
+  },
+  {
+    "_id": "620476d661dfa2693c909385",
+    "index": 2,
+    "invoiceId": "ATZO7265",
+    "company": "CONFRENZY",
+    "companyEmail": "dalehart@confrenzy.com",
+    "companyPhone": "+1 (917) 445-3365",
+    "clientCompany": "ESCHOIR",
+    "clientCompanyEmail": "dalehart@eschoir.com",
+    "clientCompanyPhone": "+1 (996) 558-3892",
+    "projectTitle": "Health Care Application",
+    "department": "Health Analytics",
+    "amtBalance": "3010",
+    "invoiceDate": "2017-09-29",
+    "paymentDueDate": "2014-07-23",
+    "statusDetail": "Unpaid",
+    "tasks": [
+      {
+        "id": 0,
+        "taskDesc": "Rectified database",
+        "totalHours": "10:57",
+        "rate": "20",
+        "amt": "500"
+      },
+      {
+        "id": 1,
+        "taskDesc": "Injected data into db",
+        "totalHours": "06:23",
+        "rate": "19",
+        "amt": "600"
+      },
+      {
+        "id": 2,
+        "taskDesc": "Seeding data from backend",
+        "totalHours": "03:05",
+        "rate": "12",
+        "amt": "900"
+      }
+    ],
+    "weekStarts": "2019-12-24",
+    "contractName": "Rhodes Howell",
+    "totalHours": "02:15",
+    "client": "REVERSUS",
+    "status": "Submitted",
+    "fromVendor": "EMTRAC",
+    "paidDate": "2015-12-11"
+  },
+  {
+    "_id": "620476d698df46c1610d84f8",
+    "index": 3,
+    "invoiceId": "LFTS3277",
+    "company": "SOPRANO",
+    "companyEmail": "jewelgarner@soprano.com",
+    "companyPhone": "+1 (886) 404-3278",
+    "clientCompany": "NIPAZ",
+    "clientCompanyEmail": "jewelgarner@nipaz.com",
+    "clientCompanyPhone": "+1 (853) 417-3937",
+    "projectTitle": "Health Care Application",
+    "department": "Health Analytics",
+    "amtBalance": "3082",
+    "invoiceDate": "2018-06-14",
+    "paymentDueDate": "2017-08-18",
+    "statusDetail": "Processing",
+    "tasks": [
+      {
+        "id": 0,
+        "taskDesc": "Rectified database",
+        "totalHours": "10:57",
+        "rate": "20",
+        "amt": "500"
+      },
+      {
+        "id": 1,
+        "taskDesc": "Injected data into db",
+        "totalHours": "06:23",
+        "rate": "19",
+        "amt": "600"
+      },
+      {
+        "id": 2,
+        "taskDesc": "Seeding data from backend",
+        "totalHours": "03:05",
+        "rate": "12",
+        "amt": "900"
+      }
+    ],
+    "weekStarts": "2017-06-09",
+    "contractName": "Collier Brewer",
+    "totalHours": "05:33",
+    "client": "FISHLAND",
+    "status": "Approved",
+    "fromVendor": "MANTRIX",
+    "paidDate": "2015-12-30"
+  },
+  {
+    "_id": "620476d6176256f39e2b7ae0",
+    "index": 4,
+    "invoiceId": "ABVP1829",
+    "company": "GRUPOLI",
+    "companyEmail": "cheribeard@grupoli.com",
+    "companyPhone": "+1 (867) 561-2153",
+    "clientCompany": "IZZBY",
+    "clientCompanyEmail": "cheribeard@izzby.com",
+    "clientCompanyPhone": "+1 (929) 451-2916",
+    "projectTitle": "Health Care Application",
+    "department": "Health Analytics",
+    "amtBalance": "2090",
+    "invoiceDate": "2015-01-08",
+    "paymentDueDate": "2015-06-25",
+    "statusDetail": "Unpaid",
+    "tasks": [
+      {
+        "id": 0,
+        "taskDesc": "Rectified database",
+        "totalHours": "10:57",
+        "rate": "20",
+        "amt": "500"
+      },
+      {
+        "id": 1,
+        "taskDesc": "Injected data into db",
+        "totalHours": "06:23",
+        "rate": "19",
+        "amt": "600"
+      },
+      {
+        "id": 2,
+        "taskDesc": "Seeding data from backend",
+        "totalHours": "03:05",
+        "rate": "12",
+        "amt": "900"
+      }
+    ],
+    "weekStarts": "2021-01-17",
+    "contractName": "Pansy Nelson",
+    "totalHours": "04:10",
+    "client": "FILODYNE",
+    "status": "Submitted",
+    "fromVendor": "KYAGORO",
+    "paidDate": "2021-07-03"
+  },
+  {
+    "_id": "620476d65c25db947f0d2c8d",
+    "index": 5,
+    "invoiceId": "RTZO6808",
+    "company": "VOLAX",
+    "companyEmail": "albertabarrett@volax.com",
+    "companyPhone": "+1 (959) 483-2724",
+    "clientCompany": "ZOINAGE",
+    "clientCompanyEmail": "albertabarrett@zoinage.com",
+    "clientCompanyPhone": "+1 (937) 432-3545",
+    "projectTitle": "Health Care Application",
+    "department": "Health Analytics",
+    "amtBalance": "1008",
+    "invoiceDate": "2018-04-08",
+    "paymentDueDate": "2014-05-27",
+    "statusDetail": "Paid",
+    "tasks": [
+      {
+        "id": 0,
+        "taskDesc": "Rectified database",
+        "totalHours": "10:57",
+        "rate": "20",
+        "amt": "500"
+      },
+      {
+        "id": 1,
+        "taskDesc": "Injected data into db",
+        "totalHours": "06:23",
+        "rate": "19",
+        "amt": "600"
+      },
+      {
+        "id": 2,
+        "taskDesc": "Seeding data from backend",
+        "totalHours": "03:05",
+        "rate": "12",
+        "amt": "900"
+      }
+    ],
+    "weekStarts": "2014-07-04",
+    "contractName": "Henson Wilcox",
+    "totalHours": "02:16",
+    "client": "QUANTALIA",
+    "status": "Rejected",
+    "fromVendor": "MANTRIX",
+    "paidDate": "2015-12-30"
+  }
+]

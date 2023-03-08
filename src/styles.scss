@@ -1,0 +1,168 @@
+/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;400;500;600;800&family=Roboto:wght@300;400;500;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp');
+
+@import '~@ng-select/ng-select/themes/material.theme.css';
+@import '~quill/dist/quill.snow.css';
+@import '../node_modules/angular-calendar/css/angular-calendar.css';
+
+html,
+body {
+  background-color: var(--background-custom);
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter';
+}
+
+.cursor {
+  cursor: pointer;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  box-shadow: 0 0 0px 1000px white inset !important;
+  -webkit-box-shadow: 0 0 0px 1000px white inset !important;
+  background-color: #fff !important;
+}
+@media print {
+  body {
+    display: none;
+  }
+}
+
+.badge {
+  &.success {
+    background-color: var(--bs-teal);
+    color: var(--white-text);
+  }
+  &.info {
+    background-color: var(--bs-cyan);
+    color: var(--white-text);
+  }
+  &.danger {
+    background-color: var(--bs-red);
+    color: var(--white-text);
+  }
+  &.warning {
+    background-color: var(--bs-yellow);
+    color: var(--white-text);
+  }
+  &.blue {
+    background-color: var(--bs-blue);
+    color: var(--white-text);
+  }
+  &.purple {
+    background-color: var(--bs-purple);
+    color: var(--white-text);
+  }
+}
+
+.badge-success {
+  background-color: #5cb85c;
+  color: var(--white-text);
+  padding-right: 0.6em;
+  padding-left: 0.6em;
+  border-radius: 10rem;
+}
+
+.badge-released {
+  background-color: #04aa6d;
+  color: var(--white-text);
+  padding-right: 0.6em;
+  padding-left: 0.6em;
+  border-radius: 10rem;
+}
+
+.badge-offered {
+  background-color: #5bc0de;
+  color: var(--white-text);
+  padding-right: 0.6em;
+  padding-left: 0.6em;
+  border-radius: 10rem;
+}
+
+.badge-writing {
+  background-color: #286090;
+  color: var(--white-text);
+  padding-right: 0.6em;
+  padding-left: 0.6em;
+  border-radius: 10rem;
+}
+
+.badge-danger {
+  background-color: #d9534f;
+  color: var(--white-text);
+  padding-right: 0.6em;
+  padding-left: 0.6em;
+  border-radius: 10rem;
+}
+
+.badge-warning {
+  background-color: #f0ad4e;
+  color: var(--white-text);
+  padding-right: 0.6em;
+  padding-left: 0.6em;
+  border-radius: 10rem;
+}
+
+::ng-deep {
+  .mat-tab-label,
+  .mat-tab-label-content {
+    font-size: 12px;
+    font-weight: 600;
+    color: #9c9c9c;
+    opacity: 1;
+  }
+
+  .mat-tab-label-active,
+  .mat-tab-label-content {
+    font-size: 12px;
+    font-weight: 600;
+    color: #76a3f1;
+    opacity: 1;
+  }
+}
+
+.txt {
+  color: var(--default-text);
+  font-weight: 400;
+  &.bold,
+  &.fw-6 {
+    font-weight: 600;
+  }
+  &.bolder,
+  &.fw-8 {
+    font-weight: 800;
+  }
+  &.thin,
+  &.fw-2 {
+    font-weight: 200;
+  }
+  &.dark {
+    color: var(--dark-text);
+  }
+  &.primary {
+    color: var(--primary-hex);
+  }
+  &.primary-dark {
+    color: var(--primary-hex-dark);
+  }
+  &.sm {
+    font-size: 12px;
+  }
+}
+
+@for $i from 10 through 30 {
+  .txt.fs-#{$i} {
+    font-size: #{$i}px;
+  }
+}
+
+.pointer {
+  cursor: pointer;
+}

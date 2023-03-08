@@ -1,0 +1,320 @@
+[
+  {
+    "_id": "620489ddef823b0d86d91a31",
+    "index": 0,
+    "jobId": "0af24a67-2bdd-4f29-8397-b4b479d36841",
+    "position": "Senior UI/UX Manager",
+    "clientCompany": "NIKUDA",
+    "bilingRate": "140",
+    "hiringPosted": "2016-12-05",
+    "hiringClosed": "2015-12-01",
+    "highlights": [
+      {
+        "id": 0,
+        "highlight": "Overseeing all design projects, from conception "
+      },
+      {
+        "id": 1,
+        "highlight": "design original pieces, including illustrations and infographics"
+      },
+      {
+        "id": 2,
+        "highlight": "Reviewing junior designers work to ensure high quality"
+      }
+    ],
+    "jobBrief": "Laborum reprehenderit nulla do labore est eu quis ad quis voluptate nisi tempor. Anim fugiat ipsum magna aliqua voluptate cillum. Qui dolor fugiat nisi nulla elit eiusmod ipsum eu aliquip Lorem sunt veniam. Pariatur qui pariatur sit sint. Labore deserunt sint deserunt amet. Et fugiat sunt esse elit do irure anim id exercitation incididunt aute.\r\n",
+    "responsibilities": [
+      {
+        "id": 0,
+        "responsibility": "Oversee al design projects, from conception to delivery Design original pieces, including ilustrations and Infographics"
+      },
+      {
+        "id": 1,
+        "responsibility": "Review junior designers work to ensure high quality"
+      },
+      {
+        "id": 2,
+        "responsibility": "Refine images, fonts and layouts using graphic design software"
+      }
+    ],
+    "requirements": [
+      {
+        "id": 0,
+        "requirement": "Proven work experience as a Senior Designer, Graphic Designer or similar role"
+      },
+      {
+        "id": 1,
+        "requirement": "Portfolio of completed design projects"
+      },
+      {
+        "id": 2,
+        "requirement": "Hands-on experience with Image editing software, Ike Photoshop and Adobe"
+      }
+    ]
+  },
+  {
+    "_id": "620489ddb847409724734d4f",
+    "index": 1,
+    "jobId": "18800841-d163-4708-a931-14a2f26c5a34",
+    "position": "Technical Architecture",
+    "clientCompany": "STROZEN",
+    "bilingRate": "500",
+    "hiringPosted": "2015-11-07",
+    "hiringClosed": "2021-03-30",
+    "highlights": [
+      {
+        "id": 0,
+        "highlight": "Overseeing all design projects, from conception "
+      },
+      {
+        "id": 1,
+        "highlight": "design original pieces, including illustrations and infographics"
+      },
+      {
+        "id": 2,
+        "highlight": "Reviewing junior designers work to ensure high quality"
+      }
+    ],
+    "jobBrief": "Laborum reprehenderit nulla do labore est eu quis ad quis voluptate nisi tempor. Anim fugiat ipsum magna aliqua voluptate cillum. Qui dolor fugiat nisi nulla elit eiusmod ipsum eu aliquip Lorem sunt veniam. Pariatur qui pariatur sit sint. Labore deserunt sint deserunt amet. Et fugiat sunt esse elit do irure anim id exercitation incididunt aute.\r\n",
+    "responsibilities": [
+      {
+        "id": 0,
+        "responsibility": "Oversee al design projects, from conception to delivery Design original pieces, including ilustrations and Infographics"
+      },
+      {
+        "id": 1,
+        "responsibility": "Review junior designers work to ensure high quality"
+      },
+      {
+        "id": 2,
+        "responsibility": "Refine images, fonts and layouts using graphic design software"
+      }
+    ],
+    "requirements": [
+      {
+        "id": 0,
+        "requirement": "Proven work experience as a Senior Designer, Graphic Designer or similar role"
+      },
+      {
+        "id": 1,
+        "requirement": "Portfolio of completed design projects"
+      },
+      {
+        "id": 2,
+        "requirement": "Hands-on experience with Image editing software, Ike Photoshop and Adobe"
+      }
+    ]
+  },
+  {
+    "_id": "620489dd74e1a4fe28860a8d",
+    "index": 2,
+    "jobId": "5f32432d-2367-4e0c-a1d6-7c0489fc4d01",
+    "position": "UI Developer",
+    "clientCompany": "GEEKETRON",
+    "bilingRate": "700",
+    "hiringPosted": "2017-12-04",
+    "hiringClosed": "2020-10-27",
+    "highlights": [
+      {
+        "id": 0,
+        "highlight": "Overseeing all design projects, from conception "
+      },
+      {
+        "id": 1,
+        "highlight": "design original pieces, including illustrations and infographics"
+      },
+      {
+        "id": 2,
+        "highlight": "Reviewing junior designers work to ensure high quality"
+      }
+    ],
+    "jobBrief": "Laborum reprehenderit nulla do labore est eu quis ad quis voluptate nisi tempor. Anim fugiat ipsum magna aliqua voluptate cillum. Qui dolor fugiat nisi nulla elit eiusmod ipsum eu aliquip Lorem sunt veniam. Pariatur qui pariatur sit sint. Labore deserunt sint deserunt amet. Et fugiat sunt esse elit do irure anim id exercitation incididunt aute.\r\n",
+    "responsibilities": [
+      {
+        "id": 0,
+        "responsibility": "Oversee al design projects, from conception to delivery Design original pieces, including ilustrations and Infographics"
+      },
+      {
+        "id": 1,
+        "responsibility": "Review junior designers work to ensure high quality"
+      },
+      {
+        "id": 2,
+        "responsibility": "Refine images, fonts and layouts using graphic design software"
+      }
+    ],
+    "requirements": [
+      {
+        "id": 0,
+        "requirement": "Proven work experience as a Senior Designer, Graphic Designer or similar role"
+      },
+      {
+        "id": 1,
+        "requirement": "Portfolio of completed design projects"
+      },
+      {
+        "id": 2,
+        "requirement": "Hands-on experience with Image editing software, Ike Photoshop and Adobe"
+      }
+    ]
+  },
+  {
+    "_id": "620489ddfa72459d5c4568ba",
+    "index": 3,
+    "jobId": "dde8f126-eaf8-4d96-accc-55230e15919a",
+    "position": "PHP Developer",
+    "clientCompany": "SKYBOLD",
+    "bilingRate": "200",
+    "hiringPosted": "2019-11-25",
+    "hiringClosed": "2018-02-16",
+    "highlights": [
+      {
+        "id": 0,
+        "highlight": "Overseeing all design projects, from conception "
+      },
+      {
+        "id": 1,
+        "highlight": "design original pieces, including illustrations and infographics"
+      },
+      {
+        "id": 2,
+        "highlight": "Reviewing junior designers work to ensure high quality"
+      }
+    ],
+    "jobBrief": "Laborum reprehenderit nulla do labore est eu quis ad quis voluptate nisi tempor. Anim fugiat ipsum magna aliqua voluptate cillum. Qui dolor fugiat nisi nulla elit eiusmod ipsum eu aliquip Lorem sunt veniam. Pariatur qui pariatur sit sint. Labore deserunt sint deserunt amet. Et fugiat sunt esse elit do irure anim id exercitation incididunt aute.\r\n",
+    "responsibilities": [
+      {
+        "id": 0,
+        "responsibility": "Oversee al design projects, from conception to delivery Design original pieces, including ilustrations and Infographics"
+      },
+      {
+        "id": 1,
+        "responsibility": "Review junior designers work to ensure high quality"
+      },
+      {
+        "id": 2,
+        "responsibility": "Refine images, fonts and layouts using graphic design software"
+      }
+    ],
+    "requirements": [
+      {
+        "id": 0,
+        "requirement": "Proven work experience as a Senior Designer, Graphic Designer or similar role"
+      },
+      {
+        "id": 1,
+        "requirement": "Portfolio of completed design projects"
+      },
+      {
+        "id": 2,
+        "requirement": "Hands-on experience with Image editing software, Ike Photoshop and Adobe"
+      }
+    ]
+  },
+  {
+    "_id": "620489ddfff10c09cad39524",
+    "index": 4,
+    "jobId": "d1f50a1d-f71f-470e-9f41-fb86b9fe4164",
+    "position": "Senior Analyst",
+    "clientCompany": "BUZZNESS",
+    "bilingRate": "800",
+    "hiringPosted": "2021-06-05",
+    "hiringClosed": "2020-12-26",
+    "highlights": [
+      {
+        "id": 0,
+        "highlight": "Overseeing all design projects, from conception "
+      },
+      {
+        "id": 1,
+        "highlight": "design original pieces, including illustrations and infographics"
+      },
+      {
+        "id": 2,
+        "highlight": "Reviewing junior designers work to ensure high quality"
+      }
+    ],
+    "jobBrief": "Laborum reprehenderit nulla do labore est eu quis ad quis voluptate nisi tempor. Anim fugiat ipsum magna aliqua voluptate cillum. Qui dolor fugiat nisi nulla elit eiusmod ipsum eu aliquip Lorem sunt veniam. Pariatur qui pariatur sit sint. Labore deserunt sint deserunt amet. Et fugiat sunt esse elit do irure anim id exercitation incididunt aute.\r\n",
+    "responsibilities": [
+      {
+        "id": 0,
+        "responsibility": "Oversee al design projects, from conception to delivery Design original pieces, including ilustrations and Infographics"
+      },
+      {
+        "id": 1,
+        "responsibility": "Review junior designers work to ensure high quality"
+      },
+      {
+        "id": 2,
+        "responsibility": "Refine images, fonts and layouts using graphic design software"
+      }
+    ],
+    "requirements": [
+      {
+        "id": 0,
+        "requirement": "Proven work experience as a Senior Designer, Graphic Designer or similar role"
+      },
+      {
+        "id": 1,
+        "requirement": "Portfolio of completed design projects"
+      },
+      {
+        "id": 2,
+        "requirement": "Hands-on experience with Image editing software, Ike Photoshop and Adobe"
+      }
+    ]
+  },
+  {
+    "_id": "620489dd3c83991781abe188",
+    "index": 5,
+    "jobId": "4d373ce5-10df-4a8c-998e-4929323bd653",
+    "position": "Project Manager",
+    "clientCompany": "QUONATA",
+    "bilingRate": "400",
+    "hiringPosted": "2015-10-03",
+    "hiringClosed": "2017-10-07",
+    "highlights": [
+      {
+        "id": 0,
+        "highlight": "Overseeing all design projects, from conception "
+      },
+      {
+        "id": 1,
+        "highlight": "design original pieces, including illustrations and infographics"
+      },
+      {
+        "id": 2,
+        "highlight": "Reviewing junior designers work to ensure high quality"
+      }
+    ],
+    "jobBrief": "Laborum reprehenderit nulla do labore est eu quis ad quis voluptate nisi tempor. Anim fugiat ipsum magna aliqua voluptate cillum. Qui dolor fugiat nisi nulla elit eiusmod ipsum eu aliquip Lorem sunt veniam. Pariatur qui pariatur sit sint. Labore deserunt sint deserunt amet. Et fugiat sunt esse elit do irure anim id exercitation incididunt aute.\r\n",
+    "responsibilities": [
+      {
+        "id": 0,
+        "responsibility": "Oversee al design projects, from conception to delivery Design original pieces, including ilustrations and Infographics"
+      },
+      {
+        "id": 1,
+        "responsibility": "Review junior designers work to ensure high quality"
+      },
+      {
+        "id": 2,
+        "responsibility": "Refine images, fonts and layouts using graphic design software"
+      }
+    ],
+    "requirements": [
+      {
+        "id": 0,
+        "requirement": "Proven work experience as a Senior Designer, Graphic Designer or similar role"
+      },
+      {
+        "id": 1,
+        "requirement": "Portfolio of completed design projects"
+      },
+      {
+        "id": 2,
+        "requirement": "Hands-on experience with Image editing software, Ike Photoshop and Adobe"
+      }
+    ]
+  }
+]

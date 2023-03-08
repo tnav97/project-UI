@@ -1,0 +1,48 @@
+<div class="container">
+  <div class="row create-job">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header d-flex justify-content-between align-items-center">
+          <h4 class="mb-0">Create New Job</h4>
+          <a routerLink="createjob">Cancel</a>
+        </div>
+        <div class="card-body pt-5 pb-5">
+          <div class="text-center basic-info">
+            <h2>Let’s get started with some basic info</h2>
+            <form class="mt-5">
+              <div class="form-row align-items-center form-info">
+                <div class="form-floating inner-addon text-center mb-3 col-sm-4 info-form">
+                  <img src="assets/images/icon-job-title.svg" />
+                  <input type="email" class="form-control is-invalid" id="floatingInputInvalid" placeholder="name@example.com" />
+                  <label for="floatingInputInvalid">Job Title</label>
+                </div>
+                <div class="form-floating text-center mb-3 col-sm-4 info-form">
+                  <img src="assets/images/icon-pin.svg" />
+                  <input type="email" class="form-control is-invalid" id="floatingInputInvalid" placeholder="name@example.com" />
+                  <label for="floatingInputInvalid">Location</label>
+                </div>
+                <div class="form-floating text-center mb-3 col-sm-4 info-form">
+                  <div class="input-group">
+                    <img src="assets/images/icon-atom.svg" />
+                    <!-- <label class="input-group-text" for=""><i class="bi bi-funnel"></i></label> -->
+                    <select class="form-select" aria-label="Filter select">
+                      <option selected><i class="bi bi-funnel"></i> Core Technology</option>
+                      <option value="1">All</option>
+                      <option value="2">Active</option>
+                      <option value="3">Inactive</option>
+                    </select>
+                  </div>
+                  <!-- <input type="email" class="form-control is-invalid" id="floatingInputInvalid" placeholder="name@example.com"> -->
+                  <!-- <label for="floatingInputInvalid">Core Technology</label> -->
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="card-footer text-center">
+          <button class="btn mt-5 mb-5">Proceed <i class="fa fa-arrow-right" aria-hidden="true"></i></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,28 @@
+{{- $persistence := .Values.persistentVolume | default dict -}}
+{{- if $persistence.enabled }}
+apiVersion: "v1"
+kind: PersistentVolumeClaim
+metadata:
+  name: {{ include "dx-chart.fullname" . }}
+  labels:
+  {{- include "dx-chart.labels" . | nindent 4 }}
+  annotations:
+    {{- range $key, $value := .Values.persistentVolume.annotations }}
+    {{ $key }}: {{ $value }}
+  {{- end }}
+spec:
+  {{- if .Values.persistentVolume.storageClass }}
+  {{- if (eq "-" .Values.persistentVolume.storageClass) }}
+  storageClassName: ""
+  {{- else }}
+  storageClassName: {{ .Values.storageClassName | quote }}
+  {{- end }}
+  {{- end }}
+  accessModes:
+    {{- range .Values.persistentVolume.accessModes }}
+    - {{ . | quote }}
+  {{- end }}
+  resources:
+    requests:
+      storage: {{ .Values.persistentVolume.size | quote }}
+  {{- end }}

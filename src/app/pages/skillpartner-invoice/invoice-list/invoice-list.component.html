@@ -1,0 +1,147 @@
+<div class="row card admin-clients">
+  <!-- <div class="col-md-12 card-header dashboard-header d-flex justify-content-between align-items-center">
+      <h4 class="mb-0">Invoice Listings</h4>
+    </div> -->
+
+  <div class="card-header dashboard-header d-flex justify-content-between align-items-center">
+    <h4 class="mb-0">Invoice Listings</h4>
+    <button routerLink="/spInvoice/createinvoice" class="btn">Create Invoice</button>
+  </div>
+
+  <div class="card-body clients-body">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="table-responsive-md clients-table">
+          <table class="table">
+            <thead>
+              <tr>
+                <th></th>
+                <th scope="col">Invoice ID</th>
+                <th scope="col">To</th>
+                <th scope="col">Due Date</th>
+                <th scope="col">Submitted Date</th>
+                <th scope="col">Status</th>
+                <th scope="col"></th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let a of tabledata">
+                <label class="form-check-label">
+                  <input type="checkbox" class="form-check-input" value="" />
+                </label>
+                <td scope="row">{{ a?.invoiceId }}</td>
+
+                <td>{{ a?.to }}</td>
+                <td>{{a.paymentDueDate | date : 'MM/dd/yyyy' }}</td>
+                <td>{{ a?.invoiceDate | date : 'MM/dd/yyyy' }}</td>
+
+                <td>
+                  <div class="tooltips">
+                    <span
+                      class="view"
+                      [ngClass]="
+                        a?.status?.status == 'Submitted'
+                          ? 'badge active-badge'
+                          : a?.status?.status == 'Approved'
+                          ? 'badge approve-badge'
+                          : a?.status?.status == 'Paid'
+                          ? 'badge paid-badge'
+                          : a?.status?.status == 'Rejected'
+                          ? 'badge reject-badge'
+                          : 'badge pending-badge'
+                      "
+                      >{{ a?.status?.status }}</span
+                    >
+                    <div class="left" *ngIf="a?.comments !== 'NA'">
+                      <p>{{ a?.comments }}</p>
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <a [routerLink]="['/spInvoice/previewInvoice', a?.invoiceId]" routerLinkActive="router-link-active">View invoice</a>
+                </td>
+
+                <td>
+                  <div class="dropdown">
+                    <button class="btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      <img src="assets/images/icon-more.svg" />
+                    </button>
+                    <ul class="dropdown-menu">
+                      <!-- <li (click)="updateStatus(a?.invoiceId, item.id, item.status)" *ngFor="let item of invoiceStatusList">
+                        <a *ngIf="item.status === 'Submitted' && a?.status?.status === 'Rejected'" class="dropdown-item">Update</a>
+                      </li> -->
+                    </ul>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal modal-backdrop" tabindex="-1" [ngStyle]="{ display: dialogConfig === 'rateCard' ? 'block' : 'none' }">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header border-0">
+        <h4 class="modal-title txt mb-0 fw-6 dark">Update Invoice</h4>
+        <!-- <button type="button" class="close" (click)="dialogConfig = ''">
+          <span aria-hidden="true">&times;</span>
+        </button> -->
+      </div>
+      <div class="modal-body">
+        <div class="row" *ngFor="let n of candidateItemList; let i = index">
+          <div class="col-12 col-md-6">
+            <div class="d-flex align-items-center">
+              <div class="form-group form-check me-3">
+                <!-- <input type="checkbox" class="form-check-input" /> -->
+              </div>
+              <div class="d-flex">
+                <div class="avatar-group me-2">
+                  <img [src]="n?.image" alt="" class="avatar" />
+                </div>
+                <div class="acg">
+                  <p class="txt dark fw-6 mb-0">{{ n?.ownerName }}</p>
+                  <p class="txt sm mb-0">{{ n?.projectName }}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-md-3" style="display: flex">
+            <div class="form-label-group fxf lg">
+              <input
+                type="text"
+                class="form-control input-icon"
+                [value]="n.amount"
+                placeholder="Amount"
+                (change)="rateEntry($event, n)"
+                (keypress)="onlyPrice($event)" />
+              <label>Amount</label>
+            </div>
+            <img src="assets/images/price-doller.svg" alt="BaseRate" class="label-icon" />
+          </div>
+          <div class="col-12 col-md-3" style="display: flex">
+            <div class="form-label-group fxf lg">
+              <input
+                type="text"
+                class="form-control input-icon"
+                [value]="n.totalHours"
+                placeholder="Hours"
+                (change)="hoursEntry($event, n)"
+                (keypress)="onlyPrice($event)" />
+              <label>Total Hours</label>
+            </div>
+          </div>
+        </div>
+        <div class="text-center mt-4">
+          <button class="btn btn-primary" data-dismiss="modal" aria-label="Close" type="button" [disabled]="!_publish" (click)="publish()">
+            Publish
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
